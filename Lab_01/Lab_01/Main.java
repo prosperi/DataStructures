@@ -1,4 +1,4 @@
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Set;
 import java.util.Iterator;
 import java.io.BufferedReader;
@@ -15,24 +15,27 @@ import java.lang.NumberFormatException;
 public class Main
 {
     
-    private static double tax;
-    private static HashMap<String, Double> goods;
+    private double tax;
+    private LinkedHashMap<String, Double> goods;
     
     public static void main(String[] args){
-        tax = 0;
-        goods = new HashMap<String, Double>();
         
-        survey();
+        Main app = new Main();
+        
+        app.tax = 0;
+        app.goods = new LinkedHashMap<String, Double>();
+        
+        app.survey();
     }
     
-    private static void survey(){
+    private void survey(){
         
         try(
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         ){
             System.out.println("Please, enter tax rate:");
             // Make sure this is double, if not catch exception
-            tax = getDouble(reader);
+            this.tax = getDouble(reader);
             
             String tmpName, answerYN;
             Double tmpPrice;
@@ -48,11 +51,11 @@ public class Main
                     System.out.println("Enter the price for this goods:");
                     tmpPrice = getDouble(reader);
                     
-                    goods.put(tmpName, tmpPrice);
+                    this.goods.put(tmpName, tmpPrice);
                 }
             }
             
-            Set keys = goods.keySet();
+            Set keys = this.goods.keySet();
             Iterator<String> iterator = keys.iterator();
             String currentName;
             double currentPrice, taxForCurrent;
@@ -62,11 +65,11 @@ public class Main
             
             while(iterator.hasNext()){
                 currentName = iterator.next();
-                currentPrice = goods.get(currentName);
+                currentPrice = this.goods.get(currentName);
                 if(currentName.matches("(?i)^food$") || currentName.matches("(?i)^clothing$")){
                     taxForCurrent = 0;
                 }else{
-                    taxForCurrent = tax;
+                    taxForCurrent = this.tax;
                 }
                 taxForGoods = Double.toString(currentPrice*taxForCurrent);
                 totalPrice = Double.toString(currentPrice + currentPrice*taxForCurrent);
@@ -83,7 +86,7 @@ public class Main
     
     
     // Check to get Double value when  needed
-    private static Double getDouble(BufferedReader reader){
+    private Double getDouble(BufferedReader reader){
         double dbl;
         while(true){
             try{
