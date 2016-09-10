@@ -13,6 +13,8 @@ import org.junit.Test;
  */
 public class WheelTest
 {    
+    private Wheel wheel;
+    
     /**
      * Default constructor for test class WheelTest
      */
@@ -40,10 +42,10 @@ public class WheelTest
     {
     }
 
-    @Test
+    @Test()
     public void spinTest()
     {
-        Wheel wheel = new Wheel(100);
+        wheel = new Wheel(100);
         int num = wheel.spin();
         assertTrue("Picked number out of range", num >= 0 || num < wheel.seed);
 		

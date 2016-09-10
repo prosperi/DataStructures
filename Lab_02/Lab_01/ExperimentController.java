@@ -8,26 +8,21 @@ public class ExperimentController{
     RandomIntegerContainer ric;
     Wheel wheel;
     
-    public static void main(String args[]){
-        
-        ExperimentController controller = new ExperimentController();
-        
-        System.out.println(controller.timeAddToFront(1000000, 10000));
-        System.out.println(controller.timeSortOfUnsortedList());
-        System.out.println(controller.timeSortOfSortedList());
-        
-    }
-    
     public long timeAddToFront(int numberOfItems, int seed){
-        ric = new RandomIntegerContainer();
-        wheel = new Wheel(seed);
-        long startTime = System.currentTimeMillis();
-        for(; numberOfItems > 0; numberOfItems--){
-            ric.addToFront(wheel.spin());
+        if(numberOfItems > 0 && seed > 1){
+            ric = new RandomIntegerContainer();
+            wheel = new Wheel(seed);
+            long startTime = System.currentTimeMillis();
+            for(; numberOfItems > 0; numberOfItems--){
+                ric.addToFront(wheel.spin());
+            }
+            long finishTime = System.currentTimeMillis();
+            
+            return finishTime - startTime;
         }
-        long finishTime = System.currentTimeMillis();
         
-        return finishTime - startTime;
+        return -1;
+        
         
     }
     
