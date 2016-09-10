@@ -14,11 +14,12 @@ public class RandomIntegerContainer{
         aList.add(0, x);
     }
     
+    //Check This
     public void insertionSort(){
-        for(int i = 0; i < aList.size()-1; i++){
+        for(int i = 1; i < aList.size(); i++){
             
-                int tmp = aList.get(i+1);
-                int j = i+1;
+                int tmp = aList.get(i);
+                int j = i;
                 for(; j > 0 && aList.get(j-1) > tmp; j--){
                     aList.set(j, aList.get(j-1));
                 }

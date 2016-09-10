@@ -15,7 +15,11 @@ public class Wheel{
     }
     
     public int spin(){
-        return this.rnd.nextInt(seed-1) + 1;
+        try{
+            return this.rnd.nextInt(seed-1) + 1;
+        }catch(IllegalArgumentException e){
+            return -1;
+        }
     }
     
 }

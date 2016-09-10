@@ -12,7 +12,7 @@ public class ExperimentController{
         
         ExperimentController controller = new ExperimentController();
         
-        System.out.println(controller.timeAddToFront(10000, 10000));
+        System.out.println(controller.timeAddToFront(1000000, 10000));
         System.out.println(controller.timeSortOfUnsortedList());
         System.out.println(controller.timeSortOfSortedList());
         
