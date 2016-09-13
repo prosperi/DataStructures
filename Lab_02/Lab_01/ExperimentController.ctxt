@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.params=numberOfItems\ seed
-comment0.target=long\ timeAddToFront(int,\ int)
+comment0.target=long\ timeAddToFront(int,\ long)
 comment1.params=
 comment1.target=long\ timeSortOfUnsortedList()
 comment2.params=

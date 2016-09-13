@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=iContainer\ numberOfItems\ seed
+comment0.target=long\ timeAddToFront(IntegerContainer,\ int,\ long)
+comment1.params=iContainer
+comment1.target=long\ timeSortOfUnsortedList(IntegerContainer)
+comment2.params=iContainer
+comment2.target=long\ timeSortOfSortedList(IntegerContainer)
+numComments=3

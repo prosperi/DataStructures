@@ -1,3 +1,4 @@
+import java.util.AbstractList;
 
 /**
  * @author Zura Mestiashvili 
@@ -5,16 +6,18 @@
  */
 
 public class ExperimentController{
+    ArrayListIntegerContainer arrContainer;
+    LinkedListIntegerContainer linkedContainer;
     RandomIntegerContainer ric;
     Wheel wheel;
     
-    public long timeAddToFront(int numberOfItems, long seed){
+    public long timeAddToFront(IntegerContainer iContainer, int numberOfItems, long seed){
         if(numberOfItems > 0){
             ric = new RandomIntegerContainer();
             wheel = new Wheel(seed);
             long startTime = System.currentTimeMillis();
             for(; numberOfItems > 0; numberOfItems--){
-                ric.addToFront(wheel.spin());
+                iContainer.addToFront(wheel.spin());
             }
             long finishTime = System.currentTimeMillis();
             
@@ -26,17 +29,17 @@ public class ExperimentController{
         
     }
     
-    public long timeSortOfUnsortedList(){
+    public long timeSortOfUnsortedList(IntegerContainer iContainer){
         long startTime = System.currentTimeMillis();
-        ric.insertionSort();
+        iContainer.insertionSort();
         long finishTime = System.currentTimeMillis();
         
         return finishTime - startTime;
     }
     
-    public long timeSortOfSortedList(){
+    public long timeSortOfSortedList(IntegerContainer iContainer){
         long startTime = System.currentTimeMillis();
-        ric.insertionSort();
+        iContainer.insertionSort();
         long finishTime = System.currentTimeMillis();
         
         return finishTime - startTime;

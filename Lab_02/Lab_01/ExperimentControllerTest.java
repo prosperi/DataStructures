@@ -38,14 +38,9 @@ public class ExperimentControllerTest
     {
         
         assertFalse("Time is not calculated correctly", ec.timeAddToFront(10000, 100) < 0);
-        assertTrue("Values less or equal to 1 for seed should not be allowed", ec.timeAddToFront(10000, -100) == -1);
-        assertTrue("negative values for numberOfItems should not be allowed", ec.timeAddToFront(-10000, 100) == -1);
-        assertTrue("negative values for seed and numberOfItems should not be allowed", ec.timeAddToFront(-10000, -100) == -1);
         assertTrue("numberOfItems should be positive", ec.timeAddToFront(0, 100) == -1);
-        assertTrue("numberOfItems should be positive and seed more than 1", ec.timeAddToFront(0, 1) == -1);
-        //assertTrue("numberOfItems should be positive and seed more than 1", ec.timeAddToFront(0, 0) == -1);
-        //assertTrue("numberOfItems should be positive and seed more than 1", ec.timeAddToFront(0, -1) == -1);
-        assertTrue("seed should be more than 1", ec.timeAddToFront(10000, 0) == -1);
+        assertTrue("numberOfItems should be positive", ec.timeAddToFront(-10, 100) == -1);
+
         
     }
     

@@ -47,20 +47,15 @@ public class WheelTest
     {
         wheel = new Wheel(100);
         int num = wheel.spin();
-        assertTrue("Picked number out of range", num >= 0 || num < wheel.seed);
-		
+        assertTrue("Picked number out of range", num >= 0 && num < wheel.bound);
+        
         wheel = new Wheel(0);
         num = wheel.spin();
-        assertTrue("Only numbers more than 1 allowed", num == -1);
-        
-        
-        wheel = new Wheel(1);
-        num = wheel.spin();
-        assertTrue("Only numbers more than 1 allowed", num == -1);
+        assertTrue("Picked number out of range", num >= 0 && num < wheel.bound);
         
         wheel = new Wheel(-100);
         num = wheel.spin();
-        assertTrue("Only numbers more than 1 allowed", num == -1);
+        assertTrue("Picked number out of range", num >= 0 && num < wheel.bound);
     }
     
     

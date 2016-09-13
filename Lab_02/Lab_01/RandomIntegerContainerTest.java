@@ -64,6 +64,24 @@ public class RandomIntegerContainerTest
         int size = ric.aList.size();
         ric.addToFront(100);
         assertTrue("Could not add number in front", ric.aList.get(0) == 100 && ric.aList.size() == (size+1));
+        
+        for(int i = 99; i >= 0; i--){
+            ric.addToFront(i);
+        }
+        
+        assertTrue(ric.aList.size() == 101);
+        for(int j = 0; j <= 100; j++){
+            assertTrue("Could not add int the front", j == ric.aList.get(j));
+        }
+        
+        for(int i = -1; i >= -100; i--){
+            ric.addToFront(i);
+        }
+        
+        assertTrue(ric.aList.size() == 201);
+        for(int j = -100; j <= 100; j++){
+            assertTrue("Could not add int the front", j == ric.aList.get(j+100));
+        }
     }
     
     @Test
