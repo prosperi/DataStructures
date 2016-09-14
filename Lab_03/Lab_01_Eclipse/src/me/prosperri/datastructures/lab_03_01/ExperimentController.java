@@ -1,3 +1,5 @@
+package me.prosperri.datastructures.lab_03_01;
+
 import java.util.AbstractList;
 
 /**

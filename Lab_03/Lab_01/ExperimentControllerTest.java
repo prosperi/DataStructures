@@ -1,9 +1,10 @@
 import static org.junit.Assert.*;
-import org.junit.After;
 import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.Ignore;
+import java.io.PrintWriter;
+import java.io.IOException;
 
 /**
  * The test class ExperimentControllerTest.
@@ -13,30 +14,36 @@ import org.junit.Test;
  */
 public class ExperimentControllerTest
 {
-    private ExperimentController ec;
-    private ArrayListIntegerContainer arrContainer;
-    private LinkedListIntegerContainer linkedContainer;
+    private static ExperimentController ec;
+    private static ArrayListIntegerContainer arrContainer;
+    private static LinkedListIntegerContainer linkedContainer;
+    private static PrintWriter outputFile;
    
     public ExperimentControllerTest()
     {
     }
     
 
-    @Before
-    public void setUp()
+    // As it seems there is bug in BlueJ, Junit's AfterClass and BeforeClass do not work, therefore
+    // I have to initialize vlass variables in first test
+    // http://bugs.bluej.org/browse/BLUEJ-437
+    // I'm moving on Eclipse
+    @BeforeClass
+    public static void classSetUp()
     {
-        ec = new ExperimentController();
-        arrContainer = new ArrayListIntegerContainer();
-        linkedContainer = new LinkedListIntegerContainer();
+        /*ec = new ExperimentController();
+        arrContainer = new ArrContainer();
+        linkedContainer = new linkedContainer();
+        try{
+            outputFile = new PrintWriter("data.csv", "UTF-8");
+        }catch(IOException e){
+            System.out.println("Problem with output file!!!");
+        }*/
+        
     }
-
-    @After
-    public void tearDown()
-    {
-    }
-
-
-
+    
+    
+    
     @Test
     public void timeAddToFrontTest()
     {
@@ -45,33 +52,42 @@ public class ExperimentControllerTest
         assertTrue("numberOfItems should be positive", ec.timeAddToFront(0, 100) == -1);
         assertTrue("numberOfItems should be positive", ec.timeAddToFront(-10, 100) == -1);*/
         
-        System.out.println(ec.timeAddToFront(arrContainer, 10000, 100));
-        System.out.println(ec.timeAddToFront(linkedContainer, 10000, 100));
+        long arrTime = ec.timeAddToFront(arrContainer, 10000, 100);
+        long linkedTime = ec.timeAddToFront(linkedContainer, 10000, 100);
         
+        outputFile.append(arrTime + "," + linkedTime);
+        System.out.println(arrTime + "," + linkedTime);
+        outputFile.close();
         
     }
+    
     
     @Test
     public void timeSortOfUnsortedListTest()
     {
-        ec.timeAddToFront(arrContainer, 10000, 100);
-        System.out.println(ec.timeSortOfUnsortedList(arrContainer));
-        
-        ec.timeAddToFront(linkedContainer, 10000, 100);
-        System.out.println(ec.timeSortOfUnsortedList(linkedContainer));
         //assertFalse("Time is not calculated correctly", ec.timeSortOfUnsortedList() < 0);
+        
+        long arrTime = ec.timeSortOfUnsortedList(arrContainer);
+        long linkedTime = ec.timeSortOfUnsortedList(linkedContainer);
+        
+        outputFile.append(arrTime + "," + linkedTime);
+        System.out.println(arrTime + "," + linkedTime);
+
     }
     
     @Test
     public void timeSortOfSortedListTest()
     {
-        ec.timeAddToFront(arrContainer, 10000, 100);
-        System.out.println(ec.timeSortOfUnsortedList(arrContainer));
-        
-        ec.timeAddToFront(linkedContainer, 10000, 100);
-        System.out.println(ec.timeSortOfUnsortedList(linkedContainer));
         //assertFalse("Time is not calculated correctly", ec.timeSortOfUnsortedList() < 0);
+        
+        long arrTime = ec.timeSortOfUnsortedList(arrContainer);
+        long linkedTime = ec.timeSortOfUnsortedList(linkedContainer);
+        
+        outputFile.append(arrTime + "," + linkedTime);
+        System.out.println(arrTime + "," + linkedTime);
+
     }
+    
 }
 
 

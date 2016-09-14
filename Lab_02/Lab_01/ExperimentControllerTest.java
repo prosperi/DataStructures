@@ -48,14 +48,18 @@ public class ExperimentControllerTest
     public void timeSortOfUnsortedListTest()
     {
         ec.timeAddToFront(10000, 100);
-        assertFalse("Time is not calculated correctly", ec.timeSortOfUnsortedList() < 0);
+        long time = ec.timeSortOfUnsortedList();
+        assertFalse("Time is not calculated correctly", time < 0);
+        System.out.println(time);
     }
     
     @Test
     public void timeSortOfSortedListTest()
     {
         ec.timeAddToFront(10000, 100);
-        assertFalse("Time is not calculated correctly", ec.timeSortOfUnsortedList() < 0);
+        long time = ec.timeSortOfSortedList();
+        assertFalse("Time is not calculated correctly", time < 0);
+        System.out.println(time);
     }
 }
 
