@@ -2,9 +2,11 @@ package me.prosperri.datastructures.lab_03_01;
 
 import static org.junit.Assert.*;
 import org.junit.AfterClass;
+import org.junit.Before;
 import org.junit.After;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.JUnitCore;
 import org.junit.Ignore;
 import java.io.PrintWriter;
 import java.io.IOException;
@@ -20,10 +22,9 @@ public class ExperimentControllerTest
     private static ArrayListIntegerContainer arrContainer;
     private static LinkedListIntegerContainer linkedContainer;
     private static PrintWriter outputFile;
+    private static int constant = 12;
    
-    public ExperimentControllerTest()
-    {
-    }
+
    
     @BeforeClass
     public static void classSetUp()
@@ -46,6 +47,12 @@ public class ExperimentControllerTest
         outputFile.close();
     }
     
+    @Before
+    public void setUp(){
+    	arrContainer.data.clear();
+    	linkedContainer.data.clear();
+    }
+    
     @After
     public void cleanUp(){
     	outputFile.append('\n');
@@ -57,7 +64,9 @@ public class ExperimentControllerTest
     {        
     	long arrTime = 0;
     	long linkedTime = 0;
-    	for(int i = 1000, j = 0; j < 2; i *= 5, j++){
+    	for(int i = 100, j = 0; j < constant; i *= 2, j++){
+    		arrContainer.data.clear();
+    		linkedContainer.data.clear();
     		arrTime = ec.timeAddToFront(arrContainer, i, j);
             linkedTime = ec.timeAddToFront(linkedContainer, i, j);
             
@@ -72,15 +81,19 @@ public class ExperimentControllerTest
     {        
     	long arrTime = 0;
     	long linkedTime = 0;
-    	for(int i = 1000, j = 0; j < 2; i *= 5, j++){
+    	for(int i = 100, j = 0; j < constant; i *= 2, j++){
+    		arrContainer.data.clear();
+    		linkedContainer.data.clear();
     		ec.timeAddToFront(arrContainer, i, j);
             ec.timeAddToFront(linkedContainer, i, j);
+            
+            arrTime = ec.timeSortOfUnsortedList(arrContainer);
+            linkedTime = ec.timeSortOfUnsortedList(linkedContainer);
+            
+            outputFile.append(arrTime + "," + linkedTime + '\n');
     	}
     	
-		arrTime = ec.timeSortOfUnsortedList(arrContainer);
-        linkedTime = ec.timeSortOfUnsortedList(linkedContainer);
-        
-        outputFile.append(arrTime + "," + linkedTime + '\n');
+		
         
 
     }
@@ -90,15 +103,17 @@ public class ExperimentControllerTest
     {        
     	long arrTime = 0;
     	long linkedTime = 0;
-    	for(int i = 1000, j = 0; j < 2; i *= 5, j++){
+    	for(int i = 100, j = 0; j < constant; i *= 2, j++){
+    		arrContainer.data.clear();
+    		linkedContainer.data.clear();
     		ec.timeAddToFront(arrContainer, i, j);
             ec.timeAddToFront(linkedContainer, i, j);
+            
+            arrTime = ec.timeSortOfSortedList(arrContainer);
+            linkedTime = ec.timeSortOfSortedList(linkedContainer);
+            
+            outputFile.append(arrTime + "," + linkedTime + '\n');
     	}
-    	
-		arrTime = ec.timeSortOfSortedList(arrContainer);
-        linkedTime = ec.timeSortOfSortedList(linkedContainer);
-        
-        outputFile.append(arrTime + "," + linkedTime + '\n');
 
         
     }
