@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import java.util.Arrays;
 
 /**
  * Zura Mestiashvili
@@ -55,5 +56,42 @@ public class WheelTest
         wheel = new Wheel(-100);
         num = wheel.spin();
         assertTrue("Picked number out of range", num >= 0 && num < wheel.bound);
+    }
+    
+    @Test()
+    public void sequenceTest(){
+        /// Check Sequences: check that the same seed provides same sequence each time
+        
+        int[] arr = new int[100];
+        wheel = new Wheel(32);
+        for(int i = 0; i < arr.length; i++){
+            arr[i] = wheel.spin();
+        }
+        wheel = new Wheel(32);
+        for(int i = 0; i < arr.length; i++){
+            assertTrue("The sequence is not the same", arr[i] == wheel.spin());
+        }
+        
+        
+        arr = new int[100];
+        wheel = new Wheel(0);
+        for(int i = 0; i < arr.length; i++){
+            arr[i] = wheel.spin();
+        }
+        wheel = new Wheel(0);
+        for(int i = 0; i < arr.length; i++){
+            assertTrue("The sequence is not the same", arr[i] == wheel.spin());
+        }
+        
+        
+        arr = new int[100];
+        wheel = new Wheel(-11);
+        for(int i = 0; i < arr.length; i++){
+            arr[i] = wheel.spin();
+        }
+        wheel = new Wheel(-11);
+        for(int i = 0; i < arr.length; i++){
+            assertTrue("The sequence is not the same", arr[i] == wheel.spin());
+        }
     }
 }

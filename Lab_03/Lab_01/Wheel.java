@@ -17,7 +17,7 @@ public class Wheel{
     }
     
     public int spin(){
-        // For 1-N(exclusive) range we should substract bound 1 and than add 1 to generated random number
+        // For 1-N(exclusive) range we should substract 1 to bound and than add 1 to generated random number
         return this.rnd.nextInt(bound-1) + 1;
     }
     

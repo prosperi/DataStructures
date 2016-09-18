@@ -1,91 +1,136 @@
+ 
+
 import static org.junit.Assert.*;
 import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.After;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.JUnitCore;
 import org.junit.Ignore;
 import java.io.PrintWriter;
 import java.io.IOException;
+import java.io.FileWriter;
 
 /**
- * The test class ExperimentControllerTest.
- *
- * @author  (your name)
- * @version (a version number or a date)
+ * Zura Mestiashvili
+ * v1.0.0
  */
+
 public class ExperimentControllerTest
 {
     private static ExperimentController ec;
     private static ArrayListIntegerContainer arrContainer;
     private static LinkedListIntegerContainer linkedContainer;
     private static PrintWriter outputFile;
+    private static int constant = 5;
    
-    public ExperimentControllerTest()
-    {
-    }
-    
 
-    // As it seems there is bug in BlueJ, Junit's AfterClass and BeforeClass do not work, therefore
-    // I have to initialize vlass variables in first test
-    // http://bugs.bluej.org/browse/BLUEJ-437
-    // I'm moving on Eclipse
+   
     @BeforeClass
     public static void classSetUp()
     {
-        /*ec = new ExperimentController();
-        arrContainer = new ArrContainer();
-        linkedContainer = new linkedContainer();
-        try{
-            outputFile = new PrintWriter("data.csv", "UTF-8");
-        }catch(IOException e){
-            System.out.println("Problem with output file!!!");
-        }*/
         
     }
     
+    @AfterClass
+    public static void classCleanUp()
+    {
+    }
     
+    @Before
+    public void setUp(){
+        // This should be in Class setup, but because of the bug I have to write here, and this is a bad practice
+        ec = new ExperimentController();
+        arrContainer = new ArrayListIntegerContainer();
+        linkedContainer = new LinkedListIntegerContainer();
+        
+        try{
+            outputFile = new PrintWriter(new FileWriter("data.csv", true));
+        }catch(IOException e){
+            System.out.append("Problem with output file!!!");
+        }
+        //////////////////// Until this line
+        
+    }
+    
+    @After
+    public void cleanUp(){
+        outputFile.append('\n');
+        outputFile.close(); // This should be in AfterClass method, but... bluej has the bug mentioned above
+        System.out.println("Finished another");
+    }
     
     @Test
     public void timeAddToFrontTest()
-    {
-        
-        /*assertFalse("Time is not calculated correctly", ec.timeAddToFront(10000, 100) < 0);
-        assertTrue("numberOfItems should be positive", ec.timeAddToFront(0, 100) == -1);
-        assertTrue("numberOfItems should be positive", ec.timeAddToFront(-10, 100) == -1);*/
-        
-        long arrTime = ec.timeAddToFront(arrContainer, 10000, 100);
-        long linkedTime = ec.timeAddToFront(linkedContainer, 10000, 100);
-        
-        outputFile.append(arrTime + "," + linkedTime);
-        System.out.println(arrTime + "," + linkedTime);
-        outputFile.close();
-        
+    {        
+        long arrTime = 0;
+        long linkedTime = 0;
+        outputFile.append("Add to Front Test \n");
+        for(int i = 100, j = 0; j < constant; i *= 2, j++){
+            // clear containers
+            arrContainer.data.clear();
+            linkedContainer.data.clear();
+            // use addToFront method to add new data
+            arrTime = ec.timeAddToFront(arrContainer, i, j);
+            linkedTime = ec.timeAddToFront(linkedContainer, i, j);
+
+            
+            outputFile.append(arrTime + "," + linkedTime + '\n');
+        }
+                
     }
     
     
     @Test
     public void timeSortOfUnsortedListTest()
-    {
-        //assertFalse("Time is not calculated correctly", ec.timeSortOfUnsortedList() < 0);
+    {        
+        long arrTime = 0;
+        long linkedTime = 0;
+        outputFile.append("Unsorted Test \n");
+        for(int i = 100, j = 0; j < constant; i *= 2, j++){
+            // clear containers
+            arrContainer.data.clear();
+            linkedContainer.data.clear();
+            // use addToFront method to add new data
+            ec.timeAddToFront(arrContainer, i, j);
+            ec.timeAddToFront(linkedContainer, i, j);
+            
+            arrTime = ec.timeSortOfUnsortedList(arrContainer);
+            linkedTime = ec.timeSortOfUnsortedList(linkedContainer);
+            
+            outputFile.append(arrTime + "," + linkedTime + '\n');
+        }
         
-        long arrTime = ec.timeSortOfUnsortedList(arrContainer);
-        long linkedTime = ec.timeSortOfUnsortedList(linkedContainer);
         
-        outputFile.append(arrTime + "," + linkedTime);
-        System.out.println(arrTime + "," + linkedTime);
+        
 
     }
     
     @Test
     public void timeSortOfSortedListTest()
-    {
-        //assertFalse("Time is not calculated correctly", ec.timeSortOfUnsortedList() < 0);
-        
-        long arrTime = ec.timeSortOfUnsortedList(arrContainer);
-        long linkedTime = ec.timeSortOfUnsortedList(linkedContainer);
-        
-        outputFile.append(arrTime + "," + linkedTime);
-        System.out.println(arrTime + "," + linkedTime);
+    {        
+        long arrTime = 0;
+        long linkedTime = 0;
+        outputFile.append("Sorted Test \n");
+        for(int i = 100, j = 0; j < constant; i *= 2, j++){
+            arrContainer.data.clear();
+            linkedContainer.data.clear();
+            
+            // create sorted list to test later
+            for(int k = 0; k < i; k++){
+                arrContainer.data.add(k);
+                linkedContainer.data.add(k);
+            }
+            
+            // test sorted list
+            arrTime = ec.timeSortOfSortedList(arrContainer);
+            linkedTime = ec.timeSortOfSortedList(linkedContainer);
+            
+            outputFile.append(arrTime + "," + linkedTime + '\n');
+        }
 
+        
     }
     
 }

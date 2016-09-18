@@ -8,7 +8,7 @@ public class IntegerContainer{
     AbstractList<Integer> data;
     
     public IntegerContainer(){
-        
+        this.data = null;
     }
     
     public void addToFront(int x){

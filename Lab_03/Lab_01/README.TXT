@@ -10,3 +10,11 @@ VERSION or DATE:
 HOW TO START THIS PROJECT:
 AUTHORS:
 USER INSTRUCTIONS:
+
+
+TODO:
+   
+	WheelTest - need to test the sequences
+	ExperimentControllerTest - test that time is monotonically increasing with number of elemens
+	Take a look of integerContainerTest - insertionSort
+	Write test cases for ArrayListContainer and LinkedListContainer	
