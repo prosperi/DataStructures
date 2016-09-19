@@ -23,7 +23,7 @@ public class ExperimentControllerTest
     private static ArrayListIntegerContainer arrContainer;
     private static LinkedListIntegerContainer linkedContainer;
     private static PrintWriter outputFile;
-    private static int constant = 5;
+    private static int constant = 20;
    
 
    
@@ -67,7 +67,7 @@ public class ExperimentControllerTest
         long arrTime = 0;
         long linkedTime = 0;
         outputFile.append("Add to Front Test \n");
-        for(int i = 100, j = 0; j < constant; i *= 2, j++){
+        for(int i = 1000, j = 0; j < constant; i += 500, j++){
             // clear containers
             arrContainer.data.clear();
             linkedContainer.data.clear();
@@ -88,7 +88,7 @@ public class ExperimentControllerTest
         long arrTime = 0;
         long linkedTime = 0;
         outputFile.append("Unsorted Test \n");
-        for(int i = 100, j = 0; j < constant; i *= 2, j++){
+        for(int i = 1000, j = 0; j < constant; i += 500, j++){
             // clear containers
             arrContainer.data.clear();
             linkedContainer.data.clear();
@@ -113,7 +113,7 @@ public class ExperimentControllerTest
         long arrTime = 0;
         long linkedTime = 0;
         outputFile.append("Sorted Test \n");
-        for(int i = 100, j = 0; j < constant; i *= 2, j++){
+        for(int i = 1000, j = 0; j < constant; i += 500, j++){
             arrContainer.data.clear();
             linkedContainer.data.clear();
             
