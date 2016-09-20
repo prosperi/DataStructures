@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=
+comment0.target=MyLinkedList()
+comment1.params=value
+comment1.target=void\ addFirst(int)
+comment2.params=value
+comment2.target=void\ addEnd(int)
+comment3.params=
+comment3.target=java.util.Iterator\ iterator()
+numComments=4

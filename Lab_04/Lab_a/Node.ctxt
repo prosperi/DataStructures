@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=value\ next
+comment0.target=Node(int,\ Node)
+comment1.params=
+comment1.target=Node\ next()
+comment2.params=
+comment2.target=int\ getValue()
+numComments=3
