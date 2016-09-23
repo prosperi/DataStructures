@@ -38,7 +38,7 @@ public class MyLinkedListTest{
         mll.addEnd(6);
         mll.addEnd(7);
         
-        System.out.println(mll.head.getValue() + " " + mll.tail.getValue());
+        //System.out.println(mll.head.getValue() + " " + mll.tail.getValue());
         
     }
 }

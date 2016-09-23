@@ -33,7 +33,7 @@ public class MyLinkedList implements Iterable<Node>{
     }
     
     public Iterator<Node> iterator(){
-        return null;
+        return new MyLinkedListIterator(this);
     }
     
     
