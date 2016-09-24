@@ -11,7 +11,8 @@ public class MyLinkedList implements Iterable<Node>{
     Node head, tail;
     
     public MyLinkedList(){
-        
+        this.head = null;
+        this.tail = null;
     }
     
     public void addFirst(int value){

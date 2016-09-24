@@ -2,7 +2,11 @@
 comment0.params=value\ next
 comment0.target=Node(int,\ Node)
 comment1.params=
-comment1.target=Node\ next()
+comment1.target=Node\ getNext()
 comment2.params=
 comment2.target=int\ getValue()
-numComments=3
+comment3.params=value
+comment3.target=void\ setValue(int)
+comment4.params=node
+comment4.target=void\ setNext(Node)
+numComments=5

@@ -5,8 +5,6 @@
  */
 
 public class ExperimentController{
-    MyLinkedListIntegerContainer mlic;
-    //LinkedListIntegerContainer linkedContainer;
     Wheel wheel;
     
     public long timeAddToFront(IntegerContainer iContainer, int numberOfItems, long seed){
@@ -25,7 +23,7 @@ public class ExperimentController{
         
     }
     
-    public long timeAddFromEnd(MyLinkedListIntegerContainer iContainer, int numberOfItems, long seed){
+    public long timeAddFromEnd(IntegerContainer iContainer, int numberOfItems, long seed){
         if(numberOfItems > 0){
             wheel = new Wheel(seed);
             long startTime = System.currentTimeMillis();

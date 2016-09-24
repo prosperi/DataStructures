@@ -17,6 +17,10 @@ public class IntegerContainer{
         data.add(0, x);
     }
     
+    public void addFromEnd(int x){
+        data.add(x);
+    }
+    
      public void insertionSort(){
         for(int i = 1; i < data.size(); i++){
             

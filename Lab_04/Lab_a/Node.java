@@ -12,7 +12,7 @@ public class Node{
         this.next = next;
     }
     
-    public Node next(){
+    public Node getNext(){
         return this.next;
     }
     

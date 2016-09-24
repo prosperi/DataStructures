@@ -4,11 +4,11 @@ import java.util.Iterator;
  * Zura Mestiashvili
  * v1.0.0
  */
-public class MyLinkedListIntegerContainer extends IntegerContainer{
+public class MyListIntegerContainer extends IntegerContainer{
     MyLinkedList data;
     
-    public MyLinkedListIntegerContainer(){
-       data = new MyLinkedList();
+    public MyListIntegerContainer(){
+       this.data = new MyLinkedList();
     }
     
     public void addToFront(int value){
