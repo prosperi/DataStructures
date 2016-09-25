@@ -23,10 +23,6 @@ public class IntegerContainerTest
     
     @BeforeClass
     public static void classSetUp(){
-        // Create new instance of IntegerContainer, this should run only once , when class
-        // is initialized, but in this case, it will run after completion of each test method
-        // because of BlueJ's bug.
-        ic = new IntegerContainer();
     }
 
     /**
@@ -47,7 +43,6 @@ public class IntegerContainerTest
     @After
     public void tearDown()
     {
-        ic.data.clear();
     }
     
 }

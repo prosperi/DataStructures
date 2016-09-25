@@ -30,6 +30,7 @@ public class NodeTest
     
     @Test
     public void getNextTest(){
+        // Test if Next object reference getter works correctly
         node = new Node(2,null);
         System.out.println(node.getNext() == null);
         assertTrue("Node could not get next object reference correctly", node.getNext() == null);
@@ -40,6 +41,7 @@ public class NodeTest
     
     @Test
     public void getValueTest(){
+        // Test if value getter works correctly
         node = new Node(2,null);
         assertTrue("getValue function fails to return correct value", (int)node.getValue() == 2);
         
@@ -49,6 +51,7 @@ public class NodeTest
     
     @Test
     public void setNextTest(){
+        // Test if Next object reference setter works correctly
         node = new Node(2,null);        
         newNode = new Node(1, null);
         
@@ -62,6 +65,7 @@ public class NodeTest
     
     @Test
     public void setValueTest(){
+        // Test if value setter works correctly
         node = new Node(2,null);
         newNode = new Node(1, node);
         
