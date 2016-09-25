@@ -33,11 +33,11 @@ public class MyListIntegerContainerTest
     @Test
     public void addToFrontTest(){
         mlic.addToFront(3);
-        assertTrue("Could not add value in front", mlic.data.head.getValue() == 3);
+        assertTrue("Could not add value in front", (int)mlic.data.head.getValue() == 3);
         mlic.addToFront(2);
-        assertTrue("Could not add value in front", mlic.data.head.getValue() == 2);
+        assertTrue("Could not add value in front", (int)mlic.data.head.getValue() == 2);
         mlic.addToFront(1);
-        assertTrue("Could not add value in front", mlic.data.head.getValue() == 1);
+        assertTrue("Could not add value in front", (int)mlic.data.head.getValue() == 1);
         
         
     }
@@ -46,11 +46,11 @@ public class MyListIntegerContainerTest
     public void addFromEndTest(){
         
         mlic.addFromEnd(3);
-        assertTrue("Could not add value from end", mlic.data.tail.getValue() == 3);
+        assertTrue("Could not add value from end", (int)mlic.data.tail.getValue() == 3);
         mlic.addFromEnd(2);
-        assertTrue("Could not add value from end", mlic.data.tail.getValue() == 2);
+        assertTrue("Could not add value from end", (int)mlic.data.tail.getValue() == 2);
         mlic.addFromEnd(1);
-        assertTrue("Could not add value from end", mlic.data.tail.getValue() == 1);
+        assertTrue("Could not add value from end", (int)mlic.data.tail.getValue() == 1);
         
         
     }

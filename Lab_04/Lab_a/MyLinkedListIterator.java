@@ -5,14 +5,14 @@ import java.util.Iterator;
  * v1.0.0
  */
 
-public class MyLinkedListIterator implements Iterator<Node>{
+public class MyLinkedListIterator<E> implements Iterator<Node>{
    
-    private final MyLinkedList mll;
+    private final MyLinkedList<E> mll;
     private Node current;
     private boolean calledNext;
     private Node previous;
     
-    public MyLinkedListIterator(MyLinkedList mll){
+    public MyLinkedListIterator(MyLinkedList<E> mll){
         this.mll = mll;
         this.current = null;
         this.calledNext = false;

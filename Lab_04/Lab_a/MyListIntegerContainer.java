@@ -8,7 +8,7 @@ public class MyListIntegerContainer extends IntegerContainer{
     MyLinkedList data;
     
     public MyListIntegerContainer(){
-       this.data = new MyLinkedList();
+       this.data = new MyLinkedList<Integer>();
     }
     
     public void addToFront(int value){

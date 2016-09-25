@@ -41,10 +41,10 @@ public class NodeTest
     @Test
     public void getValueTest(){
         node = new Node(2,null);
-        assertTrue("getValue function fails to return correct value", node.getValue() == 2);
+        assertTrue("getValue function fails to return correct value", (int)node.getValue() == 2);
         
         newNode = new Node(1, node);
-        assertTrue("getValue function fails to return correct value", newNode.getValue() == 1);
+        assertTrue("getValue function fails to return correct value", (int)newNode.getValue() == 1);
     }
     
     @Test
@@ -67,8 +67,8 @@ public class NodeTest
         
         node.setValue(0);
         newNode.setValue(10);
-        assertTrue("Node could not set value", node.getValue() == 0);
-        assertTrue("Node could not set value", newNode.getValue() == 10);
+        assertTrue("Node could not set value", (int)node.getValue() == 0);
+        assertTrue("Node could not set value", (int)newNode.getValue() == 10);
     }
     
     

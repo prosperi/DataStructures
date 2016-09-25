@@ -13,8 +13,8 @@ import org.junit.Test;
  */
 public class MyLinkedListIteratorTest
 {
-    MyLinkedListIterator mlli;
-    MyLinkedList mll;
+    MyLinkedListIterator<Integer> mlli;
+    MyLinkedList<Integer> mll;
     
     public MyLinkedListIteratorTest()
     {
@@ -23,8 +23,8 @@ public class MyLinkedListIteratorTest
     @Before
     public void setUp()
     {
-        mll = new MyLinkedList();
-        mlli = new MyLinkedListIterator(mll);
+        mll = new MyLinkedList<Integer>();
+        mlli = new MyLinkedListIterator<Integer>(mll);
     }
 
     
@@ -58,18 +58,15 @@ public class MyLinkedListIteratorTest
     
     @Test
     public void nextTest(){
-        mll = new MyLinkedList();
-        mlli = new MyLinkedListIterator(mll);
-        
         
         assertTrue("next method does not return correct value", mlli.next() == null);
         
         mll.addFirst(1);
-        assertTrue("next method does not return correct value", mlli.next().getValue() == 1);
+        assertTrue("next method does not return correct value", (int)mlli.next().getValue() == 1);
         mll.addFirst(2);
         assertTrue("next method does not return correct value", mlli.next() == null);
         mll.addEnd(3);
-        assertTrue("next method does not return correct value", mlli.next().getValue() == 3);
+        assertTrue("next method does not return correct value", (int)mlli.next().getValue() == 3);
         assertTrue("next method does not return correct value", mlli.next() == null);
         
         
@@ -95,12 +92,12 @@ public class MyLinkedListIteratorTest
         
         mlli.next();
         mlli.remove();
-        assertTrue("Could not remove element", mll.head.getValue() == 1);
+        assertTrue("Could not remove element", (int)mll.head.getValue() == 1);
         
         mlli.next();
         mlli.next();
         mlli.remove();
-        assertTrue("Could not remove element", mll.head == mll.tail && mll.head.getValue() == 1);
+        assertTrue("Could not remove element", mll.head == mll.tail && (int)mll.head.getValue() == 1);
         
         assertTrue("Showed next element when ther should not be one", mlli.next() == null);
      

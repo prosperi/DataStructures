@@ -6,7 +6,7 @@ import java.util.Iterator;
  * Zura Mestiashvili
  * v1.0.0
  */
-public class MyLinkedList implements Iterable<Node>{
+public class MyLinkedList<E> implements Iterable<Node>{
     
     Node head, tail;
     
@@ -15,13 +15,13 @@ public class MyLinkedList implements Iterable<Node>{
         this.tail = null;
     }
     
-    public void addFirst(int value){
+    public void addFirst(E value){
         head = new Node(value, head);  
         if(tail == null)
             tail = head;
     }
     
-    public void addEnd(int value){
+    public void addEnd(E value){
         if(tail == null || head == null){
             head = new Node(value, head);
             tail = head;

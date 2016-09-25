@@ -2,9 +2,9 @@
 comment0.params=
 comment0.target=MyLinkedList()
 comment1.params=value
-comment1.target=void\ addFirst(int)
+comment1.target=void\ addFirst(java.lang.Object)
 comment2.params=value
-comment2.target=void\ addEnd(int)
+comment2.target=void\ addEnd(java.lang.Object)
 comment3.params=
 comment3.target=java.util.Iterator\ iterator()
 numComments=4
