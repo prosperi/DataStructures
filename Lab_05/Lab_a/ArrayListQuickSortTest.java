@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.Ignore;
 
 /**
  * Zura Mestiashvili
@@ -29,7 +30,17 @@ public class ArrayListQuickSortTest{
     @Test
     public void test(){
         ArrayListQuickSort alqs= new ArrayListQuickSort();
-        alqs.addElement("good");
+
+        alqs.addElement("zood");
+        alqs.addElement("ood");
+        alqs.addElement("food");
+        alqs.printData();
+        
+        for(int i = 122; i >= 65; i--){
+            alqs.addElement((char)i + "Foo");
+        }
+        
+        alqs.sort();
         alqs.printData();
     }
 }

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.AbstractList;
 
 /**
  * Zura Mestiashvili
@@ -10,17 +11,21 @@ public class ArrayListMergeSort extends MergeSortData{
         super(new ArrayList<String>());
     }
     
-    public ArrayList<String> sortdata(ArrayList<String> al){
-        if(al.size() == 1) return al;
+    public void sort(){
+        al = sortData(al);
+    }
+    
+    public ArrayList<String> sortData(AbstractList<String> al){
+        if(al.size() == 1) return (ArrayList)al;
         
-        ArrayList<String> left = sorted(al.subList(0, al.size()/2));
-        ArrayList<String> right = sorted(al.subList(al.size()/2, al.size()));
+        ArrayList<String> left = sortData(new ArrayList<String>(al.subList(0, al.size()/2)));
+        ArrayList<String> right = sortData(new ArrayList<String>(al.subList(al.size()/2, al.size())));
         
         return merge(left, right);
     }
     
  
-    public ArrayList<String> merge(ArrayList<String> left, ArrayList<String> right){
+    public ArrayList<String> merge(AbstractList<String> left, AbstractList<String> right){
         ArrayList<String> tmp = new ArrayList<String>();
         
         while(left.size() > 0 && right.size() > 0){
@@ -45,5 +50,6 @@ public class ArrayListMergeSort extends MergeSortData{
         
         return tmp;
     }
+    
     
 }

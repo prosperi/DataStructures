@@ -6,7 +6,7 @@ import java.util.Iterator;
  * v1.0.0
  */
 public abstract class QuickSortData implements SortedList{
-    private AbstractList<String> al;
+    public AbstractList<String> al;
    
     public QuickSortData(AbstractList<String> al){
         this.al = al;
@@ -23,6 +23,8 @@ public abstract class QuickSortData implements SortedList{
         }
     }
     
+    public abstract AbstractList<String> quickSort(AbstractList<String> al, int low, int high);
+    public abstract void sort();
     
     
 }
