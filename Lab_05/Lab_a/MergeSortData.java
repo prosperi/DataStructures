@@ -7,7 +7,7 @@ import java.util.LinkedList;
  * Zura Mestiashvili
  * v1.0.0
  */
-public class MergeSortData implements SortedList{
+ public abstract class MergeSortData implements SortedList{
     private AbstractList<String> al;
     
     public MergeSortData(AbstractList<String> al){
@@ -25,8 +25,13 @@ public class MergeSortData implements SortedList{
         }
     }
     
-    public void sortData(){
+    public abstract void sortData(AbstractList<String> al);
+    public abstract AbstractList<String> merge(AbstractList<String> left, AbstractList<String> right);
+    
+    /*public AbstractList<String> sortData(AbstractList<String> al){
+        if(al.size() == 1) return al;
         
+        return merge(sortData((AbstractList)al.subList(0, al.size()/2)), sortData((AbstractList)al.subList(al.size()/2, al.size())));
     }
     
     private void merge(AbstractList<String> left, AbstractList<String> right){
@@ -41,6 +46,17 @@ public class MergeSortData implements SortedList{
                 right.remove(0);
             }
         }
-    }
+        
+        if(left.size() == 0){
+            for(int i = 0; i < right.size(); i++){
+                tmp.add(right.get(i));
+            }
+        }else if(right.size() == 0){
+            for(int i = 0; i < left.size(); i++){
+                tmp.add(left.get(i));
+            }
+        }
+        
+    } */
     
 }

@@ -5,7 +5,7 @@ import java.util.Iterator;
  * Zura Mestiashvili
  * v1.0.0
  */
-abstract public class QuickSortData implements SortedList{
+public abstract class QuickSortData implements SortedList{
     private AbstractList<String> al;
    
     public QuickSortData(AbstractList<String> al){
