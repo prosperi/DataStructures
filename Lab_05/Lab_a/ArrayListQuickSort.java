@@ -12,59 +12,65 @@ public class ArrayListQuickSort extends QuickSortData{
     }
     
     public void sort(){
-        quickSort(al, 0, al.size()-1);
+        quickSort(0, al.size()-1);
     }
     
     
-    public ArrayList<String> quickSort(AbstractList<String> al, int low, int high){
-       System.out.println(low + " " + high);
-       String[] pivots = new String[]{al.get(low), al.get((high + low)/2), al.get(high)};
-       String pivot = "";
-       boolean t = true;
-        
-       while(t){
-           t = false;
-           for(int i = 0; i < pivots.length-1; i++){
-               if(pivots[i].compareTo(pivots[i+1]) > 0){
-                   String tmp = pivots[i];
-                   pivots[i] = pivots[i+1];
-                   pivots[i+1] = tmp;
-                   t = true;
+    public void quickSort(int low, int high){
+       if((high - low) <= 0){
+           // do nothing, as one element array is already sorted
+       }else if((high - low) == 1) {
+          // check if we are sorting for two elements, if that's the case we do not the following proccesses
+          // just swap those two elements if the are not sorted yet
+          if(al.get(low).compareTo(al.get(high)) > 0){
+              String tmp = al.get(low);
+              al.set(low, al.get(high));
+              al.set(high, tmp);
+          }
+       }else{
+           
+           int mid = (low  + high) / 2;
+           if(al.get(mid).compareTo(al.get(low)) < 0)
+                swap(low, mid);
+           if (al.get(high).compareTo(al.get(low)) < 0)
+                swap(low, high);
+           if(al.get(high).compareTo(al.get(mid)) < 0)
+                swap(mid, high);
+           
+           swap(mid, high - 1);
+           String pivot = al.get(high - 1);
+           
+           // If we are sorting 3 element array , we have already sorted by swapping possible pivots
+           // there is no need to continue this process
+           if((high - low) != 2){
+               int i, j;
+               for( i = low, j = high - 1; ; ){
+                   while(al.get(++i).compareTo(pivot) < 0);
+                   while(al.get(--j).compareTo(pivot) > 0);
+                   
+                   if(i >= j) break;
+
+                   swap(i, j);
+                   
                }
+              
+               swap(i, high-1);
+    
+               quickSort(low, i - 1);
+               quickSort(i + 1, high);
            }
+           
        }
        
-       pivot = pivots[1];
-        
-       al.set(low, pivots[0]);
-       al.set(high, pivots[2]);
-       al.set((low + high)/2, al.get(high-1));
-       al.set(high - 1, pivot);
-       
-       if(al.size() <= 3) return null;
-        
-       int i, j;
-       
-       for( i = 0, j = high - 1; ; ){
-           while(al.get(++i).compareTo(pivot) < 0);
-           while(al.get(--j).compareTo(pivot) > 0);
-           
-           if(i >= j) break;
-           
-           String tmp = al.get(i);
-           al.set(i, al.get(j));
-           al.set(j, tmp);
-       }
-      
-       al.set(high-1, al.get(i));
-       al.set(i, pivot);
-       
-       quickSort(al, low, i - 1);
-       quickSort(al, i + 1, high); 
-       
-       return (ArrayList)al;
+    }
+    
+    public void swap(int i, int j){
+         String tmp = al.get(i);
+         al.set(i, al.get(j));
+         al.set(j, tmp);
     }
    
+    
 
     
 }

@@ -12,16 +12,27 @@ public class ArrayListMergeSort extends MergeSortData{
     }
     
     public void sort(){
-        al = sortData(al);
+        ArrayList<String> tmp = new ArrayList<String>();
+        al = sortData(al/*,0, al.size()-1*/);
     }
     
-    public ArrayList<String> sortData(AbstractList<String> al){
-        if(al.size() == 1) return (ArrayList)al;
+    public ArrayList<String> sortData(AbstractList<String> al/*, AbstractList<String> tmp, int left, int right*/){
+        // My version /////   ->>>> but book version is alwasys better
+        if(al.size() <= 1) return (ArrayList)al;
         
         ArrayList<String> left = sortData(new ArrayList<String>(al.subList(0, al.size()/2)));
         ArrayList<String> right = sortData(new ArrayList<String>(al.subList(al.size()/2, al.size())));
         
         return merge(left, right);
+        
+        /*if(left < right){
+            int middle = (left + right) / 2;
+            sortData(al, tmp, left, middle);
+            sortData(al, tmp, middle + 1, right);
+            merge();
+        }*/
+        
+        
     }
     
  

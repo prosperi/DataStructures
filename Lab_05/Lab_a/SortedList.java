@@ -6,5 +6,5 @@
 public interface SortedList
 {
      void addElement(String s);
-     void printData();
+     String printData();
 }

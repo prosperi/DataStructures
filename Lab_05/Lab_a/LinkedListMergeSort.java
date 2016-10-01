@@ -17,7 +17,7 @@ public class LinkedListMergeSort extends MergeSortData{
     }
     
     public LinkedList<String> sortData(AbstractList<String> al){
-        if(al.size() == 1) return (LinkedList)al;
+        if(al.size() <= 1) return (LinkedList)al;
         
         LinkedList<String> left = sortData(new LinkedList<String>(al.subList(0, al.size()/2)));
         LinkedList<String> right = sortData(new LinkedList<String>(al.subList(al.size()/2, al.size())));

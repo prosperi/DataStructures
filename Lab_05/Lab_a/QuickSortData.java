@@ -16,14 +16,19 @@ public abstract class QuickSortData implements SortedList{
         al.add(s);
     }
     
-    public void printData(){
+    public String printData(){
+        String s = "";
         Iterator iterator = al.iterator();
         while(iterator.hasNext()){
-            System.out.println(iterator.next());
+            String tmp = iterator.next().toString();
+            s += tmp + '/';
+            System.out.println(tmp);
         }
+        return s;
     }
     
-    public abstract AbstractList<String> quickSort(AbstractList<String> al, int low, int high);
+    public abstract void quickSort(int low, int high);
+    public abstract void swap(int i, int j);
     public abstract void sort();
     
     

@@ -20,11 +20,16 @@ import java.util.LinkedList;
         al.add(s);
     }
     
-    public void printData(){
+    public String printData(){
         Iterator iterator = al.iterator();
+        String s = "";
         while(iterator.hasNext()){
-            System.out.println(iterator.next());
+            String tmp = iterator.next().toString();
+            s += tmp + "/";
+            System.out.println(tmp);
         }
+        
+        return s;
     }
     
 

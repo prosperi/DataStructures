@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.params=iContainer\ numberOfItems\ seed
+comment0.target=long\ timeAddElement(QuickSortData,\ int,\ long)
+comment1.params=iContainer
+comment1.target=long\ timeSortOfUnsortedList(QuickSortData)
+numComments=2

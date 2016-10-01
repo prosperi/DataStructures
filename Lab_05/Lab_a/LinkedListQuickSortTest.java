@@ -1,6 +1,6 @@
 
 import static org.junit.Assert.*;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,16 +11,16 @@ import org.junit.Ignore;
  * Zura Mestiashvili
  * v1.0.0
  */
-public class ArrayListQuickSortTest{
-    ArrayListQuickSort qsData;
-    public ArrayListQuickSortTest()
+public class LinkedListQuickSortTest{
+    LinkedListQuickSort qsData;
+    public LinkedListQuickSortTest()
     {
     }
 
     @Before
     public void setUp()
     {
-        qsData = new ArrayListQuickSort();
+        qsData = new LinkedListQuickSort();
     }
 
    
@@ -32,7 +32,7 @@ public class ArrayListQuickSortTest{
     @Test
     public void addElementTest(){      
         // initialize IntegerContainer's data variable
-        qsData.al = new ArrayList<String>();
+        qsData.al = new LinkedList<String>();
         int size = qsData.al.size();
         
         // add 100 to container, and check its size and first element. As container is empty yet, 
@@ -69,15 +69,6 @@ public class ArrayListQuickSortTest{
     
     @Test
     public void sortTest(){
-        /*for(int i = 0;  i < 5; i++){
-            qsData.al.clear();
-            wheel = new Wheel(i);
-            for(int j = 0; j < 1000 + i*500; j++){
-                qsData.addElement(wheel.spin());
-            }
-            qsData.sort();
-            qsData.printData();
-        }*/
         
         /// Normal Cases
         
