@@ -32,23 +32,23 @@ public class LinkedListMergeSortTest{
     @Test
     public void addElementTest(){      
         // initialize IntegerContainer's data variable
-        msData.al = new LinkedList<String>();
-        int size = msData.al.size();
+        //msData.al = new LinkedList<String>();
+        int size = msData.getSize();
         
         // add 100 to container, and check its size and first element. As container is empty yet, 
         // its size will be 1 and the first element 100
         msData.addElement("100");
-        assertTrue("Could not add string", msData.al.get(0) == "100" && msData.al.size() == (size+1));
+        assertTrue("Could not add string", msData.getElement(0) == "100" && msData.getSize() == (size+1));
         
         // add 100 more elements container and check size, than we check each element, and make
         // sure each of them is on its place 
         for(int i = 99; i >= 0; i--){
             msData.addElement("" + i);
         }
-        assertTrue("Could not add string", msData.al.size() == 101);
+        assertTrue("Could not add string", msData.getSize() == 101);
         
         for(int j = 100; j >= 0; j--){
-            assertTrue("Could not add string", (j+"").compareTo(msData.al.get(100-j)) == 0);
+            assertTrue("Could not add string", (j+"").compareTo(msData.getElement(100-j)) == 0);
         }
     }
     
@@ -78,52 +78,52 @@ public class LinkedListMergeSortTest{
         
         msData.sort();
         for(int i = 97; i < 122; i++){
-            assertTrue("sort does not work properly", ((char)i + "Foo").compareTo(msData.al.get(i-97)) == 0);
+            assertTrue("sort does not work properly", ((char)i + "Foo").compareTo(msData.getElement(i-97)) == 0);
         }
         
-        msData.al.clear();
+        msData.clearAL();
         for(int i = 9; i >= 0; i--){
             msData.addElement(i+"");
         }
         msData.sort();
         for(int i = 0; i < 10; i++){
-            assertTrue("sort does not work properly", (i+"").compareTo(msData.al.get(i)) == 0);
+            assertTrue("sort does not work properly", (i+"").compareTo(msData.getElement(i)) == 0);
         }
         
         // test for sorted List
-        msData.al.clear();
+        msData.clearAL();
         for(int i = 0; i < 10; i++){
             msData.addElement(i+"");
         }
         msData.sort();
         
         for(int i = 0; i < 10; i++){
-            assertTrue("sort does not work properly", (i+"").compareTo(msData.al.get(i)) == 0);
+            assertTrue("sort does not work properly", (i+"").compareTo(msData.getElement(i)) == 0);
         }
         
         //test for one element List
-        msData.al.clear();
+        msData.clearAL();
         msData.addElement("1");
         msData.sort();
-        assertTrue("sort does not work properly", "1".compareTo(msData.al.get(0)) == 0 && msData.al.size() == 1);
+        assertTrue("sort does not work properly", "1".compareTo(msData.getElement(0)) == 0 && msData.getSize() == 1);
         
         //test for empty list
-        msData.al.clear();
+        msData.clearAL();
         msData.sort();
-        assertTrue("sort does not work properly", msData.al.size() == 0);
+        assertTrue("sort does not work properly", msData.getSize() == 0);
         
         // test for list where each element has same value
-        msData.al.clear();
+        msData.clearAL();
         for(int i = 0; i < 10; i++){
             msData.addElement("1");
         }
         msData.sort();
         for(int i = 0; i < 10; i++){
-            assertTrue("sort does not work properly", ("1").compareTo(msData.al.get(i)) == 0);
+            assertTrue("sort does not work properly", ("1").compareTo(msData.getElement(i)) == 0);
         }
         
         // test for list with repeating values
-        msData.al.clear();
+        msData.clearAL();
         for(int i = 0; i < 10; i++){
             if(i%2==0) msData.addElement("a");
             else msData.addElement("b");
@@ -131,9 +131,9 @@ public class LinkedListMergeSortTest{
         msData.sort();
         for(int i = 0; i < 10; i++){
             if(i < 5)
-                assertTrue("sort does not work properly", ("a").compareTo(msData.al.get(i)) == 0);
+                assertTrue("sort does not work properly", ("a").compareTo(msData.getElement(i)) == 0);
             else
-                assertTrue("sort does not work properly", ("b").compareTo(msData.al.get(i)) == 0);
+                assertTrue("sort does not work properly", ("b").compareTo(msData.getElement(i)) == 0);
         }
         
     }

@@ -1,6 +1,14 @@
 #BlueJ class context
-comment0.params=iContainer\ numberOfItems\ seed
-comment0.target=long\ timeAddElement(QuickSortData,\ int,\ long)
-comment1.params=iContainer
-comment1.target=long\ timeSortOfUnsortedList(QuickSortData)
-numComments=2
+comment0.params=
+comment0.target=ExperimentController()
+comment1.params=
+comment1.target=long\ alqsSortTime()
+comment2.params=
+comment2.target=long\ llqsSortTime()
+comment3.params=
+comment3.target=long\ almsSortTime()
+comment4.params=
+comment4.target=long\ llmsSortTime()
+comment5.params=numberOfItems\ seed
+comment5.target=void\ add(int,\ long)
+numComments=6

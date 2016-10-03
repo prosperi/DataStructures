@@ -12,34 +12,63 @@ public class ArrayListMergeSort extends MergeSortData{
     }
     
     public void sort(){
-        ArrayList<String> tmp = new ArrayList<String>();
-        al = sortData(al/*,0, al.size()-1*/);
+        int size = getSize();
+        String[] tmp = new String[size];
+        sortData(tmp, 0, size-1);
     }
     
-    public ArrayList<String> sortData(AbstractList<String> al/*, AbstractList<String> tmp, int left, int right*/){
-        // My version /////   ->>>> but book version is alwasys better
-        if(al.size() <= 1) return (ArrayList)al;
+    public void sortData(/*AbstractList<String> al,*/ String[] tmp, int left, int right){
+        // My version /////   ->>>> but book version is better
+        /*if(al.size() <= 1) return (ArrayList)al;
         
         ArrayList<String> left = sortData(new ArrayList<String>(al.subList(0, al.size()/2)));
         ArrayList<String> right = sortData(new ArrayList<String>(al.subList(al.size()/2, al.size())));
         
-        return merge(left, right);
+        return merge(left, right);*/
         
-        /*if(left < right){
+        if(left < right){
             int middle = (left + right) / 2;
-            sortData(al, tmp, left, middle);
-            sortData(al, tmp, middle + 1, right);
-            merge();
-        }*/
+            sortData(tmp, left, middle);
+            sortData(tmp, middle + 1, right);
+            merge(tmp, left, middle, right);
+        }
         
         
     }
     
  
-    public ArrayList<String> merge(AbstractList<String> left, AbstractList<String> right){
-        ArrayList<String> tmp = new ArrayList<String>();
+    public void merge(String[] tmp, int left, int middle, int right){
         
-        while(left.size() > 0 && right.size() > 0){
+        for(int i = left; i <= right; i++){
+            tmp[i] = getElement(i);
+        }
+        
+        int i = left;
+        int j = middle + 1;
+        int k = left;
+        
+        while(i <= middle && j <= right){
+            if(tmp[i].compareTo(tmp[j]) < 0){
+                setElement(k, tmp[i]);
+                i++;
+            }else{
+                setElement(k, tmp[j]);
+                j++;
+            }
+            
+            k++;
+        }
+        
+        while(i <= middle){
+            setElement(k, tmp[i]);
+            i++;
+            k++;
+        }
+        
+        /*This is continuation of my version
+         * But as my version needs creqating more objects than the book version
+         * Book version is better
+         * while(left.size() > 0 && right.size() > 0){
             if(left.get(0).compareTo(right.get(0)) < 0){
                 tmp.add(left.get(0));
                 left.remove(0);
@@ -59,7 +88,7 @@ public class ArrayListMergeSort extends MergeSortData{
             }
         }
         
-        return tmp;
+        return tmp;*/
     }
     
     

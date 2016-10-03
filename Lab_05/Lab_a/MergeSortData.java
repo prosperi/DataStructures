@@ -8,16 +8,31 @@ import java.util.LinkedList;
  * v1.0.0
  */
  public abstract class MergeSortData implements SortedList{
-    public AbstractList<String> al;
-    //private AbstractList<String> alSorted;
+    private AbstractList<String> al;
+
     
     public MergeSortData(AbstractList<String> al){
         this.al = al;
-        //this.alSorted = null;
     }
     
     public void addElement(String s){
         al.add(s);
+    }
+    
+    public void clearAL(){
+        al.clear();
+    }
+    
+    public int getSize(){
+        return al.size();
+    }
+    
+    public String getElement(int i){
+        return al.get(i);
+    }
+    
+    public void setElement(int i, String s){
+        al.set(i, s);
     }
     
     public String printData(){
@@ -34,8 +49,8 @@ import java.util.LinkedList;
     
 
     public abstract void sort();
-    public abstract AbstractList<String> sortData(AbstractList<String> al);
-    public abstract AbstractList<String> merge(AbstractList<String> left, AbstractList<String> right);
+    public abstract void sortData(String[] tmp, int i, int j);
+    public abstract void merge(String[] tmp, int left, int middle, int right);
     
     
 }

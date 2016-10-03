@@ -2,5 +2,13 @@
 comment0.params=s
 comment0.target=void\ addElement(java.lang.String)
 comment1.params=
-comment1.target=java.lang.String\ printData()
-numComments=2
+comment1.target=void\ clearAL()
+comment2.params=
+comment2.target=int\ getSize()
+comment3.params=i
+comment3.target=java.lang.String\ getElement(int)
+comment4.params=i\ s
+comment4.target=void\ setElement(int,\ java.lang.String)
+comment5.params=
+comment5.target=java.lang.String\ printData()
+numComments=6

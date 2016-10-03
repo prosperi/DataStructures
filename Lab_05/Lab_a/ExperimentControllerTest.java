@@ -20,8 +20,6 @@ import java.io.FileWriter;
 public class ExperimentControllerTest
 {
     private static ExperimentController ec;
-    private static ArrayListQuickSort arrContainer;
-    private static LinkedListQuickSort linkedContainer;
     private static PrintWriter outputFile;
     private static int constant = 5;
    
@@ -42,8 +40,6 @@ public class ExperimentControllerTest
     public void setUp(){
         // This should be in Class setup, but because of the bug I have to write here, and this is a bad practice
         ec = new ExperimentController();
-        arrContainer = new ArrayListQuickSort();
-        linkedContainer = new LinkedListQuickSort();
         
         try{
             outputFile = new PrintWriter(new FileWriter("data.csv", true));
@@ -66,20 +62,26 @@ public class ExperimentControllerTest
     @Test
     public void timeSortOfUnsortedListTest()
     {        
-        long arrTime = 0;
-        long linkedTime = 0;
-        outputFile.append("Unsorted Test \n");
+        long alqsTime = 0;
+        long llqsTime = 0;
+        long almsTime = 0;
+        long llmsTime = 0;
         for(int i = 1000, j = 0; j < constant; i += 500, j++){
             // clear containers
-            arrContainer.al.clear();
-            //linkedContainer.al.clear();
+            ec.alqs.clearAL();
+            ec.llqs.clearAL();
+            ec.alms.clearAL();
+            ec.llms.clearAL();
             // use addToFront method to add new data
-            ec.timeAddElement(arrContainer, i, j);
-            //ec.timeAddElement(linkedContainer, i, j);
+            ec.add(i, j);
+
             
-            arrTime = ec.timeSortOfUnsortedList(arrContainer);
+            alqsTime = ec.alqsSortTime();
+            llqsTime = ec.llqsSortTime();
+            almsTime = ec.almsSortTime();
+            llmsTime = ec.llmsSortTime();
             
-            outputFile.append(arrTime + "," + linkedTime + '\n');
+            outputFile.append(alqsTime + "," + llqsTime + "," + almsTime + "," + llmsTime + '\n');
         }
         
         
@@ -87,31 +89,7 @@ public class ExperimentControllerTest
 
     }
     
-    /*@Test
-    public void timeSortOfSortedListTest()
-    {        
-        long arrTime = 0;
-        long linkedTime = 0;
-        outputFile.append("Sorted Test \n");
-        for(int i = 1000, j = 0; j < constant; i += 500, j++){
-            arrContainer.al.clear();
-            linkedContainer.al.clear();
-            
-            // create sorted list to test later
-            for(int k = 0; k < i; k++){
-                arrContainer.data.add(k);
-                linkedContainer.data.add(k);
-            }
-            
-            // test sorted list
-            arrTime = ec.timeSortOfSortedList(arrContainer);
-            linkedTime = ec.timeSortOfSortedList(linkedContainer);
-            
-            outputFile.append(arrTime + "," + linkedTime + '\n');
-        }
-
-        
-    }*/
+    
     
 }
 

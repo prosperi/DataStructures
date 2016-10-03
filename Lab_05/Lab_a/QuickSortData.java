@@ -6,7 +6,7 @@ import java.util.Iterator;
  * v1.0.0
  */
 public abstract class QuickSortData implements SortedList{
-    public AbstractList<String> al;
+    private AbstractList<String> al;
    
     public QuickSortData(AbstractList<String> al){
         this.al = al;
@@ -25,6 +25,22 @@ public abstract class QuickSortData implements SortedList{
             System.out.println(tmp);
         }
         return s;
+    }
+    
+    public void clearAL(){
+        al.clear();
+    }
+    
+    public int getSize(){
+        return al.size();
+    }
+    
+    public String getElement(int i){
+        return al.get(i);
+    }
+    
+    public void setElement(int i, String s){
+        al.set(i, s);
     }
     
     public abstract void quickSort(int low, int high);

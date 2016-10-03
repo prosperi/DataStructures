@@ -5,50 +5,59 @@ import java.util.AbstractList;
  * Zura Mestiashvili
  * v1.0.0
  */
-
 public class LinkedListMergeSort extends MergeSortData{
-    
+   
     public LinkedListMergeSort(){
         super(new LinkedList<String>());
     }
     
     public void sort(){
-        al = sortData(al);
+        String[] tmp = new String[getSize()];
+        sortData(tmp, 0, getSize()-1);
     }
     
-    public LinkedList<String> sortData(AbstractList<String> al){
-        if(al.size() <= 1) return (LinkedList)al;
+    public void sortData(String[] tmp, int left, int right){
         
-        LinkedList<String> left = sortData(new LinkedList<String>(al.subList(0, al.size()/2)));
-        LinkedList<String> right = sortData(new LinkedList<String>(al.subList(al.size()/2, al.size())));
+        if(left < right){
+            int middle = (left + right) / 2;
+            sortData(tmp, left, middle);
+            sortData(tmp, middle + 1, right);
+            merge(tmp, left, middle, right);
+        }
         
-        return merge(left, right);
+        
     }
     
  
-    public LinkedList<String> merge(AbstractList<String> left, AbstractList<String> right){
-        LinkedList<String> tmp = new LinkedList<String>();
+    public void merge(String[] tmp, int left, int middle, int right){
         
-        while(left.size() > 0 && right.size() > 0){
-            if(left.get(0).compareTo(right.get(0)) < 0){
-                tmp.add(left.get(0));
-                left.remove(0);
+        for(int i = left; i <= right; i++){
+            tmp[i] = getElement(i);
+        }
+        
+        int i = left;
+        int j = middle + 1;
+        int k = left;
+        
+        while(i <= middle && j <= right){
+            if(tmp[i].compareTo(tmp[j]) < 0){
+                setElement(k, tmp[i]);
+                i++;
             }else{
-                tmp.add(right.get(0));
-                right.remove(0);
+                setElement(k, tmp[j]);
+                j++;
             }
+            
+            k++;
         }
         
-        if(left.size() == 0){
-            for(int i = 0; i < right.size(); i++){
-                tmp.add(right.get(i));
-            }
-        }else if(right.size() == 0){
-            for(int i = 0; i < left.size(); i++){
-                tmp.add(left.get(i));
-            }
+        while(i <= middle){
+            setElement(k, tmp[i]);
+            i++;
+            k++;
         }
         
-        return tmp;
     }
+    
+    
 }

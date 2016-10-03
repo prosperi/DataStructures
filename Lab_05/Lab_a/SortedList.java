@@ -6,5 +6,9 @@
 public interface SortedList
 {
      void addElement(String s);
+     void clearAL();
+     int getSize();
+     String getElement(int i);
+     void setElement(int i, String s);
      String printData();
 }
