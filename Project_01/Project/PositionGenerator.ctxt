@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.params=seed\ height\ width
+comment0.target=PositionGenerator(long,\ int,\ int)
+comment1.params=
+comment1.target=int[]\ initPosition()
+numComments=2

@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.params=seed
+comment0.target=DirectionGenerator(long)
+comment1.params=
+comment1.target=Direction\ next()
+numComments=2
