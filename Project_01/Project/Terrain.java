@@ -9,6 +9,7 @@ public class Terrain{
     private int height;
     private double light;
     public char[][] map;
+    public ArrayList<Specimen>[][] objectMap;
     
     
     public Terrain(int width, int height, double light){
@@ -23,6 +24,13 @@ public class Terrain{
                 map[i][j] = '#';
             }
         }     
+        
+        objectMap = new ArrayList[height][width];
+        for(int i = 0; i < height; i++){
+            for(int j = 0; j < width; j++){
+                objectMap[i][j] = new ArrayList<Specimen>();
+            }
+        }   
         
     }
     
@@ -39,7 +47,7 @@ public class Terrain{
     }
     
     public boolean checkCell(int[] position){
-        if(map[position[0]][position[1]] == '#') return true;
+        if(objectMap[position[0]][position[1]].size() == 0) return true;
         else return false;
     }
     
@@ -49,6 +57,7 @@ public class Terrain{
             int x = habitant.getX();
             int y = habitant.getY();
             map[x][y] = habitant.getSymbol();
+            objectMap[x][y].add(habitant);
         }
        
     }
@@ -57,6 +66,7 @@ public class Terrain{
         for(int i = 0; i < height; i++){
             for(int j = 0; j < width; j++){
                 map[i][j] = '#';
+                objectMap[i][j] = new ArrayList<Specimen>();
             }
         }
     }

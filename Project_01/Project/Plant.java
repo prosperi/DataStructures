@@ -15,8 +15,11 @@ public class Plant extends Specimen implements Inhabitant {
     }
     
    
-   public void eat(){}
+   public void eat(Terrain terrain, ArrayList<Specimen> habitants){}
    public void giveBirth(){}
-   public void die(){}
+   public void die(Terrain terrain, ArrayList<Specimen> habitants){
+       habitants.remove(this);
+       System.out.println("Currently we have " + habitants.size() + " habitants");
+   }
     
 }
