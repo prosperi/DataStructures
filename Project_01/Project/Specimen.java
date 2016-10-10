@@ -15,10 +15,11 @@ public class Specimen{
    private ArrayList<Double> initialStats;
    private int x;
    private int y;
+   private double energy;
                                 
    public Specimen(String name, String type, char symbol, ArrayList<String> energySources,
                    ArrayList<Double> initialStats, ArrayList<Double> stats, double birthEnergy, double maxEnergy,
-                   double livingEnergy,  int[] position){
+                   double livingEnergy, int[] position){
       // initialize class variables                 
       this.name = name;
       this.type = type;
@@ -31,6 +32,7 @@ public class Specimen{
       this.initialStats = initialStats;
       this.x = position[0];
       this.y = position[1];
+      this.energy = initialStats.get(2);
    }
    
    /////  Setters and Getters as we want our data to be private, though we will not need Setters as those properties
@@ -81,12 +83,20 @@ public class Specimen{
        return y;
    }
    
+   public double getEnergy(){
+       return energy;
+   }
+   
    public void setX(int val){
        x = val;
    }
    
    public void setY(int val){
        y = val;
+   }
+   
+   public void setEnergy(double val){
+       energy = val;
    }
    
 }

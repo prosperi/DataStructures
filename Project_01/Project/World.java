@@ -13,24 +13,30 @@ public class World{
     public static ArrayList<Specimen> habitants;
     public static DirectionGenerator dGen;
     public static PositionGenerator pGen;
+    public static int max;
     
     public static void main(String[] args){
         
         Scanner sc = new Scanner(System.in);
         dGen = new DirectionGenerator(11);
-        pGen = new PositionGenerator(2, 15, 15);
+        pGen = new PositionGenerator(3, 15, 15);
         terrain = new Terrain(15, 15, 5);
         habitants = new ArrayList<Specimen>();
+        max = 1000000; 
         
         try(
             BufferedReader reader = new BufferedReader(new FileReader(args[0]));
         ){
             String tmp;
+            terrain.clear();
             while((tmp = reader.readLine()) != null){
                 String[] arr = tmp.split(" ");
                 if((arr[0]).compareTo("species") == 0){
                     for(int i = 0; i < 7; i++){
-                        habitants.add(createSpecimen(arr));
+                        Specimen newSpecimen = createSpecimen(arr);
+                        habitants.add(newSpecimen);
+                        terrain.objectMap[newSpecimen.getX()][newSpecimen.getY()].add(newSpecimen);
+                        terrain.map[newSpecimen.getX()][newSpecimen.getY()] = newSpecimen.getSymbol();
                     }
                 }
                     
@@ -40,7 +46,6 @@ public class World{
             e.printStackTrace();
         }
         
-        terrain.addHabitants(habitants);
         terrain.printMap();
         
         while(sc.hasNext()){
@@ -54,9 +59,8 @@ public class World{
                     terrain.printMap();
                     break;
                 case "i":
-                    while(habitants.size() > 16){ 
+                    for(int i = 0; i < max; i++){
                         step();
-                        //terrain.printMap();
                     }
                     for(int i = 0; i < habitants.size(); i++){
                         System.out.println(habitants.get(i).getName());
@@ -68,11 +72,23 @@ public class World{
     }
     
     public static void step(){
-         for(int i = 0; i < habitants.size(); i++){
+        // Move Animals
+        for(int i = 0; i < habitants.size(); i++){
             if(habitants.get(i) instanceof Animal){
                 ((Animal)habitants.get(i)).move(dGen, terrain, habitants);
             }
         }
+        // Let's have a dinner together
+        for(int j = 0; j < habitants.size(); j++){
+           Specimen tmp = habitants.get(j);
+           if(tmp instanceof Plant) ((Plant)tmp).eat(terrain, habitants);
+           else ((Animal)tmp).eat(terrain, habitants);
+        }
+        // Time to bury the dead
+        for(int z = 0; z < habitants.size(); z++){
+           if(habitants.get(z).getEnergy() == 0) habitants.remove(z);
+        }
+        
         terrain.clear();
         terrain.addHabitants(habitants);
     }
