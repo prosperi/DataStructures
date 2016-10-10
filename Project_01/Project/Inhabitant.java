@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public interface Inhabitant{
     
     void die(Terrain terrain, ArrayList<Specimen> habitants);
-    void giveBirth();
+    void giveBirth(DirectionGenerator dGen, Terrain terrain, ArrayList<Specimen> habitants, ArrayList<Specimen> children);
     void eat(Terrain terrain, ArrayList<Specimen> habitants);
     
 }

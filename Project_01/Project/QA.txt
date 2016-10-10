@@ -1,3 +1,4 @@
 How does garbage collecting work?
 We could make Specimen Abstract instead of using interface
 Use Stack for death sequence
+make locked function shareble for both plants and animals

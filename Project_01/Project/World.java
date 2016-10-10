@@ -19,8 +19,8 @@ public class World{
         
         Scanner sc = new Scanner(System.in);
         dGen = new DirectionGenerator(11);
-        pGen = new PositionGenerator(3, 15, 15);
-        terrain = new Terrain(15, 15, 5);
+        pGen = new PositionGenerator(3, 20, 20);
+        terrain = new Terrain(20, 20, 5);
         habitants = new ArrayList<Specimen>();
         max = 1000000; 
         
@@ -72,6 +72,16 @@ public class World{
     }
     
     public static void step(){
+        // Let's have a child
+        ArrayList<Specimen> children = new ArrayList<Specimen>();
+        for(int k= 0; k < habitants.size(); k++){
+            if(habitants.get(k) instanceof Animal){
+                ((Animal)habitants.get(k)).giveBirth(dGen, terrain, habitants, children);
+            }else{
+                ((Plant)habitants.get(k)).giveBirth(dGen, terrain, habitants, children);
+            }
+        }
+        habitants.addAll(children);
         // Move Animals
         for(int i = 0; i < habitants.size(); i++){
             if(habitants.get(i) instanceof Animal){
