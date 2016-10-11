@@ -9,4 +9,6 @@ comment3.params=terrain\ habitants
 comment3.target=void\ die(Terrain,\ java.util.ArrayList)
 comment4.params=terrain
 comment4.target=boolean\ lockedBirth(Terrain)
-numComments=5
+comment5.params=dGen\ terrain\ habitants\ children\ x\ y
+comment5.target=void\ giveBirthHelper(DirectionGenerator,\ Terrain,\ java.util.ArrayList,\ java.util.ArrayList,\ int,\ int)
+numComments=6

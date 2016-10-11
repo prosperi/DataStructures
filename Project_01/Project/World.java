@@ -8,6 +8,7 @@ import java.io.FileReader;
  * Zura Mestiashvili
  * v1.0.0
  */
+
 public class World{
     public static Terrain terrain;
     public static ArrayList<Specimen> habitants;
@@ -17,12 +18,13 @@ public class World{
     
     public static void main(String[] args){
         
+        // parse arguments
         Scanner sc = new Scanner(System.in);
         dGen = new DirectionGenerator(11);
-        pGen = new PositionGenerator(3, 20, 20);
-        terrain = new Terrain(20, 20, 5);
+        pGen = new PositionGenerator(31, 30, 20);
+        terrain = new Terrain(30, 20, 5);
         habitants = new ArrayList<Specimen>();
-        max = 1000000; 
+        max = 10000; 
         
         try(
             BufferedReader reader = new BufferedReader(new FileReader(args[0]));
@@ -32,9 +34,11 @@ public class World{
             while((tmp = reader.readLine()) != null){
                 String[] arr = tmp.split(" ");
                 if((arr[0]).compareTo("species") == 0){
+                    // Create new Species by parsing config.txt
                     for(int i = 0; i < 7; i++){
                         Specimen newSpecimen = createSpecimen(arr);
                         habitants.add(newSpecimen);
+                        // Append new Specimen to objectMap and map
                         terrain.objectMap[newSpecimen.getX()][newSpecimen.getY()].add(newSpecimen);
                         terrain.map[newSpecimen.getX()][newSpecimen.getY()] = newSpecimen.getSymbol();
                     }
@@ -48,7 +52,10 @@ public class World{
         
         terrain.printMap();
         
-        while(sc.hasNext()){
+        
+        // Check for commands and execute them
+        boolean t = true;
+        while( t == true && sc.hasNext() ){
             String cmd = sc.nextLine();
             switch (cmd){
                 case "p":
@@ -59,12 +66,18 @@ public class World{
                     terrain.printMap();
                     break;
                 case "i":
+                    // take max steps, max was passed as ana argument to the program
                     for(int i = 0; i < max; i++){
                         step();
                     }
+                    // Print out remaining animals
                     for(int i = 0; i < habitants.size(); i++){
                         System.out.println(habitants.get(i).getName());
                     }
+                    break;
+                case "q":
+                    t = false;
+                    System.out.println("Thanks for using our simulation :)");
                     break;
             }
         }
@@ -72,6 +85,7 @@ public class World{
     }
     
     public static void step(){
+        // We can use Abstract Class here which will be last part of program as debuging is easier this way
         // Let's have a child
         ArrayList<Specimen> children = new ArrayList<Specimen>();
         for(int k= 0; k < habitants.size(); k++){
@@ -91,6 +105,7 @@ public class World{
         // Let's have a dinner together
         for(int j = 0; j < habitants.size(); j++){
            Specimen tmp = habitants.get(j);
+           // Here we can use power of Abstract Class again
            if(tmp instanceof Plant) ((Plant)tmp).eat(terrain, habitants);
            else ((Animal)tmp).eat(terrain, habitants);
         }
@@ -98,35 +113,41 @@ public class World{
         for(int z = 0; z < habitants.size(); z++){
            if(habitants.get(z).getEnergy() == 0) habitants.remove(z);
         }
-        
+        // Clear and re-Draw terrain
+        // We can not modify objectMap and map as objectMap is the used in loop in method eat, 
+        // which in come cases goes to die() method
         terrain.clear();
         terrain.addHabitants(habitants);
     }
     
     public static Specimen createSpecimen(String[] arr){
+        // Build Energy Sources array
         String[] tmp_01 = arr[4].split(",");
         ArrayList<String> ls_01 = new ArrayList<String>();
         for(int i = 0; i < tmp_01.length; i++){
             ls_01.add(tmp_01[i]);
         }
-        
+        // Build Initial Stats array
         String[] tmp_02 = arr[5].split(",");
         ArrayList<Double> ls_02 = new ArrayList<Double>();
         for(int i = 0; i < tmp_02.length; i++){
             ls_02.add(Double.parseDouble(tmp_02[i]));
         }
-        
+        // Build stats array
         String[] tmp_03 = arr[6].split(",");
         ArrayList<Double> ls_03 = new ArrayList<Double>();
         for(int i = 0; i < tmp_03.length; i++){
             ls_03.add(Double.parseDouble(tmp_03[i]));
         }
         
+        // Generate position, so that two specimen not occupy same cell 
+        // in the beginning of simulation
         int[] position;
         do{
             position = pGen.initPosition();
         }while(terrain.checkCell(position) == false);
         
+        // Here we can use the power of Abstract Class again
         if(arr[2].compareTo("herbivore") == 0 || arr[2].compareTo("carnivore") == 0 || arr[2].compareTo("omnivore") == 0 || arr[2].compareTo("animal") == 0)
             return new Animal(arr[1], arr[2], arr[3].charAt(0), ls_01, ls_02, ls_03, Double.parseDouble(arr[7]), Double.parseDouble(arr[8]), Double.parseDouble(arr[9]),  position);
         else

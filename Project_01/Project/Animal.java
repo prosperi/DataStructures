@@ -21,74 +21,28 @@ public class Animal extends Specimen implements Movable, Inhabitant{
                 if(getY() == 0 ){
                     move(dGen, terrain, habitants);
                 }else{
-                    // Could write another method for that
-                    ArrayList<Specimen> tmp = terrain.objectMap[getX()][getY()-1];
-                    // The right version according to description: if(tmp.size() >= 2 || (tmp.size() != 0 && !this.getEnergySources().contains(tmp.get(0).getName()))){
-                    if(locked(terrain)){
-                        
-                    }else if( tmp.size() >= 2 || (tmp.size() == 1 && tmp.get(0) instanceof Animal && !this.getEnergySources().contains(tmp.get(0).getName())) ){
-                        move(dGen, terrain, habitants);
-                    }else{
-                        terrain.objectMap[getX()][getY()].remove(this);
-                        terrain.map[getX()][getY()] = '#';
-                        setY(getY()-1);
-                        terrain.objectMap[getX()][getY()].add(this);
-                        terrain.map[getX()][getY()] = this.getSymbol();
-                    }
+                    moveHelper(dGen, terrain, habitants, getX(), getY() - 1 );
                 }
                 break;
             case RIGHT:
-                if(getY()  == terrain.getHeight()-1){
+                if(getY()  == terrain.getWidth()-1){
                     move(dGen, terrain, habitants);
                 }else{
-                   ArrayList<Specimen> tmp = terrain.objectMap[getX()][getY()+1];
-                   if(locked(terrain)){
-                       
-                   }else if( tmp.size() >= 2 || (tmp.size() == 1 && tmp.get(0) instanceof Animal && !this.getEnergySources().contains(tmp.get(0).getName())) ){
-                       move(dGen, terrain, habitants);
-                   }else{
-                       terrain.objectMap[getX()][getY()].remove(this);
-                       terrain.map[getX()][getY()] = '#';
-                       setY(getY()+1);
-                       terrain.objectMap[getX()][getY()].add(this);
-                       terrain.map[getX()][getY()] = this.getSymbol();
-                   }
+                    moveHelper(dGen, terrain, habitants, getX(), getY() + 1 );
                 }
                 break;
             case UP:
                 if(getX() == 0){
                     move(dGen, terrain, habitants);
                 }else{
-                    ArrayList<Specimen> tmp = terrain.objectMap[getX()-1][getY()];
-                    if(locked(terrain)){
-                        
-                    }else if( tmp.size() >= 2 || (tmp.size() == 1 && tmp.get(0) instanceof Animal && !this.getEnergySources().contains(tmp.get(0).getName())) ){
-                        move(dGen, terrain, habitants);
-                    }else{
-                        terrain.objectMap[getX()][getY()].remove(this);
-                        terrain.map[getX()][getY()] = '#';
-                        setX(getX()-1);
-                        terrain.objectMap[getX()][getY()].add(this);
-                        terrain.map[getX()][getY()] = this.getSymbol();
-                    }
+                    moveHelper(dGen, terrain, habitants, getX() - 1, getY() );
                 }
                 break;
             case DOWN:
-                if(getX() == terrain.getWidth()-1){
+                if(getX() == terrain.getHeight()-1){
                     move(dGen, terrain, habitants);
                 }else{
-                    ArrayList<Specimen> tmp = terrain.objectMap[getX()+1][getY()];
-                    if(locked(terrain)){
-                        
-                    }else if( tmp.size() >= 2 || (tmp.size() == 1 && tmp.get(0) instanceof Animal && !this.getEnergySources().contains(tmp.get(0).getName())) ){
-                        move(dGen, terrain, habitants);
-                    }else{
-                        terrain.objectMap[getX()][getY()].remove(this);
-                        terrain.map[getX()][getY()] = '#';
-                        setX(getX()+1);
-                        terrain.objectMap[getX()][getY()].add(this);
-                        terrain.map[getX()][getY()] = this.getSymbol();
-                    }
+                    moveHelper(dGen, terrain, habitants, getX() + 1, getY() );
                 }
                 break;
         }
@@ -112,6 +66,7 @@ public class Animal extends Specimen implements Movable, Inhabitant{
 
     }
     
+    // Could use Abstractness
     public void giveBirth(DirectionGenerator dGen, Terrain terrain, ArrayList<Specimen> habitants, ArrayList<Specimen> children){
         
         if(getEnergy() >= getBirthEnergy()){
@@ -120,86 +75,28 @@ public class Animal extends Specimen implements Movable, Inhabitant{
                 if(getY() == 0 ){
                     giveBirth(dGen, terrain, habitants, children);
                 }else{
-                    // Could write another method for that
-                    ArrayList<Specimen> tmp = terrain.objectMap[getX()][getY()-1];
-                    if(lockedBirth(terrain)){
-                    
-                    }else if(tmp.size() != 0){
-                        giveBirth(dGen, terrain, habitants, children);
-                    }else{
-                        // Create a child Specimen
-                        setEnergy(getEnergy()/2);
-                        int[] position = {getX(), getY()-1};
-                        Animal child = new Animal(getName(), getType(), getSymbol(), getEnergySources(), getInitialStats(), getStats(), getBirthEnergy(), getMaxEnergy(), getLivingEnergy(), position);
-                        child.setEnergy(getEnergy());
-                        terrain.objectMap[getX()][getY()-1].add(child);
-                        terrain.map[getX()][getY()-1] = child.getSymbol();
-                        children.add(child);
-                    }
+                    giveBirthHelper(dGen, terrain, habitants, children, getX(), getY()-1);
                 }
                 break;
             case RIGHT:
-                if(getY()  == terrain.getHeight()-1){
+                if(getY()  == terrain.getWidth()-1){
                     giveBirth(dGen, terrain, habitants, children);
                 }else{
-                   ArrayList<Specimen> tmp = terrain.objectMap[getX()][getY()+1];
-                    if(lockedBirth(terrain)){
-                    
-                    }else if(tmp.size() != 0){
-                        giveBirth(dGen, terrain, habitants, children);
-                    }else{
-                        // Create a child Specimen
-                        setEnergy(getEnergy()/2);
-                        int[] position = {getX(), getY()+1};
-                        Animal child = new Animal(getName(), getType(), getSymbol(), getEnergySources(), getInitialStats(), getStats(), getBirthEnergy(), getMaxEnergy(), getLivingEnergy(), position);
-                        child.setEnergy(getEnergy());
-                        terrain.objectMap[getX()][getY()+1].add(child);
-                        terrain.map[getX()][getY()+1] = child.getSymbol();
-                        children.add(child);
-                    }
+                    giveBirthHelper(dGen, terrain, habitants, children, getX(), getY()+1);
                 }
                 break;
             case UP:
                 if(getX() == 0){
                     giveBirth(dGen, terrain, habitants, children);
                 }else{
-                    ArrayList<Specimen> tmp = terrain.objectMap[getX()-1][getY()];
-                    if(lockedBirth(terrain)){
-                    
-                    }else if(tmp.size() != 0){
-                        giveBirth(dGen, terrain, habitants, children);
-                    }else{
-                        // Create a child Specimen
-                        setEnergy(getEnergy()/2);
-                        int[] position = {getX()-1, getY()};
-                        Animal child = new Animal(getName(), getType(), getSymbol(), getEnergySources(), getInitialStats(), getStats(), getBirthEnergy(), getMaxEnergy(), getLivingEnergy(), position);
-                        child.setEnergy(getEnergy());
-                        terrain.objectMap[getX()-1][getY()].add(child);
-                        terrain.map[getX()-1][getY()] = child.getSymbol();
-                        children.add(child);
-                    }
+                    giveBirthHelper(dGen, terrain, habitants, children, getX()-1, getY());
                 }
                 break;
             case DOWN:
-                if(getX() == terrain.getWidth()-1){
+                if(getX() == terrain.getHeight()-1){
                     giveBirth(dGen, terrain, habitants, children);
                 }else{
-                    ArrayList<Specimen> tmp = terrain.objectMap[getX()+1][getY()];
-                    if(lockedBirth(terrain)){
-                    
-                    }else if(tmp.size() != 0){
-                        giveBirth(dGen, terrain, habitants, children);
-                    }else{
-                        // Create a child Specimen
-                        setEnergy(getEnergy()/2);
-                        int[] position = {getX()+1, getY()};
-                        Animal child = new Animal(getName(), getType(), getSymbol(), getEnergySources(), getInitialStats(), getStats(), getBirthEnergy(), getMaxEnergy(), getLivingEnergy(), position);
-                        child.setEnergy(getEnergy());
-                        terrain.objectMap[getX()+1][getY()].add(child);
-                        terrain.map[getX()+1][getY()] = child.getSymbol();
-                        children.add(child);
-                    }
-                   
+                    giveBirthHelper(dGen, terrain, habitants, children, getX()+1, getY());
                 }
                 break;
             }
@@ -215,179 +112,107 @@ public class Animal extends Specimen implements Movable, Inhabitant{
     public boolean locked(Terrain terrain){
         int x = getX();
         int y = getY();
+        int tHeight = terrain.getHeight();
+        int tWidth = terrain.getWidth();
         
-        if(x > 0 && y > 0 && x < terrain.getHeight()-1 && y < terrain.getWidth()-1){
-            ArrayList<Specimen> tmp_01 = terrain.objectMap[x][y-1];
-            ArrayList<Specimen> tmp_02 = terrain.objectMap[x][y+1];
-            ArrayList<Specimen> tmp_03 = terrain.objectMap[x-1][y];
-            ArrayList<Specimen> tmp_04 = terrain.objectMap[x+1][y];
-            if( ( tmp_01.size() >= 2 || (tmp_01.size() == 1 && tmp_01.get(0) instanceof Animal && !this.getEnergySources().contains(tmp_01.get(0).getName())) ) && 
-                ( tmp_02.size() >= 2 || (tmp_02.size() == 1 && tmp_02.get(0) instanceof Animal && !this.getEnergySources().contains(tmp_02.get(0).getName())) ) &&     
-                ( tmp_03.size() >= 2 || (tmp_03.size() == 1 && tmp_03.get(0) instanceof Animal && !this.getEnergySources().contains(tmp_03.get(0).getName())) ) &&
-                ( tmp_04.size() >= 2 || (tmp_04.size() == 1 && tmp_04.get(0) instanceof Animal && !this.getEnergySources().contains(tmp_04.get(0).getName())) ) ){
-                    return true;
-            }
-            return false;
+        if(x > 0 && y > 0 && x < tHeight-1 && y < tWidth-1){
+            return lockedHelper(terrain, x, y-1) && lockedHelper(terrain, x, y+1) && lockedHelper(terrain, x-1, y) && lockedHelper(terrain, x+1, y);          
         }else if(x == 0 && y == 0){
-            ArrayList<Specimen> tmp_01 = terrain.objectMap[0][1];
-            ArrayList<Specimen> tmp_02 = terrain.objectMap[1][0];
-
-            if( ( tmp_01.size() >= 2 || (tmp_01.size() == 1 && tmp_01.get(0) instanceof Animal && !this.getEnergySources().contains(tmp_01.get(0).getName())) ) && 
-                ( tmp_02.size() >= 2 || (tmp_02.size() == 1 && tmp_02.get(0) instanceof Animal && !this.getEnergySources().contains(tmp_02.get(0).getName())) ) ){
-                    return true;
-            }
-            return false;
-        }else if(x == terrain.getHeight()-1 && y == terrain.getWidth()-1){
-            ArrayList<Specimen> tmp_01 = terrain.objectMap[terrain.getHeight()-1][terrain.getWidth()-2];
-            ArrayList<Specimen> tmp_02 = terrain.objectMap[terrain.getHeight()-2][terrain.getWidth()-1];
-            if( ( tmp_01.size() >= 2 || (tmp_01.size() == 1 && tmp_01.get(0) instanceof Animal && !this.getEnergySources().contains(tmp_01.get(0).getName())) ) && 
-                ( tmp_02.size() >= 2 || (tmp_02.size() == 1 && tmp_02.get(0) instanceof Animal && !this.getEnergySources().contains(tmp_02.get(0).getName())) ) ){
-                    return true;
-            }
-            return false;
-        }else if(x == terrain.getHeight()-1 && y == 0){
-            ArrayList<Specimen> tmp_01 = terrain.objectMap[terrain.getHeight()-1][1];
-            ArrayList<Specimen> tmp_02 = terrain.objectMap[terrain.getHeight()-2][0];
-            if( ( tmp_01.size() >= 2 || (tmp_01.size() == 1 && tmp_01.get(0) instanceof Animal && !this.getEnergySources().contains(tmp_01.get(0).getName())) ) && 
-                ( tmp_02.size() >= 2 || (tmp_02.size() == 1 && tmp_02.get(0) instanceof Animal && !this.getEnergySources().contains(tmp_02.get(0).getName())) ) ){
-                    return true;
-            }
-            return false;
-        }else if(x == 0 && y == terrain.getWidth()-1){
-            ArrayList<Specimen> tmp_01 = terrain.objectMap[0][terrain.getWidth()-2];
-            ArrayList<Specimen> tmp_02 = terrain.objectMap[1][terrain.getWidth()-1];
-            if( ( tmp_01.size() >= 2 || (tmp_01.size() == 1 && tmp_01.get(0) instanceof Animal && !this.getEnergySources().contains(tmp_01.get(0).getName())) ) && 
-                ( tmp_02.size() >= 2 || (tmp_02.size() == 1 && tmp_02.get(0) instanceof Animal && !this.getEnergySources().contains(tmp_02.get(0).getName())) ) ){
-                    return true;
-            }
-            return false;
+            return lockedHelper(terrain, 0, 1) && lockedHelper(terrain, 1, 0);
+        }else if(x == tHeight-1 && y == tWidth-1){
+            return lockedHelper(terrain, tHeight - 1, tWidth - 2) && lockedHelper(terrain, tHeight - 2, tWidth - 1);
+        }else if(x == tHeight-1 && y == 0){
+            return lockedHelper(terrain, tHeight - 1, 1) && lockedHelper(terrain, tHeight - 2, 0);
+        }else if(x == 0 && y == tWidth-1){
+            return lockedHelper(terrain, 0, tWidth - 2) && lockedHelper(terrain, 1, tWidth - 1);
         }else if(x == 0 && y > 0 && y < terrain.getWidth()-1){
-            ArrayList<Specimen> tmp_01 = terrain.objectMap[0][y+1];
-            ArrayList<Specimen> tmp_02 = terrain.objectMap[0][y-1];
-            ArrayList<Specimen> tmp_03 = terrain.objectMap[1][y];
-            if( ( tmp_01.size() >= 2 || (tmp_01.size() == 1 && tmp_01.get(0) instanceof Animal && !this.getEnergySources().contains(tmp_01.get(0).getName())) ) &&
-                ( tmp_02.size() >= 2 || (tmp_02.size() == 1 && tmp_02.get(0) instanceof Animal && !this.getEnergySources().contains(tmp_02.get(0).getName())) ) &&
-                ( tmp_03.size() >= 2 || (tmp_03.size() == 1 && tmp_03.get(0) instanceof Animal && !this.getEnergySources().contains(tmp_03.get(0).getName())) ) ){
-                    return true;
-            }
-            return false;
-        }else if(y == 0 && x > 0 && x < terrain.getHeight()-1){
-            ArrayList<Specimen> tmp_01 = terrain.objectMap[x+1][0];
-            ArrayList<Specimen> tmp_02 = terrain.objectMap[x-1][0];
-            ArrayList<Specimen> tmp_03 = terrain.objectMap[x][1];
-            if( ( tmp_01.size() >= 2 || (tmp_01.size() == 1 && tmp_01.get(0) instanceof Animal && !this.getEnergySources().contains(tmp_01.get(0).getName())) ) &&
-                ( tmp_02.size() >= 2 || (tmp_02.size() == 1 && tmp_02.get(0) instanceof Animal && !this.getEnergySources().contains(tmp_02.get(0).getName())) ) &&
-                ( tmp_03.size() >= 2 || (tmp_03.size() == 1 && tmp_03.get(0) instanceof Animal && !this.getEnergySources().contains(tmp_03.get(0).getName())) ) ){
-                    return true;
-            }
-            return false;
-        }else if(x == terrain.getHeight()-1 && y > 0 && y < terrain.getWidth()-1){
-            ArrayList<Specimen> tmp_01 = terrain.objectMap[x][y+1];
-            ArrayList<Specimen> tmp_02 = terrain.objectMap[x][y-1];
-            ArrayList<Specimen> tmp_03 = terrain.objectMap[x-1][y];
-            if( ( tmp_01.size() >= 2 || (tmp_01.size() == 1 && tmp_01.get(0) instanceof Animal && !this.getEnergySources().contains(tmp_01.get(0).getName())) ) &&
-                ( tmp_02.size() >= 2 || (tmp_02.size() == 1 && tmp_02.get(0) instanceof Animal && !this.getEnergySources().contains(tmp_02.get(0).getName())) ) &&
-                ( tmp_03.size() >= 2 || (tmp_03.size() == 1 && tmp_03.get(0) instanceof Animal && !this.getEnergySources().contains(tmp_03.get(0).getName())) ) ){
-                    return true;
-            }
-            return false;
-        }else if(y == terrain.getWidth()-1 && x > 0 && x < terrain.getHeight()-1){
-            ArrayList<Specimen> tmp_01 = terrain.objectMap[x+1][y];
-            ArrayList<Specimen> tmp_02 = terrain.objectMap[x-1][y];
-            ArrayList<Specimen> tmp_03 = terrain.objectMap[x][y-1];
-            if( ( tmp_01.size() >= 2 || (tmp_01.size() == 1 && tmp_01.get(0) instanceof Animal && !this.getEnergySources().contains(tmp_01.get(0).getName())) ) &&
-                ( tmp_02.size() >= 2 || (tmp_02.size() == 1 && tmp_02.get(0) instanceof Animal && !this.getEnergySources().contains(tmp_02.get(0).getName())) ) &&
-                ( tmp_03.size() >= 2 || (tmp_03.size() == 1 && tmp_03.get(0) instanceof Animal && !this.getEnergySources().contains(tmp_03.get(0).getName())) ) ){
-                    return true;
-            }
-            return false;
+            return lockedHelper(terrain, 0, y+1) && lockedHelper(terrain, 0, y-1) && lockedHelper(terrain, 1, y);
+        }else if(y == 0 && x > 0 && x < tHeight-1){
+            return lockedHelper(terrain, x+1, 0) && lockedHelper(terrain, x-1, 0) && lockedHelper(terrain, x, 1);
+        }else if(x == terrain.getHeight()-1 && y > 0 && y < tWidth-1){
+            return lockedHelper(terrain, x, y+1) && lockedHelper(terrain, x, y-1) && lockedHelper(terrain, x-1, y);
+        }else if(y == tWidth-1 && x > 0 && x < tHeight-1){
+            return lockedHelper(terrain, x+1, y) && lockedHelper(terrain, x-1, y) && lockedHelper(terrain, x, y-1);
         }
         
         return false;
     }
-    
     
     
     
     public boolean lockedBirth(Terrain terrain){
         int x = getX();
         int y = getY();
+        int tHeight = terrain.getHeight();
+        int tWidth = terrain.getWidth();
         
-        if(x > 0 && y > 0 && x < terrain.getHeight()-1 && y < terrain.getWidth()-1){
-            ArrayList<Specimen> tmp_01 = terrain.objectMap[x][y-1];
-            ArrayList<Specimen> tmp_02 = terrain.objectMap[x][y+1];
-            ArrayList<Specimen> tmp_03 = terrain.objectMap[x-1][y];
-            ArrayList<Specimen> tmp_04 = terrain.objectMap[x+1][y];
-            if(  tmp_01.size() != 0  && tmp_02.size() != 0 && tmp_03.size() != 0 && tmp_04.size() != 0){
-                    return true;
-            }
-            return false;
+        if(x > 0 && y > 0 && x < tHeight-1 && y < tWidth-1){
+            return terrain.checkCell(x, y-1)  && terrain.checkCell(x, y+1) && terrain.checkCell(x-1, y) && terrain.checkCell(x+1, y);
         }else if(x == 0 && y == 0){
-            ArrayList<Specimen> tmp_01 = terrain.objectMap[0][1];
-            ArrayList<Specimen> tmp_02 = terrain.objectMap[1][0];
-
-            if( tmp_01.size() != 0 && tmp_02.size() != 0){
-                    return true;
-            }
-            return false;
-        }else if(x == terrain.getHeight()-1 && y == terrain.getWidth()-1){
-            ArrayList<Specimen> tmp_01 = terrain.objectMap[terrain.getHeight()-1][terrain.getWidth()-2];
-            ArrayList<Specimen> tmp_02 = terrain.objectMap[terrain.getHeight()-2][terrain.getWidth()-1];
-            if( tmp_01.size() != 0 && tmp_02.size() != 0 ){
-                    return true;
-            }
-            return false;
-        }else if(x == terrain.getHeight()-1 && y == 0){
-            ArrayList<Specimen> tmp_01 = terrain.objectMap[terrain.getHeight()-1][1];
-            ArrayList<Specimen> tmp_02 = terrain.objectMap[terrain.getHeight()-2][0];
-            if( tmp_01.size() != 0 && tmp_02.size() != 0 ){
-                    return true;
-            }
-            return false;
-        }else if(x == 0 && y == terrain.getWidth()-1){
-            ArrayList<Specimen> tmp_01 = terrain.objectMap[0][terrain.getWidth()-2];
-            ArrayList<Specimen> tmp_02 = terrain.objectMap[1][terrain.getWidth()-1];
-            if( tmp_01.size() != 0 && tmp_02.size() != 0 ){
-                    return true;
-            }
-            return false;
-        }else if(x == 0 && y > 0 && y < terrain.getWidth()-1){
-            ArrayList<Specimen> tmp_01 = terrain.objectMap[0][y+1];
-            ArrayList<Specimen> tmp_02 = terrain.objectMap[0][y-1];
-            ArrayList<Specimen> tmp_03 = terrain.objectMap[1][y];
-            if( tmp_01.size() != 0 && tmp_02.size() != 0 && tmp_03.size() != 0 ){
-                    return true;
-            }
-            return false;
-        }else if(y == 0 && x > 0 && x < terrain.getHeight()-1){
-            ArrayList<Specimen> tmp_01 = terrain.objectMap[x+1][0];
-            ArrayList<Specimen> tmp_02 = terrain.objectMap[x-1][0];
-            ArrayList<Specimen> tmp_03 = terrain.objectMap[x][1];
-            if( tmp_01.size() != 0 && tmp_02.size() != 0 && tmp_03.size() != 0 ){
-                    return true;
-            }
-            return false;
-        }else if(x == terrain.getHeight()-1 && y > 0 && y < terrain.getWidth()-1){
-            ArrayList<Specimen> tmp_01 = terrain.objectMap[x][y+1];
-            ArrayList<Specimen> tmp_02 = terrain.objectMap[x][y-1];
-            ArrayList<Specimen> tmp_03 = terrain.objectMap[x-1][y];
-            if( tmp_01.size() != 0 && tmp_02.size() != 0 && tmp_03.size() != 0 ){
-                    return true;
-            }
-            return false;
-        }else if(y == terrain.getWidth()-1 && x > 0 && x < terrain.getHeight()-1){
-            ArrayList<Specimen> tmp_01 = terrain.objectMap[x+1][y];
-            ArrayList<Specimen> tmp_02 = terrain.objectMap[x-1][y];
-            ArrayList<Specimen> tmp_03 = terrain.objectMap[x][y-1];
-            if( tmp_01.size() != 0 && tmp_02.size() != 0 && tmp_03.size() != 0 ){
-                    return true;
-            }
-            return false;
+            return terrain.checkCell(1, 1) && terrain.checkCell(1, 0);
+        }else if(x == tHeight-1 && y == tWidth-1){
+            return terrain.checkCell(tHeight-1, tWidth-2) && terrain.checkCell(tHeight-2, tWidth-1);
+        }else if(x == tHeight-1 && y == 0){
+            return terrain.checkCell(tHeight-1, 1) && terrain.checkCell(tHeight-2, 0);
+        }else if(x == 0 && y == tWidth-1){
+            return terrain.checkCell(0, tWidth-2) && terrain.checkCell(1, tWidth-1);
+        }else if(x == 0 && y > 0 && y < tWidth-1){
+            return terrain.checkCell(0, y+1) && terrain.checkCell(0, y-1) && terrain.checkCell(1, y);
+        }else if(y == 0 && x > 0 && x < tHeight-1){
+            return terrain.checkCell(x+1, 0) && terrain.checkCell(x-1, 0) && terrain.checkCell(x, 1);
+        }else if(x == tHeight-1 && y > 0 && y < tWidth-1){
+            return terrain.checkCell(x, y+1) && terrain.checkCell(x, y-1) && terrain.checkCell(x-1, y);
+        }else if(y == tWidth-1 && x > 0 && x < tHeight-1){
+            return terrain.checkCell(x+1, y) && terrain.checkCell(x-1, y) && terrain.checkCell(x, y-1);
         }
         
         return false;
     }
     
     
+    
+    public boolean lockedHelper(Terrain terrain, int x, int y){
+        ArrayList<Specimen> tmp = terrain.objectMap[x][y];
+        
+        if( tmp.size() >= 2 || (tmp.size() == 1 && tmp.get(0) instanceof Animal && !this.getEnergySources().contains(tmp.get(0).getName())) )
+            return true;
+        
+        return false;
+    }
+    
+    
+    public void giveBirthHelper(DirectionGenerator dGen, Terrain terrain, ArrayList<Specimen> habitants, ArrayList<Specimen> children, int x, int y){
+        ArrayList<Specimen> tmp = terrain.objectMap[x][y];
+        if(lockedBirth(terrain)){
+            // we can not give birth
+        }else if(tmp.size() != 0){
+            giveBirth(dGen, terrain, habitants, children);
+        }else{
+            // Create a child Specimen
+            setEnergy(getEnergy()/2);
+            int[] position = {x, y};
+            Animal child = new Animal(getName(), getType(), getSymbol(), getEnergySources(), getInitialStats(), getStats(), getBirthEnergy(), getMaxEnergy(), getLivingEnergy(), position);
+            child.setEnergy(getEnergy());
+            terrain.objectMap[x][y].add(child);
+            terrain.map[x][y] = child.getSymbol();
+            children.add(child);
+        }
+    }
+    
+    public void moveHelper(DirectionGenerator dGen, Terrain terrain, ArrayList<Specimen> habitants, int x, int y){
+        ArrayList<Specimen> tmp = terrain.objectMap[x][y];
+        if(locked(terrain)){
+            // we can not move
+        }else if( tmp.size() >= 2 || (tmp.size() == 1 && tmp.get(0) instanceof Animal && !this.getEnergySources().contains(tmp.get(0).getName())) ){
+            move(dGen, terrain, habitants);
+        }else{
+            terrain.objectMap[getX()][getY()].remove(this);
+            terrain.map[getX()][getY()] = '#';
+            setY(y);
+            setX(x);
+            terrain.objectMap[x][y].add(this);
+            terrain.map[x][y] = this.getSymbol();
+        }
+    }
     
 }

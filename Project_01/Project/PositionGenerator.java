@@ -11,7 +11,7 @@ public class PositionGenerator{
     int width;
     Random rnd;
     
-    public PositionGenerator(long seed, int height, int width){
+    public PositionGenerator(long seed, int width, int height){
         this.seed = seed;
         this.height = height;
         this.width = width;
@@ -20,7 +20,6 @@ public class PositionGenerator{
     
     public int[] initPosition(){
         int[] position = new int[]{rnd.nextInt(height), rnd.nextInt(width)};
-        
         return position;
     }
     

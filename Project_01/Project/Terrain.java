@@ -18,21 +18,19 @@ public class Terrain{
         this.light = light;
         
         /// Create Map where each cell is # at the beginning
+        /// And create objectMap where for each cell we have ArrayList of current Specimen
         map = new char[height][width];
-        for(int i = 0; i < height; i++){
-            for(int j = 0; j < width; j++){
-                map[i][j] = '#';
-            }
-        }     
-        
         objectMap = new ArrayList[height][width];
         for(int i = 0; i < height; i++){
             for(int j = 0; j < width; j++){
+                map[i][j] = '#';
                 objectMap[i][j] = new ArrayList<Specimen>();
             }
-        }   
+        }     
+
         
     }
+    
     
     public int getWidth(){
         return width;
@@ -46,11 +44,18 @@ public class Terrain{
         return light;
     }
     
+    // Check if cell is taken 
     public boolean checkCell(int[] position){
         if(objectMap[position[0]][position[1]].size() == 0) return true;
         else return false;
     }
+    // Use overloading and use this method in Animal and Plant lockedBirth method
+    public boolean checkCell(int x, int y){
+        if(objectMap[x][y].size() == 0) return false;
+        else return true;
+    }
     
+    // Add Habitants or just re-Draw the map and objectMap
     public void addHabitants(ArrayList<Specimen> habitants){
         for(int i = 0; i < habitants.size(); i++){
             Specimen habitant = habitants.get(i);
@@ -62,6 +67,7 @@ public class Terrain{
        
     }
     
+    // Clear the terrain to get ready for redraw
     public void clear(){
         for(int i = 0; i < height; i++){
             for(int j = 0; j < width; j++){
@@ -71,6 +77,8 @@ public class Terrain{
         }
     }
     
+    // Print current state, each empty cell is marked with #, while others 
+    // are marked with Specimen's own symbol
     public void printMap(){
         for(int i = 0; i < height; i++){
             for(int j = 0; j < width; j++){
