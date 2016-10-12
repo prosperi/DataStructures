@@ -2,3 +2,10 @@ How does garbage collecting work?
 We could make Specimen Abstract instead of using interface
 Use Stack for death sequence
 make locked function shareble for both plants and animals
+
+Does the specimen make only one thing, I mean can it move and eat the same time or give birth
+locked  - should we care about
+the two excess numbers in wheat
+how the stats work exactly
+when given birth, what should be initial energy and other initial stats
+gaussian method when to use it

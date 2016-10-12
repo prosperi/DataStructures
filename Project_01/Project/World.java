@@ -89,11 +89,7 @@ public class World{
         // Let's have a child
         ArrayList<Specimen> children = new ArrayList<Specimen>();
         for(int k= 0; k < habitants.size(); k++){
-            if(habitants.get(k) instanceof Animal){
-                ((Animal)habitants.get(k)).giveBirth(dGen, terrain, habitants, children);
-            }else{
-                ((Plant)habitants.get(k)).giveBirth(dGen, terrain, habitants, children);
-            }
+            habitants.get(k).giveBirth(dGen, terrain, habitants, children);
         }
         habitants.addAll(children);
         // Move Animals
@@ -104,10 +100,8 @@ public class World{
         }
         // Let's have a dinner together
         for(int j = 0; j < habitants.size(); j++){
-           Specimen tmp = habitants.get(j);
-           // Here we can use power of Abstract Class again
-           if(tmp instanceof Plant) ((Plant)tmp).eat(terrain, habitants);
-           else ((Animal)tmp).eat(terrain, habitants);
+          Specimen tmp = habitants.get(j);
+          tmp.eat(terrain, habitants);
         }
         // Time to bury the dead
         for(int z = 0; z < habitants.size(); z++){
@@ -147,7 +141,7 @@ public class World{
             position = pGen.initPosition();
         }while(terrain.checkCell(position) == false);
         
-        // Here we can use the power of Abstract Class again
+        
         if(arr[2].compareTo("herbivore") == 0 || arr[2].compareTo("carnivore") == 0 || arr[2].compareTo("omnivore") == 0 || arr[2].compareTo("animal") == 0)
             return new Animal(arr[1], arr[2], arr[3].charAt(0), ls_01, ls_02, ls_03, Double.parseDouble(arr[7]), Double.parseDouble(arr[8]), Double.parseDouble(arr[9]),  position);
         else
