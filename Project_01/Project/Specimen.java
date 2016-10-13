@@ -16,6 +16,7 @@ abstract public class Specimen{
    private int x;
    private int y;
    private double energy;
+   public boolean action;
                                 
    public Specimen(String name, String type, char symbol, ArrayList<String> energySources,
                    ArrayList<Double> initialStats, ArrayList<Double> stats, double birthEnergy, double maxEnergy,
@@ -147,7 +148,7 @@ abstract public class Specimen{
         if(x > 0 && y > 0 && x < tHeight-1 && y < tWidth-1){
             return terrain.checkCell(x, y-1)  && terrain.checkCell(x, y+1) && terrain.checkCell(x-1, y) && terrain.checkCell(x+1, y);
         }else if(x == 0 && y == 0){
-            return terrain.checkCell(1, 1) && terrain.checkCell(1, 0);
+            return terrain.checkCell(0, 1) && terrain.checkCell(1, 0);
         }else if(x == tHeight-1 && y == tWidth-1){
             return terrain.checkCell(tHeight-1, tWidth-2) && terrain.checkCell(tHeight-2, tWidth-1);
         }else if(x == tHeight-1 && y == 0){
@@ -186,6 +187,7 @@ abstract public class Specimen{
             terrain.objectMap[x][y].add(child);
             terrain.map[x][y] = child.getSymbol();
             children.add(child);
+            this.action = false;
         }
     } 
     

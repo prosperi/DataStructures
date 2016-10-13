@@ -9,3 +9,9 @@ the two excess numbers in wheat
 how the stats work exactly
 when given birth, what should be initial energy and other initial stats
 gaussian method when to use it
+
+
+what happens at max energy exactly
+std for death and median
+what f specimen has max energy and cant eat
+should it still move

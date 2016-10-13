@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.params=
+comment0.target=PopulationGenerator()
+comment1.params=mean\ deviation
+comment1.target=int\ next(int,\ int)
+numComments=2

@@ -14,6 +14,7 @@ public class World{
     public static ArrayList<Specimen> habitants;
     public static DirectionGenerator dGen;
     public static PositionGenerator pGen;
+    public static PopulationGenerator popGen;
     public static int max;
     
     public static void main(String[] args){
@@ -21,27 +22,35 @@ public class World{
         // parse arguments
         Scanner sc = new Scanner(System.in);
         dGen = new DirectionGenerator(11);
-        pGen = new PositionGenerator(31, 30, 20);
-        terrain = new Terrain(30, 20, 5);
+        popGen = new PopulationGenerator();
         habitants = new ArrayList<Specimen>();
-        max = 10000; 
+        max = Integer.parseInt(args[1]); 
         
         try(
             BufferedReader reader = new BufferedReader(new FileReader(args[0]));
         ){
             String tmp;
-            terrain.clear();
+            //terrain.clear();
             while((tmp = reader.readLine()) != null){
                 String[] arr = tmp.split(" ");
                 if((arr[0]).compareTo("species") == 0){
                     // Create new Species by parsing config.txt
-                    for(int i = 0; i < 7; i++){
+                    String[] tmpArr = arr[5].split(",");
+                    int bound = popGen.next(Integer.parseInt(tmpArr[0]), Integer.parseInt(tmpArr[1]));
+                    for(int i = 0; i < bound; i++){
                         Specimen newSpecimen = createSpecimen(arr);
                         habitants.add(newSpecimen);
                         // Append new Specimen to objectMap and map
                         terrain.objectMap[newSpecimen.getX()][newSpecimen.getY()].add(newSpecimen);
                         terrain.map[newSpecimen.getX()][newSpecimen.getY()] = newSpecimen.getSymbol();
                     }
+                }else if(arr[0].compareTo("size") == 0){
+                    int width = Integer.parseInt(arr[1]);
+                    int height = Integer.parseInt(arr[2]);
+                    pGen = new PositionGenerator(31, width, height);
+                    terrain = new Terrain(width, height, 0);
+                }else if(arr[0].compareTo("light") == 0){
+                    terrain.setLight(Integer.parseInt(arr[1]));
                 }
                     
             }
@@ -70,6 +79,7 @@ public class World{
                     for(int i = 0; i < max; i++){
                         step();
                     }
+                    System.out.println("Done");
                     // Print out remaining animals
                     for(int i = 0; i < habitants.size(); i++){
                         System.out.println(habitants.get(i).getName());
@@ -85,27 +95,47 @@ public class World{
     }
     
     public static void step(){
-        // We can use Abstract Class here which will be last part of program as debuging is easier this way
+        // substract living energy at first and allow all specimen to act
+        for(int l = 0; l < habitants.size(); l++){
+            Specimen tmp = habitants.get(l);
+            tmp.setEnergy(tmp.getEnergy() - tmp.getLivingEnergy());
+            tmp.action = true;
+        }
+        
         // Let's have a child
         ArrayList<Specimen> children = new ArrayList<Specimen>();
         for(int k= 0; k < habitants.size(); k++){
-            habitants.get(k).giveBirth(dGen, terrain, habitants, children);
-        }
-        habitants.addAll(children);
-        // Move Animals
-        for(int i = 0; i < habitants.size(); i++){
-            if(habitants.get(i) instanceof Animal){
-                ((Animal)habitants.get(i)).move(dGen, terrain, habitants);
+            Specimen tmp = habitants.get(k);
+            if(tmp.action == true){
+                tmp.giveBirth(dGen, terrain, habitants, children);
             }
         }
+
+        
         // Let's have a dinner together
         for(int j = 0; j < habitants.size(); j++){
           Specimen tmp = habitants.get(j);
-          tmp.eat(terrain, habitants);
+          if(tmp.action == true){
+              tmp.eat(terrain, habitants);
+          }
+        }   
+        
+        
+        // Move Animals
+        for(int i = 0; i < habitants.size(); i++){
+            Specimen tmp = habitants.get(i);
+            if(tmp instanceof Animal && tmp.action == true){
+                ((Animal)habitants.get(i)).move(dGen, terrain, habitants);
+            }
         }
+        
+        habitants.addAll(children);
         // Time to bury the dead
         for(int z = 0; z < habitants.size(); z++){
-           if(habitants.get(z).getEnergy() == 0) habitants.remove(z);
+           if(habitants.get(z).getEnergy() <= 0){
+               habitants.remove(z);
+               z--;
+           }
         }
         // Clear and re-Draw terrain
         // We can not modify objectMap and map as objectMap is the used in loop in method eat, 

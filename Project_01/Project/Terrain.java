@@ -44,6 +44,10 @@ public class Terrain{
         return light;
     }
     
+    public void setLight(int val){
+        light = val;
+    }
+    
     // Check if cell is taken 
     public boolean checkCell(int[] position){
         if(objectMap[position[0]][position[1]].size() == 0) return true;

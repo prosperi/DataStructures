@@ -55,9 +55,10 @@ public class Animal extends Specimen implements Movable{
         for(int i = 0; i < tmp.size(); i++){
             Specimen tmpHabitant = tmp.get(i);
             
-            if(this != tmpHabitant && getEnergy() != 0 && tmpHabitant.getEnergy() != 0 && this.getEnergySources().contains(tmpHabitant.getName())){
+            if(this != tmpHabitant && getEnergy() > 0 && tmpHabitant.getEnergy() > 0 && this.getEnergySources().contains(tmpHabitant.getName())){
                 setEnergy(getEnergy() + tmpHabitant.getEnergy());
                 tmpHabitant.die(terrain, habitants);
+                this.action = false;
             }
             
         }
@@ -122,6 +123,7 @@ public class Animal extends Specimen implements Movable{
             setX(x);
             terrain.objectMap[x][y].add(this);
             terrain.map[x][y] = this.getSymbol();
+            this.action = false;
         }
     }
     

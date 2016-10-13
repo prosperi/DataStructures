@@ -18,6 +18,7 @@ public class Plant extends Specimen {
    public void eat(Terrain terrain, ArrayList<Specimen> habitants){
        if(getEnergy()  > 0){ 
            setEnergy(getEnergy() + terrain.getLight());
+           this.action = false;
        }
    }
    
