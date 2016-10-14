@@ -1,4 +1,4 @@
 #BlueJ class context
-comment0.params=name\ type\ symbol\ energySources\ initialStats\ stats\ birthEnergy\ maxEnergy\ livingEnergy\ position
-comment0.target=Carnivore(java.lang.String,\ java.lang.String,\ char,\ java.util.ArrayList,\ java.util.ArrayList,\ java.util.ArrayList,\ double,\ double,\ double,\ int[])
+comment0.params=name\ type\ symbol\ energySources\ energy\ stats\ birthEnergy\ maxEnergy\ livingEnergy\ x\ y
+comment0.target=Carnivore(java.lang.String,\ java.lang.String,\ char,\ java.util.ArrayList,\ double,\ java.util.ArrayList,\ double,\ double,\ double,\ int,\ int)
 numComments=1

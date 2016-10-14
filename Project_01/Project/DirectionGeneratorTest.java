@@ -33,14 +33,17 @@ public class DirectionGeneratorTest
     public void testNext(){
         // Tests that next() returns LEFT, UP, RIGHT or DOWN
         Direction direction = dGen.next();
-        assertTrue("Direction generator does not work correctly", direction == Direction.LEFT || direction == Direction.RIGHT || direction == Direction.UP || direction == Direction.DOWN);
+        assertTrue("Direction generator does not work correctly", direction == Direction.LEFT || direction == Direction.RIGHT || direction == Direction.UP || direction == Direction.DOWN ||
+                                                                  direction == Direction.UP_LEFT || direction == Direction.UP_RIGHT || direction == Direction.DOWN_LEFT || direction == Direction.DOWN_RIGHT);
         
         // try with different seed
         dGen = new DirectionGenerator(31);
-        assertTrue("Direction generator does not work correctly", direction == Direction.LEFT || direction == Direction.RIGHT || direction == Direction.UP || direction == Direction.DOWN);
+        assertTrue("Direction generator does not work correctly", direction == Direction.LEFT || direction == Direction.RIGHT || direction == Direction.UP || direction == Direction.DOWN ||
+                                                                  direction == Direction.UP_LEFT || direction == Direction.UP_RIGHT || direction == Direction.DOWN_LEFT || direction == Direction.DOWN_RIGHT);
         
         dGen = new DirectionGenerator(100);
-        assertTrue("Direction generator does not work correctly", direction == Direction.LEFT || direction == Direction.RIGHT || direction == Direction.UP || direction == Direction.DOWN);
+        assertTrue("Direction generator does not work correctly", direction == Direction.LEFT || direction == Direction.RIGHT || direction == Direction.UP || direction == Direction.DOWN ||
+                                                                  direction == Direction.UP_LEFT || direction == Direction.UP_RIGHT || direction == Direction.DOWN_LEFT || direction == Direction.DOWN_RIGHT);
     
     }
 }

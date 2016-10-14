@@ -5,11 +5,11 @@ import java.util.ArrayList;
 public class Herbivore extends Animal{
   
     public Herbivore(String name, String type, char symbol, ArrayList<String> energySources,
-                   ArrayList<Double> initialStats, ArrayList<Double> stats, double birthEnergy, double maxEnergy,
-                   double livingEnergy, int[] position){
+                   double energy, ArrayList<Double> stats, double birthEnergy, double maxEnergy,
+                   double livingEnergy, int x, int y){
         
-       super(name, type, symbol, energySources, initialStats, stats, birthEnergy, maxEnergy, 
-             livingEnergy, position);
+       super(name, type, symbol, energySources, energy, stats, birthEnergy, maxEnergy, 
+             livingEnergy, x, y);
     }
     
 }

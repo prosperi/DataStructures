@@ -3,14 +3,16 @@ import java.util.ArrayList;
 /**
  * Zura Mestiashvili
  */
+
+
 public class Animal extends Specimen implements Movable{
     
     public Animal(String name, String type, char symbol, ArrayList<String> energySources,
-                   ArrayList<Double> initialStats,  ArrayList<Double> stats, double birthEnergy, double maxEnergy,
-                   double livingEnergy, int[] position){
+                   double energy,  ArrayList<Double> stats, double birthEnergy, double maxEnergy,
+                   double livingEnergy, int x, int y){
         
-       super(name, type, symbol, energySources, initialStats, stats, birthEnergy, maxEnergy, 
-             livingEnergy, position);
+       super(name, type, symbol, energySources, energy, stats, birthEnergy, maxEnergy, 
+             livingEnergy, x, y);
 
     }
     
@@ -45,6 +47,34 @@ public class Animal extends Specimen implements Movable{
                     moveHelper(dGen, terrain, habitants, getX() + 1, getY() );
                 }
                 break;
+            case UP_RIGHT:
+                if(getX() == 0 || getY() == terrain.getWidth() - 1){
+                    move(dGen, terrain, habitants);
+                }else{
+                    moveHelper(dGen, terrain, habitants, getX()-1, getY() + 1);
+                }
+                break;
+            case UP_LEFT:
+                if(getX() == 0 || getY() == 0){
+                    move(dGen, terrain, habitants);
+                }else{
+                    moveHelper(dGen, terrain, habitants, getX() - 1, getY() - 1);
+                }
+                break;
+            case DOWN_RIGHT:
+                if(getX() == terrain.getHeight() - 1 || getY() == terrain.getWidth() - 1){
+                    move(dGen, terrain, habitants);
+                }else{
+                    moveHelper(dGen, terrain, habitants, getX() + 1, getY() + 1);
+                }
+                break;
+            case DOWN_LEFT:
+                if(getX() == terrain.getHeight() - 1 || getY() == 0){
+                    move(dGen, terrain, habitants);
+                }else{
+                    moveHelper(dGen, terrain, habitants, getX() + 1, getY() - 1);
+                }
+                break;
         }
         
         
@@ -55,7 +85,7 @@ public class Animal extends Specimen implements Movable{
         for(int i = 0; i < tmp.size(); i++){
             Specimen tmpHabitant = tmp.get(i);
             
-            if(this != tmpHabitant && getEnergy() > 0 && tmpHabitant.getEnergy() > 0 && this.getEnergySources().contains(tmpHabitant.getName())){
+            if(this != tmpHabitant && getEnergy() > 0 && getEnergy() < getMaxEnergy() && tmpHabitant.getEnergy() > 0 && this.getEnergySources().contains(tmpHabitant.getName())){
                 setEnergy(getEnergy() + tmpHabitant.getEnergy());
                 tmpHabitant.die(terrain, habitants);
                 this.action = false;
@@ -63,6 +93,9 @@ public class Animal extends Specimen implements Movable{
             
         }
 
+        if(getEnergy() > getMaxEnergy()){
+           setEnergy(getMaxEnergy());
+        }
 
     }
     
@@ -75,23 +108,24 @@ public class Animal extends Specimen implements Movable{
         int tWidth = terrain.getWidth();
         
         if(x > 0 && y > 0 && x < tHeight-1 && y < tWidth-1){
-            return lockedHelper(terrain, x, y-1) && lockedHelper(terrain, x, y+1) && lockedHelper(terrain, x-1, y) && lockedHelper(terrain, x+1, y);          
+            return lockedHelper(terrain, x, y-1) && lockedHelper(terrain, x, y+1) && lockedHelper(terrain, x-1, y) && lockedHelper(terrain, x+1, y) &&
+                   lockedHelper(terrain, x-1, y-1) && lockedHelper(terrain, x+1, y+1) && lockedHelper(terrain, x-1, y+1) && lockedHelper(terrain, x+1, y-1);          
         }else if(x == 0 && y == 0){
-            return lockedHelper(terrain, 0, 1) && lockedHelper(terrain, 1, 0);
+            return lockedHelper(terrain, 0, 1) && lockedHelper(terrain, 1, 0) && lockedHelper(terrain, 1, 1);
         }else if(x == tHeight-1 && y == tWidth-1){
-            return lockedHelper(terrain, tHeight - 1, tWidth - 2) && lockedHelper(terrain, tHeight - 2, tWidth - 1);
+            return lockedHelper(terrain, tHeight - 1, tWidth - 2) && lockedHelper(terrain, tHeight - 2, tWidth - 1) && lockedHelper(terrain, tHeight-2, tWidth-2);
         }else if(x == tHeight-1 && y == 0){
-            return lockedHelper(terrain, tHeight - 1, 1) && lockedHelper(terrain, tHeight - 2, 0);
+            return lockedHelper(terrain, tHeight - 1, 1) && lockedHelper(terrain, tHeight - 2, 0) && lockedHelper(terrain, tHeight-2, 1);
         }else if(x == 0 && y == tWidth-1){
-            return lockedHelper(terrain, 0, tWidth - 2) && lockedHelper(terrain, 1, tWidth - 1);
-        }else if(x == 0 && y > 0 && y < terrain.getWidth()-1){
-            return lockedHelper(terrain, 0, y+1) && lockedHelper(terrain, 0, y-1) && lockedHelper(terrain, 1, y);
+            return lockedHelper(terrain, 0, tWidth - 2) && lockedHelper(terrain, 1, tWidth - 1) && lockedHelper(terrain, 1, tWidth-2);
+        }else if(x == 0 && y > 0 && y < tWidth-1){
+            return lockedHelper(terrain, 0, y+1) && lockedHelper(terrain, 0, y-1) && lockedHelper(terrain, 1, y) && lockedHelper(terrain, 1, y-1) && lockedHelper(terrain, 1, y+1);
         }else if(y == 0 && x > 0 && x < tHeight-1){
-            return lockedHelper(terrain, x+1, 0) && lockedHelper(terrain, x-1, 0) && lockedHelper(terrain, x, 1);
-        }else if(x == terrain.getHeight()-1 && y > 0 && y < tWidth-1){
-            return lockedHelper(terrain, x, y+1) && lockedHelper(terrain, x, y-1) && lockedHelper(terrain, x-1, y);
+            return lockedHelper(terrain, x+1, 0) && lockedHelper(terrain, x-1, 0) && lockedHelper(terrain, x, 1) && lockedHelper(terrain, x-1, 1) && lockedHelper(terrain, x+1, 1);
+        }else if(x == tHeight-1 && y > 0 && y < tWidth-1){
+            return lockedHelper(terrain, x, y+1) && lockedHelper(terrain, x, y-1) && lockedHelper(terrain, x-1, y) && lockedHelper(terrain, x-1, y-1) && lockedHelper(terrain, x-1, y+1);
         }else if(y == tWidth-1 && x > 0 && x < tHeight-1){
-            return lockedHelper(terrain, x+1, y) && lockedHelper(terrain, x-1, y) && lockedHelper(terrain, x, y-1);
+            return lockedHelper(terrain, x+1, y) && lockedHelper(terrain, x-1, y) && lockedHelper(terrain, x, y-1) && lockedHelper(terrain, x-1, y-1) && lockedHelper(terrain, x+1, y-1);
         }
         
         return false;

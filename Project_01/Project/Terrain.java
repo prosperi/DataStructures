@@ -18,7 +18,7 @@ public class Terrain{
         this.light = light;
         
         /// Create Map where each cell is # at the beginning
-        /// And create objectMap where for each cell we have ArrayList of current Specimen
+        /// And create objectMap where for each cell we have ArrayList of Specimen living in that cell
         map = new char[height][width];
         objectMap = new ArrayList[height][width];
         for(int i = 0; i < height; i++){
@@ -49,8 +49,8 @@ public class Terrain{
     }
     
     // Check if cell is taken 
-    public boolean checkCell(int[] position){
-        if(objectMap[position[0]][position[1]].size() == 0) return true;
+    public boolean checkCell(ArrayList<Integer> position){
+        if(objectMap[position.get(0)][position.get(1)].size() == 0) return true;
         else return false;
     }
     // Use overloading and use this method in Animal and Plant lockedBirth method

@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.ArrayList;
 
 /**
  * @author Zura Mestiashvili 
@@ -18,8 +19,10 @@ public class PositionGenerator{
         this.rnd = new Random(seed);
     }
     
-    public int[] initPosition(){
-        int[] position = new int[]{rnd.nextInt(height), rnd.nextInt(width)};
+    public ArrayList<Integer> initPosition(){
+        ArrayList<Integer> position = new ArrayList<Integer>();
+        position.add(rnd.nextInt(height));
+        position.add(rnd.nextInt(width));
         return position;
     }
     

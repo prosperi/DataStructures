@@ -2,5 +2,5 @@
 comment0.params=
 comment0.target=PopulationGenerator()
 comment1.params=mean\ deviation
-comment1.target=int\ next(int,\ int)
+comment1.target=int\ next(double,\ double)
 numComments=2

@@ -12,7 +12,7 @@ public class DirectionGenerator{
     
     public DirectionGenerator(long seed){
         this.seed = seed;
-        this.bound = 4;
+        this.bound = 8;
         this.rnd = new Random(seed);
     }
     
@@ -23,9 +23,14 @@ public class DirectionGenerator{
             case 1: return Direction.UP;
             case 2: return Direction.RIGHT;
             case 3: return Direction.DOWN;
+            case 4: return Direction.UP_LEFT;
+            case 5: return Direction.UP_RIGHT;
+            case 6: return Direction.DOWN_LEFT;
+            case 7: return Direction.DOWN_RIGHT;
+            
         }
         
-        return Direction.UP;
+        return Direction.LEFT;
     }
     
 }

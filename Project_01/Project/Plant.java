@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+
 /**
  * Zura Mestiashvili
  */
@@ -6,20 +7,25 @@ import java.util.ArrayList;
 public class Plant extends Specimen {
     
    public Plant(String name, String type, char symbol, ArrayList<String> energySources,
-                ArrayList<Double> initialStats, ArrayList<Double> stats, double birthEnergy, double maxEnergy,
-                double livingEnergy, int[] position){
+                double energy, ArrayList<Double> stats, double birthEnergy, double maxEnergy,
+                double livingEnergy, int x, int y){
         
-       super(name, type, symbol, energySources, initialStats, stats, birthEnergy, maxEnergy, 
-             livingEnergy, position);
+       super(name, type, symbol, energySources, energy, stats, birthEnergy, maxEnergy, 
+             livingEnergy, x, y);
              
     }
     
    
    public void eat(Terrain terrain, ArrayList<Specimen> habitants){
-       if(getEnergy()  > 0){ 
+       if(getEnergy()  > 0 && getEnergy() < getMaxEnergy()){ 
            setEnergy(getEnergy() + terrain.getLight());
            this.action = false;
        }
+       
+       if(getEnergy() > getMaxEnergy()){
+           setEnergy(getMaxEnergy());
+       }
+       
    }
    
    

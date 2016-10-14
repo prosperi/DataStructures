@@ -11,8 +11,8 @@ public class PopulationGenerator{
        rnd = new Random();
    }
     
-   public int next(int mean, int deviation){
-       return mean + (int)(rnd.nextGaussian() * deviation);
+   public int next(double mean, double deviation){
+       return (int)(mean + (rnd.nextGaussian() * deviation));
    }
     
 }

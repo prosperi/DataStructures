@@ -15,3 +15,10 @@ what happens at max energy exactly
 std for death and median
 what f specimen has max energy and cant eat
 should it still move
+
+
+Pass initial stats to children // Don't forget this
+Covert to Arrays
+Implement r - command
+Add the stop if nothing happens during last 50ish steps
+8 adjacent cells

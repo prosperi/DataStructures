@@ -16,6 +16,7 @@ public class World{
     public static PositionGenerator pGen;
     public static PopulationGenerator popGen;
     public static int max;
+    public static int stepCounter;
     
     public static void main(String[] args){
         
@@ -25,6 +26,7 @@ public class World{
         popGen = new PopulationGenerator();
         habitants = new ArrayList<Specimen>();
         max = Integer.parseInt(args[1]); 
+        stepCounter = 0;
         
         try(
             BufferedReader reader = new BufferedReader(new FileReader(args[0]));
@@ -95,6 +97,7 @@ public class World{
     }
     
     public static void step(){
+        stepCounter++; // spend some time and think about this
         // substract living energy at first and allow all specimen to act
         for(int l = 0; l < habitants.size(); l++){
             Specimen tmp = habitants.get(l);
@@ -132,9 +135,12 @@ public class World{
         habitants.addAll(children);
         // Time to bury the dead
         for(int z = 0; z < habitants.size(); z++){
-           if(habitants.get(z).getEnergy() <= 0){
+           Specimen tmp = habitants.get(z);
+           if(tmp.getEnergy() <= 0 || stepCounter >= tmp.getDeathAge()){
                habitants.remove(z);
                z--;
+           }else{
+               tmp.setAge(tmp.getAge() + 1);
            }
         }
         // Clear and re-Draw terrain
@@ -151,13 +157,13 @@ public class World{
         for(int i = 0; i < tmp_01.length; i++){
             ls_01.add(tmp_01[i]);
         }
-        // Build Initial Stats array
+        // Build Initial Stats array /// NOT NEEDED ANYMORE
         String[] tmp_02 = arr[5].split(",");
         ArrayList<Double> ls_02 = new ArrayList<Double>();
         for(int i = 0; i < tmp_02.length; i++){
             ls_02.add(Double.parseDouble(tmp_02[i]));
         }
-        // Build stats array
+        // Build stats array 
         String[] tmp_03 = arr[6].split(",");
         ArrayList<Double> ls_03 = new ArrayList<Double>();
         for(int i = 0; i < tmp_03.length; i++){
@@ -166,16 +172,16 @@ public class World{
         
         // Generate position, so that two specimen not occupy same cell 
         // in the beginning of simulation
-        int[] position;
+        ArrayList<Integer> position;
         do{
             position = pGen.initPosition();
         }while(terrain.checkCell(position) == false);
         
         
         if(arr[2].compareTo("herbivore") == 0 || arr[2].compareTo("carnivore") == 0 || arr[2].compareTo("omnivore") == 0 || arr[2].compareTo("animal") == 0)
-            return new Animal(arr[1], arr[2], arr[3].charAt(0), ls_01, ls_02, ls_03, Double.parseDouble(arr[7]), Double.parseDouble(arr[8]), Double.parseDouble(arr[9]),  position);
+            return new Animal(arr[1], arr[2], arr[3].charAt(0), ls_01, ls_02.get(2), ls_03, Double.parseDouble(arr[7]), Double.parseDouble(arr[8]), Double.parseDouble(arr[9]),  position.get(0), position.get(1));
         else
-            return new Plant(arr[1], arr[2], arr[3].charAt(0), ls_01, ls_02, ls_03, Double.parseDouble(arr[7]), Double.parseDouble(arr[8]), Double.parseDouble(arr[9]),  position);
+            return new Plant(arr[1], arr[2], arr[3].charAt(0), ls_01, ls_02.get(2), ls_03, Double.parseDouble(arr[7]), Double.parseDouble(arr[8]), Double.parseDouble(arr[9]),  position.get(0), position.get(1));
     }
         
    
