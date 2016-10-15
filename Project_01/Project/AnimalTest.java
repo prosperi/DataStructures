@@ -53,13 +53,16 @@ public class AnimalTest{
     {
     }
     
+    /**
+     * @desc check that eat() works correctly. 
+     */
     @Test
     public void testEat(){
         ArrayList<Specimen> habitants = new ArrayList<Specimen>();
         Terrain terrain = new Terrain(5, 5, 10);
         
-        terrain.objectMap[1][1].add(plant);
-        terrain.objectMap[1][1].add(animal);
+        terrain.objectMap.get(1).get(1).add(plant);
+        terrain.objectMap.get(1).get(1).add(animal);
         
         animal.eat(terrain, habitants);
         assertTrue("Animal could not eat", animal.getEnergy() == 40);
@@ -68,11 +71,11 @@ public class AnimalTest{
         animal.eat(terrain, habitants);
         assertTrue("Animal could not eat or problem with max energy", animal.getEnergy() == 50);
         
-        terrain.objectMap[1][1].remove(plant);
+        terrain.objectMap.get(1).get(1).remove(plant);
         animal.setEnergy(10);
         strangePlant.setX(1);
         strangePlant.setY(1);
-        terrain.objectMap[1][1].add(strangePlant);
+        terrain.objectMap.get(1).get(1).add(strangePlant);
         
         animal.eat(terrain, habitants);
         assertTrue("Animal could not eat or problem with max energy", animal.getEnergy() == 10);
@@ -82,6 +85,9 @@ public class AnimalTest{
         assertTrue("Animal should dies as its energy is 0, it can not eat anymore", animal.getEnergy() == 0);
     }
     
+    /**
+     * @desc check that die() works correctly. 
+     */
     @Test
     public void testDie(){
         ArrayList<Specimen> habitants = new ArrayList<Specimen>();
@@ -90,16 +96,18 @@ public class AnimalTest{
         assertTrue("", animal.getEnergy() == 0);
     }
    
-    
+    /**
+     * @desc check that locked() works correctly. 
+     */
     @Test
     public void testLocked(){
         for(int i = 0; i < terrain.getHeight(); i++){
             for(int j = 0; j < terrain.getWidth(); j++){
-                terrain.objectMap[i][j].add(bulkDog(i, j));
+                terrain.objectMap.get(i).get(j).add(bulkDog(i, j));
             }
         }
         
-        
+        // use helper methods that test for each side and corner of board individually
         testUpLeftCorner();
         testUpRightCorner();
         testDownLeftCorner();
@@ -111,52 +119,60 @@ public class AnimalTest{
         testLeftSide();        
     }
     
-    
+    /**
+     * @desc check that moveHelper() works correctly. 
+     */
     @Test
     public void testMoveHelper(){
         
-        terrain.objectMap[1][1].add(animal);
+        terrain.objectMap.get(1).get(1).add(animal);
         
-        terrain.objectMap[0][0].add(bulkDog(0, 0));
-        terrain.objectMap[0][1].add(bulkDog(0, 1));
-        terrain.objectMap[0][2].add(bulkDog(0, 2));
-        terrain.objectMap[1][0].add(bulkDog(1, 0));
-        terrain.objectMap[1][2].add(bulkDog(1, 2));
-        terrain.objectMap[2][0].add(bulkDog(2, 0));
-        terrain.objectMap[2][1].add(bulkDog(2, 1));
-        terrain.objectMap[2][2].add(bulkDog(2, 2));
+        terrain.objectMap.get(0).get(0).add(bulkDog(0, 0));
+        terrain.objectMap.get(0).get(1).add(bulkDog(0, 1));
+        terrain.objectMap.get(0).get(2).add(bulkDog(0, 2));
+        terrain.objectMap.get(1).get(0).add(bulkDog(1, 0));
+        terrain.objectMap.get(1).get(2).add(bulkDog(1, 2));
+        terrain.objectMap.get(2).get(0).add(bulkDog(2, 0));
+        terrain.objectMap.get(2).get(1).add(bulkDog(2, 1));
+        terrain.objectMap.get(2).get(2).add(bulkDog(2, 2));
         
         animal.moveHelper(dGen, terrain, habitants, 0, 0);
         assertTrue("Animal moved when it should not have moved", animal.getX() == 1 && animal.getY() == 1);
         
-        terrain.objectMap[0][0].clear();
+        terrain.objectMap.get(0).get(0).clear();
         animal.moveHelper(dGen, terrain, habitants, 2, 0);
         assertTrue("Animal did not move when it should have moved", animal.getX() == 0 && animal.getY() == 0);
         
         animal.moveHelper(dGen, terrain, habitants, 1, 1);
         assertTrue("Animal did not move when it should have moved", animal.getX() == 1 && animal.getY() == 1);
-        assertTrue("Animal did not move when it should have moved", terrain.objectMap[0][0].size() == 0);
+        assertTrue("Animal did not move when it should have moved", terrain.objectMap.get(0).get(0).size() == 0);
         
     }
     
+    /**
+     * @desc check that lockedHelper() works correctly. 
+     */
     @Test
     public void testLockedHelper(){
-        terrain.objectMap[0][0].add(bulkDog(0, 0));
+        terrain.objectMap.get(0).get(0).add(bulkDog(0, 0));
         
         assertTrue("Should be true as animal can not move to [0, 0] position", animal.lockedHelper(terrain, 0, 0) == true);
         
-        terrain.objectMap[0][1].add(bulkDog(0, 1));
-        terrain.objectMap[0][1].add(bulkBanana(0, 1));
+        terrain.objectMap.get(0).get(1).add(bulkDog(0, 1));
+        terrain.objectMap.get(0).get(1).add(bulkBanana(0, 1));
         assertTrue("Should be true as animal can not move to [0, 1] position", animal.lockedHelper(terrain, 0, 1) == true);
         
-        terrain.objectMap[0][2].add(bulkBanana(0, 2));
+        terrain.objectMap.get(0).get(2).add(bulkBanana(0, 2));
         assertTrue("Should be false as animal can move to [0, 2], where only plant lives", animal.lockedHelper(terrain, 0, 2) == false);
         
-        terrain.objectMap[1][0].add(bulkChicken(1, 0));
+        terrain.objectMap.get(1).get(0).add(bulkChicken(1, 0));
         assertTrue("Should be false as animal can move to [1, 0], where only chicken lives", animal.lockedHelper(terrain, 1, 0) == false);
         
     }
     
+    /**
+     * @desc method that provides bulk animals, in that case dogs
+     */
     public Animal bulkDog(int x, int y){
         ArrayList<String> energySources = new ArrayList<String>();
         energySources.add("bones");
@@ -167,6 +183,9 @@ public class AnimalTest{
         return new Animal("dog", "herbivore", 'd', energySources, 20.0, stats, 30, 50, 20, x, y);
     }
     
+    /**
+     * @desc method that provides bulk specimen - chicken.
+     */
     public Animal bulkChicken(int x, int y){
         ArrayList<String> energySources = new ArrayList<String>();
         energySources.add("bones");
@@ -177,6 +196,9 @@ public class AnimalTest{
         return new Animal("chicken", "herbivore", 'd', energySources, 20.0, stats, 30, 50, 20, x, y);
     }
     
+    /**
+     * @desc method that provides bulk bananas
+     */
     public Plant bulkBanana(int x, int y){
         ArrayList<String> energySources = new ArrayList<String>();
         energySources.add("bones");
@@ -191,240 +213,240 @@ public class AnimalTest{
     public void testUpSide(){
         animal.setX(0);
         animal.setY(1);
-        terrain.objectMap[0][1].set(0, animal);
+        terrain.objectMap.get(0).get(1).set(0, animal);
         assertTrue("Returned not Locked while specimen is locked", animal.locked(terrain) == true);
         
-        terrain.objectMap[0][0].clear();
+        terrain.objectMap.get(0).get(0).clear();
         assertTrue("Could not recognize UP_LEFT position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[0][0].add(bulkDog(0, 0));
+        terrain.objectMap.get(0).get(0).add(bulkDog(0, 0));
         
-        terrain.objectMap[1][0].clear();
+        terrain.objectMap.get(1).get(0).clear();
         assertTrue("Could not recognize UP position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[1][0].add(bulkDog(1, 0));
+        terrain.objectMap.get(1).get(0).add(bulkDog(1, 0));
         
-        terrain.objectMap[1][1].clear();
+        terrain.objectMap.get(1).get(1).clear();
         assertTrue("Could not recognize UP_RIGHT position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[1][1].add(bulkDog(1, 1));
+        terrain.objectMap.get(1).get(1).add(bulkDog(1, 1));
         
-        terrain.objectMap[1][2].clear();
+        terrain.objectMap.get(1).get(2).clear();
         assertTrue("Could not recognize UP_RIGHT position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[1][2].add(bulkDog(1, 2));
+        terrain.objectMap.get(1).get(2).add(bulkDog(1, 2));
         
-        terrain.objectMap[0][2].clear();
+        terrain.objectMap.get(0).get(2).clear();
         assertTrue("Could not recognize UP_RIGHT position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[0][2].add(bulkDog(0, 2));
+        terrain.objectMap.get(0).get(2).add(bulkDog(0, 2));
         
-        terrain.objectMap[0][1].set(0, bulkDog(0, 1));
+        terrain.objectMap.get(0).get(1).set(0, bulkDog(0, 1));
     }
     
     public void testDownSide(){
         animal.setX(terrain.getHeight() - 1);
         animal.setY(1);
-        terrain.objectMap[terrain.getHeight() - 1][1].set(0, animal);
+        terrain.objectMap.get(terrain.getHeight() - 1).get(1).set(0, animal);
         assertTrue("Returned not Locked while specimen is locked", animal.locked(terrain) == true);
         
-        terrain.objectMap[terrain.getHeight() - 1][0].clear();
+        terrain.objectMap.get(terrain.getHeight() - 1).get(0).clear();
         assertTrue("Could not recognize UP_LEFT position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[terrain.getHeight() - 1][0].add(bulkDog(terrain.getHeight() - 1, 0));
+        terrain.objectMap.get(terrain.getHeight() - 1).get(0).add(bulkDog(terrain.getHeight() - 1, 0));
         
-        terrain.objectMap[terrain.getHeight() - 1][2].clear();
+        terrain.objectMap.get(terrain.getHeight() - 1).get(2).clear();
         assertTrue("Could not recognize UP position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[terrain.getHeight() - 1][2].add(bulkDog(terrain.getHeight() - 1, 2));
+        terrain.objectMap.get(terrain.getHeight() - 1).get(2).add(bulkDog(terrain.getHeight() - 1, 2));
         
-        terrain.objectMap[terrain.getHeight() - 2][1].clear();
+        terrain.objectMap.get(terrain.getHeight() - 2).get(1).clear();
         assertTrue("Could not recognize UP_RIGHT position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[terrain.getHeight() - 2][1].add(bulkDog(terrain.getHeight() - 2, 1));
+        terrain.objectMap.get(terrain.getHeight() - 2).get(1).add(bulkDog(terrain.getHeight() - 2, 1));
         
-        terrain.objectMap[terrain.getHeight() - 2][2].clear();
+        terrain.objectMap.get(terrain.getHeight() - 2).get(2).clear();
         assertTrue("Could not recognize UP_RIGHT position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[terrain.getHeight() - 2][2].add(bulkDog(terrain.getHeight() - 2, 2));
+        terrain.objectMap.get(terrain.getHeight() - 2).get(2).add(bulkDog(terrain.getHeight() - 2, 2));
         
-        terrain.objectMap[terrain.getHeight() - 2][0].clear();
+        terrain.objectMap.get(terrain.getHeight() - 2).get(0).clear();
         assertTrue("Could not recognize UP_RIGHT position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[terrain.getHeight() - 2][0].add(bulkDog(terrain.getHeight() - 2, 0));
+        terrain.objectMap.get(terrain.getHeight() - 2).get(0).add(bulkDog(terrain.getHeight() - 2, 0));
         
-        terrain.objectMap[terrain.getHeight() - 1][1].set(0, bulkDog(terrain.getHeight() - 1, 1));
+        terrain.objectMap.get(terrain.getHeight() - 1).get(1).set(0, bulkDog(terrain.getHeight() - 1, 1));
     }
     
     public void testLeftSide(){
         animal.setX(1);
         animal.setY(0);
-        terrain.objectMap[1][0].set(0, animal);
+        terrain.objectMap.get(1).get(0).set(0, animal);
         assertTrue("Returned not Locked while specimen is locked", animal.locked(terrain) == true);
         
-        terrain.objectMap[0][0].clear();
+        terrain.objectMap.get(0).get(0).clear();
         assertTrue("Could not recognize UP_LEFT position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[0][0].add(bulkDog(0, 0));
-        
-        terrain.objectMap[0][1].clear();
+        terrain.objectMap.get(0).get(0).add(bulkDog(0, 0));
+       
+        terrain.objectMap.get(0).get(1).clear();
         assertTrue("Could not recognize UP position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[0][1].add(bulkDog(0, 2));
+        terrain.objectMap.get(0).get(1).add(bulkDog(0, 2));
         
-        terrain.objectMap[1][1].clear();
+        terrain.objectMap.get(1).get(1).clear();
         assertTrue("Could not recognize UP_RIGHT position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[1][1].add(bulkDog(1, 1));
+        terrain.objectMap.get(1).get(1).add(bulkDog(1, 1));
         
-        terrain.objectMap[2][1].clear();
+        terrain.objectMap.get(2).get(1).clear();
         assertTrue("Could not recognize UP_RIGHT position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[2][1].add(bulkDog(2, 1));
+        terrain.objectMap.get(2).get(1).add(bulkDog(2, 1));
         
-        terrain.objectMap[2][0].clear();
+        terrain.objectMap.get(2).get(0).clear();
         assertTrue("Could not recognize UP_RIGHT position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[2][0].add(bulkDog(2, 0));
+        terrain.objectMap.get(2).get(0).add(bulkDog(2, 0));
         
-        terrain.objectMap[1][0].set(0, bulkDog(1, 0));
+        terrain.objectMap.get(1).get(0).set(0, bulkDog(1, 0));
     }
     
     public void testRightSide(){
         animal.setX(1);
         animal.setY(terrain.getWidth() - 1);
-        terrain.objectMap[1][terrain.getWidth() - 1].set(0, animal);
+        terrain.objectMap.get(1).get(terrain.getWidth() - 1).set(0, animal);
         assertTrue("Returned not Locked while specimen is locked", animal.locked(terrain) == true);
         
-        terrain.objectMap[0][terrain.getWidth() - 1].clear();
+        terrain.objectMap.get(0).get(terrain.getWidth() - 1).clear();
         assertTrue("Could not recognize UP_LEFT position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[0][terrain.getWidth() - 1].add(bulkDog(0, terrain.getWidth() - 1));
+        terrain.objectMap.get(0).get(terrain.getWidth() - 1).add(bulkDog(0, terrain.getWidth() - 1));
         
-        terrain.objectMap[2][terrain.getWidth() - 1].clear();
+        terrain.objectMap.get(2).get(terrain.getWidth() - 1).clear();
         assertTrue("Could not recognize UP position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[2][terrain.getWidth() - 1].add(bulkDog(2, terrain.getWidth() - 1));
+        terrain.objectMap.get(2).get(terrain.getWidth() - 1).add(bulkDog(2, terrain.getWidth() - 1));
         
-        terrain.objectMap[1][terrain.getWidth() - 2].clear();
+        terrain.objectMap.get(1).get(terrain.getWidth() - 2).clear();
         assertTrue("Could not recognize UP_RIGHT position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[1][terrain.getWidth() - 2].add(bulkDog(1, terrain.getWidth() - 2));
+        terrain.objectMap.get(1).get(terrain.getWidth() - 2).add(bulkDog(1, terrain.getWidth() - 2));
         
-        terrain.objectMap[2][terrain.getWidth() - 2].clear();
+        terrain.objectMap.get(2).get(terrain.getWidth() - 2).clear();
         assertTrue("Could not recognize UP_RIGHT position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[2][terrain.getWidth() - 2].add(bulkDog(2, terrain.getWidth() - 2));
+        terrain.objectMap.get(2).get(terrain.getWidth() - 2).add(bulkDog(2, terrain.getWidth() - 2));
         
-        terrain.objectMap[0][terrain.getWidth() - 2].clear();
+        terrain.objectMap.get(0).get(terrain.getWidth() - 2).clear();
         assertTrue("Could not recognize UP_RIGHT position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[0][terrain.getWidth() - 2].add(bulkDog(0, terrain.getWidth() - 2));
+        terrain.objectMap.get(0).get(terrain.getWidth() - 2).add(bulkDog(0, terrain.getWidth() - 2));
         
-        terrain.objectMap[1][terrain.getWidth() - 1].set(0, bulkDog(1, terrain.getWidth() - 1));
+        terrain.objectMap.get(1).get(terrain.getWidth() - 1).set(0, bulkDog(1, terrain.getWidth() - 1));
     }
     
     public void testUpLeftCorner(){
         animal.setX(0);
         animal.setY(0);
-        terrain.objectMap[0][0].set(0, animal);
+        terrain.objectMap.get(0).get(0).set(0, animal);
         assertTrue("Returned not Locked while specimen is locked", animal.locked(terrain) == true);
         
-        terrain.objectMap[0][1].clear();
+        terrain.objectMap.get(0).get(1).clear();
         assertTrue("Could not recognize UP_LEFT position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[0][1].add(bulkDog(0, 1));
+        terrain.objectMap.get(0).get(1).add(bulkDog(0, 1));
         
-        terrain.objectMap[1][1].clear();
+        terrain.objectMap.get(1).get(1).clear();
         assertTrue("Could not recognize UP position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[1][1].add(bulkDog(1, 1));
+        terrain.objectMap.get(1).get(1).add(bulkDog(1, 1));
         
-        terrain.objectMap[1][0].clear();
+        terrain.objectMap.get(1).get(0).clear();
         assertTrue("Could not recognize UP_RIGHT position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[1][0].add(bulkDog(1, 0));
+        terrain.objectMap.get(1).get(0).add(bulkDog(1, 0));
         
-        terrain.objectMap[0][0].set(0, bulkDog(0, 0));
+        terrain.objectMap.get(0).get(0).set(0, bulkDog(0, 0));
     }
     
     public void testUpRightCorner(){
         animal.setX(0);
         animal.setY(terrain.getWidth() - 1);
-        terrain.objectMap[0][terrain.getWidth() - 1].set(0, animal);
+        terrain.objectMap.get(0).get(terrain.getWidth() - 1).set(0, animal);
         assertTrue("Returned not Locked while specimen is locked", animal.locked(terrain) == true);
         
-        terrain.objectMap[0][terrain.getWidth() - 2].clear();
+        terrain.objectMap.get(0).get(terrain.getWidth() - 2).clear();
         assertTrue("Could not recognize UP_LEFT position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[0][terrain.getWidth() - 2].add(bulkDog(0, terrain.getWidth() - 2));
+        terrain.objectMap.get(0).get(terrain.getWidth() - 2).add(bulkDog(0, terrain.getWidth() - 2));
         
-        terrain.objectMap[1][terrain.getWidth() - 1].clear();
+        terrain.objectMap.get(1).get(terrain.getWidth() - 1).clear();
         assertTrue("Could not recognize UP position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[1][terrain.getWidth() - 1].add(bulkDog(1, terrain.getWidth() - 1));
+        terrain.objectMap.get(1).get(terrain.getWidth() - 1).add(bulkDog(1, terrain.getWidth() - 1));
         
-        terrain.objectMap[1][terrain.getWidth() - 2].clear();
+        terrain.objectMap.get(1).get(terrain.getWidth() - 2).clear();
         assertTrue("Could not recognize UP_RIGHT position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[1][terrain.getWidth() - 2].add(bulkDog(1, terrain.getWidth() - 2));
+        terrain.objectMap.get(1).get(terrain.getWidth() - 2).add(bulkDog(1, terrain.getWidth() - 2));
         
-        terrain.objectMap[0][terrain.getWidth() - 1].set(0, bulkDog(0, terrain.getWidth() - 1));
+        terrain.objectMap.get(0).get(terrain.getWidth() - 1).set(0, bulkDog(0, terrain.getWidth() - 1));
     }
     
     public void testDownLeftCorner(){
         animal.setX(terrain.getHeight() - 1);
         animal.setY(0);
-        terrain.objectMap[terrain.getHeight() - 1][0].set(0, animal);
+        terrain.objectMap.get(terrain.getHeight() - 1).get(0).set(0, animal);
         assertTrue("Returned not Locked while specimen is locked", animal.locked(terrain) == true);
         
-        terrain.objectMap[terrain.getHeight() - 1][1].clear();
+        terrain.objectMap.get(terrain.getHeight() - 1).get(1).clear();
         assertTrue("Could not recognize UP_LEFT position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[terrain.getHeight() - 1][1].add(bulkDog(terrain.getHeight() - 1, 1));
+        terrain.objectMap.get(terrain.getHeight() - 1).get(1).add(bulkDog(terrain.getHeight() - 1, 1));
         
-        terrain.objectMap[terrain.getHeight() - 2][0].clear();
+        terrain.objectMap.get(terrain.getHeight() - 2).get(0).clear();
         assertTrue("Could not recognize UP position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[terrain.getHeight() - 2][0].add(bulkDog(terrain.getHeight() - 2, 0));
+        terrain.objectMap.get(terrain.getHeight() - 2).get(0).add(bulkDog(terrain.getHeight() - 2, 0));
         
-        terrain.objectMap[terrain.getHeight() - 2][1].clear();
+        terrain.objectMap.get(terrain.getHeight() - 2).get(1).clear();
         assertTrue("Could not recognize UP_RIGHT position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[terrain.getHeight() - 2][1].add(bulkDog(terrain.getHeight() - 2, 1));
+        terrain.objectMap.get(terrain.getHeight() - 2).get(1).add(bulkDog(terrain.getHeight() - 2, 1));
         
-        terrain.objectMap[terrain.getHeight() - 1][0].set(0, bulkDog(terrain.getHeight() - 1, 0));
+        terrain.objectMap.get(terrain.getHeight() - 1).get(0).set(0, bulkDog(terrain.getHeight() - 1, 0));
     }
     
     public void testDownRightCorner(){
         animal.setX(terrain.getHeight() - 1);
         animal.setY(terrain.getWidth() - 1);
-        terrain.objectMap[terrain.getHeight() - 1][terrain.getWidth() - 1].set(0, animal);
+        terrain.objectMap.get(terrain.getHeight() - 1).get(terrain.getWidth() - 1).set(0, animal);
         assertTrue("Returned not Locked while specimen is locked", animal.locked(terrain) == true);
         
-        terrain.objectMap[terrain.getHeight() - 2][terrain.getWidth() - 2].clear();
+        terrain.objectMap.get(terrain.getHeight() - 2).get(terrain.getWidth() - 2).clear();
         assertTrue("Could not recognize UP_LEFT position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[terrain.getHeight() - 2][terrain.getWidth() - 2].add(bulkDog(terrain.getHeight() - 2, terrain.getWidth() - 2));
+        terrain.objectMap.get(terrain.getHeight() - 2).get(terrain.getWidth() - 2).add(bulkDog(terrain.getHeight() - 2, terrain.getWidth() - 2));
         
-        terrain.objectMap[terrain.getHeight() - 2][terrain.getWidth() - 1].clear();
+        terrain.objectMap.get(terrain.getHeight() - 2).get(terrain.getWidth() - 1).clear();
         assertTrue("Could not recognize UP position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[terrain.getHeight() - 2][terrain.getWidth() - 1].add(bulkDog(terrain.getHeight() - 2, terrain.getWidth() - 1));
+        terrain.objectMap.get(terrain.getHeight() - 2).get(terrain.getWidth() - 1).add(bulkDog(terrain.getHeight() - 2, terrain.getWidth() - 1));
         
-        terrain.objectMap[terrain.getHeight() - 1][terrain.getWidth() - 2].clear();
+        terrain.objectMap.get(terrain.getHeight() - 1).get(terrain.getWidth() - 2).clear();
         assertTrue("Could not recognize UP_RIGHT position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[terrain.getHeight() - 1][terrain.getWidth() - 2].add(bulkDog(terrain.getHeight() - 1, terrain.getWidth() - 2));
+        terrain.objectMap.get(terrain.getHeight() - 1).get(terrain.getWidth() - 2).add(bulkDog(terrain.getHeight() - 1, terrain.getWidth() - 2));
         
-        terrain.objectMap[terrain.getHeight() - 1][terrain.getWidth() - 1].set(0, bulkDog(terrain.getHeight() - 1, terrain.getWidth() - 1));
+        terrain.objectMap.get(terrain.getHeight() - 1).get(terrain.getWidth() - 1).set(0, bulkDog(terrain.getHeight() - 1, terrain.getWidth() - 1));
     }
     
     public void testCenter(){
-        terrain.objectMap[1][1].set(0, animal);
+        terrain.objectMap.get(1).get(1).set(0, animal);
         assertTrue("Returned not Locked while specimen is locked", animal.locked(terrain) == true);
         
-        terrain.objectMap[0][0].clear();
+        terrain.objectMap.get(0).get(0).clear();
         assertTrue("Could not recognize UP_LEFT position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[0][0].add(bulkDog(0, 0));
+        terrain.objectMap.get(0).get(0).add(bulkDog(0, 0));
         
-        terrain.objectMap[0][1].clear();
+        terrain.objectMap.get(0).get(1).clear();
         assertTrue("Could not recognize UP position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[0][1].add(bulkDog(0, 1));
+        terrain.objectMap.get(0).get(1).add(bulkDog(0, 1));
         
-        terrain.objectMap[0][2].clear();
+        terrain.objectMap.get(0).get(2).clear();
         assertTrue("Could not recognize UP_RIGHT position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[0][2].add(bulkDog(0, 2));
+        terrain.objectMap.get(0).get(2).add(bulkDog(0, 2));
         
-        terrain.objectMap[1][0].clear();
+        terrain.objectMap.get(1).get(0).clear();
         assertTrue("Could not recognize LEFT position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[1][0].add(bulkDog(1, 0));
+        terrain.objectMap.get(1).get(0).add(bulkDog(1, 0));
         
-        terrain.objectMap[1][2].clear();
+        terrain.objectMap.get(1).get(2).clear();
         assertTrue("Could not recognize RIGHT position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[1][2].add(bulkDog(1, 2));
+        terrain.objectMap.get(1).get(2).add(bulkDog(1, 2));
         
-        terrain.objectMap[2][0].clear();
+        terrain.objectMap.get(2).get(0).clear();
         assertTrue("Could not recognize DOWN_LEFT position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[2][0].add(bulkDog(2, 0));
+        terrain.objectMap.get(2).get(0).add(bulkDog(2, 0));
         
-        terrain.objectMap[2][1].clear();
+        terrain.objectMap.get(2).get(1).clear();
         assertTrue("Could not recognize DOWN position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[2][1].add(bulkDog(2, 1));
+        terrain.objectMap.get(2).get(1).add(bulkDog(2, 1));
         
-        terrain.objectMap[2][2].clear();
+        terrain.objectMap.get(2).get(2).clear();
         assertTrue("Could not recognize DOWN_RIGHT position and returned locked", animal.locked(terrain) == false);
-        terrain.objectMap[2][2].add(bulkDog(2, 2));
+        terrain.objectMap.get(2).get(2).add(bulkDog(2, 2));
         
-        terrain.objectMap[1][1].set(0, bulkDog(1, 1));
+        terrain.objectMap.get(1).get(1).set(0, bulkDog(1, 1));
     }
     
     

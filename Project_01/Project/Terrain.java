@@ -13,8 +13,8 @@ public class Terrain{
     private int width;
     private int height;
     private double light;
-    public char[][] map;
-    public ArrayList<Specimen>[][] objectMap;
+    public ArrayList<ArrayList<Character>> map;
+    public ArrayList<ArrayList<ArrayList<Specimen>>> objectMap;
     
     
     public Terrain(int width, int height, double light){
@@ -22,14 +22,16 @@ public class Terrain{
         this.height = height;
         this.light = light;
         
-        /// Create Map where each cell is # at the beginning
-        /// And create objectMap where for each cell we have ArrayList of Specimen living in that cell
-        map = new char[height][width];
-        objectMap = new ArrayList[height][width];
+        // Create Map where each cell is # at the beginning
+        // And create objectMap where for each cell we have ArrayList of Specimen living in that cell
+        map = new ArrayList<ArrayList<Character>>();
+        objectMap = new ArrayList<ArrayList<ArrayList<Specimen>>>();
         for(int i = 0; i < height; i++){
+            map.add(new ArrayList<Character>());
+            objectMap.add(new ArrayList<ArrayList<Specimen>>());
             for(int j = 0; j < width; j++){
-                map[i][j] = '#';
-                objectMap[i][j] = new ArrayList<Specimen>();
+                map.get(i).add('#');
+                objectMap.get(i).add(new ArrayList<Specimen>());
             }
         }     
 
@@ -38,63 +40,101 @@ public class Terrain{
     
    
     
-    // Check if cell is taken  ---> should delete this one
+    /**
+      * @desc checks if cell is empty(nobody lives there)
+      * @param int x - x coordinate
+      * @param int y - y coordinate
+      * @return boolean - false if cell is not empty, true if nobody lives there
+    */
     public boolean checkCell(ArrayList<Integer> position){
-        if(objectMap[position.get(0)][position.get(1)].size() == 0) return true;
+        if(objectMap.get(position.get(0)).get(position.get(1)).size() == 0) return true;
         else return false;
     }
-    // Use overloading and use this method in Animal and Plant lockedBirth method
+    
+    /**
+      * @desc checks if cell is empty(nobody lives there)
+      * @param int x - x coordinate
+      * @param int y - y coordinate
+      * @return boolean - false if cell is empty, true if at 
+      * least one specimen lives there
+    */
     public boolean checkCell(int x, int y){
-        if(objectMap[x][y].size() == 0) return false;
+        if(objectMap.get(x).get(y).size() == 0) return false;
         else return true;
     }
     
-    // Add Habitants or just re-Draw the map and objectMap
+    /**
+      * @desc add Habitants to the objectMap and update the 
+      * map(representing positions of each specimen)
+      * @param ArrayList<Specimen> habitants - container of all 
+      * the habitants in our world.
+    */
     public void addHabitants(ArrayList<Specimen> habitants){
         for(int i = 0; i < habitants.size(); i++){
             Specimen habitant = habitants.get(i);
             int x = habitant.getX();
             int y = habitant.getY();
-            map[x][y] = habitant.getSymbol();
-            objectMap[x][y].add(habitant);
+            map.get(x).set(y, habitant.getSymbol());
+            objectMap.get(x).get(y).add(habitant);
         }
        
     }
     
-    // Clear the terrain to get ready for redraw
+    /**
+      * @desc clear the map and objectMap containers and get ready
+      * for drawing next step results
+    */
     public void clear(){
         for(int i = 0; i < height; i++){
             for(int j = 0; j < width; j++){
-                map[i][j] = '#';
-                objectMap[i][j] = new ArrayList<Specimen>();
+                map.get(i).set(j, '#');
+                objectMap.get(i).set(j, new ArrayList<Specimen>());
             }
         }
     }
     
-    // Print current state, each empty cell is marked with #, while others 
-    // are marked with Specimen's own symbol
+    /**
+      * @desc print whole map, using '#' for marking empty cells
+      * and using specimen's own symbols to represent specimen
+    */
     public void printMap(){
         for(int i = 0; i < height; i++){
             for(int j = 0; j < width; j++){
-                System.out.print(map[i][j] +" " );
+                System.out.print(map.get(i).get(j) + " " );
             }
             System.out.println();
         }     
     }
     
-    
+    /**
+      * @desc getter for terrain width
+      * @return int - width of terrain
+    */
     public int getWidth(){
         return width;
     }
     
+    /**
+      * @desc getter for terrain height
+      * @return int - height of terrain
+    */
     public int getHeight(){
         return height;
     }
     
+    /**
+      * @desc getter for terrain light
+      * @return double - light of terrain, which 
+      * is food for plants
+    */
     public double getLight(){
         return light;
     }
     
+    /**
+      * @desc setter for terrain light
+      * @param int val - new value for light
+    */
     public void setLight(int val){
         light = val;
     }

@@ -19,13 +19,24 @@ public class Plant extends Specimen {
              
     }
     
-   
+   /**
+      * @desc plant's eating functionality - this method
+      * allows plant to eat food and increase energy, if it's 
+      * still alive(energy > 0) and does not already have max 
+      * energy, if adding food energy gives plant more energy 
+      * than max energy, specimen's energy is still left to max
+      * energy.
+      * @param Terrain terrain - our board of specimen
+      * @param ArrayList<Specimen> habitants - list of all the habitants
+    */
    public void eat(Terrain terrain, ArrayList<Specimen> habitants){
+       // eat if specimen is alive and eater's energy is less than max energy
        if(getEnergy()  > 0 && getEnergy() < getMaxEnergy()){ 
            setEnergy(getEnergy() + terrain.getLight());
            this.action = false;
        }
        
+       // check if absorbed more than max energy and if so reduce energy level to max Energy
        if(getEnergy() > getMaxEnergy()){
            setEnergy(getMaxEnergy());
        }

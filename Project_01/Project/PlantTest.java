@@ -46,6 +46,9 @@ public class PlantTest{
     {
     }
     
+    /**
+     * @desc check that eat() works correctly. 
+     */    
     @Test
     public void testEat(){
         ArrayList<Specimen> habitants = new ArrayList<Specimen>();
@@ -63,6 +66,9 @@ public class PlantTest{
         assertTrue("Plant should dies as its energy is 0, it can not eat anymore", plant.getEnergy() == 0);
     }
     
+    /**
+     * @desc check that die() works correctly. 
+     */
     @Test
     public void testDie(){
         ArrayList<Specimen> habitants = new ArrayList<Specimen>();
@@ -71,9 +77,12 @@ public class PlantTest{
         assertTrue("", plant.getEnergy() == 0);
     }
     
+    /**
+     * @desc check that giveBirth() works correctly. 
+     */
     @Test
     public void testGiveBirth(){
-        terrain.objectMap[1][1].add(plant);
+        terrain.objectMap.get(1).get(1).add(plant);
         plant.giveBirth(dGen, terrain, habitants, children);
         assertTrue("Gave birth to child without enough birth energy", children.size() == 0);
         
@@ -92,248 +101,248 @@ public class PlantTest{
         assertTrue("could not pass properties correctly to child", child.getMaxEnergy() == plant.getMaxEnergy());
         assertTrue("could not pass properties correctly to child", child.getLivingEnergy() == plant.getLivingEnergy());
         assertTrue("could not pass properties correctly to child", child.getX() != plant.getX() || child.getY() != plant.getY());
-        assertTrue("could not position child at correct place", terrain.objectMap[0][0].size() == 1 || terrain.objectMap[0][1].size() == 1 || terrain.objectMap[0][2].size() == 1 ||
-                                                                terrain.objectMap[1][0].size() == 1 || terrain.objectMap[1][2].size() == 1 || terrain.objectMap[2][0].size() == 1 ||
-                                                                terrain.objectMap[2][1].size() == 1 || terrain.objectMap[2][2].size() == 1);
+        assertTrue("could not position child at correct place", terrain.objectMap.get(0).get(0).size() == 1 || terrain.objectMap.get(0).get(1).size() == 1 || terrain.objectMap.get(0).get(2).size() == 1 ||
+                                                                terrain.objectMap.get(1).get(0).size() == 1 || terrain.objectMap.get(1).get(2).size() == 1 || terrain.objectMap.get(2).get(0).size() == 1 ||
+                                                                terrain.objectMap.get(2).get(1).size() == 1 || terrain.objectMap.get(2).get(2).size() == 1);
     }
     
     public void testUpSide(){
         plant.setX(0);
         plant.setY(1);
-        terrain.objectMap[0][1].set(0, plant);
+        terrain.objectMap.get(0).get(1).set(0, plant);
         assertTrue("Returned not Locked while specimen is locked", plant.lockedBirth(terrain) == true);
         
-        terrain.objectMap[0][0].clear();
+        terrain.objectMap.get(0).get(0).clear();
         assertTrue("Could not recognize UP_LEFT position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[0][0].add(null);
+        terrain.objectMap.get(0).get(0).add(null);
         
-        terrain.objectMap[1][0].clear();
+        terrain.objectMap.get(1).get(0).clear();
         assertTrue("Could not recognize UP position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[1][0].add(null);
+        terrain.objectMap.get(1).get(0).add(null);
         
-        terrain.objectMap[1][1].clear();
+        terrain.objectMap.get(1).get(1).clear();
         assertTrue("Could not recognize UP_RIGHT position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[1][1].add(null);
+        terrain.objectMap.get(1).get(1).add(null);
         
-        terrain.objectMap[1][2].clear();
+        terrain.objectMap.get(1).get(2).clear();
         assertTrue("Could not recognize UP_RIGHT position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[1][2].add(null);
+        terrain.objectMap.get(1).get(2).add(null);
         
-        terrain.objectMap[0][2].clear();
+        terrain.objectMap.get(0).get(2).clear();
         assertTrue("Could not recognize UP_RIGHT position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[0][2].add(null);
+        terrain.objectMap.get(0).get(2).add(null);
         
-        terrain.objectMap[0][1].set(0, null);
+        terrain.objectMap.get(0).get(1).set(0, null);
     }
     
     public void testDownSide(){
         plant.setX(terrain.getHeight() - 1);
         plant.setY(1);
-        terrain.objectMap[terrain.getHeight() - 1][1].set(0, plant);
+        terrain.objectMap.get(terrain.getHeight() - 1).get(1).set(0, plant);
         assertTrue("Returned not Locked while specimen is locked", plant.lockedBirth(terrain) == true);
         
-        terrain.objectMap[terrain.getHeight() - 1][0].clear();
+        terrain.objectMap.get(terrain.getHeight() - 1).get(0).clear();
         assertTrue("Could not recognize UP_LEFT position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[terrain.getHeight() - 1][0].add(null);
+        terrain.objectMap.get(terrain.getHeight() - 1).get(0).add(null);
         
-        terrain.objectMap[terrain.getHeight() - 1][2].clear();
+        terrain.objectMap.get(terrain.getHeight() - 1).get(2).clear();
         assertTrue("Could not recognize UP position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[terrain.getHeight() - 1][2].add(null);
+        terrain.objectMap.get(terrain.getHeight() - 1).get(2).add(null);
         
-        terrain.objectMap[terrain.getHeight() - 2][1].clear();
+        terrain.objectMap.get(terrain.getHeight() - 2).get(1).clear();
         assertTrue("Could not recognize UP_RIGHT position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[terrain.getHeight() - 2][1].add(null);
+        terrain.objectMap.get(terrain.getHeight() - 2).get(1).add(null);
         
-        terrain.objectMap[terrain.getHeight() - 2][2].clear();
+        terrain.objectMap.get(terrain.getHeight() - 2).get(2).clear();
         assertTrue("Could not recognize UP_RIGHT position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[terrain.getHeight() - 2][2].add(null);
+        terrain.objectMap.get(terrain.getHeight() - 2).get(2).add(null);
         
-        terrain.objectMap[terrain.getHeight() - 2][0].clear();
+        terrain.objectMap.get(terrain.getHeight() - 2).get(0).clear();
         assertTrue("Could not recognize UP_RIGHT position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[terrain.getHeight() - 2][0].add(null);
+        terrain.objectMap.get(terrain.getHeight() - 2).get(0).add(null);
         
-        terrain.objectMap[terrain.getHeight() - 1][1].set(0, null);
+        terrain.objectMap.get(terrain.getHeight() - 1).get(1).set(0, null);
     }
     
     public void testLeftSide(){
         plant.setX(1);
         plant.setY(0);
-        terrain.objectMap[1][0].set(0, plant);
+        terrain.objectMap.get(1).get(0).set(0, plant);
         assertTrue("Returned not Locked while specimen is locked", plant.lockedBirth(terrain) == true);
         
-        terrain.objectMap[0][0].clear();
+        terrain.objectMap.get(0).get(0).clear();
         assertTrue("Could not recognize UP_LEFT position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[0][0].add(null);
+        terrain.objectMap.get(0).get(0).add(null);
         
-        terrain.objectMap[0][1].clear();
+        terrain.objectMap.get(0).get(1).clear();
         assertTrue("Could not recognize UP position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[0][1].add(null);
+        terrain.objectMap.get(0).get(1).add(null);
         
-        terrain.objectMap[1][1].clear();
+        terrain.objectMap.get(1).get(1).clear();
         assertTrue("Could not recognize UP_RIGHT position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[1][1].add(null);
+        terrain.objectMap.get(1).get(1).add(null);
         
-        terrain.objectMap[2][1].clear();
+        terrain.objectMap.get(2).get(1).clear();
         assertTrue("Could not recognize UP_RIGHT position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[2][1].add(null);
+        terrain.objectMap.get(2).get(1).add(null);
         
-        terrain.objectMap[2][0].clear();
+        terrain.objectMap.get(2).get(0).clear();
         assertTrue("Could not recognize UP_RIGHT position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[2][0].add(null);
+        terrain.objectMap.get(2).get(0).add(null);
         
-        terrain.objectMap[1][0].set(0, null);
+        terrain.objectMap.get(1).get(0).set(0, null);
     }
     
     public void testRightSide(){
         plant.setX(1);
         plant.setY(terrain.getWidth() - 1);
-        terrain.objectMap[1][terrain.getWidth() - 1].set(0, plant);
+        terrain.objectMap.get(1).get(terrain.getWidth() - 1).set(0, plant);
         assertTrue("Returned not Locked while specimen is locked", plant.lockedBirth(terrain) == true);
         
-        terrain.objectMap[0][terrain.getWidth() - 1].clear();
+        terrain.objectMap.get(0).get(terrain.getWidth() - 1).clear();
         assertTrue("Could not recognize UP_LEFT position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[0][terrain.getWidth() - 1].add(null);
+        terrain.objectMap.get(0).get(terrain.getWidth() - 1).add(null);
         
-        terrain.objectMap[2][terrain.getWidth() - 1].clear();
+        terrain.objectMap.get(2).get(terrain.getWidth() - 1).clear();
         assertTrue("Could not recognize UP position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[2][terrain.getWidth() - 1].add(null);
+        terrain.objectMap.get(2).get(terrain.getWidth() - 1).add(null);
         
-        terrain.objectMap[1][terrain.getWidth() - 2].clear();
+        terrain.objectMap.get(1).get(terrain.getWidth() - 2).clear();
         assertTrue("Could not recognize UP_RIGHT position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[1][terrain.getWidth() - 2].add(null);
+        terrain.objectMap.get(1).get(terrain.getWidth() - 2).add(null);
         
-        terrain.objectMap[2][terrain.getWidth() - 2].clear();
+        terrain.objectMap.get(2).get(terrain.getWidth() - 2).clear();
         assertTrue("Could not recognize UP_RIGHT position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[2][terrain.getWidth() - 2].add(null);
+        terrain.objectMap.get(2).get(terrain.getWidth() - 2).add(null);
         
-        terrain.objectMap[0][terrain.getWidth() - 2].clear();
+        terrain.objectMap.get(0).get(terrain.getWidth() - 2).clear();
         assertTrue("Could not recognize UP_RIGHT position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[0][terrain.getWidth() - 2].add(null);
+        terrain.objectMap.get(0).get(terrain.getWidth() - 2).add(null);
         
-        terrain.objectMap[1][terrain.getWidth() - 1].set(0, null);
+        terrain.objectMap.get(1).get(terrain.getWidth() - 1).set(0, null);
     }
     
     public void testUpLeftCorner(){
         plant.setX(0);
         plant.setY(0);
-        terrain.objectMap[0][0].set(0, plant);
+        terrain.objectMap.get(0).get(0).set(0, plant);
         assertTrue("Returned not Locked while specimen is locked", plant.lockedBirth(terrain) == true);
         
-        terrain.objectMap[0][1].clear();
+        terrain.objectMap.get(0).get(1).clear();
         assertTrue("Could not recognize UP_LEFT position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[0][1].add(null);
+        terrain.objectMap.get(0).get(1).add(null);
         
-        terrain.objectMap[1][1].clear();
+        terrain.objectMap.get(1).get(1).clear();
         assertTrue("Could not recognize UP position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[1][1].add(null);
+        terrain.objectMap.get(1).get(1).add(null);
         
-        terrain.objectMap[1][0].clear();
+        terrain.objectMap.get(1).get(0).clear();
         assertTrue("Could not recognize UP_RIGHT position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[1][0].add(null);
+        terrain.objectMap.get(1).get(0).add(null);
         
-        terrain.objectMap[0][0].set(0, null);
+        terrain.objectMap.get(0).get(0).set(0, null);
     }
     
     public void testUpRightCorner(){
         plant.setX(0);
         plant.setY(terrain.getWidth() - 1);
-        terrain.objectMap[0][terrain.getWidth() - 1].set(0, plant);
+        terrain.objectMap.get(0).get(terrain.getWidth() - 1).set(0, plant);
         assertTrue("Returned not Locked while specimen is locked", plant.lockedBirth(terrain) == true);
         
-        terrain.objectMap[0][terrain.getWidth() - 2].clear();
+        terrain.objectMap.get(0).get(terrain.getWidth() - 2).clear();
         assertTrue("Could not recognize UP_LEFT position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[0][terrain.getWidth() - 2].add(null);
+        terrain.objectMap.get(0).get(terrain.getWidth() - 2).add(null);
         
-        terrain.objectMap[1][terrain.getWidth() - 1].clear();
+        terrain.objectMap.get(1).get(terrain.getWidth() - 1).clear();
         assertTrue("Could not recognize UP position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[1][terrain.getWidth() - 1].add(null);
+        terrain.objectMap.get(1).get(terrain.getWidth() - 1).add(null);
         
-        terrain.objectMap[1][terrain.getWidth() - 2].clear();
+        terrain.objectMap.get(1).get(terrain.getWidth() - 2).clear();
         assertTrue("Could not recognize UP_RIGHT position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[1][terrain.getWidth() - 2].add(null);
+        terrain.objectMap.get(1).get(terrain.getWidth() - 2).add(null);
         
-        terrain.objectMap[0][terrain.getWidth() - 1].set(0, null);
+        terrain.objectMap.get(0).get(terrain.getWidth() - 1).set(0, null);
     }
     
     public void testDownLeftCorner(){
         plant.setX(terrain.getHeight() - 1);
         plant.setY(0);
-        terrain.objectMap[terrain.getHeight() - 1][0].set(0, plant);
+        terrain.objectMap.get(terrain.getHeight() - 1).get(0).set(0, plant);
         assertTrue("Returned not Locked while specimen is locked", plant.lockedBirth(terrain) == true);
         
-        terrain.objectMap[terrain.getHeight() - 1][1].clear();
+        terrain.objectMap.get(terrain.getHeight() - 1).get(1).clear();
         assertTrue("Could not recognize UP_LEFT position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[terrain.getHeight() - 1][1].add(null);
+        terrain.objectMap.get(terrain.getHeight() - 1).get(1).add(null);
         
-        terrain.objectMap[terrain.getHeight() - 2][0].clear();
+        terrain.objectMap.get(terrain.getHeight() - 2).get(0).clear();
         assertTrue("Could not recognize UP position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[terrain.getHeight() - 2][0].add(null);
+        terrain.objectMap.get(terrain.getHeight() - 2).get(0).add(null);
         
-        terrain.objectMap[terrain.getHeight() - 2][1].clear();
+        terrain.objectMap.get(terrain.getHeight() - 2).get(1).clear();
         assertTrue("Could not recognize UP_RIGHT position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[terrain.getHeight() - 2][1].add(null);
+        terrain.objectMap.get(terrain.getHeight() - 2).get(1).add(null);
         
-        terrain.objectMap[terrain.getHeight() - 1][0].set(0, null);
+        terrain.objectMap.get(terrain.getHeight() - 1).get(0).set(0, null);
     }
     
     public void testDownRightCorner(){
         plant.setX(terrain.getHeight() - 1);
         plant.setY(terrain.getWidth() - 1);
-        terrain.objectMap[terrain.getHeight() - 1][terrain.getWidth() - 1].set(0, plant);
+        terrain.objectMap.get(terrain.getHeight() - 1).get(terrain.getWidth() - 1).set(0, plant);
         assertTrue("Returned not Locked while specimen is locked", plant.lockedBirth(terrain) == true);
         
-        terrain.objectMap[terrain.getHeight() - 2][terrain.getWidth() - 2].clear();
+        terrain.objectMap.get(terrain.getHeight() - 2).get(terrain.getWidth() - 2).clear();
         assertTrue("Could not recognize UP_LEFT position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[terrain.getHeight() - 2][terrain.getWidth() - 2].add(null);
+        terrain.objectMap.get(terrain.getHeight() - 2).get(terrain.getWidth() - 2).add(null);
         
-        terrain.objectMap[terrain.getHeight() - 2][terrain.getWidth() - 1].clear();
+        terrain.objectMap.get(terrain.getHeight() - 2).get(terrain.getWidth() - 1).clear();
         assertTrue("Could not recognize UP position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[terrain.getHeight() - 2][terrain.getWidth() - 1].add(null);
+        terrain.objectMap.get(terrain.getHeight() - 2).get(terrain.getWidth() - 1).add(null);
         
-        terrain.objectMap[terrain.getHeight() - 1][terrain.getWidth() - 2].clear();
+        terrain.objectMap.get(terrain.getHeight() - 1).get(terrain.getWidth() - 2).clear();
         assertTrue("Could not recognize UP_RIGHT position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[terrain.getHeight() - 1][terrain.getWidth() - 2].add(null);
+        terrain.objectMap.get(terrain.getHeight() - 1).get(terrain.getWidth() - 2).add(null);
         
-        terrain.objectMap[terrain.getHeight() - 1][terrain.getWidth() - 1].set(0, null);
+        terrain.objectMap.get(terrain.getHeight() - 1).get(terrain.getWidth() - 1).set(0, null);
     }
     
     public void testCenter(){
-        terrain.objectMap[1][1].set(0, plant);
+        terrain.objectMap.get(1).get(1).set(0, plant);
         assertTrue("Returned not Locked while specimen is locked", plant.lockedBirth(terrain) == true);
         
-        terrain.objectMap[0][0].clear();
+        terrain.objectMap.get(0).get(0).clear();
         assertTrue("Could not recognize UP_LEFT position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[0][0].add(null);
+        terrain.objectMap.get(0).get(0).add(null);
         
-        terrain.objectMap[0][1].clear();
+        terrain.objectMap.get(0).get(1).clear();
         assertTrue("Could not recognize UP position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[0][1].add(null);
+        terrain.objectMap.get(0).get(1).add(null);
         
-        terrain.objectMap[0][2].clear();
+        terrain.objectMap.get(0).get(2).clear();
         assertTrue("Could not recognize UP_RIGHT position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[0][2].add(null);
+        terrain.objectMap.get(0).get(2).add(null);
         
-        terrain.objectMap[1][0].clear();
+        terrain.objectMap.get(1).get(0).clear();
         assertTrue("Could not recognize LEFT position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[1][0].add(null);
+        terrain.objectMap.get(1).get(0).add(null);
         
-        terrain.objectMap[1][2].clear();
+        terrain.objectMap.get(1).get(2).clear();
         assertTrue("Could not recognize RIGHT position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[1][2].add(null);
+        terrain.objectMap.get(1).get(2).add(null);
         
-        terrain.objectMap[2][0].clear();
+        terrain.objectMap.get(2).get(0).clear();
         assertTrue("Could not recognize DOWN_LEFT position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[2][0].add(null);
+        terrain.objectMap.get(2).get(0).add(null);
         
-        terrain.objectMap[2][1].clear();
+        terrain.objectMap.get(2).get(1).clear();
         assertTrue("Could not recognize DOWN position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[2][1].add(null);
+        terrain.objectMap.get(2).get(1).add(null);
         
-        terrain.objectMap[2][2].clear();
+        terrain.objectMap.get(2).get(2).clear();
         assertTrue("Could not recognize DOWN_RIGHT position and returned locked", plant.lockedBirth(terrain) == false);
-        terrain.objectMap[2][2].add(null);
+        terrain.objectMap.get(2).get(2).add(null);
         
-        terrain.objectMap[1][1].set(0, null);
+        terrain.objectMap.get(1).get(1).set(0, null);
     }
     
     @Test
@@ -342,7 +351,7 @@ public class PlantTest{
         
         for(int i = 0; i < terrain.getHeight(); i++){
             for(int j = 0; j < terrain.getWidth(); j++){
-                terrain.objectMap[i][j].add(null);
+                terrain.objectMap.get(i).get(j).add(null);
             }
         }
         

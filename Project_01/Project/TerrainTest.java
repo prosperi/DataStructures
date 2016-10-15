@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 /**
  * @author  Zura Mestiashvili
- * @version (a version number or a date)
+ * @version v1.0.0
  */
 
 public class TerrainTest
@@ -44,26 +44,34 @@ public class TerrainTest
     {
     }
     
+    /**
+     * @desc check that terrain is initalized correctly, each map symbol represents #, and each element in board
+     * contains an empty ArrayList
+     */
     @Test
     public void testTerrain(){
         for(int i = 0; i < terrain.getHeight(); i++){
             for(int j = 0; j < terrain.getWidth(); j++){
-                assertTrue("Could not initialize map correctly", terrain.map[i][j] == '#');
-                assertTrue("Could not initialize objectMap correctly", terrain.objectMap[i][j] != null);
+                assertTrue("Could not initialize map correctly", terrain.map.get(i).get(j) == '#');
+                assertTrue("Could not initialize objectMap correctly", terrain.objectMap.get(i).get(j) != null);
             }
         }   
     }
     
+    /**
+     * @desc check that checkCell works correctly. 
+     */
     @Test
     public void testCheckCell(){
+         // as each cell is empty in the beginning each checkCell sould be false 
          for(int i = 0; i < terrain.getHeight(); i++){
             for(int j = 0; j < terrain.getWidth(); j++){
                 assertTrue("Could not check cell in objectMap correctly", terrain.checkCell(i, j) == false);
             }
          }   
          
-         terrain.objectMap[1][1].add(plant);
-         terrain.objectMap[2][2].add(animal);
+         terrain.objectMap.get(1).get(1).add(plant);
+         terrain.objectMap.get(2).get(2).add(animal);
          for(int i = 0; i < terrain.getHeight(); i++){
             for(int j = 0; j < terrain.getWidth(); j++){
                 if((i == 1 && j == 1) || (i == 2 && j == 2)) assertTrue("Could not check cell in objectMap correctly", terrain.checkCell(i, j) == true);
@@ -73,6 +81,9 @@ public class TerrainTest
          
     }
     
+    /**
+     * @desc test add habitants method 
+     */
     @Test
     public void testAddHabitants(){
         ArrayList<Specimen> habitants = new ArrayList<Specimen>();
@@ -81,11 +92,13 @@ public class TerrainTest
         terrain.addHabitants(habitants);
         for(int i = 0; i < habitants.size(); i++){
             Specimen tmp = habitants.get(i);
-            assertTrue("Could not add habitants correctly", terrain.objectMap[tmp.getX()][tmp.getY()].contains(tmp) == true);
+            assertTrue("Could not add habitants correctly", terrain.objectMap.get(tmp.getX()).get(tmp.getY()).contains(tmp) == true);
         }
     }
     
-    
+    /**
+     * @desc check that clear() works correctly. 
+     */
     @Test
     public void testClear(){
         ArrayList<Specimen> habitants = new ArrayList<Specimen>();
@@ -95,8 +108,8 @@ public class TerrainTest
         terrain.clear();
         for(int i = 0; i < terrain.getHeight(); i++){
             for(int j = 0; j < terrain.getWidth(); j++){
-                assertTrue("Could not initialize map correctly", terrain.map[i][j] == '#');
-                assertTrue("Could not initialize objectMap correctly", terrain.objectMap[i][j] != null);
+                assertTrue("Could not initialize map correctly", terrain.map.get(i).get(j) == '#');
+                assertTrue("Could not initialize objectMap correctly", terrain.objectMap.get(i).get(j) != null);
             }
         }   
     }

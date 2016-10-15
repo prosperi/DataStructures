@@ -1,4 +1,4 @@
-size 10 10
+size 5 5
 species wheat vegetable h light 10,5,20 10.1,5.1 30 50 2
 light 5
 species cow herbivore c wheat,banana 10,3,30 15.3,4.2 50 60 5

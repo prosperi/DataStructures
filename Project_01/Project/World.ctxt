@@ -8,5 +8,5 @@ comment2.target=void\ controller()
 comment3.params=
 comment3.target=void\ step()
 comment4.params=arr
-comment4.target=Specimen\ createSpecimen(java.lang.String[])
+comment4.target=Specimen\ createSpecimen(java.util.ArrayList)
 numComments=5

@@ -26,12 +26,11 @@ public enum Direction
         this.y = y;
     }
     
-    // getter for X
+    
     public int getX(){
         return x;
     };
-    
-    // getter for Y
+
     public int getY(){
         return y;
     };

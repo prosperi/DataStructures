@@ -8,35 +8,34 @@ import org.junit.Test;
 /**
  * The test class PopulationGeneratorTest.
  *
- * @author  (your name)
- * @version (a version number or a date)
+ * @author  Zura Mestiashvili
+ * @version v1.0.0
  */
 public class PopulationGeneratorTest
 {
-    /**
-     * Default constructor for test class PopulationGeneratorTest
-     */
+    PopulationGenerator pGen;
     public PopulationGeneratorTest()
     {
     }
 
-    /**
-     * Sets up the test fixture.
-     *
-     * Called before every test case method.
-     */
     @Before
     public void setUp()
     {
+        pGen = new PopulationGenerator();
     }
 
-    /**
-     * Tears down the test fixture.
-     *
-     * Called after every test case method.
-     */
     @After
     public void tearDown()
     {
     }
+    
+    @Test
+    public void testNext(){
+        for(int i = 100, j = 10; i <= 1000; i += 100, j += 10){
+            int tmp = pGen.next(i, j);
+            
+            assertTrue("Returned number out of range " + i + " " + j + " " + tmp, tmp >= 0 && tmp <= 2*i);
+        }
+    }
+    
 }

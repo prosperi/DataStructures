@@ -19,8 +19,10 @@ public class World{
     public static DirectionGenerator dGen;
     public static PositionGenerator pGen;
     public static PopulationGenerator popGen;
+    public static ArrayList<ArrayList<String>> specimenLoader;
     public static int max;
     public static int stepCounter;
+    public static int light;
     
     public static void main(String[] args){
         
@@ -30,9 +32,24 @@ public class World{
         habitants = new ArrayList<Specimen>();
         max = Integer.parseInt(args[1]); 
         stepCounter = 0;
+        specimenLoader = new ArrayList<ArrayList<String>>();
         
         // parse config txt and initialize World
         parseConfig(args[0]);
+        terrain.setLight(light);
+        for(int j = 0; j < specimenLoader.size(); j++){
+            String[] tmpArr = specimenLoader.get(j).get(5).split(",");
+            int bound = popGen.next(Integer.parseInt(tmpArr[0]), Integer.parseInt(tmpArr[1]));
+            for(int i = 0; i < bound && habitants.size() < terrain.getHeight() * terrain.getWidth(); i++){
+                System.out.println(habitants.size());
+                Specimen newSpecimen = createSpecimen(specimenLoader.get(j));
+                habitants.add(newSpecimen);
+                // Append new Specimen to objectMap and map
+                terrain.objectMap.get(newSpecimen.getX()).get(newSpecimen.getY()).add(newSpecimen);
+                terrain.map.get(newSpecimen.getX()).set(newSpecimen.getY(), newSpecimen.getSymbol());
+            }
+        }
+                    
         //enable controller
         controller();
         
@@ -44,27 +61,18 @@ public class World{
             BufferedReader reader = new BufferedReader(new FileReader(path));
         ){
             String tmp;
-            //terrain.clear();
             while((tmp = reader.readLine()) != null){
                 String[] arr = tmp.split(" ");
                 if((arr[0]).compareTo("species") == 0){
                     // Create new Species by parsing config.txt
-                    String[] tmpArr = arr[5].split(",");
-                    int bound = popGen.next(Integer.parseInt(tmpArr[0]), Integer.parseInt(tmpArr[1]));
-                    for(int i = 0; i < bound; i++){
-                        Specimen newSpecimen = createSpecimen(arr);
-                        habitants.add(newSpecimen);
-                        // Append new Specimen to objectMap and map
-                        terrain.objectMap[newSpecimen.getX()][newSpecimen.getY()].add(newSpecimen);
-                        terrain.map[newSpecimen.getX()][newSpecimen.getY()] = newSpecimen.getSymbol();
-                    }
+                    specimenLoader.add(new ArrayList<String>(Arrays.asList(arr)));
                 }else if(arr[0].compareTo("size") == 0){
                     int width = Integer.parseInt(arr[1]);
                     int height = Integer.parseInt(arr[2]);
                     pGen = new PositionGenerator(31, width, height);
                     terrain = new Terrain(width, height, 0);
                 }else if(arr[0].compareTo("light") == 0){
-                    terrain.setLight(Integer.parseInt(arr[1]));
+                    light = Integer.parseInt(arr[1]);
                 }
                     
             }
@@ -92,8 +100,8 @@ public class World{
                     terrain.printMap();
                     break;
                 case "i":
-                    // take max steps, max was passed as ana argument to the program
-                    for(int i = 0; i < max; i++){
+                    // take max steps, max was passed as an argument to the program
+                    for(int i = stepCounter; i < max; i++){
                         step();
                     }
                     System.out.println("Done");
@@ -164,16 +172,16 @@ public class World{
         terrain.addHabitants(habitants);
     }
     
-    public static Specimen createSpecimen(String[] arr){
+    public static Specimen createSpecimen(ArrayList<String> arr){
         // Build Energy Sources array
-        ArrayList<String> ls_01 = new ArrayList<String>(Arrays.asList(arr[4].split(",")));
+        ArrayList<String> ls_01 = new ArrayList<String>(Arrays.asList(arr.get(4).split(",")));
 
         // 
-        String[] tmp_02 = arr[5].split(",");
+        String[] tmp_02 = arr.get(5).split(",");
         double energy = Double.parseDouble(tmp_02[2]);
         
         // Build stats array 
-        String[] tmp_03 = arr[6].split(",");
+        String[] tmp_03 = arr.get(6).split(",");
         ArrayList<Double> ls_03 = new ArrayList<Double>();
         for(int i = 0; i < tmp_03.length; i++){
             ls_03.add(Double.parseDouble(tmp_03[i]));
@@ -182,15 +190,16 @@ public class World{
         // Generate position, so that two specimen not occupy same cell 
         // in the beginning of simulation
         ArrayList<Integer> position;
+        
         do{
             position = pGen.initPosition();
         }while(terrain.checkCell(position) == false);
         
         
-        if(arr[2].compareTo("herbivore") == 0 || arr[2].compareTo("carnivore") == 0 || arr[2].compareTo("omnivore") == 0 || arr[2].compareTo("animal") == 0)
-            return new Animal(arr[1], arr[2], arr[3].charAt(0), ls_01, energy, ls_03, Double.parseDouble(arr[7]), Double.parseDouble(arr[8]), Double.parseDouble(arr[9]),  position.get(0), position.get(1));
+        if(arr.get(2).compareTo("herbivore") == 0 || arr.get(2).compareTo("carnivore") == 0 || arr.get(2).compareTo("omnivore") == 0 || arr.get(2).compareTo("animal") == 0)
+            return new Animal(arr.get(1), arr.get(2), arr.get(3).charAt(0), ls_01, energy, ls_03, Double.parseDouble(arr.get(7)), Double.parseDouble(arr.get(8)), Double.parseDouble(arr.get(9)),  position.get(0), position.get(1));
         else
-            return new Plant(arr[1], arr[2], arr[3].charAt(0), ls_01, energy, ls_03, Double.parseDouble(arr[7]), Double.parseDouble(arr[8]), Double.parseDouble(arr[9]),  position.get(0), position.get(1));
+            return new Plant(arr.get(1), arr.get(2), arr.get(3).charAt(0), ls_01, energy, ls_03, Double.parseDouble(arr.get(7)), Double.parseDouble(arr.get(8)), Double.parseDouble(arr.get(9)),  position.get(0), position.get(1));
     }
         
    
