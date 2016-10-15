@@ -1,8 +1,12 @@
 import java.util.ArrayList;
 
-/**
- * Zura Mestiashvili
- */
+/** 
+  * @desc this class is designed for creating specific kinds of Specimen, 
+  * which are Plants. This class defines specifications of Plants, such 
+  * as eating functionality.
+  * @author Zura Mestiashvili mestiasz@lafayette.edu
+  * @version v1.0.0
+*/
 
 public class Plant extends Specimen {
     

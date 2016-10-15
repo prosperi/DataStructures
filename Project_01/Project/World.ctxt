@@ -1,8 +1,12 @@
 #BlueJ class context
 comment0.params=args
 comment0.target=void\ main(java.lang.String[])
-comment1.params=
-comment1.target=void\ step()
-comment2.params=arr
-comment2.target=Specimen\ createSpecimen(java.lang.String[])
-numComments=3
+comment1.params=path
+comment1.target=void\ parseConfig(java.lang.String)
+comment2.params=
+comment2.target=void\ controller()
+comment3.params=
+comment3.target=void\ step()
+comment4.params=arr
+comment4.target=Specimen\ createSpecimen(java.lang.String[])
+numComments=5

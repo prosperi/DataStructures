@@ -3,11 +3,15 @@ import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.FileReader;
+import java.util.Arrays;
 
-/**
- * Zura Mestiashvili
- * v1.0.0
- */
+/** 
+  * @desc this class is controller of out simulation. It is used
+  * to load simulation, parse data, gather information and provide
+  * user interaction.
+  * @author Zura Mestiashvili mestiasz@lafayette.edu
+  * @version v1.0.0
+*/
 
 public class World{
     public static Terrain terrain;
@@ -21,15 +25,23 @@ public class World{
     public static void main(String[] args){
         
         // parse arguments
-        Scanner sc = new Scanner(System.in);
         dGen = new DirectionGenerator(11);
         popGen = new PopulationGenerator();
         habitants = new ArrayList<Specimen>();
         max = Integer.parseInt(args[1]); 
         stepCounter = 0;
         
+        // parse config txt and initialize World
+        parseConfig(args[0]);
+        //enable controller
+        controller();
+        
+        
+    }
+    
+    public static void parseConfig(String path){
         try(
-            BufferedReader reader = new BufferedReader(new FileReader(args[0]));
+            BufferedReader reader = new BufferedReader(new FileReader(path));
         ){
             String tmp;
             //terrain.clear();
@@ -59,12 +71,15 @@ public class World{
             
         }catch(IOException e){
             e.printStackTrace();
+        }finally{
+            terrain.printMap();
         }
-        
-        terrain.printMap();
-        
-        
+    }
+    
+    public static void controller(){
+        // Here will be commander
         // Check for commands and execute them
+        Scanner sc = new Scanner(System.in);
         boolean t = true;
         while( t == true && sc.hasNext() ){
             String cmd = sc.nextLine();
@@ -93,7 +108,6 @@ public class World{
                     break;
             }
         }
-        
     }
     
     public static void step(){
@@ -152,17 +166,12 @@ public class World{
     
     public static Specimen createSpecimen(String[] arr){
         // Build Energy Sources array
-        String[] tmp_01 = arr[4].split(",");
-        ArrayList<String> ls_01 = new ArrayList<String>();
-        for(int i = 0; i < tmp_01.length; i++){
-            ls_01.add(tmp_01[i]);
-        }
-        // Build Initial Stats array /// NOT NEEDED ANYMORE
+        ArrayList<String> ls_01 = new ArrayList<String>(Arrays.asList(arr[4].split(",")));
+
+        // 
         String[] tmp_02 = arr[5].split(",");
-        ArrayList<Double> ls_02 = new ArrayList<Double>();
-        for(int i = 0; i < tmp_02.length; i++){
-            ls_02.add(Double.parseDouble(tmp_02[i]));
-        }
+        double energy = Double.parseDouble(tmp_02[2]);
+        
         // Build stats array 
         String[] tmp_03 = arr[6].split(",");
         ArrayList<Double> ls_03 = new ArrayList<Double>();
@@ -179,9 +188,9 @@ public class World{
         
         
         if(arr[2].compareTo("herbivore") == 0 || arr[2].compareTo("carnivore") == 0 || arr[2].compareTo("omnivore") == 0 || arr[2].compareTo("animal") == 0)
-            return new Animal(arr[1], arr[2], arr[3].charAt(0), ls_01, ls_02.get(2), ls_03, Double.parseDouble(arr[7]), Double.parseDouble(arr[8]), Double.parseDouble(arr[9]),  position.get(0), position.get(1));
+            return new Animal(arr[1], arr[2], arr[3].charAt(0), ls_01, energy, ls_03, Double.parseDouble(arr[7]), Double.parseDouble(arr[8]), Double.parseDouble(arr[9]),  position.get(0), position.get(1));
         else
-            return new Plant(arr[1], arr[2], arr[3].charAt(0), ls_01, ls_02.get(2), ls_03, Double.parseDouble(arr[7]), Double.parseDouble(arr[8]), Double.parseDouble(arr[9]),  position.get(0), position.get(1));
+            return new Plant(arr[1], arr[2], arr[3].charAt(0), ls_01, energy, ls_03, Double.parseDouble(arr[7]), Double.parseDouble(arr[8]), Double.parseDouble(arr[9]),  position.get(0), position.get(1));
     }
         
    

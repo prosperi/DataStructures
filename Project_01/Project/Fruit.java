@@ -1,8 +1,12 @@
 import java.util.ArrayList;
 
-/**
- * Zura Mestiashvili
- */
+/** 
+  * @desc this class is designed for creating specific
+  * kinds of Plants, which are fruits
+  * @author Zura Mestiashvili mestiasz@lafayette.edu
+  * @version v1.0.0
+*/
+
 public class Fruit extends Plant{
     
    public Fruit(String name, String type, char symbol, ArrayList<String> energySources,

@@ -1,8 +1,15 @@
 import java.util.ArrayList;
 
-/**
- * Zura Mestiashvili
- */
+/** 
+  * @desc this class defines the base functionality of each object
+  * created in our wildlife. It defines such functionality as giving 
+  * birth to child specimen, or death. We dan not define eat - 
+  * functionality in this class, as Animals and Plants have different 
+  * ways of eating. 
+  * @author Zura Mestiashvili mestiasz@lafayette.edu
+  * @version v1.0.0
+*/
+
 abstract public class Specimen{
    private String name;
    private String type;
@@ -42,66 +49,17 @@ abstract public class Specimen{
    
    
    public void giveBirth(DirectionGenerator dGen, Terrain terrain, ArrayList<Specimen> habitants, ArrayList<Specimen> children){
-        
+        Direction direction = dGen.next();
+        int x = direction.getX();
+        int y = direction.getY();
+        int tHeight = terrain.getHeight() - 1;
+        int tWidth = terrain.getWidth() - 1; 
         if(getEnergy() >= getBirthEnergy()){
-            switch(dGen.next()){
-            case LEFT:
-                if(getY() == 0 ){
-                    giveBirth(dGen, terrain, habitants, children);
-                }else{
-                    giveBirthHelper(dGen, terrain, habitants, children, getX(), getY()-1);
-                }
-                break;
-            case RIGHT:
-                if(getY()  == terrain.getWidth()-1){
-                    giveBirth(dGen, terrain, habitants, children);
-                }else{
-                    giveBirthHelper(dGen, terrain, habitants, children, getX(), getY()+1);
-                }
-                break;
-            case UP:
-                if(getX() == 0){
-                    giveBirth(dGen, terrain, habitants, children);
-                }else{
-                    giveBirthHelper(dGen, terrain, habitants, children, getX()-1, getY());
-                }
-                break;
-            case DOWN:
-                if(getX() == terrain.getHeight()-1){
-                    giveBirth(dGen, terrain, habitants, children);
-                }else{
-                    giveBirthHelper(dGen, terrain, habitants, children, getX()+1, getY());
-                }
-                break;
-            case UP_RIGHT:
-                if(getX() == 0 || getY() == terrain.getWidth() - 1){
-                    giveBirth(dGen, terrain, habitants, children);
-                }else{
-                    giveBirthHelper(dGen, terrain, habitants, children, getX()-1, getY() + 1);
-                }
-                break;
-            case UP_LEFT:
-                if(getX() == 0 || getY() == 0){
-                    giveBirth(dGen, terrain, habitants, children);
-                }else{
-                    giveBirthHelper(dGen, terrain, habitants, children, getX() - 1, getY() - 1);
-                }
-                break;
-            case DOWN_RIGHT:
-                if(getX() == terrain.getHeight() - 1 || getY() == terrain.getWidth() - 1){
-                    giveBirth(dGen, terrain, habitants, children);
-                }else{
-                    giveBirthHelper(dGen, terrain, habitants, children, getX() + 1, getY() + 1);
-                }
-                break;
-            case DOWN_LEFT:
-                if(getX() == terrain.getHeight() - 1 || getY() == 0){
-                    giveBirth(dGen, terrain, habitants, children);
-                }else{
-                    giveBirthHelper(dGen, terrain, habitants, children, getX() + 1, getY() - 1);
-                }
-                break;
-            }
+            if(getX() + x < 0 || getX() + x > tHeight || getY() + y < 0 || getY() + y > tWidth){
+                giveBirth(dGen, terrain, habitants, children);
+            }else{
+                giveBirthHelper(dGen, terrain, habitants, children, getX() + x, getY() + y );
+            }    
         }
         
     }

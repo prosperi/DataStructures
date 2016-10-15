@@ -3,4 +3,5 @@ comment0.params=seed\ width\ height
 comment0.target=PositionGenerator(long,\ int,\ int)
 comment1.params=
 comment1.target=java.util.ArrayList\ initPosition()
+comment1.text=\n\ @desc\ provides\ random\ position\ for\ new\ Specimen\n\ by\ using\ height\ as\ the\ first\ bound\ and\ width\ as\ second.\n\ @return\ ArrayList<Integer>\ -\ return\ new\ ArraList\ of\ integers,\ \n\ which\ are\ randomly\ chosen\ and\ depict\ new\ position\n
 numComments=2

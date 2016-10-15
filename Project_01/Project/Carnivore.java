@@ -1,8 +1,12 @@
 import java.util.ArrayList;
-/**
- * Zura Mestiashvili
- * v1.0.0
- */
+
+/** 
+  * @desc this class is designed for creating specific
+  * kinds of Animals, which are Carnivores
+  * @author Zura Mestiashvili mestiasz@lafayette.edu
+  * @version v1.0.0
+*/
+
 public class Carnivore extends Animal{
     
     public Carnivore(String name, String type, char symbol, ArrayList<String> energySources,

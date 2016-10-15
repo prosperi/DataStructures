@@ -1,9 +1,13 @@
 import java.util.Random;
 
-/**
- * @author Zura Mestiashvili 
- * @version 1.0.0
- */
+/** 
+  * @desc this class is Direction generator, provides a random direction
+  * while object moves or gives birth to a new child specimen. In first case, 
+  * the generator defines where the specimen will move, and in second occasion
+  * it defines where the child specimen will be placed.
+  * @author Zura Mestiashvili mestiasz@lafayette.edu
+  * @version v1.0.0
+*/
 
 public class DirectionGenerator{
     long seed;
@@ -16,6 +20,12 @@ public class DirectionGenerator{
         this.rnd = new Random(seed);
     }
     
+    /**
+      * @desc returns random direction according to the bound which is always 8
+      * as we have 8 adjacent cells at maximum.
+      * @return Direction  - return new Random Direction or Direction.LEFT if randomly generated
+      * number does not have approprite direction to return
+    */
     public Direction next(){
         int i = rnd.nextInt(bound);
         switch (i){

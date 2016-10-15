@@ -1,8 +1,12 @@
 import java.util.ArrayList;
 
-/**
- * Zura Mestiashvili
- */
+/** 
+  * @desc this class is designed for creating specific kinds of Specimen, 
+  * which are Animals. This class defines specifications of Animals, such 
+  * as eating functionality and moving ability.
+  * @author Zura Mestiashvili mestiasz@lafayette.edu
+  * @version v1.0.0
+*/
 
 
 public class Animal extends Specimen implements Movable{
@@ -17,86 +21,18 @@ public class Animal extends Specimen implements Movable{
     }
     
     public void move(DirectionGenerator dGen, Terrain terrain, ArrayList<Specimen> habitants){
+        Direction direction = dGen.next();
+        int x = direction.getX();
+        int y = direction.getY();
+        int tHeight = terrain.getHeight() - 1;
+        int tWidth = terrain.getWidth() - 1; 
         
-        switch(dGen.next()){
-            case LEFT:
-                if(getY() == 0 ){
-                    move(dGen, terrain, habitants);
-                }else{
-                    moveHelper(dGen, terrain, habitants, getX(), getY() - 1 );
-                }
-                break;
-            case RIGHT:
-                if(getY()  == terrain.getWidth()-1){
-                    move(dGen, terrain, habitants);
-                }else{
-                    moveHelper(dGen, terrain, habitants, getX(), getY() + 1 );
-                }
-                break;
-            case UP:
-                if(getX() == 0){
-                    move(dGen, terrain, habitants);
-                }else{
-                    moveHelper(dGen, terrain, habitants, getX() - 1, getY() );
-                }
-                break;
-            case DOWN:
-                if(getX() == terrain.getHeight()-1){
-                    move(dGen, terrain, habitants);
-                }else{
-                    moveHelper(dGen, terrain, habitants, getX() + 1, getY() );
-                }
-                break;
-            case UP_RIGHT:
-                if(getX() == 0 || getY() == terrain.getWidth() - 1){
-                    move(dGen, terrain, habitants);
-                }else{
-                    moveHelper(dGen, terrain, habitants, getX()-1, getY() + 1);
-                }
-                break;
-            case UP_LEFT:
-                if(getX() == 0 || getY() == 0){
-                    move(dGen, terrain, habitants);
-                }else{
-                    moveHelper(dGen, terrain, habitants, getX() - 1, getY() - 1);
-                }
-                break;
-            case DOWN_RIGHT:
-                if(getX() == terrain.getHeight() - 1 || getY() == terrain.getWidth() - 1){
-                    move(dGen, terrain, habitants);
-                }else{
-                    moveHelper(dGen, terrain, habitants, getX() + 1, getY() + 1);
-                }
-                break;
-            case DOWN_LEFT:
-                if(getX() == terrain.getHeight() - 1 || getY() == 0){
-                    move(dGen, terrain, habitants);
-                }else{
-                    moveHelper(dGen, terrain, habitants, getX() + 1, getY() - 1);
-                }
-                break;
-        }
+        if(getX() + x < 0 || getX() + x > tHeight || getY() + y < 0 || getY() + y > tWidth){
+            move(dGen, terrain, habitants);
+        }else{
+             moveHelper(dGen, terrain, habitants, getX() + x, getY() + y );
+        }        
         
-        
-    }
-   
-    public void eat(Terrain terrain, ArrayList<Specimen> habitants){
-        ArrayList<Specimen> tmp = terrain.objectMap[getX()][getY()];
-        for(int i = 0; i < tmp.size(); i++){
-            Specimen tmpHabitant = tmp.get(i);
-            
-            if(this != tmpHabitant && getEnergy() > 0 && getEnergy() < getMaxEnergy() && tmpHabitant.getEnergy() > 0 && this.getEnergySources().contains(tmpHabitant.getName())){
-                setEnergy(getEnergy() + tmpHabitant.getEnergy());
-                tmpHabitant.die(terrain, habitants);
-                this.action = false;
-            }
-            
-        }
-
-        if(getEnergy() > getMaxEnergy()){
-           setEnergy(getMaxEnergy());
-        }
-
     }
     
     
@@ -140,8 +76,6 @@ public class Animal extends Specimen implements Movable{
         
         return false;
     }
-    
-    
 
     
     public void moveHelper(DirectionGenerator dGen, Terrain terrain, ArrayList<Specimen> habitants, int x, int y){
@@ -161,6 +95,25 @@ public class Animal extends Specimen implements Movable{
         }
     }
     
+    
+    public void eat(Terrain terrain, ArrayList<Specimen> habitants){
+        ArrayList<Specimen> tmp = terrain.objectMap[getX()][getY()];
+        for(int i = 0; i < tmp.size(); i++){
+            Specimen tmpHabitant = tmp.get(i);
+            
+            if(this != tmpHabitant && getEnergy() > 0 && getEnergy() < getMaxEnergy() && tmpHabitant.getEnergy() > 0 && this.getEnergySources().contains(tmpHabitant.getName())){
+                setEnergy(getEnergy() + tmpHabitant.getEnergy());
+                tmpHabitant.die(terrain, habitants);
+                this.action = false;
+            }
+            
+        }
+
+        if(getEnergy() > getMaxEnergy()){
+           setEnergy(getMaxEnergy());
+        }
+
+    }
     
 
 }

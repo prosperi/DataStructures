@@ -1,9 +1,14 @@
 import java.util.ArrayList;
 
-/**
- * Zura Mestiashvili
- * v1.0.0
- */
+/** 
+  * @desc this class is used for creating board-like structure
+  * for our simulation. Instances of this Object represent
+  * kind of map that contain information about the positions of habitants
+  * and energy that can absorbed from light.
+  * @author Zura Mestiashvili mestiasz@lafayette.edu
+  * @version v1.0.0
+*/
+
 public class Terrain{
     private int width;
     private int height;
@@ -31,24 +36,9 @@ public class Terrain{
         
     }
     
+   
     
-    public int getWidth(){
-        return width;
-    }
-    
-    public int getHeight(){
-        return height;
-    }
-    
-    public double getLight(){
-        return light;
-    }
-    
-    public void setLight(int val){
-        light = val;
-    }
-    
-    // Check if cell is taken 
+    // Check if cell is taken  ---> should delete this one
     public boolean checkCell(ArrayList<Integer> position){
         if(objectMap[position.get(0)][position.get(1)].size() == 0) return true;
         else return false;
@@ -90,6 +80,23 @@ public class Terrain{
             }
             System.out.println();
         }     
+    }
+    
+    
+    public int getWidth(){
+        return width;
+    }
+    
+    public int getHeight(){
+        return height;
+    }
+    
+    public double getLight(){
+        return light;
+    }
+    
+    public void setLight(int val){
+        light = val;
     }
     
 }

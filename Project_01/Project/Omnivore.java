@@ -1,9 +1,12 @@
 import java.util.ArrayList;
 
-/**
- * Zura Mestiashvili
- * v1.0.0
- */
+/** 
+  * @desc this class is designed for creating specific
+  * kinds of Animals, which are Omnivores
+  * @author Zura Mestiashvili mestiasz@lafayette.edu
+  * @version v1.0.0
+*/
+
 public class Omnivore extends Animal{
     
     public Omnivore(String name, String type, char symbol, ArrayList<String> energySources,
