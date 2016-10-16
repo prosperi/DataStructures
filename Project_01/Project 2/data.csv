@@ -1,0 +1,740 @@
+seed = 1
+
+size 30 20
+species wheat vegetable h light 300,5,20 10.1,5.1 30 50 2
+light 5
+species cow herbivore c wheat,banana 70,3,30 15.3,4.2 50 60 5
+species banana fruit b light 100,10,25 8.9,2.5 35 45 4
+species wolf carnivore w cow 10,2,40 35.2,3.0 55 70 7
+species bear omnivore g cow,banana 10,2,40 40,4.5 60 90 8
+Final Results
+wheat: birth - 376 death - 683 current population - 0
+cow: birth - 87 death - 155 current population - 0
+banana: birth - 0 death - 89 current population - 0
+wolf: birth - 0 death - 8 current population - 0
+bear: birth - 0 death - 7 current population - 0
+Total Steps: 17
+
+
+
+seed = 11
+
+size 30 20
+species wheat vegetable h light 300,5,20 10.1,5.1 30 50 2
+light 5
+species cow herbivore c wheat,banana 70,3,30 15.3,4.2 50 60 5
+species banana fruit b light 100,10,25 8.9,2.5 35 45 4
+species wolf carnivore w cow 10,2,40 35.2,3.0 55 70 7
+species bear omnivore g cow,banana 10,2,40 40,4.5 60 90 8
+Final Results
+wheat: birth - 383 death - 691 current population - 0
+cow: birth - 89 death - 157 current population - 0
+banana: birth - 0 death - 100 current population - 0
+wolf: birth - 0 death - 9 current population - 0
+bear: birth - 1 death - 9 current population - 0
+Total Steps: 17
+
+
+
+seed = 21
+
+size 30 20
+species wheat vegetable h light 300,5,20 10.1,5.1 30 50 2
+light 5
+species cow herbivore c wheat,banana 70,3,30 15.3,4.2 50 60 5
+species banana fruit b light 100,10,25 8.9,2.5 35 45 4
+species wolf carnivore w cow 10,2,40 35.2,3.0 55 70 7
+species bear omnivore g cow,banana 10,2,40 40,4.5 60 90 8
+Final Results
+wheat: birth - 366 death - 673 current population - 0
+cow: birth - 80 death - 147 current population - 0
+banana: birth - 0 death - 98 current population - 0
+wolf: birth - 0 death - 11 current population - 0
+bear: birth - 0 death - 10 current population - 0
+Total Steps: 17
+
+
+seed = 31
+
+size 30 20
+species wheat vegetable h light 300,5,20 10.1,5.1 30 50 2
+light 5
+species cow herbivore c wheat,banana 70,3,30 15.3,4.2 50 60 5
+species banana fruit b light 100,10,25 8.9,2.5 35 45 4
+species wolf carnivore w cow 10,2,40 35.2,3.0 55 70 7
+species bear omnivore g cow,banana 10,2,40 40,4.5 60 90 8
+Final Results
+wheat: birth - 380 death - 687 current population - 0
+cow: birth - 82 death - 149 current population - 0
+banana: birth - 0 death - 112 current population - 0
+wolf: birth - 0 death - 11 current population - 0
+bear: birth - 0 death - 9 current population - 0
+Total Steps: 17
+
+seed = 41
+
+size 30 20
+species wheat vegetable h light 300,5,20 10.1,5.1 30 50 2
+light 5
+species cow herbivore c wheat,banana 70,3,30 15.3,4.2 50 60 5
+species banana fruit b light 100,10,25 8.9,2.5 35 45 4
+species wolf carnivore w cow 10,2,40 35.2,3.0 55 70 7
+species bear omnivore g cow,banana 10,2,40 40,4.5 60 90 8
+Final Results
+wheat: birth - 386 death - 689 current population - 0
+cow: birth - 83 death - 150 current population - 0
+banana: birth - 0 death - 98 current population - 0
+wolf: birth - 0 death - 10 current population - 0
+bear: birth - 1 death - 12 current population - 0
+Total Steps: 17
+
+
+
+seed = 51
+
+size 30 20
+species wheat vegetable h light 300,5,20 10.1,5.1 30 50 2
+light 5
+species cow herbivore c wheat,banana 70,3,30 15.3,4.2 50 60 5
+species banana fruit b light 100,10,25 8.9,2.5 35 45 4
+species wolf carnivore w cow 10,2,40 35.2,3.0 55 70 7
+species bear omnivore g cow,banana 10,2,40 40,4.5 60 90 8
+Final Results
+wheat: birth - 370 death - 673 current population - 0
+cow: birth - 85 death - 157 current population - 0
+banana: birth - 0 death - 91 current population - 0
+wolf: birth - 0 death - 8 current population - 0
+bear: birth - 0 death - 7 current population - 0
+Total steps: 17
+
+
+seed = 61
+
+size 30 20
+species wheat vegetable h light 300,5,20 10.1,5.1 30 50 2
+light 5
+species cow herbivore c wheat,banana 70,3,30 15.3,4.2 50 60 5
+species banana fruit b light 100,10,25 8.9,2.5 35 45 4
+species wolf carnivore w cow 10,2,40 35.2,3.0 55 70 7
+species bear omnivore g cow,banana 10,2,40 40,4.5 60 90 8
+Final Results
+wheat: birth - 397 death - 699 current population - 0
+cow: birth - 90 death - 157 current population - 0
+banana: birth - 0 death - 93 current population - 0
+wolf: birth - 0 death - 8 current population - 0
+bear: birth - 0 death - 9 current population - 0
+Total steps: 17
+
+
+seed = 71
+
+size 30 20
+species wheat vegetable h light 300,5,20 10.1,5.1 30 50 2
+light 5
+species cow herbivore c wheat,banana 70,3,30 15.3,4.2 50 60 5
+species banana fruit b light 100,10,25 8.9,2.5 35 45 4
+species wolf carnivore w cow 10,2,40 35.2,3.0 55 70 7
+species bear omnivore g cow,banana 10,2,40 40,4.5 60 90 8
+Final Results
+wheat: birth - 367 death - 674 current population - 0
+cow: birth - 92 death - 164 current population - 0
+banana: birth - 0 death - 82 current population - 0
+wolf: birth - 0 death - 7 current population - 0
+bear: birth - 0 death - 8 current population - 0
+Total steps: 17
+
+
+////////////////////////////////////////////////////////////////////////////////
+seed = 1
+size 30 20
+species wheat vegetable h light 300,5,20 70,5.1 30 50 2
+light 5
+species cow herbivore c wheat,banana 70,3,30 50,4.2 50 60 5
+species banana fruit b light 100,10,25 23,2.5 35 45 4
+species wolf carnivore w cow 10,2,40 35.2,3.0 55 70 7
+species bear omnivore g cow,banana 10,2,40 40,4.5 60 90 8
+Last 50 steps report:
+wheat: birth - 800 death - 1042 energy - 1591.859375
+cow: birth - 243 death - 310 energy - 36.234375
+banana: birth - 14 death - 103 energy - 0.0
+wolf: birth - 0 death - 8 energy - 0.0
+bear: birth - 0 death - 7 energy - 0.0Final Results
+wheat: birth - 1055 death - 320 current population - 0
+cow: birth - 243 death - 1 current population - 0
+banana: birth - 14 death - 0 current population - 0
+wolf: birth - 0 death - 0 current population - 0
+bear: birth - 0 death - 0 current population - 0
+Total steps: 73
+
+seed = 11
+size 30 20
+species wheat vegetable h light 300,5,20 70,5.1 30 50 2
+light 5
+species cow herbivore c wheat,banana 70,3,30 50,4.2 50 60 5
+species banana fruit b light 100,10,25 23,2.5 35 45 4
+species wolf carnivore w cow 10,2,40 35.2,3.0 55 70 7
+species bear omnivore g cow,banana 10,2,40 40,4.5 60 90 8
+Last 50 steps report:
+wheat: birth - 815 death - 1024 energy - 2293.609375
+cow: birth - 239 death - 302 energy - 121.078125
+banana: birth - 32 death - 132 energy - 0.0
+wolf: birth - 0 death - 9 energy - 0.0
+bear: birth - 1 death - 9 energy - 0.0Final Results
+wheat: birth - 1102 death - 386 current population - 0
+cow: birth - 239 death - 5 current population - 0
+banana: birth - 32 death - 0 current population - 0
+wolf: birth - 0 death - 0 current population - 0
+bear: birth - 1 death - 0 current population - 0
+Total steps: 73
+
+seed = 21
+size 30 20
+species wheat vegetable h light 300,5,20 70,5.1 30 50 2
+light 5
+species cow herbivore c wheat,banana 70,3,30 50,4.2 50 60 5
+species banana fruit b light 100,10,25 23,2.5 35 45 4
+species wolf carnivore w cow 10,2,40 35.2,3.0 55 70 7
+species bear omnivore g cow,banana 10,2,40 40,4.5 60 90 8
+Last 50 steps report:
+wheat: birth - 790 death - 1024 energy - 1784.1875
+cow: birth - 252 death - 313 energy - 147.859375
+banana: birth - 28 death - 126 energy - 0.0
+wolf: birth - 0 death - 11 energy - 0.0
+bear: birth - 0 death - 10 energy - 0.0Final Results
+wheat: birth - 1020 death - 303 current population - 0
+cow: birth - 252 death - 6 current population - 0
+banana: birth - 28 death - 0 current population - 0
+wolf: birth - 0 death - 0 current population - 0
+bear: birth - 0 death - 0 current population - 0
+Total steps: 73
+
+seed = 31
+size 30 20
+species wheat vegetable h light 300,5,20 70,5.1 30 50 2
+light 5
+species cow herbivore c wheat,banana 70,3,30 50,4.2 50 60 5
+species banana fruit b light 100,10,25 23,2.5 35 45 4
+species wolf carnivore w cow 10,2,40 35.2,3.0 55 70 7
+species bear omnivore g cow,banana 10,2,40 40,4.5 60 90 8
+Last 50 steps report:
+wheat: birth - 734 death - 994 energy - 1151.6875
+cow: birth - 245 death - 305 energy - 49.6875
+banana: birth - 32 death - 144 energy - 0.0
+wolf: birth - 0 death - 11 energy - 0.0
+bear: birth - 0 death - 9 energy - 0.0Final Results
+wheat: birth - 915 death - 228 current population - 0
+cow: birth - 245 death - 7 current population - 0
+banana: birth - 32 death - 0 current population - 0
+wolf: birth - 0 death - 0 current population - 0
+bear: birth - 0 death - 0 current population - 0
+Total steps: 73
+
+seed = 41
+size 30 20
+species wheat vegetable h light 300,5,20 70,5.1 30 50 2
+light 5
+species cow herbivore c wheat,banana 70,3,30 50,4.2 50 60 5
+species banana fruit b light 100,10,25 23,2.5 35 45 4
+species wolf carnivore w cow 10,2,40 35.2,3.0 55 70 7
+species bear omnivore g cow,banana 10,2,40 40,4.5 60 90 8
+Last 50 steps report:
+wheat: birth - 856 death - 1056 energy - 2546.6484375
+cow: birth - 243 death - 303 energy - 210.9765625
+banana: birth - 22 death - 120 energy - 0.0
+wolf: birth - 0 death - 10 energy - 0.0
+bear: birth - 1 death - 12 energy - 0.0Final Results
+wheat: birth - 1116 death - 363 current population - 0
+cow: birth - 245 death - 9 current population - 0
+banana: birth - 22 death - 0 current population - 0
+wolf: birth - 0 death - 0 current population - 0
+bear: birth - 1 death - 0 current population - 0
+Total steps: 73
+
+seed = 51
+size 30 20
+species wheat vegetable h light 300,5,20 70,5.1 30 50 2
+light 5
+species cow herbivore c wheat,banana 70,3,30 50,4.2 50 60 5
+species banana fruit b light 100,10,25 23,2.5 35 45 4
+species wolf carnivore w cow 10,2,40 35.2,3.0 55 70 7
+species bear omnivore g cow,banana 10,2,40 40,4.5 60 90 8
+Last 50 steps report:
+wheat: birth - 762 death - 975 energy - 2275.609375
+cow: birth - 222 death - 290 energy - 47.953125
+banana: birth - 22 death - 113 energy - 0.0
+wolf: birth - 0 death - 8 energy - 0.0
+bear: birth - 0 death - 7 energy - 0.0Final Results
+wheat: birth - 1008 death - 336 current population - 0
+cow: birth - 222 death - 4 current population - 0
+banana: birth - 22 death - 0 current population - 0
+wolf: birth - 0 death - 0 current population - 0
+bear: birth - 0 death - 0 current population - 0
+Total steps: 73
+
+seed = 61
+size 30 20
+species wheat vegetable h light 300,5,20 70,5.1 30 50 2
+light 5
+species cow herbivore c wheat,banana 70,3,30 50,4.2 50 60 5
+species banana fruit b light 100,10,25 23,2.5 35 45 4
+species wolf carnivore w cow 10,2,40 35.2,3.0 55 70 7
+species bear omnivore g cow,banana 10,2,40 40,4.5 60 90 8
+Last 50 steps report:
+wheat: birth - 805 death - 1061 energy - 954.875
+cow: birth - 252 death - 313 energy - 79.625
+banana: birth - 21 death - 114 energy - 0.0
+wolf: birth - 0 death - 8 energy - 0.0
+bear: birth - 0 death - 9 energy - 0.0Final Results
+wheat: birth - 1027 death - 268 current population - 0
+cow: birth - 252 death - 6 current population - 0
+banana: birth - 21 death - 0 current population - 0
+wolf: birth - 0 death - 0 current population - 0
+bear: birth - 0 death - 0 current population - 0
+Total steps: 73
+
+seed = 71
+size 30 20
+species wheat vegetable h light 300,5,20 70,5.1 30 50 2
+light 5
+species cow herbivore c wheat,banana 70,3,30 50,4.2 50 60 5
+species banana fruit b light 100,10,25 23,2.5 35 45 4
+species wolf carnivore w cow 10,2,40 35.2,3.0 55 70 7
+species bear omnivore g cow,banana 10,2,40 40,4.5 60 90 8
+Last 50 steps report:
+wheat: birth - 776 death - 1001 energy - 1900.765625
+cow: birth - 235 death - 302 energy - 91.296875
+banana: birth - 20 death - 102 energy - 0.0
+wolf: birth - 0 death - 7 energy - 0.0
+bear: birth - 0 death - 8 energy - 0.0Final Results
+wheat: birth - 1058 death - 364 current population - 0
+cow: birth - 235 death - 5 current population - 0
+banana: birth - 20 death - 0 current population - 0
+wolf: birth - 0 death - 0 current population - 0
+bear: birth - 0 death - 0 current population - 0
+Total steps: 73
+
+////////////////
+
+
+
+seed = 1
+size 50 60
+species cow herbivore c wheat,banana 70,3,30 50,4.2 50 60 5
+light 5
+species banana fruit b light 100,10,25 23,2.5 35 45 4
+species wheat vegetable h light 300,5,20 70,5.1 30 50 2
+species wolf carnivore w cow 10,2,40 35.2,3.0 55 70 7
+species bear omnivore g cow,banana 10,2,40 40,4.5 60 90 8
+Last 50 steps report:
+cow: birth - 48 death - 72 energy - 2275.671875
+banana: birth - 78 death - 171 energy - 0.0
+wheat: birth - 2974 death - 316 energy - 143879.78125
+wolf: birth - 0 death - 8 energy - 0.0
+bear: birth - 0 death - 7 energy - 0.0Final Results
+cow: birth - 53 death - 55 current population - 0
+banana: birth - 78 death - 0 current population - 0
+wheat: birth - 3071 death - 3049 current population - 0
+wolf: birth - 0 death - 0 current population - 0
+bear: birth - 0 death - 0 current population - 0
+Total steps: 73
+
+seed = 11
+size 50 60
+species cow herbivore c wheat,banana 70,3,30 50,4.2 50 60 5
+light 5
+species banana fruit b light 100,10,25 23,2.5 35 45 4
+species wheat vegetable h light 300,5,20 70,5.1 30 50 2
+species wolf carnivore w cow 10,2,40 35.2,3.0 55 70 7
+species bear omnivore g cow,banana 10,2,40 40,4.5 60 90 8
+Last 50 steps report:
+cow: birth - 89 death - 67 energy - 4259.9375
+banana: birth - 82 death - 176 energy - 0.0
+wheat: birth - 3154 death - 548 energy - 139250.984375
+wolf: birth - 0 death - 9 energy - 0.0
+bear: birth - 0 death - 8 energy - 0.0Final Results
+cow: birth - 105 death - 112 current population - 0
+banana: birth - 82 death - 0 current population - 0
+wheat: birth - 3336 death - 3088 current population - 0
+wolf: birth - 0 death - 0 current population - 0
+bear: birth - 0 death - 0 current population - 0
+Total steps: 73
+
+seed = 21
+size 50 60
+species cow herbivore c wheat,banana 70,3,30 50,4.2 50 60 5
+light 5
+species banana fruit b light 100,10,25 23,2.5 35 45 4
+species wheat vegetable h light 300,5,20 70,5.1 30 50 2
+species wolf carnivore w cow 10,2,40 35.2,3.0 55 70 7
+species bear omnivore g cow,banana 10,2,40 40,4.5 60 90 8
+Last 50 steps report:
+cow: birth - 73 death - 74 energy - 2932.234375
+banana: birth - 80 death - 172 energy - 0.0
+wheat: birth - 3037 death - 411 energy - 141900.4375
+wolf: birth - 0 death - 11 energy - 0.0
+bear: birth - 0 death - 10 energy - 0.0Final Results
+cow: birth - 86 death - 86 current population - 0
+banana: birth - 80 death - 0 current population - 0
+wheat: birth - 3166 death - 3054 current population - 0
+wolf: birth - 0 death - 0 current population - 0
+bear: birth - 0 death - 0 current population - 0
+Total steps: 73
+
+seed = 31
+size 50 60
+species cow herbivore c wheat,banana 70,3,30 50,4.2 50 60 5
+light 5
+species banana fruit b light 100,10,25 23,2.5 35 45 4
+species wheat vegetable h light 300,5,20 70,5.1 30 50 2
+species wolf carnivore w cow 10,2,40 35.2,3.0 55 70 7
+species bear omnivore g cow,banana 10,2,40 40,4.5 60 90 8
+Last 50 steps report:
+cow: birth - 44 death - 69 energy - 2403.15625
+banana: birth - 81 death - 174 energy - 0.0
+wheat: birth - 2972 death - 328 energy - 143590.03125
+wolf: birth - 0 death - 11 energy - 0.0
+bear: birth - 0 death - 9 energy - 0.0Final Results
+cow: birth - 50 death - 55 current population - 0
+banana: birth - 81 death - 0 current population - 0
+wheat: birth - 3066 death - 3044 current population - 0
+wolf: birth - 0 death - 0 current population - 0
+bear: birth - 0 death - 0 current population - 0
+Total steps: 73
+
+seed = 41
+size 50 60
+species cow herbivore c wheat,banana 70,3,30 50,4.2 50 60 5
+light 5
+species banana fruit b light 100,10,25 23,2.5 35 45 4
+species wheat vegetable h light 300,5,20 70,5.1 30 50 2
+species wolf carnivore w cow 10,2,40 35.2,3.0 55 70 7
+species bear omnivore g cow,banana 10,2,40 40,4.5 60 90 8
+Last 50 steps report:
+cow: birth - 65 death - 69 energy - 3057.609375
+banana: birth - 69 death - 160 energy - 0.0
+wheat: birth - 3055 death - 423 energy - 141234.125
+wolf: birth - 0 death - 10 energy - 0.0
+bear: birth - 0 death - 11 energy - 0.0Final Results
+cow: birth - 76 death - 78 current population - 0
+banana: birth - 69 death - 0 current population - 0
+wheat: birth - 3181 death - 3057 current population - 0
+wolf: birth - 0 death - 0 current population - 0
+bear: birth - 0 death - 0 current population - 0
+Total steps: 73
+
+seed = 51
+size 50 60
+species cow herbivore c wheat,banana 70,3,30 50,4.2 50 60 5
+light 5
+species banana fruit b light 100,10,25 23,2.5 35 45 4
+species wheat vegetable h light 300,5,20 70,5.1 30 50 2
+species wolf carnivore w cow 10,2,40 35.2,3.0 55 70 7
+species bear omnivore g cow,banana 10,2,40 40,4.5 60 90 8
+Last 50 steps report:
+cow: birth - 76 death - 71 energy - 3157.25
+banana: birth - 90 death - 198 energy - 0.0
+wheat: birth - 3044 death - 429 energy - 140842.71875
+wolf: birth - 0 death - 8 energy - 0.0
+bear: birth - 0 death - 7 energy - 0.0Final Results
+cow: birth - 90 death - 91 current population - 0
+banana: birth - 90 death - 0 current population - 0
+wheat: birth - 3196 death - 3062 current population - 0
+wolf: birth - 0 death - 0 current population - 0
+bear: birth - 0 death - 0 current population - 0
+Total steps: 73
+
+seed = 61
+size 50 60
+species cow herbivore c wheat,banana 70,3,30 50,4.2 50 60 5
+light 5
+species banana fruit b light 100,10,25 23,2.5 35 45 4
+species wheat vegetable h light 300,5,20 70,5.1 30 50 2
+species wolf carnivore w cow 10,2,40 35.2,3.0 55 70 7
+species bear omnivore g cow,banana 10,2,40 40,4.5 60 90 8
+Last 50 steps report:
+cow: birth - 83 death - 69 energy - 3860.953125
+banana: birth - 75 death - 167 energy - 0.0
+wheat: birth - 3119 death - 506 energy - 139132.25
+wolf: birth - 0 death - 8 energy - 0.0
+bear: birth - 0 death - 9 energy - 0.0Final Results
+cow: birth - 98 death - 100 current population - 0
+banana: birth - 75 death - 0 current population - 0
+wheat: birth - 3283 death - 3073 current population - 0
+wolf: birth - 0 death - 0 current population - 0
+bear: birth - 0 death - 0 current population - 0
+Total steps: 73
+
+seed = 71
+size 50 60
+species cow herbivore c wheat,banana 70,3,30 50,4.2 50 60 5
+light 5
+species banana fruit b light 100,10,25 23,2.5 35 45 4
+species wheat vegetable h light 300,5,20 70,5.1 30 50 2
+species wolf carnivore w cow 10,2,40 35.2,3.0 55 70 7
+species bear omnivore g cow,banana 10,2,40 40,4.5 60 90 8
+Last 50 steps report:
+cow: birth - 79 death - 70 energy - 3540.359375
+banana: birth - 86 death - 192 energy - 0.0
+wheat: birth - 3104 death - 485 energy - 141037.859375
+wolf: birth - 0 death - 7 energy - 0.0
+bear: birth - 0 death - 8 energy - 0.0Final Results
+cow: birth - 94 death - 98 current population - 0
+banana: birth - 86 death - 0 current population - 0
+wheat: birth - 3264 death - 3070 current population - 0
+wolf: birth - 0 death - 0 current population - 0
+bear: birth - 0 death - 0 current population - 0
+Total steps: 73
+
+
+////////////
+
+seed = 1
+size 30 20
+species cow herbivore c wheat,banana 70,3,30 150,4.2 50 60 5
+light 5
+species banana fruit b light 100,10,25 230,2.5 35 45 4
+species wheat vegetable h light 300,5,20 90,5.1 30 50 2
+species wolf carnivore w cow 10,2,40 50.2,3.0 55 70 7
+species bear omnivore g cow,banana 10,2,40 60,4.5 60 90 8
+Last 50 steps report:
+cow: birth - 218 death - 272 energy - 420.015625
+banana: birth - 28 death - 121 energy - 0.0
+wheat: birth - 863 death - 993 energy - 4027.921875
+wolf: birth - 0 death - 8 energy - 0.0
+bear: birth - 0 death - 7 energy - 0.0Last 50 steps report:
+cow: birth - 132 death - 131 energy - 193.4140625
+banana: birth - 0 death - 0 energy - 0.0
+wheat: birth - 775 death - 939 energy - 0.0
+wolf: birth - 0 death - 0 energy - 0.0
+bear: birth - 0 death - 0 energy - 0.0Final Results
+cow: birth - 350 death - 21 current population - 0
+banana: birth - 28 death - 0 current population - 0
+wheat: birth - 1638 death - 0 current population - 0
+wolf: birth - 0 death - 0 current population - 0
+bear: birth - 0 death - 0 current population - 0
+Total steps: 104
+
+seed = 11
+size 30 20
+species cow herbivore c wheat,banana 70,3,30 150,4.2 50 60 5
+light 5
+species banana fruit b light 100,10,25 230,2.5 35 45 4
+species wheat vegetable h light 300,5,20 90,5.1 30 50 2
+species wolf carnivore w cow 10,2,40 50.2,3.0 55 70 7
+species bear omnivore g cow,banana 10,2,40 60,4.5 60 90 8
+Last 50 steps report:
+cow: birth - 236 death - 304 energy - 75.984375
+banana: birth - 35 death - 128 energy - 29.75
+wheat: birth - 769 death - 997 energy - 2006.078125
+wolf: birth - 0 death - 9 energy - 0.0
+bear: birth - 0 death - 8 energy - 0.0Last 50 steps report:
+cow: birth - 45 death - 46 energy - 50.8115234375
+banana: birth - 3 death - 0 energy - 106.0
+wheat: birth - 605 death - 677 energy - 0.0
+wolf: birth - 0 death - 0 energy - 0.0
+bear: birth - 0 death - 0 energy - 0.0Last 50 steps report:
+cow: birth - 0 death - 5 energy - 0.0
+banana: birth - 12 death - 0 energy - 494.0
+wheat: birth - 0 death - 0 energy - 0.0
+wolf: birth - 0 death - 0 energy - 0.0
+bear: birth - 0 death - 0 energy - 0.0Last 50 steps report:
+cow: birth - 0 death - 0 energy - 0.0
+banana: birth - 24 death - 0 energy - 1539.1875
+wheat: birth - 0 death - 0 energy - 0.0
+wolf: birth - 0 death - 0 energy - 0.0
+bear: birth - 0 death - 0 energy - 0.0Final Results
+cow: birth - 281 death - 0 current population - 0
+banana: birth - 116 death - 82 current population - 0
+wheat: birth - 1374 death - 0 current population - 0
+wolf: birth - 0 death - 0 current population - 0
+bear: birth - 0 death - 0 current population - 0
+Total steps: 231
+
+
+seed = 21
+size 30 20
+species cow herbivore c wheat,banana 70,3,30 150,4.2 50 60 5
+light 5
+species banana fruit b light 100,10,25 230,2.5 35 45 4
+species wheat vegetable h light 300,5,20 90,5.1 30 50 2
+species wolf carnivore w cow 10,2,40 50.2,3.0 55 70 7
+species bear omnivore g cow,banana 10,2,40 60,4.5 60 90 8
+Last 50 steps report:
+cow: birth - 224 death - 289 energy - 257.0390625
+banana: birth - 25 death - 117 energy - 0.0
+wheat: birth - 869 death - 968 energy - 5660.2734375
+wolf: birth - 0 death - 11 energy - 0.0
+bear: birth - 0 death - 10 energy - 0.0Last 50 steps report:
+cow: birth - 129 death - 119 energy - 167.93603515625
+banana: birth - 0 death - 0 energy - 0.0
+wheat: birth - 660 death - 860 energy - 0.0
+wolf: birth - 0 death - 0 energy - 0.0
+bear: birth - 0 death - 0 energy - 0.0Final Results
+cow: birth - 353 death - 19 current population - 0
+banana: birth - 25 death - 0 current population - 0
+wheat: birth - 1529 death - 0 current population - 0
+wolf: birth - 0 death - 0 current population - 0
+bear: birth - 0 death - 0 current population - 0
+Total steps: 104
+
+seed = 31
+size 30 20
+species cow herbivore c wheat,banana 70,3,30 150,4.2 50 60 5
+light 5
+species banana fruit b light 100,10,25 230,2.5 35 45 4
+species wheat vegetable h light 300,5,20 90,5.1 30 50 2
+species wolf carnivore w cow 10,2,40 50.2,3.0 55 70 7
+species bear omnivore g cow,banana 10,2,40 60,4.5 60 90 8
+Last 50 steps report:
+cow: birth - 225 death - 281 energy - 551.796875
+banana: birth - 29 death - 117 energy - 140.25
+wheat: birth - 827 death - 1027 energy - 2429.75
+wolf: birth - 0 death - 11 energy - 0.0
+bear: birth - 0 death - 9 energy - 0.0Last 50 steps report:
+cow: birth - 128 death - 123 energy - 184.202880859375
+banana: birth - 11 death - 1 energy - 475.0
+wheat: birth - 766 death - 872 energy - 0.0
+wolf: birth - 0 death - 0 energy - 0.0
+bear: birth - 0 death - 0 energy - 0.0Last 50 steps report:
+cow: birth - 0 death - 23 energy - 0.0
+banana: birth - 29 death - 1 energy - 1596.625
+wheat: birth - 0 death - 0 energy - 0.0
+wolf: birth - 0 death - 0 energy - 0.0
+bear: birth - 0 death - 0 energy - 0.0Last 50 steps report:
+cow: birth - 0 death - 0 energy - 0.0
+banana: birth - 75 death - 0 energy - 3868.078125
+wheat: birth - 0 death - 0 energy - 0.0
+wolf: birth - 0 death - 0 energy - 0.0
+bear: birth - 0 death - 0 energy - 0.0Final Results
+cow: birth - 353 death - 0 current population - 0
+banana: birth - 193 death - 167 current population - 0
+wheat: birth - 1593 death - 0 current population - 0
+wolf: birth - 0 death - 0 current population - 0
+bear: birth - 0 death - 0 current population - 0
+Total steps: 231
+seed = 41
+size 30 20
+species cow herbivore c wheat,banana 70,3,30 150,4.2 50 60 5
+light 5
+species banana fruit b light 100,10,25 230,2.5 35 45 4
+species wheat vegetable h light 300,5,20 90,5.1 30 50 2
+species wolf carnivore w cow 10,2,40 50.2,3.0 55 70 7
+species bear omnivore g cow,banana 10,2,40 60,4.5 60 90 8
+Last 50 steps report:
+cow: birth - 233 death - 289 energy - 318.46875
+banana: birth - 24 death - 115 energy - 0.0
+wheat: birth - 884 death - 1093 energy - 2166.453125
+wolf: birth - 0 death - 10 energy - 0.0
+bear: birth - 0 death - 11 energy - 0.0Last 50 steps report:
+cow: birth - 79 death - 78 energy - 133.11572265625
+banana: birth - 0 death - 0 energy - 0.0
+wheat: birth - 724 death - 814 energy - 0.0
+wolf: birth - 0 death - 0 energy - 0.0
+bear: birth - 0 death - 0 energy - 0.0Final Results
+cow: birth - 312 death - 16 current population - 0
+banana: birth - 24 death - 0 current population - 0
+wheat: birth - 1608 death - 0 current population - 0
+wolf: birth - 0 death - 0 current population - 0
+bear: birth - 0 death - 0 current population - 0
+Total steps: 104
+seed = 51
+size 30 20
+species cow herbivore c wheat,banana 70,3,30 150,4.2 50 60 5
+light 5
+species banana fruit b light 100,10,25 230,2.5 35 45 4
+species wheat vegetable h light 300,5,20 90,5.1 30 50 2
+species wolf carnivore w cow 10,2,40 50.2,3.0 55 70 7
+species bear omnivore g cow,banana 10,2,40 60,4.5 60 90 8
+Last 50 steps report:
+cow: birth - 207 death - 277 energy - 60.9921875
+banana: birth - 40 death - 141 energy - 223.5
+wheat: birth - 656 death - 861 energy - 2280.5390625
+wolf: birth - 0 death - 8 energy - 0.0
+bear: birth - 0 death - 7 energy - 0.0Last 50 steps report:
+cow: birth - 21 death - 22 energy - 18.0
+banana: birth - 12 death - 0 energy - 522.0
+wheat: birth - 561 death - 651 energy - 0.0
+wolf: birth - 0 death - 0 energy - 0.0
+bear: birth - 0 death - 0 energy - 0.0Last 50 steps report:
+cow: birth - 0 death - 1 energy - 0.0
+banana: birth - 38 death - 0 energy - 1915.25
+wheat: birth - 0 death - 0 energy - 0.0
+wolf: birth - 0 death - 0 energy - 0.0
+bear: birth - 0 death - 0 energy - 0.0Last 50 steps report:
+cow: birth - 0 death - 0 energy - 0.0
+banana: birth - 76 death - 0 energy - 5142.375
+wheat: birth - 0 death - 0 energy - 0.0
+wolf: birth - 0 death - 0 energy - 0.0
+bear: birth - 0 death - 0 energy - 0.0Final Results
+cow: birth - 228 death - 0 current population - 0
+banana: birth - 271 death - 238 current population - 0
+wheat: birth - 1217 death - 0 current population - 0
+wolf: birth - 0 death - 0 current population - 0
+bear: birth - 0 death - 0 current population - 0
+Total steps: 231
+seed = 61
+size 30 20
+species cow herbivore c wheat,banana 70,3,30 150,4.2 50 60 5
+light 5
+species banana fruit b light 100,10,25 230,2.5 35 45 4
+species wheat vegetable h light 300,5,20 90,5.1 30 50 2
+species wolf carnivore w cow 10,2,40 50.2,3.0 55 70 7
+species bear omnivore g cow,banana 10,2,40 60,4.5 60 90 8
+Last 50 steps report:
+cow: birth - 240 death - 301 energy - 259.2265625
+banana: birth - 26 death - 118 energy - 0.0
+wheat: birth - 880 death - 1046 energy - 3151.7421875
+wolf: birth - 0 death - 8 energy - 0.0
+bear: birth - 1 death - 10 energy - 0.0Last 50 steps report:
+cow: birth - 72 death - 69 energy - 93.479736328125
+banana: birth - 0 death - 0 energy - 0.0
+wheat: birth - 646 death - 776 energy - 0.0
+wolf: birth - 0 death - 0 energy - 0.0
+bear: birth - 0 death - 0 energy - 0.0Final Results
+cow: birth - 312 death - 13 current population - 0
+banana: birth - 26 death - 0 current population - 0
+wheat: birth - 1526 death - 0 current population - 0
+wolf: birth - 0 death - 0 current population - 0
+bear: birth - 1 death - 0 current population - 0
+Total steps: 103
+seed = 71
+size 30 20
+species cow herbivore c wheat,banana 70,3,30 150,4.2 50 60 5
+light 5
+species banana fruit b light 100,10,25 230,2.5 35 45 4
+species wheat vegetable h light 300,5,20 90,5.1 30 50 2
+species wolf carnivore w cow 10,2,40 50.2,3.0 55 70 7
+species bear omnivore g cow,banana 10,2,40 60,4.5 60 90 8
+Last 50 steps report:
+cow: birth - 205 death - 278 energy - 0.0625
+banana: birth - 34 death - 140 energy - 0.0
+wheat: birth - 691 death - 876 energy - 2515.96875
+wolf: birth - 0 death - 7 energy - 0.0
+bear: birth - 2 death - 10 energy - 0.0Final Results
+cow: birth - 205 death - 1 current population - 0
+banana: birth - 34 death - 0 current population - 0
+wheat: birth - 1098 death - 513 current population - 0
+wolf: birth - 0 death - 0 current population - 0
+bear: birth - 2 death - 0 current population - 0
+Total steps: 93
+
+seed = 71
+size 30 20
+species cow herbivore c wheat,banana 70,3,30 150,4.2 50 60 5
+light 5
+species banana fruit b light 100,10,25 230,2.5 35 45 4
+species wheat vegetable h light 300,5,20 90,5.1 30 50 2
+species wolf carnivore w cow 10,2,40 50.2,3.0 55 70 7
+species bear omnivore g cow,banana 10,2,40 60,4.5 60 90 8
+Last 50 steps report: 
+cow: birth - 205 death - 278 energy - 0.0625
+banana: birth - 34 death - 140 energy - 0.0
+wheat: birth - 691 death - 876 energy - 2515.96875
+wolf: birth - 0 death - 7 energy - 0.0
+bear: birth - 2 death - 10 energy - 0.0Final Results
+cow: birth - 205 death - 1 current population - 0
+banana: birth - 34 death - 0 current population - 0
+wheat: birth - 1098 death - 513 current population - 0
+wolf: birth - 0 death - 0 current population - 0
+bear: birth - 2 death - 0 current population - 0
+Total steps: 93

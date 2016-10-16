@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.params=seed
+comment0.target=DirectionGenerator(long)
+comment1.params=
+comment1.target=Direction\ next()
+comment1.text=\n\ @desc\ returns\ random\ direction\ according\ to\ the\ bound\ which\ is\ always\ 8\n\ as\ we\ have\ 8\ adjacent\ cells\ at\ maximum.\n\ @return\ Direction\ \ -\ return\ new\ Random\ Direction\ or\ Direction.LEFT\ if\ randomly\ generated\n\ number\ does\ not\ have\ approprite\ direction\ to\ return\n
+numComments=2

@@ -1,0 +1,128 @@
+
+
+size 50 60
+species cow herbivore c wheat,banana 70,3,30 50,4.2 50 60 5
+light 5
+species banana fruit b light 100,10,25 23,2.5 35 45 4
+species wheat vegetable h light 300,5,20 70,5.1 30 50 2
+species wolf carnivore w cow 10,2,40 35.2,3.0 55 70 7
+species bear omnivore g cow,banana 10,2,40 40,4.5 60 90 8
+
+
+Last 50 steps report,
+cow, birth , 48, death , 72, energy , 2275.671875
+banana, birth , 78, death , 171, energy , 0.0
+wheat, birth , 2974, death , 316, energy , 143879.78125
+wolf, birth , 0, death , 8, energy , 0.0
+bear, birth , 0, death , 7, energy , 0.0
+Final Results
+cow, birth , 53, death , 55, current population , 0
+banana, birth , 78, death , 0, current population , 0
+wheat, birth , 3071, death , 3049, current population , 0
+wolf, birth , 0, death , 0, current population , 0
+bear, birth , 0, death , 0, current population , 0
+Total steps, 73
+
+
+Last 50 steps report,
+cow, birth , 89, death , 67, energy , 4259.9375
+banana, birth , 82, death , 176, energy , 0.0
+wheat, birth , 3154, death , 548, energy , 139250.984375
+wolf, birth , 0, death , 9, energy , 0.0
+bear, birth , 0, death , 8, energy , 0.0
+Final Results
+cow, birth , 105, death , 112, current population , 0
+banana, birth , 82, death , 0, current population , 0
+wheat, birth , 3336, death , 3088, current population , 0
+wolf, birth , 0, death , 0, current population , 0
+bear, birth , 0, death , 0, current population , 0
+Total steps, 73
+
+
+Last 50 steps report,
+cow, birth , 73, death , 74, energy , 2932.234375
+banana, birth , 80, death , 172, energy , 0.0
+wheat, birth , 3037, death , 411, energy , 141900.4375
+wolf, birth , 0, death , 11, energy , 0.0
+bear, birth , 0, death , 10, energy , 0.0
+Final Results
+cow, birth , 86, death , 86, current population , 0
+banana, birth , 80, death , 0, current population , 0
+wheat, birth , 3166, death , 3054, current population , 0
+wolf, birth , 0, death , 0, current population , 0
+bear, birth , 0, death , 0, current population , 0
+Total steps, 73
+
+
+Last 50 steps report,
+cow, birth , 44, death , 69, energy , 2403.15625
+banana, birth , 81, death , 174, energy , 0.0
+wheat, birth , 2972, death , 328, energy , 143590.03125
+wolf, birth , 0, death , 11, energy , 0.0
+bear, birth , 0, death , 9, energy , 0.0
+Final Results
+cow, birth , 50, death , 55, current population , 0
+banana, birth , 81, death , 0, current population , 0
+wheat, birth , 3066, death , 3044, current population , 0
+wolf, birth , 0, death , 0 current population , 0
+bear, birth , 0, death , 0, current population , 0
+Total steps, 73
+
+
+Last 50 steps report,
+cow, birth , 65, death , 69, energy , 3057.609375
+banana, birth , 69, death , 160, energy , 0.0
+wheat, birth , 3055, death , 423, energy , 141234.125
+wolf, birth , 0, death , 10, energy , 0.0
+bear, birth , 0, death , 11, energy , 0.0
+Final Results
+cow, birth , 76, death , 78, current population , 0
+banana, birth , 69, death , 0, current population , 0
+wheat, birth , 3181, death , 3057, current population , 0
+wolf, birth , 0, death , 0 ,current population , 0
+bear, birth , 0 ,death , 0, current population , 0
+Total steps, 73
+
+
+Last 50 steps report,
+cow, birth , 76, death , 71, energy , 3157.25
+banana, birth , 90, death , 198, energy , 0.0
+wheat, birth , 3044, death , 429, energy , 140842.71875
+wolf, birth , 0 ,death , 8 ,energy , 0.0
+bear, birth , 0 ,death , 7 ,energy , 0.0
+Final Results
+cow, birth , 90 ,death , 91, current population , 0
+banana, birth , 90, death , 0 ,current population , 0
+wheat, birth , 3196, death , 3062, current population , 0
+wolf, birth , 0 ,death , 0 ,current population , 0
+bear, birth , 0 ,death , 0, current population , 0
+Total steps, 73
+
+
+Last 50 steps report,
+cow, birth , 83, death , 69, energy , 3860.953125
+banana, birth , 75 ,death , 167, energy , 0.0
+wheat, birth , 3119, death , 506 ,energy , 139132.25
+wolf, birth , 0 ,death , 8, energy , 0.0
+bear, birth , 0 ,death , 9, energy , 0.0
+Final Results
+cow, birth , 98 ,death , 100 ,current population , 0
+banana, birth , 75 ,death , 0, current population , 0
+wheat, birth , 3283 ,death , 3073, current population , 0
+wolf, birth , 0 ,death , 0 ,current population , 0
+bear, birth , 0 ,death , 0, current population , 0
+Total steps, 73
+
+Last 50 steps report,
+cow, birth , 79 ,death , 70, energy , 3540.359375
+banana, birth , 86, death , 192, energy , 0.0
+wheat, birth , 3104, death , 485, energy , 141037.859375
+wolf, birth , 0, death , 7 ,energy , 0.0
+bear, birth , 0 ,death , 8, energy , 0.0
+Final Results
+cow, birth , 94,death , 98 ,current population , 0
+banana, birth , 86, death , 0,current population , 0
+wheat, birth , 3264, death , 3070, current population , 0
+wolf, birth , 0 ,death , 0, current population , 0
+bear, birth , 0, death , 0, current population , 0
+Total steps, 73

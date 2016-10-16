@@ -1,0 +1,66 @@
+
+size 30 20
+species wheat vegetable h light 300,5,20 10.1,5.1 30 50 2
+light 5
+species cow herbivore c wheat,banana 70,3,30 15.3,4.2 50 60 5
+species banana fruit b light 100,10,25 8.9,2.5 35 45 4
+species wolf carnivore w cow 10,2,40 35.2,3.0 55 70 7
+species bear omnivore g cow,banana 10,2,40 40,4.5 60 90 8
+
+
+wheat,birth,376,death,683,currentpopulation,0
+cow,birth,87,death,155,currentpopulation,0
+banana,birth,0,death,89,currentpopulation,0
+wolf,birth,0,death,8,currentpopulation,0
+bear,birth,0,death,7,currentpopulation,0
+TotalSteps,17
+
+wheat,birth,383,death,691,currentpopulation,0
+cow,birth,89,death,157,currentpopulation,0
+banana,birth,0,death,100,currentpopulation,0
+wolf,birth,0,death,9,currentpopulation,0
+bear,birth,1,death,9,currentpopulation,0
+TotalSteps,17
+
+wheat,birth,366,death,673,currentpopulation,0
+cow,birth,80,death,147,currentpopulation,0
+banana,birth,0,death,98,currentpopulation,0
+wolf,birth,0,death,11,currentpopulation,0
+bear,birth,0,death,10,currentpopulation,0
+TotalSteps,17
+
+wheat,birth,380,death,687,currentpopulation,0
+cow,birth,82,death,149,currentpopulation,0
+banana,birth,0,death,112,currentpopulation,0
+wolf,birth,0,death,11,currentpopulation,0
+bear,birth,0,death,9,currentpopulation,0
+TotalSteps,17
+
+
+wheat,birth,386,death,689,currentpopulation,0
+cow,birth,83,death,150,currentpopulation,0
+banana,birth,0,death,98,currentpopulation,0
+wolf,birth,0,death,10,currentpopulation,0
+bear,birth,1,death,12,currentpopulation,0
+TotalSteps,17
+
+wheat,birth,370,death,673,currentpopulation,0
+cow,birth,85,death,157,currentpopulation,0
+banana,birth,0,death,91,currentpopulation,0
+wolf,birth,0,death,8,currentpopulation,0
+bear,birth,0,death,7,currentpopulation,0
+Totalsteps,17
+
+wheat,birth,397,death,699,currentpopulation,0
+cow,birth,90,death,157,currentpopulation,0
+banana,birth,0,death,93,currentpopulation,0
+wolf,birth,0,death,8,currentpopulation,0
+bear,birth,0,death,9,currentpopulation,0
+Totalsteps,17
+
+wheat,birth,367,death,674,currentpopulation,0
+cow,birth,92,death,164,currentpopulation,0
+banana,birth,0,death,82,currentpopulation,0
+wolf,birth,0,death,7,currentpopulation,0
+bear,birth,0,death,8,currentpopulation,0
+Totalsteps,17
