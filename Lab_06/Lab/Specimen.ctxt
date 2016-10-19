@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.params=type\ subgroup\ name\ age\ birth
+comment0.target=Specimen(java.lang.String,\ java.lang.String,\ java.lang.String,\ double,\ double)
+comment1.params=
+comment1.target=java.lang.String\ getType()
+comment2.params=
+comment2.target=java.lang.String\ getSubgroup()
+comment3.params=
+comment3.target=java.lang.String\ getName()
+comment4.params=
+comment4.target=double\ getAge()
+comment5.params=
+comment5.target=double\ getBirth()
+comment6.params=
+comment6.target=java.lang.String\ toString()
+numComments=7
