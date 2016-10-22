@@ -33,11 +33,11 @@ public class TerrainTest
         ls_01.add("light");
         ls_03.add(10.1);
         ls_03.add(5.1);
-        plant = new Plant("wheat", "vegetable", 'h', ls_01, 20, ls_03, 30, 50, 2, 1, 1, c_01);
+        plant = new Plant("wheat", "vegetable", 'h', ls_01, 20, ls_03, 30, 50, 2, 1, 1, c_01, 1);
         ls_01.clear();
         ls_01.add("wheat");
         ls_01.add("banana");
-        animal = new Animal("cow", "herbivore", 'c', ls_01, 20, ls_03, 30, 50, 2, 2, 2, c_02);
+        animal = new Animal("cow", "herbivore", 'c', ls_01, 20, ls_03, 30, 50, 2, 2, 2, c_02, 1);
     }
 
    

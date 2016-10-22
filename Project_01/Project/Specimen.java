@@ -27,13 +27,14 @@ abstract public class Specimen{
    private int age;
    private Controller controller;
    public boolean action;
+   private long seed;
    
                                 
    public Specimen(String name, String type, char symbol, ArrayList<String> energySources,
                    double energy, ArrayList<Double> stats, double birthEnergy, double maxEnergy,
-                   double livingEnergy, int x, int y, Controller controller){
+                   double livingEnergy, int x, int y, Controller controller, long seed){
       // initialize class variables
-      int seed = 100;
+      this.seed = seed;
       this.name = name;
       this.type = type;
       this.symbol = symbol;
@@ -153,9 +154,9 @@ abstract public class Specimen{
             Specimen child;
             // create new instance of Animal or Plant depending on parent's type
             if(this instanceof Animal)
-                child = new Animal(getName(), getType(), getSymbol(), getEnergySources(), getEnergy(), getStats(), getBirthEnergy(), getMaxEnergy(), getLivingEnergy(), x, y, getController());
+                child = new Animal(getName(), getType(), getSymbol(), getEnergySources(), getEnergy(), getStats(), getBirthEnergy(), getMaxEnergy(), getLivingEnergy(), x, y, getController(), getSeed());
             else
-                child = new Plant(getName(), getType(), getSymbol(), getEnergySources(), getEnergy(), getStats(), getBirthEnergy(), getMaxEnergy(), getLivingEnergy(), x, y, getController());
+                child = new Plant(getName(), getType(), getSymbol(), getEnergySources(), getEnergy(), getStats(), getBirthEnergy(), getMaxEnergy(), getLivingEnergy(), x, y, getController(), getSeed());
             
             getController().addSpecimen(child);
             terrain.objectMap.get(x).get(y).add(child);
@@ -291,6 +292,14 @@ abstract public class Specimen{
        return age;
    }
    
+    /**
+     * @desc getter for specimen's seed for random generator
+     * @return int - seedfor random generator
+   */
+   public long getSeed(){
+       return seed;
+   }
+   
    /**
      * @desc getter for specimen's controller
    */
@@ -325,5 +334,6 @@ abstract public class Specimen{
    public void setAge(int val){
        age = val;
    }
+   
    
 }

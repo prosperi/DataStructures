@@ -13,10 +13,10 @@ public class Animal extends Specimen implements Movable{
     
     public Animal(String name, String type, char symbol, ArrayList<String> energySources,
                    double energy,  ArrayList<Double> stats, double birthEnergy, double maxEnergy,
-                   double livingEnergy, int x, int y, Controller controller){
+                   double livingEnergy, int x, int y, Controller controller, long seed){
         
        super(name, type, symbol, energySources, energy, stats, birthEnergy, maxEnergy, 
-             livingEnergy, x, y, controller);
+             livingEnergy, x, y, controller, seed);
 
     }
     

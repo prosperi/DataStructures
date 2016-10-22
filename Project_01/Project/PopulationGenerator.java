@@ -8,7 +8,7 @@ import java.util.Random;
 */
 
 public class PopulationGenerator{
-   Random rnd;
+   private Random rnd;
    
    public PopulationGenerator(long seed){
        rnd = new Random(seed);

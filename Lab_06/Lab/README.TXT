@@ -10,3 +10,5 @@ VERSION or DATE:
 HOW TO START THIS PROJECT:
 AUTHORS:
 USER INSTRUCTIONS:
+    The file name, that should be sorted can be changed from Life Class, on lines 23 and 40.
+    

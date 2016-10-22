@@ -27,25 +27,26 @@ public class World{
     public static ArrayList<Controller> controllers;
     public static int max;
     public static int stepCounter;
-    public static int light;
+    public static double light;
     public static int changeCounter;
     public static PrintWriter outputFile;
-    private static final int seed = 1;
+    private static int SEED;
     
     public static void main(String[] args){
         
         // parse arguments
-        dGen = new DirectionGenerator(seed);
-        popGen = new PopulationGenerator(seed);
+        dGen = new DirectionGenerator(SEED);
+        popGen = new PopulationGenerator(SEED);
         habitants = new ArrayList<Specimen>();
-        max = Integer.parseInt(args[1]); 
+        max = Integer.parseInt(args[1]);
+        SEED = Integer.parseInt(args[2]);
         stepCounter = 0;
         changeCounter = 0;
         specimenLoader = new ArrayList<ArrayList<String>>();
         controllers = new ArrayList<Controller>();
         try{
             outputFile = new PrintWriter(new FileWriter("data.csv", true));
-            outputFile.append('\n' + "seed = " + seed + '\n');
+            outputFile.append("\n\nseed = " + SEED + '\n');
         }catch(IOException e){
             System.out.append("Problem with output file!!!");
         }
@@ -106,7 +107,7 @@ public class World{
         ){
             String tmp;
             while((tmp = reader.readLine()) != null){
-                outputFile.append(tmp + '\n');
+                //outputFile.append(tmp + '\n');
                 String[] arr = tmp.split(" ");
                 if((arr[0]).compareTo("species") == 0){
                     // Create new Species by parsing config.txt
@@ -153,7 +154,6 @@ public class World{
                         terrain.printMap();
                         showChanges();
                     }else{
-                        //System.out.println(changeCounter + " " + habitants.size() + " " + stepCounter );
                         System.out.println("End of Simulation");
                         finalStats();
                         t = false;
@@ -292,7 +292,7 @@ public class World{
     */
     public static void showFifty(){
         System.out.println("Last 50 steps report: ");
-        outputFile.append("Last 50 steps report: ");
+        outputFile.append("\nLast 50 steps report: ");
         for(int i = 0; i < controllers.size(); i++){
             Controller tmp = controllers.get(i);
             String str= tmp.getName() + ": birth - " + tmp.getBirthFifty() + 
@@ -306,12 +306,12 @@ public class World{
     
     /**
       * @desc this method is used as a helper method
-      * for c and i command and displaying the stats exceeding
+      * for c and i command and displays the stats exceeding
       * max steps
     */
     public static void finalStats(){
         terrain.printMap();
-        outputFile.append("Final Results");
+        outputFile.append("\nFinal Results");
         for(int i = 0; i < controllers.size(); i++){
             Controller tmp = controllers.get(i);
             String str = tmp.getName() + ": birth - " + tmp.getBirth() + 
@@ -357,9 +357,9 @@ public class World{
         
         // if its one of herbivores, carnivores or omnivores then generate new Animal, if not generate new Plant
         if(arr.get(2).compareTo("herbivore") == 0 || arr.get(2).compareTo("carnivore") == 0 || arr.get(2).compareTo("omnivore") == 0 || arr.get(2).compareTo("animal") == 0)
-            return new Animal(arr.get(1), arr.get(2), arr.get(3).charAt(0), ls_01, energy, ls_03, Double.parseDouble(arr.get(7)), Double.parseDouble(arr.get(8)), Double.parseDouble(arr.get(9)),  position.get(0), position.get(1), controller);
+            return new Animal(arr.get(1), arr.get(2), arr.get(3).charAt(0), ls_01, energy, ls_03, Double.parseDouble(arr.get(7)), Double.parseDouble(arr.get(8)), Double.parseDouble(arr.get(9)),  position.get(0), position.get(1), controller, SEED);
         else
-            return new Plant(arr.get(1), arr.get(2), arr.get(3).charAt(0), ls_01, energy, ls_03, Double.parseDouble(arr.get(7)), Double.parseDouble(arr.get(8)), Double.parseDouble(arr.get(9)),  position.get(0), position.get(1), controller);
+            return new Plant(arr.get(1), arr.get(2), arr.get(3).charAt(0), ls_01, energy, ls_03, Double.parseDouble(arr.get(7)), Double.parseDouble(arr.get(8)), Double.parseDouble(arr.get(9)),  position.get(0), position.get(1), controller, SEED);
         
     }
         

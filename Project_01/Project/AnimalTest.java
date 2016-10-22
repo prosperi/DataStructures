@@ -38,9 +38,9 @@ public class AnimalTest{
         stats.add(10.1);
         stats.add(5.1);
         Controller controller = new Controller("cow");
-        animal = new Animal("cow", "herbivore", 'c', energySources, energy, stats, 30, 50, 20, 1, 1, controller);
-        plant = new Plant("wheat", "vegetable", 'h', energySources, energy, stats, 30, 50, 20, 1, 1, controller);
-        strangePlant = new Plant("grapes", "fruit", 'g', energySources, energy, stats, 30, 50, 20, 0, 0, controller);
+        animal = new Animal("cow", "herbivore", 'c', energySources, energy, stats, 30, 50, 20, 1, 1, controller, 1);
+        plant = new Plant("wheat", "vegetable", 'h', energySources, energy, stats, 30, 50, 20, 1, 1, controller, 1);
+        strangePlant = new Plant("grapes", "fruit", 'g', energySources, energy, stats, 30, 50, 20, 0, 0, controller, 1);
         
         dGen = new DirectionGenerator(11);
         terrain = new Terrain(5, 15, 10);
@@ -181,7 +181,7 @@ public class AnimalTest{
         stats.add(10.1);
         stats.add(5.1);
         Controller controller = new Controller("dog");
-        return new Animal("dog", "herbivore", 'd', energySources, 20.0, stats, 30, 50, 20, x, y, controller);
+        return new Animal("dog", "herbivore", 'd', energySources, 20.0, stats, 30, 50, 20, x, y, controller, 1);
     }
     
     /**
@@ -194,7 +194,7 @@ public class AnimalTest{
         stats.add(10.1);
         stats.add(5.1);
         Controller controller = new Controller("chicken");
-        return new Animal("chicken", "herbivore", 'd', energySources, 20.0, stats, 30, 50, 20, x, y, controller);
+        return new Animal("chicken", "herbivore", 'd', energySources, 20.0, stats, 30, 50, 20, x, y, controller, 1);
     }
     
     /**
@@ -207,7 +207,7 @@ public class AnimalTest{
         stats.add(10.1);
         stats.add(5.1);
         Controller controller = new Controller("banana");
-        return new Plant("banana", "fruit", 'b', energySources, 20.0, stats, 30, 50, 20, x, y, controller);
+        return new Plant("banana", "fruit", 'b', energySources, 20.0, stats, 30, 50, 20, x, y, controller, 1);
     }
     
     

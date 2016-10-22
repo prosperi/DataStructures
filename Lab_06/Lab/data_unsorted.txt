@@ -1,0 +1,5 @@
+animal herbivore deer 10.4 3.7
+plant grain wheat 2.1 101.1
+animal omnivore cow 11.0 7.0
+animal carnivore wolf 10.2 3.9
+plant fruit peach 15.7 7.9

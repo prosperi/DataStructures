@@ -14,6 +14,11 @@ public class Life{
     
     public static void main(String args[]){
         
+        construct();
+        
+    }
+    
+    public static void construct(){
         try{
             Scanner sc = new Scanner(new File("data.txt"));
             sortedSpecies = new TreeSet<Specimen>(new SpecimenComparator());
@@ -28,8 +33,6 @@ public class Life{
         }catch(FileNotFoundException e){
             e.printStackTrace();
         }
-        
-        
     }
     
     public static void print(TreeSet sortedSpecies){
@@ -43,6 +46,10 @@ public class Life{
         }catch(IOException e){
             e.printStackTrace();
         }
+    }
+    
+    public TreeSet<Specimen> getSortedSpecies(){
+        return sortedSpecies;
     }
     
 }

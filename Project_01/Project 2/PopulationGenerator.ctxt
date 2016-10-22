@@ -1,7 +1,0 @@
-#BlueJ class context
-comment0.params=seed
-comment0.target=PopulationGenerator(long)
-comment1.params=mean\ deviation
-comment1.target=int\ next(double,\ double)
-comment1.text=\n\ @desc\ returns\ next\ Gaussian\ random\ number\n\ @param\ double\ mean\ -\ mean\ to\ calculate\ next\ random\ number\n\ @param\ double\ deviation\ -\ deviation\ to\ calculate\ next\ random\ number\n\ @return\ int\ -\ return\ new\ integer,\ which\ is\ randomly\ chosen\n
-numComments=2

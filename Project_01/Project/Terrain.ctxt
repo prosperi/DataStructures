@@ -26,6 +26,6 @@ comment8.params=
 comment8.target=double\ getLight()
 comment8.text=\n\ @desc\ getter\ for\ terrain\ light\n\ @return\ double\ -\ light\ of\ terrain,\ which\ \n\ is\ food\ for\ plants\n
 comment9.params=val
-comment9.target=void\ setLight(int)
+comment9.target=void\ setLight(double)
 comment9.text=\n\ @desc\ setter\ for\ terrain\ light\n\ @param\ int\ val\ -\ new\ value\ for\ light\n
 numComments=10

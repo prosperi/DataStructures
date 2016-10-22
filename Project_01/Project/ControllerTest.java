@@ -36,9 +36,9 @@ public class ControllerTest
         stats.add(10.1);
         stats.add(5.1);
         controller = new Controller("cow");
-        animal = new Animal("cow", "herbivore", 'c', energySources, energy, stats, 30, 50, 20, 1, 1, controller);
-        foo = new Animal("cow", "herbivore", 'c', energySources, 30, stats, 30, 50, 20, 1, 1, controller);
-        boo = new Animal("cow", "herbivore", 'c', energySources, 30, stats, 30, 50, 20, 1, 1, controller);
+        animal = new Animal("cow", "herbivore", 'c', energySources, energy, stats, 30, 50, 20, 1, 1, controller, 1);
+        foo = new Animal("cow", "herbivore", 'c', energySources, 30, stats, 30, 50, 20, 1, 1, controller, 1);
+        boo = new Animal("cow", "herbivore", 'c', energySources, 30, stats, 30, 50, 20, 1, 1, controller, 1);
     }
 
     

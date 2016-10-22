@@ -1,0 +1,90 @@
+Increase only animals death age
+
+size 50 50
+species cow herbivore c wheat,banana 70,3,30 150.3,4.2 50 60 5
+species wheat vegetable h light 300,5,20 10.1,5.1 30 50 2
+light 5
+species banana fruit b light 100,10,25 8.9,2.5 35 45 4
+species wolf carnivore w cow 10,2,40 85.2,3.0 55 70 7
+species bear omnivore g cow,banana 10,2,40 80,4.5 60 90 8
+
+
+seed = 1
+
+Final Results
+cow: birth, 14, death, 86, current population, 0
+wheat: birth, 741, death, 1036, current population, 0
+banana: birth, 0, death, 120, current population, 0
+wolf: birth, 0, death, 11, current population, 0
+bear: birth, 0, death, 11, current population, 0
+Total steps: 28
+
+seed = 11
+
+Final Results
+cow: birth, 14, death, 86, current population, 0
+wheat: birth, 741, death, 1036, current population, 0
+banana: birth, 0, death, 120, current population, 0
+wolf: birth, 0, death, 11, current population, 0
+bear: birth, 0, death, 11, current population, 0
+Total steps: 28
+
+seed = 21
+
+Final Results
+cow: birth, 14, death, 86, current population, 0
+wheat: birth, 741, death, 1036, current population, 0
+banana: birth, 0, death, 120, current population, 0
+wolf: birth, 0, death, 11, current population, 0
+bear: birth, 0, death, 11, current population, 0
+Total steps: 27
+
+seed = 31
+
+Final Results
+cow: birth, 14, death, 86, current population, 0
+wheat: birth, 741, death, 1036, current population, 0
+banana: birth, 0, death, 120, current population, 0
+wolf: birth, 0, death, 11, current population, 0
+bear: birth, 0, death, 11, current population, 0
+Total steps: 27
+
+seed = 41
+
+Final Results
+cow: birth, 12, death, 84, current population, 0
+wheat: birth, 736, death, 1031, current population, 0
+banana: birth, 0, death, 120, current population, 0
+wolf: birth, 0, death, 11, current population, 0
+bear: birth, 0, death, 11, current population, 0
+Total steps: 20
+
+seed = 51
+
+Final Results
+cow: birth, 12, death, 84, current population, 0
+wheat: birth, 736, death, 1031, current population, 0
+banana: birth, 0, death, 120, current population, 0
+wolf: birth, 0, death, 11, current population, 0
+bear: birth, 0, death, 11, current population, 0
+Total steps: 20
+
+seed = 61
+
+Final Results
+cow: birth, 12, death, 84, current population, 0
+wheat: birth, 736, death, 1031, current population, 0
+banana: birth, 0, death, 120, current population, 0
+wolf: birth, 0, death, 11, current population, 0
+bear: birth, 0, death, 11, current population, 0
+Total steps: 20
+
+seed = 71
+
+Final Results
+cow: birth, 14, death, 86, current population, 0
+wheat: birth, 741, death, 1036, current population, 0
+banana: birth, 0, death, 120, current population, 0
+wolf: birth, 0, death, 11, current population, 0
+bear: birth, 0, death, 11, current population, 0
+Total steps: 27

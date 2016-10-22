@@ -144,7 +144,7 @@ public class Terrain{
       * @desc setter for terrain light
       * @param int val - new value for light
     */
-    public void setLight(int val){
+    public void setLight(double val){
         light = val;
     }
     

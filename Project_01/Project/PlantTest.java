@@ -33,7 +33,7 @@ public class PlantTest{
         stats.add(10.1);
         stats.add(5.1);
         Controller controller = new Controller("wheat");
-        plant = new Plant("wheat", "vegetable", 'h', energySources, energy, stats, 30, 50, 20, 1, 1, controller);
+        plant = new Plant("wheat", "vegetable", 'h', energySources, energy, stats, 30, 50, 20, 1, 1, controller, 1);
         controller.addSpecimen(plant);
         
         dGen = new DirectionGenerator(11);

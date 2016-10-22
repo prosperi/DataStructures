@@ -1,7 +1,7 @@
-size 30 20
-species cow herbivore c wheat,banana 70,3,30 150,4.2 50 60 5
-light 5
-species banana fruit b light 100,10,25 230,2.5 35 45 4
-species wheat vegetable h light 300,5,20 90,5.1 30 50 2
-species wolf carnivore w cow 10,2,40 50.2,3.0 55 70 7
-species bear omnivore g cow,banana 10,2,40 60,4.5 60 90 8
+size 50 50
+species cow herbivore c wheat,banana 70,3,30 50.3,4.2 50 60 5
+species wheat vegetable h light 700,5,20 100.1,5.1 30 50 2
+light 50
+species banana fruit b light 700,10,25 80.9,2.5 35 45 4
+species wolf carnivore w cow 10,2,40 100.2,3.0 55 70 7
+species bear omnivore g cow,banana 10,2,40 90,4.5 60 90 8

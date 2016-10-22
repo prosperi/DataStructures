@@ -10,9 +10,9 @@ import java.util.Random;
 */
 
 public class DirectionGenerator{
-    long seed;
-    int bound;
-    Random rnd;
+    private long seed;
+    private int bound;
+    private Random rnd;
     
     public DirectionGenerator(long seed){
         this.seed = seed;

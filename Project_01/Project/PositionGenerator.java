@@ -9,10 +9,10 @@ import java.util.ArrayList;
 */
 
 public class PositionGenerator{
-    long seed;
-    int height;
-    int width;
-    Random rnd;
+    private long seed;
+    private int height;
+    private int width;
+    private Random rnd;
     
     public PositionGenerator(long seed, int width, int height){
         this.seed = seed;
