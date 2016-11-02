@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.params=r\ c
+comment0.target=Grid(int,\ int)
+comment0.text=\n\ Constructs\ a\ two-dimensional\ ArrayList\ filled\ with\ (r*c)\ Cell\ objects\ to\ be\ used\ as\ grid.\n\ @param\ r\ int\ number\ of\ rows\ (first\ dimension\ of\ grid)\n\ @param\ c\ int\ number\ of\ columns\ (second\ dimension\ of\ grid)\n
+comment1.params=
+comment1.target=java.util.ArrayList\ getGrid()
+comment1.text=\n\ Gets\ a\ constructed\ grid\n\ @return\ Grid\ variable\ grid\n
+comment2.params=
+comment2.target=void\ printGrid()
+comment2.text=\n\ Formats\ and\ prints\ the\ constructed\ grid\n
+comment3.params=allSpecies
+comment3.target=void\ fillGrid(java.util.LinkedList)
+comment3.text=\n\ Fills\ the\ constructed\ grid\ with\ all\ the\ SpeciesInstances\ of\ each\ species\ featured\ in\ the\ park\n\ @param\ allSpecies\ LinkedList<ArrayList<Species>>,\ a\ LinkedList\ of\ ArrayLists\ of\ Species\ representing\ \n\ all\ the\ species\ within\ the\ park\n
+comment4.params=x
+comment4.target=java.util.ArrayList\ surroundingEmptyCells(SpeciesInstance)
+comment4.text=\n\ Determines\ the\ cells\ surrounding\ a\ given\ SpeciesInstance\ that\ the\ instance\ can\ use\ to\ move\ or\ give\ birth\n\ @param\ x\ SpeciesInstance\ whose\ surrounding\ cells\ are\ examined\n\ @return\ ArrayList<Cell>,\ an\ ArrayList\ of\ Cell\ objects\ representing\ all\ the\ surrounding\ cells\ the\ SpeciesInstance\ can\ use\n
+comment5.params=x\ sources
+comment5.target=java.util.ArrayList\ surroundingFoodCells(SpeciesInstance,\ java.lang.String[])
+comment5.text=\n\ Determines\ the\ cells\ surrounding\ a\ given\ SpeciesInstance\ that\ contain\ food\ the\ instance\ can\ eat\n\ @param\ x\ SpeciesInstance\ whose\ surrounding\ cells\ are\ examined\n\ @return\ ArrayList<Cell>,\ an\ ArrayList\ of\ Cell\ objects\ representing\ all\ the\ surrounding\ cells\ that\ contain\ food\ the\ SpeciesInstance\ can\ eat\n
+numComments=6

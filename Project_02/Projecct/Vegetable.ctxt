@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.params=typeName\ speciesName\ sym\ sources\ startingPopulation\ initialEnergy\ medDeath\ stdDeath\ minEnergy\ energy\ livEnergy
+comment0.target=Vegetable(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String[],\ int,\ double,\ double,\ double,\ int,\ int,\ int)
+comment0.text=\n\ Constructs\ a\ new\ Vegetable\ species,\ which\ contains\ a\ LinkedList\ of\ SpeciesInstances\ of\ type\ vegetable\n\ @param\ typeName\ String\ type\ of\ species\n\ @param\ speciesName\ String\ name\ of\ species\n\ @param\ sym\ String\ symbol\ of\ species\n\ @param\ sources\ String[]\ containing\ the\ names\ of\ the\ food\ this\ vegetable\ can\ consume\n\ @param\ startingPopulation\ population\ size\ used\ to\ determine\ the\ number\ of\ SpeciesInstances\ that\ should\ be\ created\ to\ fill\ the\ vegetable's\ LinkedList\n\ @param\ initialEnergy\ energy\ with\ which\ each\ instance\ of\ this\ vegetable\ should\ start\n\ @param\ medDeath\ median\ of\ death\ age\ for\ this\ species\n\ @param\ stdDev\ standard\ deviation\ of\ death\ age\ for\ this\ species\n\ @param\ minEnergy\ minimum\ amount\ of\ energy\ instances\ of\ this\ vegetable\ need\ to\ have\ to\ give\ birth\n\ @param\ energy\ maximum\ amount\ of\ energy\ instances\ of\ this\ vegetable\ can\ obtain\n\ @param\ livEnergy\ amount\ of\ energy\ instances\ of\ this\ vegetable\ require\ each\ turn\ in\ order\ to\ sustain\ themselves\n
+comment1.params=
+comment1.target=java.util.LinkedList\ getSpecies()
+comment1.text=\n\ Gets\ the\ LinkedList\ of\ SpeciesInstance\ of\ this\ vegetable\ species\n\ @return\ Vegetable\ variable\ vegetableSpecies\n
+comment2.params=i\ gameGrid\ light
+comment2.target=void\ iteration(int,\ Grid,\ double)
+comment2.text=\n\ Iterates\ through\ each\ SpeciesInstance\ in\ a\ species'\ LinkedList,\ updating\ age\ and\ energy\ level\ and\ calling\ the\ methods\ required\ to\ perform\ all\n\ necessary\ actions\ on\ each\ instance\n\ @param\ i\ index\ of\ SpeciesInstance\ in\ a\ species'\ LinkedList<SpeciesInstance>\n\ @param\ gameGrid\ Grid\ object\ representing\ the\ constructed\ wildlife\ park\n\ @param\ light\ amount\ of\ energy\ light\ provides\ to\ fruits\ and\ vegetables\n
+comment3.params=x
+comment3.target=boolean\ vegetableDeath(SpeciesInstance)
+comment3.text=\n\ Checks\ if\ a\ SpeciesInstance\ is\ ready\ to\ die,\ and\ sets/resets\ the\ necessary\ variables\ if\ it\ is\n\ @param\ x\ SpeciesInstance\ variable\ currently\ being\ iterated\ through\n\ @return\ boolean\ variable,\ true\ if\ element\ has\ died,\ false\ otherwise\n
+comment4.params=gameGrid\ x
+comment4.target=boolean\ vegetableBirth(Grid,\ SpeciesInstance)
+comment4.text=\n\ Checks\ if\ a\ SpeciesInstance\ can\ give\ birth,\ and\ sets/resets/creates\ the\ necessary\ variables\ if\ it\ can\n\ @param\ gameGrid\ Grid\ object\ representing\ the\ constructed\ wildlife\ park\n\ @param\ x\ SpeciesInstance\ variable\ currently\ being\ iterated\ through\n\ @return\ boolean\ variable,\ true\ if\ element\ has\ given\ birth,\ false\ otherwise\n
+comment5.params=x\ light
+comment5.target=void\ vegetableEat(SpeciesInstance,\ double)
+comment5.text=\n\ Updates\ a\ SpeciesInstance's\ energy\ level\n\ @param\ x\ SpeciesInstance\ variable\ currently\ being\ iterated\ through\n\ @param\ light\ amount\ of\ energy\ added\ to\ a\ vegetable\ instance's\ energy\ level\n
+numComments=6

@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.params=
+comment0.target=HerbivoreTest()
+comment0.text=\n\ Default\ constructor\ for\ test\ class\ HerbivoreTest\n
+comment1.params=
+comment1.target=void\ setUp()
+comment1.text=\n\ Sets\ up\ the\ test\ fixture.\n\n\ Called\ before\ every\ test\ case\ method.\n
+comment2.params=
+comment2.target=void\ tearDown()
+comment2.text=\n\ Tears\ down\ the\ test\ fixture.\n\n\ Called\ after\ every\ test\ case\ method.\n
+comment3.params=
+comment3.target=void\ TestHerbivoreDeath()
+comment3.text=\n\ Tests\ herbivore's\ death\ method.\ Makes\ sure\ it\ returns\ the\ right\ boolean\ each\ time,\ depending\ on\ the\ instance's\ current\ state\n
+comment4.params=
+comment4.target=void\ TestHerbivoreBirth()
+comment4.text=\n\ Tests\ herbivore's\ birth\ method.\ Makes\ sure\ it\ returns\ the\ right\ boolean\ each\ time,\ depending\ on\ the\ instance's\ curent\ state\n
+comment5.params=
+comment5.target=void\ TestHerbivoreEat()
+comment5.text=\n\ Tests\ herbivore's\ eat\ method.\ Makes\ sure\ it\ returns\ the\ right\ boolean\ each\ time,\ depending\ on\ the\ instance's\ current\ state\n
+comment6.params=
+comment6.target=void\ TestHerbivoreMove()
+comment6.text=\n\ Tests\ herbivore's\ move\ method.\ Makes\ sure\ that\ the\ variables\ are\ being\ updated\ correctly\ in\ the\ method\n
+numComments=7

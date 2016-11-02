@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.params=startingX\ startingY\ endingX\ endingY
+comment0.target=Mountain(int,\ int,\ int,\ int)
+comment1.params=
+comment1.target=int\ getStartingX()
+comment2.params=
+comment2.target=int\ getStartingY()
+comment3.params=
+comment3.target=int\ getEndingX()
+comment4.params=
+comment4.target=int\ getEndingY()
+numComments=5
