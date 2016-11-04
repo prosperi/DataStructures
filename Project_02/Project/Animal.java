@@ -76,7 +76,8 @@ public abstract class Animal extends Species
                 for(int j = -1; j <= 1; j++) {
                     Cell birthCell = this.getCell().getAdjacent(i,j); //Get adjacent uses the -1 to 1 range to find the cell
                     if(i == 0 && j == 0) {}
-                    else if(birthCell != null && birthCell.getAnimal() == null) {
+                    //z////////// Modified if statement by checking mountains too
+                    else if(birthCell != null && birthCell.getAnimal() == null && birthCell.getMountain() == null) {
                         Cell place = this.getCell().getAdjacent(i,j);
                         double parentEnergy = this.getEnergy()/2.0; //Important to halve the parent's energy to give to the child
                         this.setEnergy(parentEnergy);
@@ -178,7 +179,8 @@ public abstract class Animal extends Species
     public boolean move() {
         for(int i = 0; i < 20; i++) {
             Cell temp = this.getCell().getAdjacent(generator.nextInt(3)-1,generator.nextInt(3)-1);
-            if(temp != null && temp.getAnimal() == null) {
+            //z/////// Modified if statement by checking for mountains too
+            if(temp != null && temp.getAnimal() == null && temp.getMountain() == null) {
                 temp.setAnimal(this);
                 this.getCell().setAnimal(null);
                 this.setCell(temp);
@@ -186,5 +188,11 @@ public abstract class Animal extends Species
             }
         }
         return false;
+        //z///////////////
+        /*CellComparator cellComparator = new CellComparator();
+        PriorityQueue<ArrayList<Cell>> cells = new PriorityQueue<ArrayList<Cell>>(cellComparator);
+        
+        
+        return false;*/
     }
 }

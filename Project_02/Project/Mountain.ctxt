@@ -9,4 +9,6 @@ comment3.params=
 comment3.target=int\ getEndingX()
 comment4.params=
 comment4.target=int\ getEndingY()
-numComments=5
+comment5.params=
+comment5.target=char\ getRepresentation()
+numComments=6

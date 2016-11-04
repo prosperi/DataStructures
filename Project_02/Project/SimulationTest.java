@@ -16,7 +16,7 @@ public class SimulationTest
     @Before
     public void setUp()
     {
-        sim = new Simulation("config.txt", 10);
+        sim = new Simulation("../config.txt", 10);
     }
 
     /* Called after every test.case method. */

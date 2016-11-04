@@ -3,9 +3,9 @@ public class Cell
     private World world;
     private Animal animal;
     private Plant plant;
-    ///////////
-    /* */ private Mountain mountain;
-    //////////
+    //z/////////
+    private Mountain mountain;
+    //z////////
     public Cell(World w) {
         this.world = w;
     }
@@ -36,7 +36,10 @@ public class Cell
                     if(this.world.get(i,j) == this) {
                         return this.world.get(i+r,j+c);
                     }
-                } catch(Exception e) {}
+                } catch(Exception e) {
+                    /// wtf - what is this for ??? Probably Out Of World Exception
+                    System.out.println("Out Of World Exception");
+                }
             }
         }
         return null;
@@ -58,7 +61,7 @@ public class Cell
         this.plant = p;
     }
     
-    ////////////////////////
+    //z//////////////////////
     public void setMountain(Mountain mountain){
        this.mountain = mountain;
     }
@@ -66,7 +69,7 @@ public class Cell
     public Mountain getMountain(){
        return this.mountain;
     }
-    ///////////////////////
+    //z/////////////////////
     
     
     public World getWorld() {

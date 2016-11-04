@@ -246,4 +246,9 @@ public abstract class Species
     public String getName() {
         return this.name;
     }
+    
+    //z////////////////////
+    public List getEnergySources(){
+        return this.energySources;
+    }
 }

@@ -60,11 +60,11 @@ public class Simulation
             } else if(line.equals("r")) {
                 Species.printStatus();
             }
-            ///////////////////////
+            //z/////////////////////
             else if(line.equals("q")){
                 break;
             }
-            //////////////////////
+            //z////////////////////
             
             if(line.equals("i")) {
                 world.turn();
@@ -92,9 +92,9 @@ public class Simulation
     public void initWorld() {
         int height = 0,width = 0,light = 0;
         List<Species> species = new ArrayList<Species>();
-        ////////////////////
-        /* */   List<Mountain> mountains = new ArrayList<Mountain>();
-        ////////////////////
+        //z//////////////////
+        List<Mountain> mountains = new ArrayList<Mountain>();
+        //z//////////////////
         Random generator = new Random(SEED);
         //Creates the file scanner
         Scanner fileReader = null;
@@ -148,7 +148,7 @@ public class Simulation
                         species.add(tempSpecies);
                     }
                 }
-                ////////////////////
+                //z//////////////////
                 else if(words[0].equals("mountain")){
                     String[] tmp = words[1].split(",");
                     int startingX = Integer.parseInt(tmp[0]);
@@ -160,16 +160,16 @@ public class Simulation
                     Mountain tmpMountain = new Mountain(startingX, startingY, endingX, endingY);
                     mountains.add(tmpMountain);
                 }
-                ////////////////////
+                //z//////////////////
             }
             //Creates world and adds species to it
             world = new World(height,width,light);
             Species.setStaticWorld(world);
-            ///////////////////    
+            //z/////////////////    
             for(int i = 0; i < mountains.size(); i++){
               world.addMountainToWorld(mountains.get(i)); 
             }
-            //////////////////
+            //z////////////////
             for(int i = 0; i < species.size(); i++) {
                 world.randomAddToWorld(species.get(i));
             }

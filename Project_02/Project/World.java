@@ -91,11 +91,11 @@ public class World
                 if(cell.getPlant() != null) {
                     message += cell.getPlant().getRepresentation();
                 }
-                //////////////////
+                //z////////////////
                 if(cell.getMountain() != null){
-                    message += "*";
+                    message += cell.getMountain().getRepresentation();
                 }
-                /////////////////
+                //z///////////////
                 System.out.print(message + "\t|");
             }
             System.out.println();
@@ -118,13 +118,14 @@ public class World
             Cell cell = this.board.get(row).get(col);
             
             if(s instanceof Animal) {
-                if(cell.getAnimal() == null) {
+                //z/ Modified if statement
+                if(cell.getAnimal() == null && cell.getMountain() == null) {
                     cell.setAnimal((Animal)s);
                     s.setCell(cell);
                     found = true;
                 }
             } else if(s instanceof Plant) {
-                if(cell.getPlant() == null) {
+                if(cell.getPlant() == null && cell.getMountain() == null) {
                     cell.setPlant((Plant)s);
                     s.setCell(cell);
                     found = true;
@@ -134,27 +135,41 @@ public class World
     }
     
     
-    /////////////////
+    //z///////////////
+    // References:
+    // https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#JavaScript
     public void addMountainToWorld(Mountain mountain){
         System.out.println("Here comes the Mountain again");
-        int x1 = mountain.getStartingX(),
-            y1 = mountain.getStartingY(),
-            x2 = mountain.getEndingX(),
-            y2 = mountain.getEndingY();
+        int x0 = mountain.getStartingX(),
+            y0 = mountain.getStartingY(),
+            x1 = mountain.getEndingX(),
+            y1 = mountain.getEndingY();
         
-        if(x1 == y1 && x2 == y2){
-            for(int i = x1; i <= x2; i++){
-                 Cell cell = this.board.get(i).get(i);
-                 cell.setMountain(mountain);
+        int dx = Math.abs(x1 - x0), 
+            sx = x0 < x1 ? 1 : -1;
+        int dy = Math.abs(y1 - y0), 
+            sy = y0 < y1 ? 1 : -1;
+        int err = (dx > dy ? dx : -dy)/2;
+    
+        while(true){
+            plot(x0, y0, mountain);
+            if(x0 == x1 && y0 == y1) break;
+            int e2 = err;
+            if(e2 > -dx) {
+              err -= dy;
+              x0 += sx;
             }
-        }else{
-            for(int i = x1; i <= x2; i++){
-                for(int j = y1; j <= y2; j++){
-                    Cell cell = this.board.get(i).get(j);
-                    cell.setMountain(mountain);
-                }
+            if(e2 < dy) {
+              err += dx;
+              y0 += sy;
             }
         }
     }
-    //////////////////
+    
+    void plot(int x, int y, Mountain mountain){
+      Cell cell = this.board.get(x).get(y);
+      cell.setMountain(mountain);
+    }
+
+    //z////////////////
 }

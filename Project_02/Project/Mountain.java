@@ -1,16 +1,15 @@
 
 public class Mountain{
     
-    private int startingX,
-                startingY,
-                endingX,
-                endingY;
+    private int startingX, startingY, endingX, endingY;
+    private char symbol;
     
     public Mountain(int startingX, int startingY, int endingX, int endingY){
         this.startingX = startingX;
         this.startingY = startingY;
         this.endingX = endingX;
         this.endingY = endingY;
+        this.symbol = '*';
     }
     
     public int getStartingX(){
@@ -27,6 +26,10 @@ public class Mountain{
     
     public int getEndingY(){
         return endingY;
+    }
+    
+    public char getRepresentation(){
+        return symbol;
     }
   
 }
