@@ -177,7 +177,7 @@ public abstract class Animal extends Species
      * @return boolean - true if the animal moves, false otherwise
      */
     public boolean move() {
-        for(int i = 0; i < 20; i++) {
+        /*for(int i = 0; i < 20; i++) {
             Cell temp = this.getCell().getAdjacent(generator.nextInt(3)-1,generator.nextInt(3)-1);
             //z/////// Modified if statement by checking for mountains too
             if(temp != null && temp.getAnimal() == null && temp.getMountain() == null) {
@@ -187,12 +187,85 @@ public abstract class Animal extends Species
                 return true;
             }
         }
-        return false;
-        //z///////////////
-        /*CellComparator cellComparator = new CellComparator();
-        PriorityQueue<ArrayList<Cell>> cells = new PriorityQueue<ArrayList<Cell>>(cellComparator);
-        
-        
         return false;*/
+        //z///////////////
+        CellComparator cellComparator = new CellComparator();
+        PriorityQueue<ArrayList<Cell>> cells = new PriorityQueue<ArrayList<Cell>>(cellComparator);
+        int range = 3;
+        int i = 0;
+        int j = 0;
+        int z = 0;
+        ArrayList<Cell> cellsTmp;
+               
+        for(z = -range; z <= range; z++){
+            try{
+                if(this.getCell().getWorld().get(i+z, j).getAnimal() != null && this.getCell().getWorld().get(i+z, j).getPlant() != null){
+                    continue;
+                }else{
+                    cellsTmp = new ArrayList<Cell>();
+                    cellsTmp.add(this.getCell());
+                    cellsTmp.add(this.getCell().getWorld().get(i+z, j));
+                    cells.add(cellsTmp);
+                }
+            }catch(ArrayIndexOutOfBoundsException e){
+                System.out.println("Out Of World Exception");
+            }
+        }
+        
+        for(z = -range; z <= range; z++){
+            try{
+                if(this.getCell().getWorld().get(i, j+z).getAnimal() != null && this.getCell().getWorld().get(i, j+z).getPlant() != null){
+                    continue;
+                }else{
+                    cellsTmp = new ArrayList<Cell>();
+                    cellsTmp.add(this.getCell());
+                    cellsTmp.add(this.getCell().getWorld().get(i, j+z));
+                    cells.add(cellsTmp);
+                }
+            }catch(ArrayIndexOutOfBoundsException e){
+                System.out.println("Out Of World Exception");
+            }
+        }
+        
+        for(z = -range; z <= range; z++){
+            try{
+                if(this.getCell().getWorld().get(i+z, j+z).getAnimal() != null && this.getCell().getWorld().get(i+z, j+z).getPlant() != null){
+                    continue;
+                }else{
+                    cellsTmp = new ArrayList<Cell>();
+                    cellsTmp.add(this.getCell());
+                    cellsTmp.add(this.getCell().getWorld().get(i+z, j+z));
+                    cells.add(cellsTmp);
+                }
+            }catch(ArrayIndexOutOfBoundsException e){
+                System.out.println("Out Of World Exception");
+            }
+        }
+        
+        for(z = -range; z <= range; z++){
+            try{
+                if(this.getCell().getWorld().get(i+z, j-z).getAnimal() != null && this.getCell().getWorld().get(i+z, j-z).getPlant() != null){
+                    continue;
+                }else{
+                    cellsTmp = new ArrayList<Cell>();
+                    cellsTmp.add(this.getCell());
+                    cellsTmp.add(this.getCell().getWorld().get(i+z, j-z));
+                    cells.add(cellsTmp);
+                }
+            }catch(ArrayIndexOutOfBoundsException e){
+                System.out.println("Out Of World Exception");
+            }
+        }
+        
+        if(cells.size() > 0){
+            Cell tmp = cells.peek().get(1);
+            tmp.setAnimal(this);
+            this.getCell().setAnimal(null);
+            this.setCell(tmp);
+            return true;
+        }
+        
+        return false;
+        //z//////////////
     }
 }
