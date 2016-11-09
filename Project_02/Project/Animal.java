@@ -3,10 +3,12 @@ import java.util.*;
 public abstract class Animal extends Species
 {
     Random generator;
+    boolean moved;
     
     public Animal(String n, String sym, List<String> s, double dm, double ds, double be, double me, double le, double ie, double pm, double ps) {    
         super(n, sym, s, dm, ds, be, me, le, ie, pm, ps);
         generator = new Random(Simulation.SEED);
+        moved = false;
     }
     
     /**
@@ -26,8 +28,9 @@ public abstract class Animal extends Species
             //System.out.println("Animal Eat");
             return;
         }
-        if(move()) {
+        if(!moved && move()) {
             //System.out.println("Animal Move");
+            moved = true;
             return;
         }
     }
@@ -186,79 +189,45 @@ public abstract class Animal extends Species
                 this.setCell(temp);
                 return true;
             }
-        }
-        return false;*/
+        }*/
+        
         //z///////////////
         CellComparator cellComparator = new CellComparator();
-        PriorityQueue<ArrayList<Cell>> cells = new PriorityQueue<ArrayList<Cell>>(cellComparator);
-        int range = 3;
-        int i = 0;
-        int j = 0;
-        int z = 0;
+        // used when the specimen is looking for food
+        PriorityQueue<ArrayList<Cell>> cellsQueue = new PriorityQueue<ArrayList<Cell>>(cellComparator);
+        // used when the specimen do not need to look for food
+        ArrayList<Cell> cellsArr = new ArrayList<Cell>();
+        
+        int range = 2;
+        int i = this.getCell().getX();
+        int j = this.getCell().getY();
         ArrayList<Cell> cellsTmp;
                
-        for(z = -range; z <= range; z++){
-            try{
-                if(this.getCell().getWorld().get(i+z, j).getAnimal() != null && this.getCell().getWorld().get(i+z, j).getPlant() != null){
+        for(int k = i - range; k <= i + range; k++){
+            if(k < 0 || k >= this.getCell().getWorld().getHeight())
                     continue;
-                }else{
-                    cellsTmp = new ArrayList<Cell>();
-                    cellsTmp.add(this.getCell());
-                    cellsTmp.add(this.getCell().getWorld().get(i+z, j));
-                    cells.add(cellsTmp);
-                }
-            }catch(ArrayIndexOutOfBoundsException e){
-                System.out.println("Out Of World Exception");
+            for(int l = j - range; l <= j + range;  l++){
+                // check if the cell is out of the board or if it is the same cell 
+                // from which we are trying to move out 
+                if(l < 0 || l >= this.getCell().getWorld().getWidth() || this.getCell().getWorld().get(k, l) == this.getCell())
+                    continue;
+                if(!checkPossibleHome(k, l)) 
+                    continue;
+                
+            	cellsTmp = new ArrayList<Cell>();
+                cellsTmp.add(this.getCell());
+                cellsTmp.add(this.getCell().getWorld().get(k, l));
+                if(true)
+                    cellsQueue.add(cellsTmp);
+                else
+                    cellsArr.add(cellsTmp.get(0));
+            	
             }
         }
         
-        for(z = -range; z <= range; z++){
-            try{
-                if(this.getCell().getWorld().get(i, j+z).getAnimal() != null && this.getCell().getWorld().get(i, j+z).getPlant() != null){
-                    continue;
-                }else{
-                    cellsTmp = new ArrayList<Cell>();
-                    cellsTmp.add(this.getCell());
-                    cellsTmp.add(this.getCell().getWorld().get(i, j+z));
-                    cells.add(cellsTmp);
-                }
-            }catch(ArrayIndexOutOfBoundsException e){
-                System.out.println("Out Of World Exception");
-            }
-        }
-        
-        for(z = -range; z <= range; z++){
-            try{
-                if(this.getCell().getWorld().get(i+z, j+z).getAnimal() != null && this.getCell().getWorld().get(i+z, j+z).getPlant() != null){
-                    continue;
-                }else{
-                    cellsTmp = new ArrayList<Cell>();
-                    cellsTmp.add(this.getCell());
-                    cellsTmp.add(this.getCell().getWorld().get(i+z, j+z));
-                    cells.add(cellsTmp);
-                }
-            }catch(ArrayIndexOutOfBoundsException e){
-                System.out.println("Out Of World Exception");
-            }
-        }
-        
-        for(z = -range; z <= range; z++){
-            try{
-                if(this.getCell().getWorld().get(i+z, j-z).getAnimal() != null && this.getCell().getWorld().get(i+z, j-z).getPlant() != null){
-                    continue;
-                }else{
-                    cellsTmp = new ArrayList<Cell>();
-                    cellsTmp.add(this.getCell());
-                    cellsTmp.add(this.getCell().getWorld().get(i+z, j-z));
-                    cells.add(cellsTmp);
-                }
-            }catch(ArrayIndexOutOfBoundsException e){
-                System.out.println("Out Of World Exception");
-            }
-        }
-        
-        if(cells.size() > 0){
-            Cell tmp = cells.peek().get(1);
+        if(cellsQueue.size() > 0){
+            printQueue(cellsQueue);
+            Cell tmp = cellsQueue.peek().get(1);
             tmp.setAnimal(this);
             this.getCell().setAnimal(null);
             this.setCell(tmp);
@@ -267,5 +236,65 @@ public abstract class Animal extends Species
         
         return false;
         //z//////////////
+    }
+    
+    //z/
+    public boolean checkPossibleHome(int k, int l){
+        // If a cell is occupied by an animal that is not energy source for current animal
+        // we can not move to this cell
+        Animal tmpAnimal = this.getCell().getWorld().get(k, l).getAnimal();
+        if(tmpAnimal != null && !this.getEnergySources().contains(tmpAnimal))
+            return false;
+        
+        // We need to check if there is a mountain between possible new home and current cell
+        // we need to apply line approximation algorithm once more
+        //if(checkMountain(k, l))
+          //  return false;
+            
+        return true;
+        
+    }
+    
+    public boolean checkMountain(int k, int l){
+    	Cell tmpCell = this.getCell().getWorld().get(k, l);
+    
+    	int x0 = this.getCell().getX(),
+			y0 = this.getCell().getY(),
+			x1 = tmpCell.getX(),
+			y1 = tmpCell.getY();
+    			
+    	int dx = Math.abs(x1 - x0),
+    	    sx = x0 < x1 ? 1 : -1;
+    	int dy = Math.abs(y1 - y0),
+    	    sy = y0 < y1 ? 1 : -1;
+    	int err = (dx > dy ? dx : -dy)/2;
+    
+    	while(true){
+    			if(this.getCell().getWorld().get(x0, y0).getMountain() != null)
+    				return true;
+    			if(x0 == x1 && y0 == y1) break;
+    			int e2 = err;
+    			if(e2 > -dx) {
+    				err -= dy;
+    				x0 += sx;
+    			}
+    			if(e2 < dy) {
+    				err += dx;
+    				y0 += sy;
+    			}
+    	}
+    	
+    	return false;
+    
+    }
+
+    
+    //z/ used for test purposes
+    public void printQueue(PriorityQueue<ArrayList<Cell>> q){
+        Iterator iterator = q.iterator();
+        while(iterator.hasNext()){
+            ArrayList<Cell> tmp = (ArrayList<Cell>)iterator.next();
+            System.out.print(tmp.get(0).getX() + " " + tmp.get(0).getY() + " " + tmp.get(1).getX() + " " + tmp.get(1).getY() + '\n');
+        }
     }
 }

@@ -12,10 +12,10 @@ public class CellComparator implements Comparator<ArrayList<Cell>>{
              current = foo.get(0);
         Animal animal = current.getAnimal();
         
-        if(cell_01.getAnimal() != null && animal.getEnergySources().contains(cell_01.getAnimal())){
+        if(cell_01.getAnimal() != null){
             f++;
         }
-        if(cell_02.getAnimal() != null && animal.getEnergySources().contains(cell_02.getAnimal())){
+        if(cell_02.getAnimal() != null){
             b++;
         }
         

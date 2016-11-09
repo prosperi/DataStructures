@@ -6,14 +6,14 @@ public class World
     private int lightEnergy;
     private int steps;
     
-    public World(int m, int n, int l) {
+    public World(int m, int n, int l) {        
         lightEnergy = l;
         steps = 0;
         board = new ArrayList<List<Cell>>();
         for(int i = 0; i < m; i++) {
             board.add(new ArrayList<Cell>());
             for(int j = 0; j < n; j++) {
-                board.get(i).add(new Cell(this));
+                board.get(i).add(new Cell(this, i, j));
             }
         }
     }
@@ -66,6 +66,15 @@ public class World
                 }
                 if(cell.getPlant() != null) {
                     cell.getPlant().activity();
+                }
+            }
+        }
+        for(int i = 0; i < board.size(); i++) {
+            List<Cell> row = board.get(i);
+            for(int j = 0; j < row.size(); j++) {
+                Cell cell = row.get(j);
+                if(cell.getAnimal() != null) {
+                    cell.getAnimal().moved = false;
                 }
             }
         }
@@ -170,6 +179,6 @@ public class World
       Cell cell = this.board.get(x).get(y);
       cell.setMountain(mountain);
     }
-
+ 
     //z////////////////
 }
