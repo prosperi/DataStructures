@@ -26,5 +26,5 @@ comment7.text=\n\ If\ all\ else\ fails,\ the\ animal\ tries\ to\ move\ to\ an\ a
 comment8.params=k\ l
 comment8.target=boolean\ checkPossibleHome(int,\ int)
 comment9.params=k\ l
-comment9.target=boolean\ checkMountain(int,\ int)
+comment9.target=boolean\ checkIfBlocked(int,\ int)
 numComments=11

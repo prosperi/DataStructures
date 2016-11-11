@@ -214,14 +214,15 @@ public abstract class Animal extends Species
                 if(!checkPossibleHome(k, l)) 
                     continue;
                 
-            	cellsTmp = new ArrayList<Cell>();
+                cellsTmp = new ArrayList<Cell>();
                 cellsTmp.add(this.getCell());
                 cellsTmp.add(this.getCell().getWorld().get(k, l));
+                // yeah, you wrote this
                 if(true)
                     cellsQueue.add(cellsTmp);
                 else
                     cellsArr.add(cellsTmp.get(0));
-            	
+                
             }
         }
         
@@ -243,48 +244,53 @@ public abstract class Animal extends Species
         // If a cell is occupied by an animal that is not energy source for current animal
         // we can not move to this cell
         Animal tmpAnimal = this.getCell().getWorld().get(k, l).getAnimal();
-        if(tmpAnimal != null && !this.getEnergySources().contains(tmpAnimal))
+        if(tmpAnimal != null && !this.getEnergySources().contains(tmpAnimal)){ 
             return false;
+        }
         
-        // We need to check if there is a mountain between possible new home and current cell
+
+        // We need to check if there is a mountain or some animal between possible new home and current cell
         // we need to apply line approximation algorithm once more
-        //if(checkMountain(k, l))
-          //  return false;
+        if(checkIfBlocked(k, l))
+            return false;
             
         return true;
         
     }
+    //z/
+    public boolean checkIfBlocked(int k, int l){
+        Cell tmpCell = this.getCell().getWorld().get(k, l);
+        int x0 = this.getCell().getX(),
+            y0 = this.getCell().getY(),
+            x1 = tmpCell.getX(),
+            y1 = tmpCell.getY();
+                
+        int dx = Math.abs(x1 - x0),
+            sx = x0 < x1 ? 1 : -1;
+        int dy = Math.abs(y1 - y0),
+            sy = y0 < y1 ? 1 : -1;
+        int err = (dx > dy ? dx : -dy)/2;
     
-    public boolean checkMountain(int k, int l){
-    	Cell tmpCell = this.getCell().getWorld().get(k, l);
-    
-    	int x0 = this.getCell().getX(),
-			y0 = this.getCell().getY(),
-			x1 = tmpCell.getX(),
-			y1 = tmpCell.getY();
-    			
-    	int dx = Math.abs(x1 - x0),
-    	    sx = x0 < x1 ? 1 : -1;
-    	int dy = Math.abs(y1 - y0),
-    	    sy = y0 < y1 ? 1 : -1;
-    	int err = (dx > dy ? dx : -dy)/2;
-    
-    	while(true){
-    			if(this.getCell().getWorld().get(x0, y0).getMountain() != null)
-    				return true;
-    			if(x0 == x1 && y0 == y1) break;
-    			int e2 = err;
-    			if(e2 > -dx) {
-    				err -= dy;
-    				x0 += sx;
-    			}
-    			if(e2 < dy) {
-    				err += dx;
-    				y0 += sy;
-    			}
-    	}
-    	
-    	return false;
+        while(true){
+                World tmpWorld = this.getCell().getWorld();
+                // check if there is mountain on the path or an animal, and be sure
+                // that this animal will not be our current animal
+                if(tmpWorld.get(x0, y0).getMountain() != null ||
+                  (tmpWorld.get(x0, y0).getAnimal() != null && 
+                   tmpWorld.get(x0, y0).getAnimal() != this))
+                    return true;
+                if(x0 == x1 && y0 == y1) break;
+                int e2 = err;
+                if(e2 > -dx) {
+                    err -= dy;
+                    x0 += sx;
+                }
+                if(e2 < dy) {
+                    err += dx;
+                    y0 += sy;
+                }
+        }
+        return false;
     
     }
 
