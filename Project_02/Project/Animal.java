@@ -188,7 +188,7 @@ public abstract class Animal extends Species
         // TreeSet itself is a container of ArrayLists, which keep 
         // the whole path which is unchecked and is based on the movement range
         // and the checked path which is based on detection range
-        TreeSet<ArrayList<Path>> radar;
+        AbstractCollection<ArrayList<Path>> radar;
         World world = this.getCell().getWorld();
         
         // if animal needs food use Hungry comparator that sorts according to food
@@ -196,7 +196,7 @@ public abstract class Animal extends Species
         if(this.getEnergy() > this.threshold){
             radar = new TreeSet<ArrayList<Path>>(new PathComparator());
         }else{
-            radar = new TreeSet<ArrayList<Path>>(new HungryComparator());
+            radar = new PriorityQueue<ArrayList<Path>>(new HungryComparator());
         }
         
         int i = this.getCell().getX();
@@ -209,6 +209,40 @@ public abstract class Animal extends Species
         int minJ = (j - movementRange < 0 ) ? 0 : j - movementRange; 
         int maxJ = (j + movementRange >= this.getCell().getWorld().getWidth() ) ? this.getCell().getWorld().getWidth() - 1 : j + movementRange; 
         
+        // build path to each of these cells
+        cellFinder(radar, minI, maxI, minJ, maxJ, i, j);
+
+        // Time to move, if energy is above threshold move randomly, if not get first 
+        // element from treeset and move to the cell where food can be found
+        ArrayList<Path> tmpArr = new ArrayList<Path>(); 
+        if(radar.size() != 0 && radar instanceof PriorityQueue){
+            tmpArr = (ArrayList<Path>)((PriorityQueue)radar).peek();
+        }else if(radar.size() != 0 && radar instanceof TreeSet){
+            tmpArr = (ArrayList<Path>)((TreeSet)radar).first();
+        }
+        if(radar.size() != 0 && tmpArr.get(0).size() != 0){
+            if(this.getEnergy() > this.threshold){
+                Random rnd = new Random(1);
+                int cellIndex = rnd.nextInt(tmpArr.get(0).size());
+                Cell tmp = tmpArr.get(0).getCell(cellIndex);
+                changeHome(tmp);
+            }else{
+                Path tmpChecked = tmpArr.get(1);
+                if(tmpChecked.getPlantOnTheWay() == true){
+                    Cell tmp = tmpArr.get(1).getPlantCell();
+                    changeHome(tmp);
+                }else{
+                    Cell tmp = tmpArr.get(1).getLast();
+                    changeHome(tmp);
+                }
+            }
+            return true;
+        }
+        
+        return false;
+    }
+    
+    public void cellFinder(AbstractCollection<ArrayList<Path>> radar, int minI, int maxI, int minJ, int maxJ, int i, int j){
         // build path to each of these cells
         for(int k = minJ; k <= maxJ; k++){
             if(k == minJ || k == maxJ){
@@ -236,39 +270,12 @@ public abstract class Animal extends Species
                 }
             }
         }
-        
-        
-        //System.out.println(radar.size());
-        //printRadar(radar);
-        
-        // Time to move, if energy is above threshold move randomly, if not get first 
-        // element from treeset and move to the cell where food can be found
-        if(radar.first().get(0).size() != 0){
-            if(this.getEnergy() > this.threshold){
-                Random rnd = new Random(1);
-                int cellIndex = rnd.nextInt(radar.first().get(0).size());
-                Cell tmp = radar.first().get(0).getCell(cellIndex);
-                tmp.setAnimal(this);
-                this.getCell().setAnimal(null);
-                this.setCell(tmp);
-            }else{
-                Path tmpChecked = radar.first().get(1);
-                if(tmpChecked.getPlantOnTheWay() == true){
-                    Cell tmp = radar.first().get(1).getPlantCell();
-                    tmp.setAnimal(this);
-                    this.getCell().setAnimal(null);
-                    this.setCell(tmp);
-                }else{
-                    Cell tmp = radar.first().get(1).getLast();
-                    tmp.setAnimal(this);
-                    this.getCell().setAnimal(null);
-                    this.setCell(tmp);
-                }
-            }
-            return true;
-        }
-        
-        return false;
+    }
+    
+    public void changeHome(Cell tmp){
+        tmp.setAnimal(this);
+        this.getCell().setAnimal(null);
+        this.setCell(tmp);
     }
     
     /**
@@ -299,63 +306,27 @@ public abstract class Animal extends Species
             switch (checkPathCell(x0, y0)){
                // so the path edns with predator 
                case 0:
-                if(path_01.size() < movementRange){
-                    path_01.setDeadEnd(0);
-                }
-                if(path_02.size() < detectionRange){
-                    path_02.setDeadEnd(0);
-                }
+                addToPath(path_01, path_02, 0, x0, y0, false, false, world);
                 t = false;
                 break;
                // so the path ends with food that is animal
                case 1:
-                if(path_01.size() < movementRange){
-                    path_01.setDeadEnd(1);
-                    path_01.add(world.get(x0, y0));
-                }
-                if(path_02.size() < detectionRange){
-                    path_02.setDeadEnd(1);
-                    path_02.add(world.get(x0, y0));
-                }
+                addToPath(path_01, path_02, 1, x0, y0, true, false, world);
                 t = false;
                 break;
                // so the path ends with plant that is food
                case 2:
-                if(path_01.size() < movementRange){
-                    path_01.setPlantOnTheWay(true);
-                    path_01.setPlantCell(world.get(x0, y0));
-                    path_01.add(world.get(x0, y0));
-                    path_01.setDeadEnd(2);
-                }
-                if(path_02.size() < detectionRange){
-                    path_02.add(world.get(x0, y0));
-                    path_02.setPlantOnTheWay(true);
-                    path_02.setPlantCell(world.get(x0, y0));
-                    path_02.setDeadEnd(2);
-                }
+                addToPath(path_01, path_02, 2, x0, y0, true, true, world);
                 break;
                // so the path ends with mountain or animal that is not food
                case 3:
-                if(path_01.size() < movementRange){
-                    path_01.setDeadEnd(3);
-                }
-                if(path_02.size() < detectionRange){
-                    path_02.setDeadEnd(3);
-                }
+                addToPath(path_01, path_02, 3, x0, y0, false, false, world);
                 t = false;
                 break;
                // path does not end and it's free, their is not anything on 
                // the path(except plants that are not among energy sources)
                case 4:
-                if(path_01.size() < movementRange){
-                    path_01.add(world.get(x0, y0));
-                    path_01.setDeadEnd(4);
-                }
-                if(path_02.size() < detectionRange){
-                    path_02.add(world.get(x0, y0));
-                    path_02.setDeadEnd(4);
-                }
-
+                addToPath(path_01, path_02, 4, x0, y0, true, false, world);
                 break;
             }
             
@@ -374,6 +345,25 @@ public abstract class Animal extends Species
         pathArr.add(path_01);
         pathArr.add(path_02);
         return pathArr;
+    }
+    
+    public void addToPath(Path path_01, Path path_02, int i, int x0, int y0, boolean add, boolean plant, World world){
+        if(path_01.size() < movementRange){
+            if(add)  path_01.add(world.get(x0, y0));
+            if(plant){
+                path_01.setPlantOnTheWay(true);
+                path_01.setPlantCell(world.get(x0, y0));
+            }
+            path_01.setDeadEnd(i);
+        }
+        if(path_02.size() < detectionRange){
+            if(add)  path_02.add(world.get(x0, y0));
+            if(plant){
+                path_02.setPlantOnTheWay(true);
+                path_02.setPlantCell(world.get(x0, y0));
+            }
+            path_02.setDeadEnd(i);
+        }
     }
     
     /**
