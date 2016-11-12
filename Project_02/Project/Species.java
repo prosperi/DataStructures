@@ -24,8 +24,12 @@ public abstract class Species
     
     protected double energy;
     protected int age;
+   
+    protected int detectionRange;
+    protected int movementRange;
+    protected double threshold;
     
-    public Species(String n, String sym, List<String> s, double dm, double ds, double be, double me, double le, double ie, double pm, double ps) {
+    public Species(String n, String sym, List<String> s, double dm, double ds, double be, double me, double le, double ie, double pm, double ps, int dr, int mr, double th) {
         this.name = n;
         this.symbol = sym;
         this.energySources = s;
@@ -40,6 +44,10 @@ public abstract class Species
         
         this.energy = ie;
         this.age = 0;
+        
+        this.detectionRange = dr;
+        this.movementRange = mr;
+        this.threshold = th;
         
         if(!species.contains(n)) {
             species.add(n);

@@ -100,11 +100,10 @@ public class World
                 if(cell.getPlant() != null) {
                     message += cell.getPlant().getRepresentation();
                 }
-                //z////////////////
+                //Mountains will be represented with *
                 if(cell.getMountain() != null){
                     message += cell.getMountain().getRepresentation();
                 }
-                //z///////////////
                 System.out.print(message + "\t|");
             }
             System.out.println();
@@ -127,13 +126,14 @@ public class World
             Cell cell = this.board.get(row).get(col);
             
             if(s instanceof Animal) {
-                //z/ Modified if statement
+                //z/ check if there are no animals and no mountains in the cell
                 if(cell.getAnimal() == null && cell.getMountain() == null) {
                     cell.setAnimal((Animal)s);
                     s.setCell(cell);
                     found = true;
                 }
             } else if(s instanceof Plant) {
+                //z/ check if the cell is empty(no animals, no mountains)
                 if(cell.getPlant() == null && cell.getMountain() == null) {
                     cell.setPlant((Plant)s);
                     s.setCell(cell);
@@ -144,16 +144,21 @@ public class World
     }
     
     
-    //z///////////////
-    // References:
-    // https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#JavaScript
+    /**
+     * Draw Mountains on the board with line approximation algorithm.
+     * For that we use Bresenham's line algorithm.
+     * @param Mountain mountain - Mountain mountain
+     * @reference https://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#JavaScript
+     */
     public void addMountainToWorld(Mountain mountain){
         System.out.println("Here comes the Mountain again");
+        
+        // Find the Starting and Ending points
         int x0 = mountain.getStartingX(),
             y0 = mountain.getStartingY(),
             x1 = mountain.getEndingX(),
             y1 = mountain.getEndingY();
-        
+        // find the direction of line and start applying Bresenham's Algorithm
         int dx = Math.abs(x1 - x0), 
             sx = x0 < x1 ? 1 : -1;
         int dy = Math.abs(y1 - y0), 
@@ -161,6 +166,7 @@ public class World
         int err = (dx > dy ? dx : -dy)/2;
     
         while(true){
+            // if we are still inside the loop, xurrent x0 and y0 are coordinates of Mountain
             plot(x0, y0, mountain);
             if(x0 == x1 && y0 == y1) break;
             int e2 = err;
@@ -175,10 +181,15 @@ public class World
         }
     }
     
+    /**
+     * Place mountain on the board
+     * @param int x - mountain's x coordinate
+     * @param int y - mountain's y coordinate
+     * @param Mountain mountain - Mountain mountain
+     */
     void plot(int x, int y, Mountain mountain){
       Cell cell = this.board.get(x).get(y);
       cell.setMountain(mountain);
     }
  
-    //z////////////////
 }

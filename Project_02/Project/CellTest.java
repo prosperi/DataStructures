@@ -20,7 +20,7 @@ public class CellTest
     {
         world = new World(5,5,5);
         //cell = new Cell(world);
-        testAnimal = new Carnivore("bear", "b", new ArrayList<String>(), 10.0, 1.0, 10.0, 10.0, 10.0, 10.0, 10.0, 1.0);
+        testAnimal = new Carnivore("bear", "b", new ArrayList<String>(), 10.0, 1.0, 10.0, 10.0, 10.0, 10.0, 10.0, 1.0, 7, 12, 20);
     }
 
     /* Called after every test case method. */

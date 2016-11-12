@@ -1,11 +1,11 @@
 import java.util.*;
 
-public class Plant extends Species
+abstract public class Plant extends Species
 {
     Random generator;
     
-    public Plant(String n, String sym, List<String> s, double dm, double ds, double be, double me, double le, double ie, double pm, double ps) {    
-        super(n, sym, s, dm, ds, be, me, le, ie, pm, ps);
+    public Plant(String n, String sym, List<String> s, double dm, double ds, double be, double me, double le, double ie, double pm, double ps, int dr, int mr, double th) {    
+        super(n, sym, s, dm, ds, be, me, le, ie, pm, ps, dr, mr, th);
         generator = new Random(Simulation.SEED);
     }
     

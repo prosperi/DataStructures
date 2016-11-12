@@ -45,7 +45,7 @@ public class SimulationTest
         
         sim = new Simulation("config.txt", 100);
         sim.initWorld();
-        Species testPlant = new Vegetable("wheat","w",new ArrayList<String>(),1000.0,1.0,100.0,90.0,1.0,50.0,1.0,0.0);
+        Species testPlant = new Vegetable("wheat","w",new ArrayList<String>(),1000.0,1.0,100.0,90.0,1.0,50.0,1.0,0.0, 7, 12, 20);
         world.get(2,2).setPlant((Plant)testPlant);
         testPlant.setCell(world.get(2,2));
         sim.setWorld(world);
@@ -63,11 +63,11 @@ public class SimulationTest
         World world = new World(5,5,5);
         sim.setWorld(world);
         assert sim.getPopulationOfWorld() == 0 : "Pop 0";
-        Species testPlant = new Vegetable("wheat","w",new ArrayList<String>(),1000.0,1.0,100.0,90.0,1.0,50.0,1.0,0.0);
+        Species testPlant = new Vegetable("wheat","w",new ArrayList<String>(),1000.0,1.0,100.0,90.0,1.0,50.0,1.0,0.0, 7, 12, 20);
         world.get(2,2).setPlant((Plant)testPlant);
         testPlant.setCell(world.get(2,2));
         assert sim.getPopulationOfWorld() == 1 : "Pop 1";
-        Species testAnimal = new Carnivore("bear","b",new ArrayList<String>(),1000.0,1.0,100.0,90.0,1.0,50.0,1.0,0.0);
+        Species testAnimal = new Carnivore("bear","b",new ArrayList<String>(),1000.0,1.0,100.0,90.0,1.0,50.0,1.0,0.0, 7, 12, 20);
         world.get(3,3).setAnimal((Animal)testAnimal);
         testAnimal.setCell(world.get(3,3));
         assert sim.getPopulationOfWorld() == 2 : "Pop 2";
@@ -80,7 +80,7 @@ public class SimulationTest
         World world = new World(5,5,5);
         sim.setWorld(world);
         sim = new Simulation("config.txt", 100);
-        Species testPlant = new Vegetable("wheat","w",new ArrayList<String>(),100.0,1.0,10.0,90.0,1.0,50.0,1.0,0.0);
+        Species testPlant = new Vegetable("wheat","w",new ArrayList<String>(),100.0,1.0,10.0,90.0,1.0,50.0,1.0,0.0, 7, 12, 20);
         world.get(2,2).setPlant((Plant)testPlant);
         testPlant.setCell(world.get(2,2));
         for(int i = 0; i < 50; i++) {

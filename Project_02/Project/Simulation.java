@@ -60,11 +60,10 @@ public class Simulation
             } else if(line.equals("r")) {
                 Species.printStatus();
             }
-            //z/////////////////////
+            // id command is q stop the simulation runtime
             else if(line.equals("q")){
                 break;
             }
-            //z////////////////////
             
             if(line.equals("i")) {
                 world.turn();
@@ -92,9 +91,9 @@ public class Simulation
     public void initWorld() {
         int height = 0,width = 0,light = 0;
         List<Species> species = new ArrayList<Species>();
-        //z//////////////////
+        //Store all the mountains in List of mountains
         List<Mountain> mountains = new ArrayList<Mountain>();
-        //z//////////////////
+        
         Random generator = new Random(SEED);
         //Creates the file scanner
         Scanner fileReader = null;
@@ -128,27 +127,33 @@ public class Simulation
                     double deathStd = Double.parseDouble(words[6].split(",")[1]);
                     int birthEnergy = Integer.parseInt(words[7]);
                     int maxEnergy = Integer.parseInt(words[8]);
-                    int livingEnergy = Integer.parseInt(words[9]);
+                    
+                    int movementRange = Integer.parseInt(words[9]);
+                    int detectionRange = Integer.parseInt(words[10]);
+                    double threshold = Double.parseDouble(words[12]);
+                    
+                    int livingEnergy = Integer.parseInt(words[11]);
                     
                     //Creates a number of the new species based on the population distribution and adds them to the list of species to be added to the world
                     Species tempSpecies = null;
                     int numToAdd = (int)(popMedian + (popStd * generator.nextGaussian()));
                     for(int i = 0; i < numToAdd; i++) {
                         if(type.equals("carnivore")) {
-                            tempSpecies = new Carnivore(name, symbol, energySources, deathMedian, deathStd, birthEnergy, maxEnergy, livingEnergy, initialEnergy, popMedian, popStd);
+                            tempSpecies = new Carnivore(name, symbol, energySources, deathMedian, deathStd, birthEnergy, maxEnergy, livingEnergy, initialEnergy, popMedian, popStd, detectionRange, movementRange, threshold);
                         } else if(type.equals("herbivore")) {
-                            tempSpecies = new Herbivore(name, symbol, energySources, deathMedian, deathStd, birthEnergy, maxEnergy, livingEnergy, initialEnergy, popMedian, popStd);
+                            tempSpecies = new Herbivore(name, symbol, energySources, deathMedian, deathStd, birthEnergy, maxEnergy, livingEnergy, initialEnergy, popMedian, popStd, detectionRange, movementRange, threshold);
                         } else if(type.equals("omnivore")) {
-                            tempSpecies = new Omnivore(name, symbol, energySources, deathMedian, deathStd, birthEnergy, maxEnergy, livingEnergy, initialEnergy, popMedian, popStd);
+                            tempSpecies = new Omnivore(name, symbol, energySources, deathMedian, deathStd, birthEnergy, maxEnergy, livingEnergy, initialEnergy, popMedian, popStd, detectionRange, movementRange, threshold);
                         } else if(type.equals("vegetable") || type.equals("vegetable")) {
-                            tempSpecies = new Vegetable(name, symbol, energySources, deathMedian, deathStd, birthEnergy, maxEnergy, livingEnergy, initialEnergy, popMedian, popStd);
+                            tempSpecies = new Vegetable(name, symbol, energySources, deathMedian, deathStd, birthEnergy, maxEnergy, livingEnergy, initialEnergy, popMedian, popStd, detectionRange, movementRange, threshold);
                         } else if(type.equals("fruit")) {
-                            tempSpecies = new Fruit(name, symbol, energySources, deathMedian, deathStd, birthEnergy, maxEnergy, livingEnergy, initialEnergy, popMedian, popStd);
+                            tempSpecies = new Fruit(name, symbol, energySources, deathMedian, deathStd, birthEnergy, maxEnergy, livingEnergy, initialEnergy, popMedian, popStd, detectionRange, movementRange, threshold);
                         }
                         species.add(tempSpecies);
                     }
                 }
-                //z//////////////////
+                //Check if current line provides information about the mountain
+                // if so build a mountain range
                 else if(words[0].equals("mountain")){
                     String[] tmp = words[1].split(",");
                     int startingX = Integer.parseInt(tmp[0]);
@@ -160,16 +165,14 @@ public class Simulation
                     Mountain tmpMountain = new Mountain(startingX, startingY, endingX, endingY);
                     mountains.add(tmpMountain);
                 }
-                //z//////////////////
             }
             //Creates world and adds species to it
             world = new World(height,width,light);
             Species.setStaticWorld(world);
-            //z/////////////////    
+            //add mountains to our World
             for(int i = 0; i < mountains.size(); i++){
               world.addMountainToWorld(mountains.get(i)); 
             }
-            //z////////////////
             for(int i = 0; i < species.size(); i++) {
                 world.randomAddToWorld(species.get(i));
             }

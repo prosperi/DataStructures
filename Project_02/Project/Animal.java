@@ -5,14 +5,16 @@ public abstract class Animal extends Species
     Random generator;
     boolean moved;
     
-    public Animal(String n, String sym, List<String> s, double dm, double ds, double be, double me, double le, double ie, double pm, double ps) {    
-        super(n, sym, s, dm, ds, be, me, le, ie, pm, ps);
+    public Animal(String n, String sym, List<String> s, double dm, double ds, double be, double me, double le, double ie, double pm, double ps, int dr, int mr, double th) {    
+        super(n, sym, s, dm, ds, be, me, le, ie, pm, ps, dr, mr, th);
         generator = new Random(Simulation.SEED);
+        // use moved not to move the same animal twice, when move == true we can change position, when it is false, this
+        // means this animal already mvoed in this step
         moved = false;
     }
     
     /**
-     * This method provides and easy way to enforce the order of behaviors the species can make
+     * @desc This method provides and easy way to enforce the order of behaviors the species can make
      * Each behavior method returns true if it works, which in turn stops any further behaviors from happening that turn
      */
     public void activity() {
@@ -36,7 +38,7 @@ public abstract class Animal extends Species
     }
     
     /**
-     * Checks if the species doesn't have enough energy or is too old
+     * @desc Checks if the species doesn't have enough energy or is too old
      * The species is added to the list of deaths at the corresponding turn and species indices
      * @return boolean - returns true if the animal dies, false otherwise
      */
@@ -68,7 +70,7 @@ public abstract class Animal extends Species
     }
     
     /**
-     * Checks if the species has enough energy and room nearby to give birth
+     * @desc Checks if the species has enough energy and room nearby to give birth
      * The child is added to the list of births at the corresponding turn and species indices
      * @return boolean - true if animal gives birth, false otherwise
      */
@@ -110,7 +112,7 @@ public abstract class Animal extends Species
     public abstract boolean eat();
     
     /**
-     * Looks at adjacent cells and checks if any animal it can eat is there
+     * @desc Looks at adjacent cells and checks if any animal it can eat is there
      * If it finds a prey, it is removed from the board and added to the death list
      * @return boolean - true if an acceptable animal is found and eaten, false otherwise
      */
@@ -149,7 +151,7 @@ public abstract class Animal extends Species
     
     /**
      * Looks at current cell and checks if any plant it can eat is there
-     * If it finds a prey, it is removed from the board and added to the death list
+     * @desc If it finds a prey, it is removed from the board and added to the death list
      * @return boolean - true if an acceptable plant is found and eaten, false otherwise
      */
     public boolean eatPlant() {
@@ -176,131 +178,250 @@ public abstract class Animal extends Species
     }
     
     /**
-     * If all else fails, the animal tries to move to an adjacent space
+     * @desc this represents the movement algorithm for the animal
+     * at first checks if animal needs to find some food, if so than
+     * sorts possible cells according to the food place, if not moves randomly
      * @return boolean - true if the animal moves, false otherwise
      */
-    public boolean move() {
-        /*for(int i = 0; i < 20; i++) {
-            Cell temp = this.getCell().getAdjacent(generator.nextInt(3)-1,generator.nextInt(3)-1);
-            //z/////// Modified if statement by checking for mountains too
-            if(temp != null && temp.getAnimal() == null && temp.getMountain() == null) {
-                temp.setAnimal(this);
-                this.getCell().setAnimal(null);
-                this.setCell(temp);
-                return true;
-            }
-        }*/
+    public boolean move(){
+        // we use TreeSet to keep all the path animal can take
+        // TreeSet itself is a container of ArrayLists, which keep 
+        // the whole path which is unchecked and is based on the movement range
+        // and the checked path which is based on detection range
+        TreeSet<ArrayList<Path>> radar;
+        World world = this.getCell().getWorld();
         
-        //z///////////////
-        CellComparator cellComparator = new CellComparator();
-        // used when the specimen is looking for food
-        PriorityQueue<ArrayList<Cell>> cellsQueue = new PriorityQueue<ArrayList<Cell>>(cellComparator);
-        // used when the specimen do not need to look for food
-        ArrayList<Cell> cellsArr = new ArrayList<Cell>();
+        // if animal needs food use Hungry comparator that sorts according to food
+        // if not use comparatos that puts pathes without predators on the first place
+        if(this.getEnergy() > this.threshold){
+            radar = new TreeSet<ArrayList<Path>>(new PathComparator());
+        }else{
+            radar = new TreeSet<ArrayList<Path>>(new HungryComparator());
+        }
         
-        int range = 2;
         int i = this.getCell().getX();
         int j = this.getCell().getY();
         ArrayList<Cell> cellsTmp;
-               
-        for(int k = i - range; k <= i + range; k++){
-            if(k < 0 || k >= this.getCell().getWorld().getHeight())
-                    continue;
-            for(int l = j - range; l <= j + range;  l++){
-                // check if the cell is out of the board or if it is the same cell 
-                // from which we are trying to move out 
-                if(l < 0 || l >= this.getCell().getWorld().getWidth() || this.getCell().getWorld().get(k, l) == this.getCell())
-                    continue;
-                if(!checkPossibleHome(k, l)) 
-                    continue;
-                
-                cellsTmp = new ArrayList<Cell>();
-                cellsTmp.add(this.getCell());
-                cellsTmp.add(this.getCell().getWorld().get(k, l));
-                // yeah, you wrote this
-                if(true)
-                    cellsQueue.add(cellsTmp);
-                else
-                    cellsArr.add(cellsTmp.get(0));
-                
+        // in roder to draw all the path from the current animal to every possible cell, we take the cells that are farthest from animal
+        // and are in movement range. At first we find these points by following algorithm:
+        int minI = (i - movementRange < 0 ) ? 0 : i - movementRange; 
+        int maxI = (i + movementRange >= this.getCell().getWorld().getHeight() ) ? this.getCell().getWorld().getHeight() - 1 : i + movementRange; 
+        int minJ = (j - movementRange < 0 ) ? 0 : j - movementRange; 
+        int maxJ = (j + movementRange >= this.getCell().getWorld().getWidth() ) ? this.getCell().getWorld().getWidth() - 1 : j + movementRange; 
+        
+        // build path to each of these cells
+        for(int k = minJ; k <= maxJ; k++){
+            if(k == minJ || k == maxJ){
+                // check if animal is in the left or right column of the rectangle we are checking if so take only those 
+                // points that are at maxI and minI positions
+                if(minJ == j){
+                    radar.add(drawPath(minI, j));
+                    radar.add(drawPath(maxI, j));
+                }else if(maxJ == j){
+                    radar.add(drawPath(minI, j));
+                    radar.add(drawPath(maxI, j));
+                }else{
+                    for(int l = minI; l <= maxI; l++){
+                        radar.add(drawPath(l, k));
+                    }
+                }
+            }else{
+                // check if animal is in the top or bottom row of the rectangle we are checking if so take only those 
+                // points that are at maxJ and minJ positions
+                if(minI != i){
+                    radar.add(drawPath(minI, k));
+                }
+                if(maxI != i){
+                    radar.add(drawPath(maxI, k));
+                }
             }
         }
         
-        if(cellsQueue.size() > 0){
-            printQueue(cellsQueue);
-            Cell tmp = cellsQueue.peek().get(1);
-            tmp.setAnimal(this);
-            this.getCell().setAnimal(null);
-            this.setCell(tmp);
+        
+        //System.out.println(radar.size());
+        //printRadar(radar);
+        
+        // Time to move, if energy is above threshold move randomly, if not get first 
+        // element from treeset and move to the cell where food can be found
+        if(radar.first().get(0).size() != 0){
+            if(this.getEnergy() > this.threshold){
+                Random rnd = new Random(1);
+                int cellIndex = rnd.nextInt(radar.first().get(0).size());
+                Cell tmp = radar.first().get(0).getCell(cellIndex);
+                tmp.setAnimal(this);
+                this.getCell().setAnimal(null);
+                this.setCell(tmp);
+            }else{
+                Path tmpChecked = radar.first().get(1);
+                if(tmpChecked.getPlantOnTheWay() == true){
+                    Cell tmp = radar.first().get(1).getPlantCell();
+                    tmp.setAnimal(this);
+                    this.getCell().setAnimal(null);
+                    this.setCell(tmp);
+                }else{
+                    Cell tmp = radar.first().get(1).getLast();
+                    tmp.setAnimal(this);
+                    this.getCell().setAnimal(null);
+                    this.setCell(tmp);
+                }
+            }
             return true;
         }
         
         return false;
-        //z//////////////
     }
     
-    //z/
-    public boolean checkPossibleHome(int k, int l){
-        // If a cell is occupied by an animal that is not energy source for current animal
-        // we can not move to this cell
-        Animal tmpAnimal = this.getCell().getWorld().get(k, l).getAnimal();
-        if(tmpAnimal != null && !this.getEnergySources().contains(tmpAnimal)){ 
-            return false;
-        }
+    /**
+     * @desc drawPath between animal and the cell, that creates a new Path
+     * @params int x1 - x coordinate of that cell
+     * @params int y1 - y coordinate of that cell
+     * @return boolean - true if the animal moves, false otherwise
+     */
+    public ArrayList<Path> drawPath(int x1, int y1){
+        ArrayList<Path> pathArr = new ArrayList<Path>();
+        Path path_01 = new Path();
+        Path path_02 = new Path();
         
-
-        // We need to check if there is a mountain or some animal between possible new home and current cell
-        // we need to apply line approximation algorithm once more
-        if(checkIfBlocked(k, l))
-            return false;
-            
-        return true;
+        Cell tmp = this.getCell();
+        World world = cell.getWorld();
         
-    }
-    //z/
-    public boolean checkIfBlocked(int k, int l){
-        Cell tmpCell = this.getCell().getWorld().get(k, l);
-        int x0 = this.getCell().getX(),
-            y0 = this.getCell().getY(),
-            x1 = tmpCell.getX(),
-            y1 = tmpCell.getY();
-                
-        int dx = Math.abs(x1 - x0),
+        // Apply Bresenham line algorithm once more
+        int x0 = cell.getX();
+        int y0 = cell.getY();
+        int dx = Math.abs(x1 - x0), 
             sx = x0 < x1 ? 1 : -1;
-        int dy = Math.abs(y1 - y0),
+        int dy = Math.abs(y1 - y0), 
             sy = y0 < y1 ? 1 : -1;
         int err = (dx > dy ? dx : -dy)/2;
-    
-        while(true){
-                World tmpWorld = this.getCell().getWorld();
-                // check if there is mountain on the path or an animal, and be sure
-                // that this animal will not be our current animal
-                if(tmpWorld.get(x0, y0).getMountain() != null ||
-                  (tmpWorld.get(x0, y0).getAnimal() != null && 
-                   tmpWorld.get(x0, y0).getAnimal() != this))
-                    return true;
-                if(x0 == x1 && y0 == y1) break;
-                int e2 = err;
-                if(e2 > -dx) {
-                    err -= dy;
-                    x0 += sx;
+        
+        boolean t = true;
+        while(t){
+            switch (checkPathCell(x0, y0)){
+               // so the path edns with predator 
+               case 0:
+                if(path_01.size() < movementRange){
+                    path_01.setDeadEnd(0);
                 }
-                if(e2 < dy) {
-                    err += dx;
-                    y0 += sy;
+                if(path_02.size() < detectionRange){
+                    path_02.setDeadEnd(0);
                 }
+                t = false;
+                break;
+               // so the path ends with food that is animal
+               case 1:
+                if(path_01.size() < movementRange){
+                    path_01.setDeadEnd(1);
+                    path_01.add(world.get(x0, y0));
+                }
+                if(path_02.size() < detectionRange){
+                    path_02.setDeadEnd(1);
+                    path_02.add(world.get(x0, y0));
+                }
+                t = false;
+                break;
+               // so the path ends with plant that is food
+               case 2:
+                if(path_01.size() < movementRange){
+                    path_01.setPlantOnTheWay(true);
+                    path_01.setPlantCell(world.get(x0, y0));
+                    path_01.add(world.get(x0, y0));
+                    path_01.setDeadEnd(2);
+                }
+                if(path_02.size() < detectionRange){
+                    path_02.add(world.get(x0, y0));
+                    path_02.setPlantOnTheWay(true);
+                    path_02.setPlantCell(world.get(x0, y0));
+                    path_02.setDeadEnd(2);
+                }
+                break;
+               // so the path ends with mountain or animal that is not food
+               case 3:
+                if(path_01.size() < movementRange){
+                    path_01.setDeadEnd(3);
+                }
+                if(path_02.size() < detectionRange){
+                    path_02.setDeadEnd(3);
+                }
+                t = false;
+                break;
+               // path does not end and it's free, their is not anything on 
+               // the path(except plants that are not among energy sources)
+               case 4:
+                if(path_01.size() < movementRange){
+                    path_01.add(world.get(x0, y0));
+                    path_01.setDeadEnd(4);
+                }
+                if(path_02.size() < detectionRange){
+                    path_02.add(world.get(x0, y0));
+                    path_02.setDeadEnd(4);
+                }
+
+                break;
+            }
+            
+            if(x0 == x1 && y0 == y1) break;
+            int e2 = err;
+            if(e2 > -dx) {
+              err -= dy;
+              x0 += sx;
+            }
+            if(e2 < dy) {
+              err += dx;
+              y0 += sy;
+            }
         }
-        return false;
+        
+        pathArr.add(path_01);
+        pathArr.add(path_02);
+        return pathArr;
+    }
     
+    /**
+     * @desc check the Path, and find if it ends already
+     * @params int k - X coordinate of the cell
+     * @params int l - Y coordinate of that cell
+     * @return int checkPathCell - 0,1,2,3 or 4 according to the specimen living in the cell
+     */
+    public int checkPathCell(int k, int l){
+        World world = this.getCell().getWorld();
+        // lets check if there is some animal that's not among animals energy sources or if there is mountain
+        // in which case our path stops there
+        Mountain mountain = world.get(k, l).getMountain();
+        Animal animal = world.get(k, l).getAnimal();
+        Plant plant = world.get(k, l).getPlant();
+        
+        if(animal == this)
+            return -1;
+        
+        // Path for which dead end equals to 0 means there is predator in the end
+        if(animal != null && animal.getEnergySources().contains(this.getName())){
+            return 0;
+        }
+        // check if there is some food in the cell, we use this
+        // not to check further path later, as we already found food
+        if(animal != null && this.getEnergySources().contains(animal.getName())){
+            return 1;
+        }
+        
+        if(plant != null && this.getEnergySources().contains(plant.getName())){
+            return 2;
+        }
+        // if there is just mountain or animal that's not among energy sources go this way
+        if(mountain != null || animal != null)
+            return 3;
+            
+        return 4;
     }
 
-    
-    //z/ used for test purposes
-    public void printQueue(PriorityQueue<ArrayList<Cell>> q){
-        Iterator iterator = q.iterator();
+    /**
+     * @desc used for test purposes, prints out the radar
+     * @params TreeSet<ArrayList<Path>> radar- radar
+     */
+    public void printRadar(TreeSet<ArrayList<Path>> radar){
+        Iterator iterator = radar.iterator();
         while(iterator.hasNext()){
-            ArrayList<Cell> tmp = (ArrayList<Cell>)iterator.next();
-            System.out.print(tmp.get(0).getX() + " " + tmp.get(0).getY() + " " + tmp.get(1).getX() + " " + tmp.get(1).getY() + '\n');
+            ArrayList<Path> tmp = (ArrayList<Path>)iterator.next();
+            System.out.println(this.getCell().getX() + " " + this.getCell().getY() + "   " + tmp.get(0) + " deadEnd: " + tmp.get(0).getDeadEnd() );
         }
     }
 }

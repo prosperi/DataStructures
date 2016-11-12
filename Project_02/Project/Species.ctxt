@@ -1,6 +1,6 @@
 #BlueJ class context
-comment0.params=n\ sym\ s\ dm\ ds\ be\ me\ le\ ie\ pm\ ps
-comment0.target=Species(java.lang.String,\ java.lang.String,\ java.util.List,\ double,\ double,\ double,\ double,\ double,\ double,\ double,\ double)
+comment0.params=n\ sym\ s\ dm\ ds\ be\ me\ le\ ie\ pm\ ps\ dr\ mr\ th
+comment0.target=Species(java.lang.String,\ java.lang.String,\ java.util.List,\ double,\ double,\ double,\ double,\ double,\ double,\ double,\ double,\ int,\ int,\ double)
 comment1.params=
 comment1.target=void\ activity()
 comment10.params=
