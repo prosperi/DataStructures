@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=
+comment0.target=DirectedGraph()
+comment1.params=k
+comment1.target=boolean\ AddNode(java.lang.Comparable)
+comment2.params=k1\ k2\ w
+comment2.target=boolean\ AddEdge(java.lang.Comparable,\ java.lang.Comparable,\ int)
+comment3.params=
+comment3.target=java.lang.String\ toString()
+numComments=4
