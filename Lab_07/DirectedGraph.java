@@ -1,97 +1,186 @@
 import java.util.LinkedList;
-import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.PriorityQueue;
+import java.util.NoSuchElementException;
+import java.lang.Exception;
 
 public class DirectedGraph<K extends Comparable<K>, E>{
-   private ArrayList<DirectedGraphNode<K, E>> list;
-   
+   private Map<K, DirectedGraphNode<K, E>> map;
+   public static final int INFINITY = Integer.MAX_VALUE;
+
    public DirectedGraph(){
-       list = new ArrayList<DirectedGraphNode<K, E>>();
+       map = new HashMap<K, DirectedGraphNode<K, E>>();
    }
-   
+
    public boolean AddNode(K k){
        // find in which case is false returned
-       // if node already exists return false and start checking the edges
-       for(int i = 0; i < list.size(); i++){
-           if(list.get(i).key.compareTo(k) == 0)
-            return false;
-       }
-       
+       // if node already exists return false 
+       if(map.get(k) != null)
+        return false;
+
        DirectedGraphNode<K, E> node = new DirectedGraphNode<K, E>(k);
-       list.add(node);
-       
+       map.put(k, node);
+
        return true;
    }
-   
+
    public boolean AddEdge(K k1, K k2, int w){
        // find in which case is false returned
        // if there are no such nodes return false
        // or if there is edge between them already return false too.
-       Edge edge = null;
-       DirectedGraphNode<K, E> node1 = null;
-       DirectedGraphNode<K, E> node2 = null;
+       DirectedGraphNode<K, E> node1 = map.get(k1);
+       DirectedGraphNode<K, E> node2 = map.get(k2);
+
+       if(node1 == null || node2 == null)
+        return false;
        
-       for(int i = 0; i < list.size(); i++){
-           K tmp = list.get(i).key;
-           if(tmp.compareTo(k1) == 0)
-            node1 = list.get(i);
-           if(list.get(i).key.compareTo(k2) == 0)
-            node2 = list.get(i);
-       }
-       
-       // check if nulls or already exists
-       if(node1 == null || node2 == null) return false;
        for(int i = 0; i < node1.outgoing.size(); i++){
-           Edge tmp = node1.outgoing.get(i);
-           if(tmp.end == node2) return false;
+           if(node1.outgoing.get(i).end.key.compareTo(k2) == 0)
+            return false;
        }
-       
-       edge = new Edge(node1, node2, w);
+
+       Edge edge = new Edge(node1, node2, w);
        node1.outgoing.add(edge);
        node2.incoming.add(edge);
-       
+
        return true;
    }
    
+   public void clearAll(){
+       for(DirectedGraphNode node : map.values()){
+           node.reset();
+       }
+   }
+   
+   
    public String toString(){
        String str = "";
-       for(int i = 0;  i < list.size(); i++){
-           DirectedGraphNode<K, E> tmpNode = list.get(i);
-           str += tmpNode.key + tmpNode.outgoingToString() + "\n";
+       for(DirectedGraphNode node : map.values()){
+           str += node.key + node.outgoingToString() + "\n";
        }
        return str;
    }
    
+   public String tryDijkstra(K k0, K k1){
+        String str = "";
+        PriorityQueue<Path> pq = dijkstra(k0, k1);
+        Path tmpPath = pq.peek();
+        System.out.println(pq.size());
+        DirectedGraphNode tmpNode = tmpPath.dest;
+        
+        do{
+            str =  tmpNode != tmpPath.dest ? tmpNode.key + " --> " + str : tmpNode.key + str;
+            tmpNode = tmpNode.prev;
+        }while(tmpNode != null);
+        
+        return str + " || " + tmpPath.cost;
+    }   
    
-   public class DirectedGraphNode<K, E>{
-       LinkedList<Edge> incoming;
-       LinkedList<Edge> outgoing;
-       K key;
+   public PriorityQueue<Path> dijkstra(K k0, K k1){
+       PriorityQueue<Path> pq = new PriorityQueue<Path>();
        
-       public DirectedGraphNode(K key){
+       DirectedGraphNode<K, E> start = map.get(k0);
+       DirectedGraphNode<K, E> end = map.get(k1);
+       if(start == null)
+        throw new NoSuchElementException("Start vertex does not exist");
+       
+       clearAll();
+       pq.add(new Path(start, 0));
+       start.dist = 0;
+       
+       int nodesSeen = 0;
+       while(!pq.isEmpty() && nodesSeen < map.size()){
+           Path vrec = pq.remove();
+           DirectedGraphNode<K, E> v = vrec.dest;
+           if(v.scratch != 0)
+            continue;
+           
+           v.scratch = 1;
+           nodesSeen++;
+           
+           for(Edge edge : v.outgoing){
+               DirectedGraphNode<K, E> w = edge.end;
+               int tmpWeight = edge.weight;
+               
+               if(tmpWeight < 0){
+                System.out.println("Graph has negative edges");
+                break;
+               }
+               
+               if(w.dist > v.dist + tmpWeight){
+                   w.dist = v.dist + tmpWeight;
+                   w.prev = v;
+                   pq.add(new Path(w, w.dist));
+               }
+               // check 
+               if(w == end) break;
+           }
+       }
+       
+       return pq;
+   }
+
+   
+   /// Inner Classes
+
+   public class DirectedGraphNode<K, E>{
+        LinkedList<Edge> incoming;
+        LinkedList<Edge> outgoing;
+        DirectedGraphNode<K, E> prev;
+        K key;
+        int dist;
+        int scratch;
+        
+        public DirectedGraphNode(K key){
            this.key = key;
            this.incoming = new LinkedList<Edge>();
            this.outgoing = new LinkedList<Edge>();
-       }
-       
-       public String outgoingToString(){
+           reset();
+        }
+        
+        public void reset(){
+            dist = DirectedGraph.INFINITY;
+            prev = null;
+            scratch = 0;
+        }
+        
+        public String outgoingToString(){
            String str = "";
            for(int i = 0; i < outgoing.size(); i++){
                str += "  --> " + outgoing.get(i).end.key + "(" + outgoing.get(i).weight + ")";
            }
            return str;
-       }
-       
+        }
+
    }
-   
+
    public class Edge{
        DirectedGraphNode<K, E> start;
        DirectedGraphNode<K, E> end;
        int weight;
-       
+
        public Edge(DirectedGraphNode<K, E> start, DirectedGraphNode<K, E> end, int w){
            this.start = start;
            this.end = end;
            this.weight = w;
+       }
+   }
+   
+   
+   public class Path implements Comparable<Path>{
+       public DirectedGraphNode<K, E> dest;
+       public int cost;
+       
+       public Path(DirectedGraphNode<K, E> dest, int cost){
+           this.dest = dest;
+           this.cost = cost;
+       }
+       
+       public int compareTo(Path path){
+           int tmpCost = path.cost;
+           
+           return cost < tmpCost ? -1 : cost > tmpCost ? 1 : 0;
        }
    }
 

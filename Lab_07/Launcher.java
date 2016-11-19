@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.FileReader;
+import java.util.PriorityQueue;
 
 public class Launcher{
     
@@ -26,6 +27,9 @@ public class Launcher{
             e.printStackTrace();
         }
         System.out.println(graph);
+        
+        System.out.println("\n" + graph.tryDijkstra(1, 5));
     }
+    
     
 }
