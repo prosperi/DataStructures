@@ -2,8 +2,8 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.PriorityQueue;
+import java.util.Iterator;
 import java.util.NoSuchElementException;
-import java.lang.Exception;
 
 public class DirectedGraph<K extends Comparable<K>, E>{
    private Map<K, DirectedGraphNode<K, E>> map;
@@ -91,8 +91,11 @@ public class DirectedGraph<K extends Comparable<K>, E>{
        
        int nodesSeen = 0;
        while(!pq.isEmpty() && nodesSeen < map.size()){
-           Path vrec = pq.remove();
+           Path vrec = pq.peek();
            DirectedGraphNode<K, E> v = vrec.dest;
+           //check
+           if(v == end) break;
+           else pq.remove();
            if(v.scratch != 0)
             continue;
            
@@ -113,12 +116,21 @@ public class DirectedGraph<K extends Comparable<K>, E>{
                    w.prev = v;
                    pq.add(new Path(w, w.dist));
                }
-               // check 
-               if(w == end) break;
+
            }
        }
-       
+       System.out.println(pqToString(pq));
        return pq;
+   }
+   
+   public String pqToString(PriorityQueue<Path> pq){
+       String str = "";
+       Iterator it = pq.iterator();
+       while(it.hasNext()){
+           Path tmp = (Path)it.next();
+           str += tmp.dest.key + " : " + tmp.cost + " || ";
+       }
+       return str;
    }
 
    
@@ -175,13 +187,14 @@ public class DirectedGraph<K extends Comparable<K>, E>{
        public Path(DirectedGraphNode<K, E> dest, int cost){
            this.dest = dest;
            this.cost = cost;
+           //z/System.out.println(dest.key + " : " + cost);
        }
        
        public int compareTo(Path path){
            int tmpCost = path.cost;
-           
            return cost < tmpCost ? -1 : cost > tmpCost ? 1 : 0;
        }
+       
    }
 
 }
