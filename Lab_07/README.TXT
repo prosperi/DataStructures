@@ -10,3 +10,5 @@ VERSION or DATE:
 HOW TO START THIS PROJECT:
 AUTHORS:
 USER INSTRUCTIONS:
+
+run application but calling - java GraphExperiment <path_to_config_file>

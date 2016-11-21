@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=
+comment0.target=GraphExperiment()
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment1.text=\ \n\ @desc\ parse\ the\ configuration\ file\ and\ apply\ Dijkstra's\n\ algorithm\ to\ find\ shortest\ path\ from\ every\ entrance\ node(node\ \n\ with\ 0\ incoming\ edges)\ to\ exit\ node(vertex\ with\ 0\ outgoing\ edges).\n\ @params\ String\ args[]\ -\ array\ of\ arguments\n
+comment2.params=
+comment2.target=java.lang.String\ solveGraph()
+comment2.text=\ \n\ @desc\ this\ method\ applies\ Dijkstra's\ algorithm\ and\ finds\ \n\ shortest\ path\ for\ all\ entrance\ nodes.\n\ @return\ String\ str\ -\ String\ representation\ of\ all\ shortest\ paths\n
+numComments=3
