@@ -10,3 +10,5 @@ VERSION or DATE:
 HOW TO START THIS PROJECT:
 AUTHORS:
 USER INSTRUCTIONS:
+run simulation from terminal using following command
+java Simulation <path-to-config-file> <max-steps> <SEED>

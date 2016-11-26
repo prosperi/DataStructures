@@ -1,6 +1,11 @@
 import java.util.Comparator;
 import java.util.ArrayList;
-
+/** 
+  * @desc This Comparator class is used to sort path 
+  * that specimen can take
+  * @author Zura Mestiashvili mestiasz@lafayette.edu
+  * @version v1.0.0
+*/
 public class PathComparator implements Comparator<ArrayList<Path>>{
     
     @Override

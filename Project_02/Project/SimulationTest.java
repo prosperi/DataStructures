@@ -77,7 +77,7 @@ public class SimulationTest
     @Test
     public void testChanges() {
         sim.initWorld();
-        assert sim.getChangesInPastSteps() == 1 : "Init";
+        assert sim.getChangesInPastSteps() == 0 : "Init "+sim.getChangesInPastSteps();
         World world = new World(5,5,5);
         sim.setWorld(world);
         sim = new Simulation("../config.txt", 100);

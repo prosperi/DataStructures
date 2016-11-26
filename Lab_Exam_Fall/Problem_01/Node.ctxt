@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=value
+comment0.target=Node(java.lang.Comparable)
+comment1.params=
+comment1.target=java.lang.Comparable\ getValue()
+comment2.params=
+comment2.target=Node\ getLeft()
+comment3.params=node
+comment3.target=void\ setLeft(Node)
+comment4.params=
+comment4.target=Node\ getRight()
+comment5.params=node
+comment5.target=void\ setRight(Node)
+numComments=6

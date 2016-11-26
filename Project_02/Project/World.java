@@ -1,5 +1,10 @@
 import java.util.*;
-
+/** 
+  * @desc this class represents the World which
+  * consists of mountains, species and cells
+  * @author Zura Mestiashvili mestiasz@lafayette.edu
+  * @version v1.0.0
+*/
 public class World
 {
     private List<List<Cell>> board;

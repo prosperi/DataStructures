@@ -1,0 +1,19 @@
+change detection and movement for everybody
+
+size 50 50
+species cow herbivore c wheat,banana 250,3,30 500.3,4.2 50 60 7 7 5 60
+species wheat vegetable h light 300,5,20 700.1,5.1 30 50 0 0 2 0
+light 50
+species banana fruit b light 100,10,25 400.9,2.5 35 45 0 0 4 0
+species wolf carnivore w cow 90,2,40 200.2,3.0 55 70 7 7 7 70
+species bear omnivore g cow,banana 110,2,40 190,4.5 60 90 7 7 8 90
+mountain 6,1,0,8
+
+1,50,0,2492,0,0,0
+11,50,0,2492,0,0,0
+21,50,0,2492,0,0,0
+31,50,0,2468,24,0,0
+41,50,0,2492,0,0,0
+51,50,0,2492,0,0,0
+61,50,0,2492,0,0,0
+71,50,0,2492,0,0,0

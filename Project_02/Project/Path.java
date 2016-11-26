@@ -1,5 +1,10 @@
 import java.util.LinkedList;
-
+/** 
+  * @desc This class is used to create Path objects
+  * that are lists of cells
+  * @author Zura Mestiashvili mestiasz@lafayette.edu
+  * @version v1.0.0
+*/
 public class Path
 {
     private LinkedList<Cell> path;

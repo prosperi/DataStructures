@@ -1,3 +1,10 @@
+/** 
+  * @desc Cell class is sued to create cell object.
+  * cell object build up our map and store infromation
+  * about species' positions
+  * @author Zura Mestiashvili mestiasz@lafayette.edu
+  * @version v1.0.0
+*/
 public class Cell
 {
     private World world;

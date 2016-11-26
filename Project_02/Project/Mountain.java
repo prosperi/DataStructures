@@ -1,4 +1,9 @@
-
+/** 
+  * @desc This class is used to create mountain objects
+  * that are hindrance for animals
+  * @author Zura Mestiashvili mestiasz@lafayette.edu
+  * @version v1.0.0
+*/
 public class Mountain{
     
     private int startingX, startingY, endingX, endingY;

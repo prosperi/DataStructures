@@ -1,5 +1,11 @@
 import java.util.Comparator;
 import java.util.ArrayList;
+/** 
+  * @desc This Comparator class is used to sort Path when
+  * specimen is hungry
+  * @author Zura Mestiashvili mestiasz@lafayette.edu
+  * @version v1.0.0
+*/
 
 public class HungryComparator implements Comparator<ArrayList<Path>>{
     

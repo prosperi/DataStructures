@@ -1,6 +1,15 @@
 import java.util.*;
 import java.io.*;
 
+/** 
+  * @desc this class is a controller of whole simulation
+  * this provides data for World to start artificial life 
+  * imitation. This class is used to initalize objects and 
+  * place on the map
+  * @author Zura Mestiashvili mestiasz@lafayette.edu
+  * @version v1.0.0
+*/
+
 public class Simulation
 {
     public static int SEED = 12345678;
@@ -60,7 +69,7 @@ public class Simulation
             } else if(line.equals("r")) {
                 Species.printStatus();
             }
-            // id command is q stop the simulation runtime
+            // if command is q stop the simulation runtime
             else if(line.equals("q")){
                 break;
             }

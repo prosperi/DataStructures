@@ -1,5 +1,9 @@
 import java.util.*;
-
+/** 
+  * @desc This class provides functionality for animals
+  * @author Zura Mestiashvili mestiasz@lafayette.edu
+  * @version v1.0.0
+*/
 public abstract class Animal extends Species
 {
     Random generator;
@@ -242,6 +246,17 @@ public abstract class Animal extends Species
         return false;
     }
     
+    /**
+     * @desc this method finds the farthest cells and builds 
+     * path for them, than adds to radar
+     * @params AbstractCollection<ArrayList<Path>> radar - radar
+     * @params int minI - X coordinate of the farthest cell vertically(up)
+     * @params int maxI - X coordinate of the farthest cell vertically(bottom)
+     * @params int minJ - Y coordinate of the farthest cell vertically(left)
+     * @params int maxJ - Y coordinate of the farthest cell vertically(right)
+     * @params int minI - X coordinate of the current cell
+     * @params int maxI - Y coordinate of the current cell
+     */
     public void cellFinder(AbstractCollection<ArrayList<Path>> radar, int minI, int maxI, int minJ, int maxJ, int i, int j){
         // build path to each of these cells
         for(int k = minJ; k <= maxJ; k++){
@@ -272,6 +287,10 @@ public abstract class Animal extends Species
         }
     }
     
+    /**
+     * @desc this method changes the home of a cell
+     * @params Cell tmp - new home cell
+     */
     public void changeHome(Cell tmp){
         tmp.setAnimal(this);
         this.getCell().setAnimal(null);
@@ -347,6 +366,19 @@ public abstract class Animal extends Species
         return pathArr;
     }
     
+     /**
+     * @desc helper method for drawPath() method
+     * this method assigns deadEnd value to path and adds 
+     * new cells to Path
+     * @params Path path_01 - whole path
+     * @params Path path_02 - checked Path
+     * @params int i - dead End value
+     * @params int x0 - X coordinate for new Cell in Path
+     * @params int y0 - Y coordinate for new Cell in Path
+     * @params boolean add - if this is true the cell becomes part of the path
+     * @params boolean plant - if this is true the cell is stored as place where food can be found
+     * @params boolean World world - the world
+     */
     public void addToPath(Path path_01, Path path_02, int i, int x0, int y0, boolean add, boolean plant, World world){
         if(path_01.size() < movementRange){
             if(add)  path_01.add(world.get(x0, y0));

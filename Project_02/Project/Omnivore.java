@@ -1,5 +1,9 @@
 import java.util.*;
-
+/** 
+  * @desc This class provides functionality for plants
+  * @author Zura Mestiashvili mestiasz@lafayette.edu
+  * @version v1.0.0
+*/
 public class Omnivore extends Animal
 {
     public Omnivore(String n, String sym, List<String> s, double dm, double ds, double be, double me, double le, double ie, double pm, double ps, int dr, int mr, double th) {

@@ -1,6 +1,10 @@
 import java.util.*;
 import java.io.*;
-
+/** 
+  * @desc This class provides functionality for all the species
+  * @author Zura Mestiashvili mestiasz@lafayette.edu
+  * @version v1.0.0
+*/
 public abstract class Species
 {
     //These static variables keep track of all of the species and the births and deaths by turn for all of them
@@ -88,6 +92,7 @@ public abstract class Species
             writer = new PrintWriter(new FileWriter(new File("output.csv"), true));
         } catch(Exception e) {System.out.println(e);}
         if(writer != null) {
+            writer.print("\n\n");
             writer.print(Simulation.SEED + "," + staticWorld.getSteps());
         }
         for(int i = 0; i < species.size(); i++) {
