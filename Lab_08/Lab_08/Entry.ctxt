@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=key\ value
+comment0.target=Entry(java.lang.String,\ Team)
+comment1.params=
+comment1.target=java.lang.String\ getKey()
+comment2.params=
+comment2.target=Team\ getValue()
+numComments=3

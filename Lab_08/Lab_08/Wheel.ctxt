@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=seed
+comment0.target=Wheel(long)
+comment1.params=
+comment1.target=java.lang.String\ spinString()
+comment2.params=bound
+comment2.target=int\ spinInteger(int)
+numComments=3

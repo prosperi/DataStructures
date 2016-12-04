@@ -1,0 +1,152 @@
+------------------ Creation ------------------
+Number of Items, 70000 , Size, 100 , Load Factor, 1.0 , Time, 14607
+------------------ Search ------------------
+Number of Items, 70000 , Size, 100 , Load Factor, 1.0 , Time, 14607 , Successful Search, 0 , Unsuccessful search, 1
+Number of Items, 70000 , Size, 100 , Load Factor, 1.0 , Time, 14607 , Successful Search, 1 , Unsuccessful search, 0
+Number of Items, 70000 , Size, 100 , Load Factor, 1.0 , Time, 14607 , Successful Search, 0 , Unsuccessful search, 0
+
+------------------ Creation ------------------
+Number of Items, 70000 , Size, 1100 , Load Factor, 1.0 , Time, 272
+------------------ Search ------------------
+Number of Items, 70000 , Size, 1100 , Load Factor, 1.0 , Time, 272 , Successful Search, 0 , Unsuccessful search, 0
+Number of Items, 70000 , Size, 1100 , Load Factor, 1.0 , Time, 272 , Successful Search, 0 , Unsuccessful search, 0
+Number of Items, 70000 , Size, 1100 , Load Factor, 1.0 , Time, 272 , Successful Search, 0 , Unsuccessful search, 0
+
+------------------ Creation ------------------
+Number of Items, 70000 , Size, 2100 , Load Factor, 1.0 , Time, 135
+------------------ Search ------------------
+Number of Items, 70000 , Size, 2100 , Load Factor, 1.0 , Time, 135 , Successful Search, 0 , Unsuccessful search, 0
+Number of Items, 70000 , Size, 2100 , Load Factor, 1.0 , Time, 135 , Successful Search, 0 , Unsuccessful search, 0
+Number of Items, 70000 , Size, 2100 , Load Factor, 1.0 , Time, 135 , Successful Search, 0 , Unsuccessful search, 0
+
+------------------ Creation ------------------
+Number of Items, 70000 , Size, 3100 , Load Factor, 1.0 , Time, 97
+------------------ Search ------------------
+Number of Items, 70000 , Size, 3100 , Load Factor, 1.0 , Time, 97 , Successful Search, 0 , Unsuccessful search, 0
+Number of Items, 70000 , Size, 3100 , Load Factor, 1.0 , Time, 97 , Successful Search, 0 , Unsuccessful search, 0
+Number of Items, 70000 , Size, 3100 , Load Factor, 1.0 , Time, 97 , Successful Search, 0 , Unsuccessful search, 0
+^C prosperi  ~/Development/JavaProjects/DataStructures/Lab_08/Lab_08
+  > java ExperimentController
+
+------------------ Creation ------------------
+Number of Items, 70000 , Size, 100 , Load Factor, 1.0 , Time, 17258
+------------------ Search ------------------
+Number of Items, 70000 , Size, 100 , Load Factor, 1.0 , Time, 17258 , Successful Search, 0 , Unsuccessful search, 1
+Number of Items, 70000 , Size, 100 , Load Factor, 1.0 , Time, 17258 , Successful Search, 0 , Unsuccessful search, 1
+Number of Items, 70000 , Size, 100 , Load Factor, 1.0 , Time, 17258 , Successful Search, 0 , Unsuccessful search, 1
+
+------------------ Creation ------------------
+Number of Items, 70000 , Size, 200 , Load Factor, 1.0 , Time, 3847
+------------------ Search ------------------
+Number of Items, 70000 , Size, 200 , Load Factor, 1.0 , Time, 3847 , Successful Search, 0 , Unsuccessful search, 0
+Number of Items, 70000 , Size, 200 , Load Factor, 1.0 , Time, 3847 , Successful Search, 1 , Unsuccessful search, 0
+Number of Items, 70000 , Size, 200 , Load Factor, 1.0 , Time, 3847 , Successful Search, 0 , Unsuccessful search, 1
+
+------------------ Creation ------------------
+Number of Items, 70000 , Size, 300 , Load Factor, 1.0 , Time, 1693
+------------------ Search ------------------
+Number of Items, 70000 , Size, 300 , Load Factor, 1.0 , Time, 1693 , Successful Search, 0 , Unsuccessful search, 0
+Number of Items, 70000 , Size, 300 , Load Factor, 1.0 , Time, 1693 , Successful Search, 0 , Unsuccessful search, 0
+Number of Items, 70000 , Size, 300 , Load Factor, 1.0 , Time, 1693 , Successful Search, 0 , Unsuccessful search, 1
+
+------------------ Creation ------------------
+Number of Items, 70000 , Size, 400 , Load Factor, 1.0 , Time, 949
+------------------ Search ------------------
+Number of Items, 70000 , Size, 400 , Load Factor, 1.0 , Time, 949 , Successful Search, 0 , Unsuccessful search, 0
+Number of Items, 70000 , Size, 400 , Load Factor, 1.0 , Time, 949 , Successful Search, 0 , Unsuccessful search, 0
+Number of Items, 70000 , Size, 400 , Load Factor, 1.0 , Time, 949 , Successful Search, 0 , Unsuccessful search, 0
+
+------------------ Creation ------------------
+Number of Items, 140000 , Size, 100 , Load Factor, 1.0 , Time, 131698
+------------------ Search ------------------
+Number of Items, 140000 , Size, 100 , Load Factor, 1.0 , Time, 131698 , Successful Search, 3 , Unsuccessful search, 4
+Number of Items, 140000 , Size, 100 , Load Factor, 1.0 , Time, 131698 , Successful Search, 2 , Unsuccessful search, 2
+Number of Items, 140000 , Size, 100 , Load Factor, 1.0 , Time, 131698 , Successful Search, 2 , Unsuccessful search, 2
+^C prosperi  ~/Development/JavaProjects/DataStructures/Lab_08/Lab_08
+  > java ExperimentController
+^C prosperi  ~/Development/JavaProjects/DataStructures/Lab_08/Lab_08
+  > java ExperimentController
+
+------------------ Creation ------------------
+Number of Items, 70000 , Size, 50 , Load Factor, 1.0 , Time, 82246
+------------------ Search ------------------
+Number of Items, 70000 , Size, 50 , Load Factor, 1.0 , Time, 82246 , Successful Search, 2 , Unsuccessful search, 2
+Number of Items, 70000 , Size, 50 , Load Factor, 1.0 , Time, 82246 , Successful Search, 1 , Unsuccessful search, 2
+Number of Items, 70000 , Size, 50 , Load Factor, 1.0 , Time, 82246 , Successful Search, 1 , Unsuccessful search, 2
+
+------------------ Creation ------------------
+Number of Items, 70000 , Size, 100 , Load Factor, 1.0 , Time, 20180
+------------------ Search ------------------
+Number of Items, 70000 , Size, 100 , Load Factor, 1.0 , Time, 20180 , Successful Search, 2 , Unsuccessful search, 2
+Number of Items, 70000 , Size, 100 , Load Factor, 1.0 , Time, 20180 , Successful Search, 1 , Unsuccessful search, 1
+Number of Items, 70000 , Size, 100 , Load Factor, 1.0 , Time, 20180 , Successful Search, 1 , Unsuccessful search, 1
+
+------------------ Creation ------------------
+Number of Items, 70000 , Size, 150 , Load Factor, 1.0 , Time, 8964
+------------------ Search ------------------
+Number of Items, 70000 , Size, 150 , Load Factor, 1.0 , Time, 8964 , Successful Search, 0 , Unsuccessful search, 1
+Number of Items, 70000 , Size, 150 , Load Factor, 1.0 , Time, 8964 , Successful Search, 0 , Unsuccessful search, 1
+Number of Items, 70000 , Size, 150 , Load Factor, 1.0 , Time, 8964 , Successful Search, 1 , Unsuccessful search, 0
+
+------------------ Creation ------------------
+Number of Items, 70000 , Size, 200 , Load Factor, 1.0 , Time, 3275
+------------------ Search ------------------
+Number of Items, 70000 , Size, 200 , Load Factor, 1.0 , Time, 3275 , Successful Search, 0 , Unsuccessful search, 0
+Number of Items, 70000 , Size, 200 , Load Factor, 1.0 , Time, 3275 , Successful Search, 0 , Unsuccessful search, 1
+Number of Items, 70000 , Size, 200 , Load Factor, 1.0 , Time, 3275 , Successful Search, 0 , Unsuccessful search, 0
+
+------------------ Creation ------------------
+Number of Items, 140000 , Size, 50 , Load Factor, 1.0 , Time, 697463
+------------------ Search ------------------
+Number of Items, 140000 , Size, 50 , Load Factor, 1.0 , Time, 697463 , Successful Search, 12 , Unsuccessful search, 13
+Number of Items, 140000 , Size, 50 , Load Factor, 1.0 , Time, 697463 , Successful Search, 11 , Unsuccessful search, 10
+Number of Items, 140000 , Size, 50 , Load Factor, 1.0 , Time, 697463 , Successful Search, 11 , Unsuccessful search, 13
+
+------------------ Creation ------------------
+Number of Items, 140000 , Size, 100 , Load Factor, 1.0 , Time, 124116
+------------------ Search ------------------
+Number of Items, 140000 , Size, 100 , Load Factor, 1.0 , Time, 124116 , Successful Search, 1 , Unsuccessful search, 2
+Number of Items, 140000 , Size, 100 , Load Factor, 1.0 , Time, 124116 , Successful Search, 1 , Unsuccessful search, 2
+Number of Items, 140000 , Size, 100 , Load Factor, 1.0 , Time, 124116 , Successful Search, 2 , Unsuccessful search, 2
+
+------------------ Creation ------------------
+Number of Items, 140000 , Size, 150 , Load Factor, 1.0 , Time, 41736
+------------------ Search ------------------
+Number of Items, 140000 , Size, 150 , Load Factor, 1.0 , Time, 41736 , Successful Search, 1 , Unsuccessful search, 1
+Number of Items, 140000 , Size, 150 , Load Factor, 1.0 , Time, 41736 , Successful Search, 1 , Unsuccessful search, 0
+Number of Items, 140000 , Size, 150 , Load Factor, 1.0 , Time, 41736 , Successful Search, 1 , Unsuccessful search, 1
+
+------------------ Creation ------------------
+Number of Items, 140000 , Size, 200 , Load Factor, 1.0 , Time, 19491
+------------------ Search ------------------
+Number of Items, 140000 , Size, 200 , Load Factor, 1.0 , Time, 19491 , Successful Search, 0 , Unsuccessful search, 1
+Number of Items, 140000 , Size, 200 , Load Factor, 1.0 , Time, 19491 , Successful Search, 0 , Unsuccessful search, 0
+Number of Items, 140000 , Size, 200 , Load Factor, 1.0 , Time, 19491 , Successful Search, 1 , Unsuccessful search, 0
+
+------------------ Creation ------------------
+Number of Items, 210000 , Size, 50 , Load Factor, 1.0 , Time, 2728510
+------------------ Search ------------------
+Number of Items, 210000 , Size, 50 , Load Factor, 1.0 , Time, 2728510 , Successful Search, 38 , Unsuccessful search, 27
+Number of Items, 210000 , Size, 50 , Load Factor, 1.0 , Time, 2728510 , Successful Search, 22 , Unsuccessful search, 28
+Number of Items, 210000 , Size, 50 , Load Factor, 1.0 , Time, 2728510 , Successful Search, 21 , Unsuccessful search, 32
+
+------------------ Creation ------------------
+Number of Items, 210000 , Size, 100 , Load Factor, 1.0 , Time, 536317
+------------------ Search ------------------
+Number of Items, 210000 , Size, 100 , Load Factor, 1.0 , Time, 536317 , Successful Search, 5 , Unsuccessful search, 6
+Number of Items, 210000 , Size, 100 , Load Factor, 1.0 , Time, 536317 , Successful Search, 4 , Unsuccessful search, 6
+Number of Items, 210000 , Size, 100 , Load Factor, 1.0 , Time, 536317 , Successful Search, 4 , Unsuccessful search, 5
+
+------------------ Creation ------------------
+Number of Items, 210000 , Size, 150 , Load Factor, 1.0 , Time, 187612
+------------------ Search ------------------
+Number of Items, 210000 , Size, 150 , Load Factor, 1.0 , Time, 187612 , Successful Search, 2 , Unsuccessful search, 2
+Number of Items, 210000 , Size, 150 , Load Factor, 1.0 , Time, 187612 , Successful Search, 2 , Unsuccessful search, 2
+Number of Items, 210000 , Size, 150 , Load Factor, 1.0 , Time, 187612 , Successful Search, 2 , Unsuccessful search, 3
+
+------------------ Creation ------------------
+Number of Items, 210000 , Size, 200 , Load Factor, 1.0 , Time, 95352
+------------------ Search ------------------
+Number of Items, 210000 , Size, 200 , Load Factor, 1.0 , Time, 95352 , Successful Search, 1 , Unsuccessful search, 1
+Number of Items, 210000 , Size, 200 , Load Factor, 1.0 , Time, 95352 , Successful Search, 1 , Unsuccessful search, 1
+Number of Items, 210000 , Size, 200 , Load Factor, 1.0 , Time, 95352 , Successful Search, 1 , Unsuccessful search, 1
