@@ -150,3 +150,115 @@ Number of Items, 210000 , Size, 200 , Load Factor, 1.0 , Time, 95352
 Number of Items, 210000 , Size, 200 , Load Factor, 1.0 , Time, 95352 , Successful Search, 1 , Unsuccessful search, 1
 Number of Items, 210000 , Size, 200 , Load Factor, 1.0 , Time, 95352 , Successful Search, 1 , Unsuccessful search, 1
 Number of Items, 210000 , Size, 200 , Load Factor, 1.0 , Time, 95352 , Successful Search, 1 , Unsuccessful search, 1
+
+------------------ Creation ------------------
+Number of Items: 70 | Size: 50 | Load Factor: 0.8 | Time: 1
+------------------ Search ------------------
+Number of Items: 70 | Size: 50 | Load Factor: 0.8 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 70 | Size: 50 | Load Factor: 0.8 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 70 | Size: 50 | Load Factor: 0.8 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 70 | Size: 100 | Load Factor: 0.49 | Time: 0
+------------------ Search ------------------
+Number of Items: 70 | Size: 100 | Load Factor: 0.49 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 70 | Size: 100 | Load Factor: 0.49 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 70 | Size: 100 | Load Factor: 0.49 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 70 | Size: 150 | Load Factor: 0.36666666666666664 | Time: 0
+------------------ Search ------------------
+Number of Items: 70 | Size: 150 | Load Factor: 0.36666666666666664 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 70 | Size: 150 | Load Factor: 0.36666666666666664 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 70 | Size: 150 | Load Factor: 0.36666666666666664 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 70 | Size: 200 | Load Factor: 0.285 | Time: 0
+------------------ Search ------------------
+Number of Items: 70 | Size: 200 | Load Factor: 0.285 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 70 | Size: 200 | Load Factor: 0.285 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 70 | Size: 200 | Load Factor: 0.285 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 140 | Size: 50 | Load Factor: 0.96 | Time: 1
+------------------ Search ------------------
+Number of Items: 140 | Size: 50 | Load Factor: 0.96 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 140 | Size: 50 | Load Factor: 0.96 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 140 | Size: 50 | Load Factor: 0.96 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 140 | Size: 100 | Load Factor: 0.76 | Time: 1
+------------------ Search ------------------
+Number of Items: 140 | Size: 100 | Load Factor: 0.76 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 140 | Size: 100 | Load Factor: 0.76 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 140 | Size: 100 | Load Factor: 0.76 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 140 | Size: 150 | Load Factor: 0.6 | Time: 1
+------------------ Search ------------------
+Number of Items: 140 | Size: 150 | Load Factor: 0.6 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 140 | Size: 150 | Load Factor: 0.6 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 140 | Size: 150 | Load Factor: 0.6 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 140 | Size: 200 | Load Factor: 0.5 | Time: 0
+------------------ Search ------------------
+Number of Items: 140 | Size: 200 | Load Factor: 0.5 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 140 | Size: 200 | Load Factor: 0.5 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 140 | Size: 200 | Load Factor: 0.5 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 210 | Size: 50 | Load Factor: 0.98 | Time: 0
+------------------ Search ------------------
+Number of Items: 210 | Size: 50 | Load Factor: 0.98 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 210 | Size: 50 | Load Factor: 0.98 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 210 | Size: 50 | Load Factor: 0.98 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 210 | Size: 100 | Load Factor: 0.87 | Time: 1
+------------------ Search ------------------
+Number of Items: 210 | Size: 100 | Load Factor: 0.87 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 210 | Size: 100 | Load Factor: 0.87 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 210 | Size: 100 | Load Factor: 0.87 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 210 | Size: 150 | Load Factor: 0.7533333333333333 | Time: 1
+------------------ Search ------------------
+Number of Items: 210 | Size: 150 | Load Factor: 0.7533333333333333 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 210 | Size: 150 | Load Factor: 0.7533333333333333 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 210 | Size: 150 | Load Factor: 0.7533333333333333 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 210 | Size: 200 | Load Factor: 0.6 | Time: 1
+------------------ Search ------------------
+Number of Items: 210 | Size: 200 | Load Factor: 0.6 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 210 | Size: 200 | Load Factor: 0.6 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 210 | Size: 200 | Load Factor: 0.6 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 280 | Size: 50 | Load Factor: 1.0 | Time: 0
+------------------ Search ------------------
+Number of Items: 280 | Size: 50 | Load Factor: 1.0 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 280 | Size: 50 | Load Factor: 1.0 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 280 | Size: 50 | Load Factor: 1.0 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 280 | Size: 100 | Load Factor: 0.96 | Time: 0
+------------------ Search ------------------
+Number of Items: 280 | Size: 100 | Load Factor: 0.96 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 280 | Size: 100 | Load Factor: 0.96 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 280 | Size: 100 | Load Factor: 0.96 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 280 | Size: 150 | Load Factor: 0.8066666666666666 | Time: 0
+------------------ Search ------------------
+Number of Items: 280 | Size: 150 | Load Factor: 0.8066666666666666 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 280 | Size: 150 | Load Factor: 0.8066666666666666 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 280 | Size: 150 | Load Factor: 0.8066666666666666 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 280 | Size: 200 | Load Factor: 0.73 | Time: 0
+------------------ Search ------------------
+Number of Items: 280 | Size: 200 | Load Factor: 0.73 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 280 | Size: 200 | Load Factor: 0.73 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 280 | Size: 200 | Load Factor: 0.73 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0

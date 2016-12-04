@@ -11,10 +11,13 @@ public class ExperimentController{
     public static PrintWriter outputFile;
     
     
-    public static final int BOUND_FOR_NUM_OF_ITEMS = 70000;
-    public static final int BOUND_FOR_SIZE = 50;
+    public static final int BOUND_FOR_NUM_OF_ITEMS = 10;
+    public static final int BOUND_FOR_SIZE = 5;
     public static final int CONST = 4;
 
+    public ExperimentController(){
+        
+    }
    
     public static void main(String[] args){
         ht = null;
@@ -66,7 +69,7 @@ public class ExperimentController{
     
     public static LinkedList<Entry> getList(int bfs, int k){
         int index = bfs * k / 4;
-        LinkedList<Entry> entry = ht.getBuckets()[ index];
+        LinkedList<Entry> entry = ht.getBuckets()[index];
         do{
             if(index + 1 >= bfs) break;
             entry = ht.getBuckets()[++index];

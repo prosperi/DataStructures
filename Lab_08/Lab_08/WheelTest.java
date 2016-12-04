@@ -43,55 +43,54 @@ public class WheelTest
     }
 
     @Test()
-    public void spinTest()
+    public void testSpinInteger()
     {
-        /*wheel = new Wheel(100);
-        int num = wheel.spin();
-        assertTrue("Picked number out of range", num >= 0 && num < wheel.bound);
+        wheel = new Wheel(1);
+        String str = wheel.spinString();
+        String[] arr = str.split(" ");
+        assertTrue("Could not create correct random value", wheel.getFoo().contains(arr[0]));
+        assertTrue("Could not create correct random value", wheel.getBoo().contains(arr[1]));
         
-        wheel = new Wheel(0);
-        num = wheel.spin();
-        assertTrue("Picked number out of range", num >= 0 && num < wheel.bound);
-        
-        wheel = new Wheel(-100);
-        num = wheel.spin();
-        assertTrue("Picked number out of range", num >= 0 && num < wheel.bound);
-    }
+        arr[0] = "a";
+        arr[1] = "b";
+        assertTrue("Could not create correct random value", !wheel.getFoo().contains(arr[0]));
+        assertTrue("Could not create correct random value", !wheel.getBoo().contains(arr[1]));
+     }
     
     @Test()
     public void sequenceTest(){
         /// Check Sequences: check that the same seed provides same sequence each time
         
-        int[] arr = new int[100];
+        String[] arr = new String[100];
         wheel = new Wheel(32);
         for(int i = 0; i < arr.length; i++){
-            arr[i] = wheel.spin();
+            arr[i] = wheel.spinString();
         }
         wheel = new Wheel(32);
         for(int i = 0; i < arr.length; i++){
-            assertTrue("The sequence is not the same", arr[i] == wheel.spin());
+            assertTrue("The sequence is not the same", arr[i].equals(wheel.spinString()));
         }
         
         
-        arr = new int[100];
+        arr = new String[100];
         wheel = new Wheel(0);
         for(int i = 0; i < arr.length; i++){
-            arr[i] = wheel.spin();
+            arr[i] = wheel.spinString();
         }
         wheel = new Wheel(0);
         for(int i = 0; i < arr.length; i++){
-            assertTrue("The sequence is not the same", arr[i] == wheel.spin());
+            assertTrue("The sequence is not the same", arr[i].equals(wheel.spinString()));
         }
         
         
-        arr = new int[100];
+        arr = new String[100];
         wheel = new Wheel(-11);
         for(int i = 0; i < arr.length; i++){
-            arr[i] = wheel.spin();
+            arr[i] = wheel.spinString();
         }
         wheel = new Wheel(-11);
         for(int i = 0; i < arr.length; i++){
-            assertTrue("The sequence is not the same", arr[i] == wheel.spin());
-        }*/
+            assertTrue("The sequence is not the same", arr[i].equals(wheel.spinString()));
+        }
     }
 }
