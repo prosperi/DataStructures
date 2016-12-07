@@ -5,30 +5,38 @@
   * @author Zura Mestiashvili mestiasz@lafayette.edu
   * @version v1.0.0
 */
-public class Cell
-{
+
+import java.util.ArrayList;
+
+public class Cell{
+    
     private World world;
     private Animal animal;
     private Plant plant;
     //z/////////
     private Mountain mountain;
+    private TourTile tile;
     private int x, y;
     //z////////
     public Cell(World w) {
         this.world = w;
+        this.tile = null;
     }
     
     public Cell(Animal a) {
         this.animal = a;
+        this.tile = null;
     }
     
     public Cell(Plant p) {
         this.plant = p;
+        this.tile = null;
     }
     
     public Cell(Animal a, Plant p) {
         this.animal = a;
         this.plant = p;
+        this.tile = null;
     }
     
     //z////
@@ -36,6 +44,7 @@ public class Cell
         this.world = w;
         this.x = x;
         this.y = y;
+        this.tile = null;
     }
     //z///
     
@@ -80,15 +89,22 @@ public class Cell
         this.plant = p;
     }
     
-    //z//////////////////////
-    public void setMountain(Mountain mountain){
-       this.mountain = mountain;
-    }
-    
     public Mountain getMountain(){
        return this.mountain;
     }
     
+    public void setMountain(Mountain mountain){
+       this.mountain = mountain;
+    }
+    
+    public void setTile(TourTile tile){
+        this.tile = tile; 
+    }
+    
+    public TourTile getTile(){
+        return this.tile; 
+    }
+   
     public int getX(){
         return this.x;
     }
@@ -96,7 +112,7 @@ public class Cell
     public int getY(){
         return this.y;
     }
-    //z/////////////////////
+    
     
     
     public World getWorld() {

@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=dest\ cost\ ls
+comment0.target=Route(TourTile,\ int,\ java.util.LinkedList)
+comment1.params=route
+comment1.target=int\ compareTo(Route)
+comment2.params=
+comment2.target=java.lang.String\ toString()
+comment3.params=
+comment3.target=TourTile\ getDest()
+comment4.params=
+comment4.target=int\ getCost()
+comment5.params=
+comment5.target=java.util.LinkedList\ getLs()
+numComments=6

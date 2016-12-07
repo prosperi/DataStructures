@@ -14,22 +14,27 @@ public class Simulation
 {
     public static int SEED = 12345678;
     public File configFile;
+    public File graphFile;
     public World world;
+    public TouristMap tMap;
     public int maxSteps;
     public int steps;
     
     public static void main(String[] args) {
         String filePath = args[0];
         int simulationSteps = Integer.parseInt(args[1]);
-        SEED = Integer.parseInt(args[2]);
+        String graphPath = args[2];
         
-        Simulation sim = new Simulation(filePath, simulationSteps);
+        SEED = Integer.parseInt(args[3]);
+        
+        Simulation sim = new Simulation(filePath, graphPath, simulationSteps);
         sim.run();
     }
     
-    public Simulation(String fp, int s) {
+    public Simulation(String fp, String gp, int s) {
         try {
             this.configFile = new File(fp);
+            this.graphFile = new File(gp);
         } catch(Exception e) {
             System.out.println(e);
             System.exit(0);
@@ -61,6 +66,7 @@ public class Simulation
                 world.print();
             } else if(line.equals("c")) {
                 world.turn();
+                tMap.guideTour();
                 Species.printInfo();
                 steps++;
                 if(steps % 50 == 0) {
@@ -73,9 +79,14 @@ public class Simulation
             else if(line.equals("q")){
                 break;
             }
+            // if command is m -> print tourist map
+            else if(line.equals("m")){
+                System.out.println(tMap);
+            }
             
             if(line.equals("i")) {
                 world.turn();
+                tMap.guideTour();
                 steps++;
                 if(steps % 50 == 0) {
                     Species.printSummary(50);
@@ -119,6 +130,7 @@ public class Simulation
                     width = Integer.parseInt(words[2]);
                 } else if(words[0].equals("light")) {
                     light = Integer.parseInt(words[1]);
+                    if(width > 0 && height > 0) world = new World(height,width,light);
                 } else if(words[0].equals("species")) {
                     //Creates all variables to be passed as parameters to the species constructor
                     String name = words[1];
@@ -174,9 +186,26 @@ public class Simulation
                     Mountain tmpMountain = new Mountain(startingX, startingY, endingX, endingY);
                     mountains.add(tmpMountain);
                 }
+                 //Check if current line provides information about the tour
+                // if so build new tour
+                else if(words[0].equals("tour")){
+                    drawGraph();
+                    char symbol = words[1].charAt(0);
+                    String[] startingTiles = words[2].split(",");
+                    int capacity = Integer.parseInt(words[3]);
+                    int radius = Integer.parseInt(words[4]);
+                    double effect = Double.parseDouble(words[5]);
+                    
+                    
+                    for(int i = 0; i < startingTiles.length; i++){
+                        tMap.addTour(new Tour(tMap, symbol, Integer.parseInt(startingTiles[i]), capacity, radius, effect));
+                    }
+                    
+                    tMap.guideTour();
+                }
             }
             //Creates world and adds species to it
-            world = new World(height,width,light);
+            if(world == null) world = new World(height,width,light);
             Species.setStaticWorld(world);
             //add mountains to our World
             for(int i = 0; i < mountains.size(); i++){
@@ -189,6 +218,46 @@ public class Simulation
             System.out.println("Unable to read config file.");
             return;
         }
+    }
+    
+    public void drawGraph(){
+        tMap = new TouristMap(world);
+        try {
+            Scanner sc = new Scanner(graphFile);
+            Random rnd = new Random(SEED);
+            while(sc.hasNext()){
+                String[] line = sc.nextLine().split(" ");
+                int tile_key_01 = Integer.parseInt(line[0]);
+                int tile_key_02 = Integer.parseInt(line[2]);
+                int w = Integer.parseInt(line[3]);
+                
+                if(tMap.getSize() < world.getHeight() * world.getWidth()){
+                    tMap.addTile(tile_key_01, generateTilePosition(rnd));
+                    tMap.addTile(tile_key_02, generateTilePosition(rnd));
+                    tMap.addEdge(tile_key_01, tile_key_02, w);
+                }else{
+                    System.out.println("No place for tourism :)");
+                    break;
+                }
+            }
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public ArrayList<Integer> generateTilePosition(Random rnd){
+        ArrayList<Integer> position = new ArrayList<Integer>();
+        int x, y;
+        do{
+            x = rnd.nextInt(world.getHeight());
+            y = rnd.nextInt(world.getWidth());
+        }while(world.get(x, y).getTile() != null);
+        
+        position.add(x);
+        position.add(y);
+        
+        return position;
+        
     }
     
     /**
