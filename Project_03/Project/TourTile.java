@@ -27,9 +27,9 @@ public class TourTile{
     }
     
     public void reset(){
-        dist = INFINITY;
-        prev = null;
-        scratch = 0;
+        this.dist = INFINITY;
+        this.prev = null;
+        this.scratch = 0;
     }
       
     public void addTourist(Tourist tourist){
@@ -54,6 +54,10 @@ public class TourTile{
     
     public TourTile getPrev(){
         return prev; 
+    }
+    
+    public void setPrev(TourTile tile){
+        this.prev = tile;
     }
     
     public LinkedList<TourEdge> getAdjacent(){ 

@@ -4,6 +4,7 @@ import java.util.PriorityQueue;
 
 public class Tour{
     public static final int INFINITY = Integer.MAX_VALUE;
+    public static final int PQ_MAX_SIZE = 1;
     
     private TouristMap map;
     private TourTile startingTile;
@@ -24,7 +25,7 @@ public class Tour{
         this.radius = radius;
         this.effect = effect;
         this.tourists = new ArrayList<Tourist>();
-        this.routes = new PriorityQueue<Route>();
+        this.routes = new PriorityQueue<Route>(11);
         this.route = new LinkedList<TourTile>();
         
         // build up route
@@ -36,7 +37,7 @@ public class Tour{
         tbv.addAll(map.getTiles().values());
         TourTile cTile= this.startingTile;
         tbv.remove(this.startingTile);
-        Route cRoute = new Route(cTile, 0, null);
+        Route cRoute = new Route(cTile, 0);
         Route r = createRoute(tbv, cRoute, cTile, 0);
         
         route = r.getLs();
@@ -57,22 +58,28 @@ public class Tour{
     public Route createRoute(ArrayList<TourTile> tbv, Route cRoute, TourTile cTile, int w){
         boolean extend = false;
         if(tbv.size() == 0){
+            cRoute.generateLs();
             return cRoute;
         }
         
+        ArrayList<TourTile> tbv_tmp;
+        Route route;
         for(TourEdge e : cTile.getAdjacent()){
             if(tbv.contains(e.getEnd())){
                 extend = true;
-                Route route = new Route(e.getEnd(), cRoute.getCost() + e.getWeight(), cRoute.getLs());
-                ArrayList<TourTile> tbv_tmp = new ArrayList<TourTile>(tbv);
+                e.getEnd().setPrev(cTile);
+                route = new Route(e.getEnd(), cRoute.getCost() + e.getWeight());
+                tbv_tmp = new ArrayList<TourTile>(tbv);
                 tbv_tmp.remove(e.getEnd());
                 routes.add(createRoute(tbv_tmp, route, e.getEnd(), w + e.getWeight()));
+                if(routes.size() > PQ_MAX_SIZE) routes.remove();
             }
         }
         
         if(extend == false && tbv.size() > 0){
             w = INFINITY;
-            return new Route(cRoute.getDest(), w, cRoute.getLs());
+            cRoute.setCost(w);
+            return cRoute;
         }
 
         
