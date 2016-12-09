@@ -1,0 +1,20 @@
+/// TSP ///
+extend = false;
+
+pq
+
+TSP(<to_be_visited_list>, <current_path>, <current_node>, <current_travel_weight>){
+	for(e in edges(for_current_node)){
+		if(dest(e) in toBeVisited){
+
+			pq.add(TSP(toBeVisited-dest(e), currentPathDest(e), dest(e), currentTotalWeight+weight(e)))
+		}
+	}
+}
+
+if(extend == false && toBevisited not empty){
+	set total weight to infinity
+	return Tour: path + weight;
+}
+
+return (pq.poll)

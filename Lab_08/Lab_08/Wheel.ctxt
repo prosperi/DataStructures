@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=seed
+comment0.target=Wheel(long)
+comment1.params=
+comment1.target=java.lang.String\ spinString()
+comment2.params=
+comment2.target=java.util.ArrayList\ getFoo()
+comment3.params=
+comment3.target=java.util.ArrayList\ getBoo()
+numComments=4

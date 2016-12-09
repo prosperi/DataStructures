@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=start\ end\ w
+comment0.target=TourEdge(TourTile,\ TourTile,\ int)
+comment1.params=
+comment1.target=int\ getWeight()
+comment2.params=
+comment2.target=TourTile\ getEnd()
+comment3.params=
+comment3.target=TourTile\ getStart()
+numComments=4

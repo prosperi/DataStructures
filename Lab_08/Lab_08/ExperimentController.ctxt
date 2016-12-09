@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.params=
+comment0.target=ExperimentController()
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=
+comment2.target=void\ runExperiment()
+comment3.params=noi\ i\ bfs
+comment3.target=void\ printResults(int,\ int,\ int)
+comment4.params=bfs\ k
+comment4.target=java.util.LinkedList\ getList(int,\ int)
+comment5.params=numOfItems\ seed\ size
+comment5.target=long\ timeInsert(int,\ long,\ int)
+comment6.params=key
+comment6.target=long\ timeFind(java.lang.String)
+numComments=7
