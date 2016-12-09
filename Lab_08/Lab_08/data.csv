@@ -262,3 +262,451 @@ Number of Items: 280 | Size: 200 | Load Factor: 0.73 | Time: 0
 Number of Items: 280 | Size: 200 | Load Factor: 0.73 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
 Number of Items: 280 | Size: 200 | Load Factor: 0.73 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
 Number of Items: 280 | Size: 200 | Load Factor: 0.73 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 10 | Size: 5 | Load Factor: 0.8 | Time: 1
+------------------ Search ------------------
+Number of Items: 10 | Size: 5 | Load Factor: 0.8 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 10 | Size: 5 | Load Factor: 0.8 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 10 | Size: 5 | Load Factor: 0.8 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 10 | Size: 55 | Load Factor: 0.16363636363636364 | Time: 0
+------------------ Search ------------------
+Number of Items: 10 | Size: 55 | Load Factor: 0.16363636363636364 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 10 | Size: 55 | Load Factor: 0.16363636363636364 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 10 | Size: 55 | Load Factor: 0.16363636363636364 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 10 | Size: 105 | Load Factor: 0.09523809523809523 | Time: 0
+------------------ Search ------------------
+Number of Items: 10 | Size: 105 | Load Factor: 0.09523809523809523 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 10 | Size: 105 | Load Factor: 0.09523809523809523 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 10 | Size: 105 | Load Factor: 0.09523809523809523 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 10 | Size: 155 | Load Factor: 0.06451612903225806 | Time: 0
+------------------ Search ------------------
+Number of Items: 10 | Size: 155 | Load Factor: 0.06451612903225806 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 10 | Size: 155 | Load Factor: 0.06451612903225806 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 10 | Size: 155 | Load Factor: 0.06451612903225806 | Time: 0 | Successful Search: -1 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 20 | Size: 5 | Load Factor: 1.0 | Time: 1
+------------------ Search ------------------
+Number of Items: 20 | Size: 5 | Load Factor: 1.0 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 20 | Size: 5 | Load Factor: 1.0 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 20 | Size: 5 | Load Factor: 1.0 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 20 | Size: 55 | Load Factor: 0.3090909090909091 | Time: 0
+------------------ Search ------------------
+Number of Items: 20 | Size: 55 | Load Factor: 0.3090909090909091 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 20 | Size: 55 | Load Factor: 0.3090909090909091 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 20 | Size: 55 | Load Factor: 0.3090909090909091 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 20 | Size: 105 | Load Factor: 0.1619047619047619 | Time: 0
+------------------ Search ------------------
+Number of Items: 20 | Size: 105 | Load Factor: 0.1619047619047619 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 20 | Size: 105 | Load Factor: 0.1619047619047619 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 20 | Size: 105 | Load Factor: 0.1619047619047619 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 20 | Size: 155 | Load Factor: 0.10967741935483871 | Time: 0
+------------------ Search ------------------
+Number of Items: 20 | Size: 155 | Load Factor: 0.10967741935483871 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 20 | Size: 155 | Load Factor: 0.10967741935483871 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 20 | Size: 155 | Load Factor: 0.10967741935483871 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 30 | Size: 5 | Load Factor: 1.0 | Time: 0
+------------------ Search ------------------
+Number of Items: 30 | Size: 5 | Load Factor: 1.0 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 30 | Size: 5 | Load Factor: 1.0 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 30 | Size: 5 | Load Factor: 1.0 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 30 | Size: 55 | Load Factor: 0.4 | Time: 0
+------------------ Search ------------------
+Number of Items: 30 | Size: 55 | Load Factor: 0.4 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 30 | Size: 55 | Load Factor: 0.4 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 30 | Size: 55 | Load Factor: 0.4 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 30 | Size: 105 | Load Factor: 0.26666666666666666 | Time: 0
+------------------ Search ------------------
+Number of Items: 30 | Size: 105 | Load Factor: 0.26666666666666666 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 30 | Size: 105 | Load Factor: 0.26666666666666666 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 30 | Size: 105 | Load Factor: 0.26666666666666666 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 30 | Size: 155 | Load Factor: 0.17419354838709677 | Time: 0
+------------------ Search ------------------
+Number of Items: 30 | Size: 155 | Load Factor: 0.17419354838709677 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 30 | Size: 155 | Load Factor: 0.17419354838709677 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 30 | Size: 155 | Load Factor: 0.17419354838709677 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 40 | Size: 5 | Load Factor: 1.0 | Time: 1
+------------------ Search ------------------
+Number of Items: 40 | Size: 5 | Load Factor: 1.0 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 40 | Size: 5 | Load Factor: 1.0 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 40 | Size: 5 | Load Factor: 1.0 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 40 | Size: 55 | Load Factor: 0.509090909090909 | Time: 1
+------------------ Search ------------------
+Number of Items: 40 | Size: 55 | Load Factor: 0.509090909090909 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 40 | Size: 55 | Load Factor: 0.509090909090909 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 40 | Size: 55 | Load Factor: 0.509090909090909 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 40 | Size: 105 | Load Factor: 0.3238095238095238 | Time: 0
+------------------ Search ------------------
+Number of Items: 40 | Size: 105 | Load Factor: 0.3238095238095238 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 40 | Size: 105 | Load Factor: 0.3238095238095238 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 40 | Size: 105 | Load Factor: 0.3238095238095238 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 40 | Size: 155 | Load Factor: 0.2129032258064516 | Time: 0
+------------------ Search ------------------
+Number of Items: 40 | Size: 155 | Load Factor: 0.2129032258064516 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 40 | Size: 155 | Load Factor: 0.2129032258064516 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 40 | Size: 155 | Load Factor: 0.2129032258064516 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 1000 | Size: 500 | Load Factor: 0.868 | Time: 8
+------------------ Search ------------------
+Number of Items: 1000 | Size: 500 | Load Factor: 0.868 | Time: 8 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 1000 | Size: 500 | Load Factor: 0.868 | Time: 8 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 1000 | Size: 500 | Load Factor: 0.868 | Time: 8 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 1000 | Size: 550 | Load Factor: 0.8363636363636363 | Time: 1
+------------------ Search ------------------
+Number of Items: 1000 | Size: 550 | Load Factor: 0.8363636363636363 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 1000 | Size: 550 | Load Factor: 0.8363636363636363 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 1000 | Size: 550 | Load Factor: 0.8363636363636363 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 1000 | Size: 600 | Load Factor: 0.805 | Time: 1
+------------------ Search ------------------
+Number of Items: 1000 | Size: 600 | Load Factor: 0.805 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 1000 | Size: 600 | Load Factor: 0.805 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 1000 | Size: 600 | Load Factor: 0.805 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 1000 | Size: 650 | Load Factor: 0.8 | Time: 1
+------------------ Search ------------------
+Number of Items: 1000 | Size: 650 | Load Factor: 0.8 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 1000 | Size: 650 | Load Factor: 0.8 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 1000 | Size: 650 | Load Factor: 0.8 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 2000 | Size: 500 | Load Factor: 0.992 | Time: 2
+------------------ Search ------------------
+Number of Items: 2000 | Size: 500 | Load Factor: 0.992 | Time: 2 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 2000 | Size: 500 | Load Factor: 0.992 | Time: 2 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 2000 | Size: 500 | Load Factor: 0.992 | Time: 2 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 2000 | Size: 550 | Load Factor: 0.9763636363636363 | Time: 1
+------------------ Search ------------------
+Number of Items: 2000 | Size: 550 | Load Factor: 0.9763636363636363 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 2000 | Size: 550 | Load Factor: 0.9763636363636363 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 2000 | Size: 550 | Load Factor: 0.9763636363636363 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 2000 | Size: 600 | Load Factor: 0.9683333333333334 | Time: 4
+------------------ Search ------------------
+Number of Items: 2000 | Size: 600 | Load Factor: 0.9683333333333334 | Time: 4 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 2000 | Size: 600 | Load Factor: 0.9683333333333334 | Time: 4 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 2000 | Size: 600 | Load Factor: 0.9683333333333334 | Time: 4 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 2000 | Size: 650 | Load Factor: 0.9446153846153846 | Time: 2
+------------------ Search ------------------
+Number of Items: 2000 | Size: 650 | Load Factor: 0.9446153846153846 | Time: 2 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 2000 | Size: 650 | Load Factor: 0.9446153846153846 | Time: 2 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 2000 | Size: 650 | Load Factor: 0.9446153846153846 | Time: 2 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 3000 | Size: 500 | Load Factor: 0.998 | Time: 4
+------------------ Search ------------------
+Number of Items: 3000 | Size: 500 | Load Factor: 0.998 | Time: 4 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 3000 | Size: 500 | Load Factor: 0.998 | Time: 4 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 3000 | Size: 500 | Load Factor: 0.998 | Time: 4 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 3000 | Size: 550 | Load Factor: 0.9981818181818182 | Time: 8
+------------------ Search ------------------
+Number of Items: 3000 | Size: 550 | Load Factor: 0.9981818181818182 | Time: 8 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 3000 | Size: 550 | Load Factor: 0.9981818181818182 | Time: 8 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 3000 | Size: 550 | Load Factor: 0.9981818181818182 | Time: 8 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 3000 | Size: 600 | Load Factor: 0.9933333333333333 | Time: 3
+------------------ Search ------------------
+Number of Items: 3000 | Size: 600 | Load Factor: 0.9933333333333333 | Time: 3 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 3000 | Size: 600 | Load Factor: 0.9933333333333333 | Time: 3 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 3000 | Size: 600 | Load Factor: 0.9933333333333333 | Time: 3 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 3000 | Size: 650 | Load Factor: 0.9907692307692307 | Time: 3
+------------------ Search ------------------
+Number of Items: 3000 | Size: 650 | Load Factor: 0.9907692307692307 | Time: 3 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 3000 | Size: 650 | Load Factor: 0.9907692307692307 | Time: 3 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 3000 | Size: 650 | Load Factor: 0.9907692307692307 | Time: 3 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 4000 | Size: 500 | Load Factor: 1.0 | Time: 3
+------------------ Search ------------------
+Number of Items: 4000 | Size: 500 | Load Factor: 1.0 | Time: 3 | Successful Search: 1 | Unsuccessful search: 0
+Number of Items: 4000 | Size: 500 | Load Factor: 1.0 | Time: 3 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 4000 | Size: 500 | Load Factor: 1.0 | Time: 3 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 4000 | Size: 550 | Load Factor: 0.9981818181818182 | Time: 3
+------------------ Search ------------------
+Number of Items: 4000 | Size: 550 | Load Factor: 0.9981818181818182 | Time: 3 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 4000 | Size: 550 | Load Factor: 0.9981818181818182 | Time: 3 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 4000 | Size: 550 | Load Factor: 0.9981818181818182 | Time: 3 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 4000 | Size: 600 | Load Factor: 0.9983333333333333 | Time: 4
+------------------ Search ------------------
+Number of Items: 4000 | Size: 600 | Load Factor: 0.9983333333333333 | Time: 4 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 4000 | Size: 600 | Load Factor: 0.9983333333333333 | Time: 4 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 4000 | Size: 600 | Load Factor: 0.9983333333333333 | Time: 4 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 4000 | Size: 650 | Load Factor: 1.0 | Time: 4
+------------------ Search ------------------
+Number of Items: 4000 | Size: 650 | Load Factor: 1.0 | Time: 4 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 4000 | Size: 650 | Load Factor: 1.0 | Time: 4 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 4000 | Size: 650 | Load Factor: 1.0 | Time: 4 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 10 | Size: 5 | Load Factor: 0.8 | Time: 1
+------------------ Search ------------------
+Number of Items: 10 | Size: 5 | Load Factor: 0.8 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 10 | Size: 5 | Load Factor: 0.8 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 10 | Size: 5 | Load Factor: 0.8 | Time: 1 | Successful Search: 0 | Unsuccessful search: 1
+
+------------------ Creation ------------------
+Number of Items: 10 | Size: 55 | Load Factor: 0.16363636363636364 | Time: 0
+------------------ Search ------------------
+Number of Items: 10 | Size: 55 | Load Factor: 0.16363636363636364 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 10 | Size: 55 | Load Factor: 0.16363636363636364 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 10 | Size: 55 | Load Factor: 0.16363636363636364 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 10 | Size: 105 | Load Factor: 0.09523809523809523 | Time: 0
+------------------ Search ------------------
+Number of Items: 10 | Size: 105 | Load Factor: 0.09523809523809523 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 10 | Size: 105 | Load Factor: 0.09523809523809523 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 10 | Size: 105 | Load Factor: 0.09523809523809523 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 10 | Size: 155 | Load Factor: 0.06451612903225806 | Time: 0
+------------------ Search ------------------
+Number of Items: 10 | Size: 155 | Load Factor: 0.06451612903225806 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 10 | Size: 155 | Load Factor: 0.06451612903225806 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 10 | Size: 155 | Load Factor: 0.06451612903225806 | Time: 0 | Successful Search: -1 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 20 | Size: 5 | Load Factor: 1.0 | Time: 1
+------------------ Search ------------------
+Number of Items: 20 | Size: 5 | Load Factor: 1.0 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 20 | Size: 5 | Load Factor: 1.0 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 20 | Size: 5 | Load Factor: 1.0 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 20 | Size: 55 | Load Factor: 0.3090909090909091 | Time: 1
+------------------ Search ------------------
+Number of Items: 20 | Size: 55 | Load Factor: 0.3090909090909091 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 20 | Size: 55 | Load Factor: 0.3090909090909091 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 20 | Size: 55 | Load Factor: 0.3090909090909091 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 20 | Size: 105 | Load Factor: 0.1619047619047619 | Time: 0
+------------------ Search ------------------
+Number of Items: 20 | Size: 105 | Load Factor: 0.1619047619047619 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 20 | Size: 105 | Load Factor: 0.1619047619047619 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 20 | Size: 105 | Load Factor: 0.1619047619047619 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 20 | Size: 155 | Load Factor: 0.10967741935483871 | Time: 0
+------------------ Search ------------------
+Number of Items: 20 | Size: 155 | Load Factor: 0.10967741935483871 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 20 | Size: 155 | Load Factor: 0.10967741935483871 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 20 | Size: 155 | Load Factor: 0.10967741935483871 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 30 | Size: 5 | Load Factor: 1.0 | Time: 0
+------------------ Search ------------------
+Number of Items: 30 | Size: 5 | Load Factor: 1.0 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 30 | Size: 5 | Load Factor: 1.0 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 30 | Size: 5 | Load Factor: 1.0 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 30 | Size: 55 | Load Factor: 0.4 | Time: 0
+------------------ Search ------------------
+Number of Items: 30 | Size: 55 | Load Factor: 0.4 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 30 | Size: 55 | Load Factor: 0.4 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 30 | Size: 55 | Load Factor: 0.4 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 30 | Size: 105 | Load Factor: 0.26666666666666666 | Time: 0
+------------------ Search ------------------
+Number of Items: 30 | Size: 105 | Load Factor: 0.26666666666666666 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 30 | Size: 105 | Load Factor: 0.26666666666666666 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 30 | Size: 105 | Load Factor: 0.26666666666666666 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 30 | Size: 155 | Load Factor: 0.17419354838709677 | Time: 0
+------------------ Search ------------------
+Number of Items: 30 | Size: 155 | Load Factor: 0.17419354838709677 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 30 | Size: 155 | Load Factor: 0.17419354838709677 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 30 | Size: 155 | Load Factor: 0.17419354838709677 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 40 | Size: 5 | Load Factor: 1.0 | Time: 0
+------------------ Search ------------------
+Number of Items: 40 | Size: 5 | Load Factor: 1.0 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 40 | Size: 5 | Load Factor: 1.0 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 40 | Size: 5 | Load Factor: 1.0 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 40 | Size: 55 | Load Factor: 0.509090909090909 | Time: 0
+------------------ Search ------------------
+Number of Items: 40 | Size: 55 | Load Factor: 0.509090909090909 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 40 | Size: 55 | Load Factor: 0.509090909090909 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 40 | Size: 55 | Load Factor: 0.509090909090909 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 40 | Size: 105 | Load Factor: 0.3238095238095238 | Time: 0
+------------------ Search ------------------
+Number of Items: 40 | Size: 105 | Load Factor: 0.3238095238095238 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 40 | Size: 105 | Load Factor: 0.3238095238095238 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 40 | Size: 105 | Load Factor: 0.3238095238095238 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 40 | Size: 155 | Load Factor: 0.2129032258064516 | Time: 0
+------------------ Search ------------------
+Number of Items: 40 | Size: 155 | Load Factor: 0.2129032258064516 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 40 | Size: 155 | Load Factor: 0.2129032258064516 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 40 | Size: 155 | Load Factor: 0.2129032258064516 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 10 | Size: 5 | Load Factor: 0.8 | Time: 0
+------------------ Search ------------------
+Number of Items: 10 | Size: 5 | Load Factor: 0.8 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 10 | Size: 5 | Load Factor: 0.8 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 10 | Size: 5 | Load Factor: 0.8 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 10 | Size: 55 | Load Factor: 0.16363636363636364 | Time: 0
+------------------ Search ------------------
+Number of Items: 10 | Size: 55 | Load Factor: 0.16363636363636364 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 10 | Size: 55 | Load Factor: 0.16363636363636364 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 10 | Size: 55 | Load Factor: 0.16363636363636364 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 10 | Size: 105 | Load Factor: 0.09523809523809523 | Time: 0
+------------------ Search ------------------
+Number of Items: 10 | Size: 105 | Load Factor: 0.09523809523809523 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 10 | Size: 105 | Load Factor: 0.09523809523809523 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 10 | Size: 105 | Load Factor: 0.09523809523809523 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 10 | Size: 155 | Load Factor: 0.06451612903225806 | Time: 0
+------------------ Search ------------------
+Number of Items: 10 | Size: 155 | Load Factor: 0.06451612903225806 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 10 | Size: 155 | Load Factor: 0.06451612903225806 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 10 | Size: 155 | Load Factor: 0.06451612903225806 | Time: 0 | Successful Search: -1 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 20 | Size: 5 | Load Factor: 1.0 | Time: 0
+------------------ Search ------------------
+Number of Items: 20 | Size: 5 | Load Factor: 1.0 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 20 | Size: 5 | Load Factor: 1.0 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 20 | Size: 5 | Load Factor: 1.0 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 20 | Size: 55 | Load Factor: 0.3090909090909091 | Time: 0
+------------------ Search ------------------
+Number of Items: 20 | Size: 55 | Load Factor: 0.3090909090909091 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 20 | Size: 55 | Load Factor: 0.3090909090909091 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 20 | Size: 55 | Load Factor: 0.3090909090909091 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 20 | Size: 105 | Load Factor: 0.1619047619047619 | Time: 0
+------------------ Search ------------------
+Number of Items: 20 | Size: 105 | Load Factor: 0.1619047619047619 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 20 | Size: 105 | Load Factor: 0.1619047619047619 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 20 | Size: 105 | Load Factor: 0.1619047619047619 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 20 | Size: 155 | Load Factor: 0.10967741935483871 | Time: 0
+------------------ Search ------------------
+Number of Items: 20 | Size: 155 | Load Factor: 0.10967741935483871 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 20 | Size: 155 | Load Factor: 0.10967741935483871 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 20 | Size: 155 | Load Factor: 0.10967741935483871 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 30 | Size: 5 | Load Factor: 1.0 | Time: 1
+------------------ Search ------------------
+Number of Items: 30 | Size: 5 | Load Factor: 1.0 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 30 | Size: 5 | Load Factor: 1.0 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 30 | Size: 5 | Load Factor: 1.0 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 30 | Size: 55 | Load Factor: 0.4 | Time: 0
+------------------ Search ------------------
+Number of Items: 30 | Size: 55 | Load Factor: 0.4 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 30 | Size: 55 | Load Factor: 0.4 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 30 | Size: 55 | Load Factor: 0.4 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 30 | Size: 105 | Load Factor: 0.26666666666666666 | Time: 0
+------------------ Search ------------------
+Number of Items: 30 | Size: 105 | Load Factor: 0.26666666666666666 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 30 | Size: 105 | Load Factor: 0.26666666666666666 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 30 | Size: 105 | Load Factor: 0.26666666666666666 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 30 | Size: 155 | Load Factor: 0.17419354838709677 | Time: 0
+------------------ Search ------------------
+Number of Items: 30 | Size: 155 | Load Factor: 0.17419354838709677 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 30 | Size: 155 | Load Factor: 0.17419354838709677 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 30 | Size: 155 | Load Factor: 0.17419354838709677 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 40 | Size: 5 | Load Factor: 1.0 | Time: 0
+------------------ Search ------------------
+Number of Items: 40 | Size: 5 | Load Factor: 1.0 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 40 | Size: 5 | Load Factor: 1.0 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 40 | Size: 5 | Load Factor: 1.0 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 40 | Size: 55 | Load Factor: 0.509090909090909 | Time: 1
+------------------ Search ------------------
+Number of Items: 40 | Size: 55 | Load Factor: 0.509090909090909 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 40 | Size: 55 | Load Factor: 0.509090909090909 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 40 | Size: 55 | Load Factor: 0.509090909090909 | Time: 1 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 40 | Size: 105 | Load Factor: 0.3238095238095238 | Time: 0
+------------------ Search ------------------
+Number of Items: 40 | Size: 105 | Load Factor: 0.3238095238095238 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 40 | Size: 105 | Load Factor: 0.3238095238095238 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 40 | Size: 105 | Load Factor: 0.3238095238095238 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+
+------------------ Creation ------------------
+Number of Items: 40 | Size: 155 | Load Factor: 0.2129032258064516 | Time: 0
+------------------ Search ------------------
+Number of Items: 40 | Size: 155 | Load Factor: 0.2129032258064516 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 40 | Size: 155 | Load Factor: 0.2129032258064516 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0
+Number of Items: 40 | Size: 155 | Load Factor: 0.2129032258064516 | Time: 0 | Successful Search: 0 | Unsuccessful search: 0

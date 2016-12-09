@@ -1,5 +1,11 @@
 import java.util.LinkedList;
 
+/** 
+  * @desc this class builds a container with HashMap's features
+  * keys for container are String type, while values are Team type.
+  * @author Zura Mestiashvili mestiasz@lafayette.edu
+  * @version v1.0.0
+*/ 
 public class MyHashTable{
    private LinkedList<Entry>[] buckets;
    private int size;
@@ -14,6 +20,12 @@ public class MyHashTable{
        }
    }
    
+   /** 
+      * @desc insert new element in container
+      * @param key - String
+      * @param value - Team
+      * @return boolean - if inserted successfuly
+    */ 
    public boolean insert(String key, Team value){
        // find when to return false
        int hashCode = Math.abs(key.hashCode()%size);
@@ -27,6 +39,12 @@ public class MyHashTable{
        return true;
    }
    
+   /** 
+      * @desc find element in container
+      * @param key - String
+      * @return Team - return value for the key, or null if it
+      * is not in our container
+    */ 
    public Team find(String key){
        int hashCode = Math.abs(key.hashCode()%size);
        LinkedList<Entry> tmpList = buckets[hashCode];
@@ -38,6 +56,12 @@ public class MyHashTable{
        return null;
    }
    
+   /** 
+      * @desc remove element from container
+      * @param key - String
+      * @return Team - return value for the key, or null if it
+      * is not in our container or we could not remove
+    */ 
    public Team remove(String key){
        int hashCode = Math.abs(key.hashCode()%size);
        LinkedList<Entry> tmpList = buckets[hashCode];
@@ -51,6 +75,10 @@ public class MyHashTable{
        return null;
    }
    
+   /** 
+      * @desc find load factor for our container
+      * @return double - load factor
+    */ 
    public double getLoadFactor(){
        int counter = 0;
        for(int i = 0; i < size; i++){
@@ -60,6 +88,10 @@ public class MyHashTable{
        return 1.0 * counter/size;
    }
    
+    /** 
+      * @desc find String representation of the container
+      * @return String - String representation of the container
+    */ 
    public String toString(){
        String str = "";
        for(int i = 0; i < size; i++){
@@ -72,10 +104,18 @@ public class MyHashTable{
        return str;
    }
    
+   /** 
+      * @desc get size of the container
+      * @return int -size of the container
+    */ 
    public int size(){
        return this.size;
    }
    
+   /** 
+      * @desc get the container itself
+      * @return LinkedList<Entry>[] - the container
+    */ 
    public LinkedList<Entry>[] getBuckets(){
        return this.buckets;
    }

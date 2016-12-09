@@ -83,9 +83,9 @@ public class ExperimentControllerTest
     
     @Test
     public void testTimeInsert(){        
-        assertTrue("Could not work correctly", ec.timeInsert(10, 1, 100) >= 0);
-        assertTrue("Could not work correctly", ec.timeInsert(0, 0, 0) >= 0);
-        assertTrue("Could not work correctly", ec.timeInsert(100, -11, 100) >= 0);
+        assertTrue("Could not work correctly", ec.timeInsert(10, 100) >= 0);
+        assertTrue("Could not work correctly", ec.timeInsert(0,  0) >= 0);
+        assertTrue("Could not work correctly", ec.timeInsert(100, 100) >= 0);
     }
     
     @Test

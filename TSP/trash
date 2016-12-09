@@ -1,0 +1,109 @@
+import java.util.LinkedList;
+import java.util.ArrayList;
+
+public class DirectedGraph<K extends Comparable<K>, E>{
+   private Map<K, DirectedGraphNode<K, E>> map;
+	 public static final int INFINITY = Integer.MAX_VALUE;
+
+   public DirectedGraph(){
+       list = new HashMap<K, DirectedGraphNode<K, E>>();
+   }
+
+   public boolean AddNode(K k){
+       // find in which case is false returned
+       // if node already exists return false and start checking the edges
+       for(int i = 0; i < map.size(); i++){
+           if(map.get(i).key.compareTo(k) == 0)
+            return false;
+       }
+
+       DirectedGraphNode<K, E> node = new DirectedGraphNode<K, E>(k);
+       map.add(node);
+
+       return true;
+   }
+
+   public boolean AddEdge(K k1, K k2, int w){
+       // find in which case is false returned
+       // if there are no such nodes return false
+       // or if there is edge between them already return false too.
+       Edge edge = null;
+       DirectedGraphNode<K, E> node1 = null;
+       DirectedGraphNode<K, E> node2 = null;
+
+       for(int i = 0; i < list.size(); i++){
+           K tmp = list.get(i).key;
+           if(tmp.compareTo(k1) == 0)
+            node1 = list.get(i);
+           if(list.get(i).key.compareTo(k2) == 0)
+            node2 = list.get(i);
+       }
+
+       // check if nulls or already exists
+       if(node1 == null || node2 == null) return false;
+       for(int i = 0; i < node1.outgoing.size(); i++){
+           Edge tmp = node1.outgoing.get(i);
+           if(tmp.end == node2) return false;
+       }
+
+       edge = new Edge(node1, node2, w);
+       node1.outgoing.add(edge);
+       node2.incoming.add(edge);
+
+       return true;
+   }
+
+   public String toString(){
+       String str = "";
+       for(int i = 0;  i < list.size(); i++){
+           DirectedGraphNode<K, E> tmpNode = list.get(i);
+           str += tmpNode.key + tmpNode.outgoingToString() + "\n";
+       }
+       return str;
+   }
+
+
+   public class DirectedGraphNode<K, E>{
+       LinkedList<Edge> incoming;
+       LinkedList<Edge> outgoing;
+			 DirectedGraphNode<K, E> prev;
+       K key;
+			 int dist;
+			 int scratch;
+
+       public DirectedGraphNode(K key){
+           this.key = key;
+           this.incoming = new LinkedList<Edge>();
+           this.outgoing = new LinkedList<Edge>();
+					 reset();
+       }
+
+			 public void reset(){
+			 	 	 dist = DirectedGraph.INFINITY;
+					 prev = null;
+					 scratch = 0;
+			 }
+
+       public String outgoingToString(){
+           String str = "";
+           for(int i = 0; i < outgoing.size(); i++){
+               str += "  --> " + outgoing.get(i).end.key + "(" + outgoing.get(i).weight + ")";
+           }
+           return str;
+       }
+
+   }
+
+   public class Edge{
+       DirectedGraphNode<K, E> start;
+       DirectedGraphNode<K, E> end;
+       int weight;
+
+       public Edge(DirectedGraphNode<K, E> start, DirectedGraphNode<K, E> end, int w){
+           this.start = start;
+           this.end = end;
+           this.weight = w;
+       }
+   }
+
+}

@@ -2,10 +2,11 @@ import java.util.Random;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-/**
- * @author Zura Mestiashvili 
- * @version 1.0.0
- */
+/** 
+  * @desc this class generates random numbers
+  * @author Zura Mestiashvili mestiasz@lafayette.edu
+  * @version v1.0.0
+*/ 
 
 public class Wheel{
     private long seed;
@@ -18,16 +19,28 @@ public class Wheel{
         this.rnd = new Random(seed);
     }
     
+    /** 
+      * @desc generate a combination of adjective and noun
+      * @return String key - combination of adjective and noun
+    */ 
     public String spinString(){
         // For 1-N(exclusive) range we should substract 1 to bound and than add 1 to generated random number
         String key = foo.get(rnd.nextInt(foo.size())) + " " + boo.get(rnd.nextInt(boo.size()));
         return key;
     }
     
+    /** 
+      * @desc getter for foo container
+      * @return ArrayList<String> - foo container
+    */ 
     public ArrayList<String> getFoo(){
         return foo;
     }
     
+    /** 
+      * @desc getter for boo container
+      * @return ArrayList<String> - boo container
+    */ 
     public ArrayList<String> getBoo(){
         return boo;
     }

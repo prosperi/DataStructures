@@ -220,9 +220,9 @@ public abstract class Animal extends Species
         // element from treeset and move to the cell where food can be found
         ArrayList<Path> tmpArr = new ArrayList<Path>(); 
         if(radar.size() != 0 && radar instanceof PriorityQueue){
-            tmpArr = (ArrayList<Path>)((PriorityQueue)radar).peek();
+            tmpArr = (ArrayList<Path>)((PriorityQueue<ArrayList<Path>>)radar).peek();
         }else if(radar.size() != 0 && radar instanceof TreeSet){
-            tmpArr = (ArrayList<Path>)((TreeSet)radar).first();
+            tmpArr = (ArrayList<Path>)((TreeSet<ArrayList<Path>>)radar).first();
         }
         if(radar.size() != 0 && tmpArr.get(0).size() != 0){
             if(this.getEnergy() > this.threshold){
@@ -440,7 +440,7 @@ public abstract class Animal extends Species
      * @params TreeSet<ArrayList<Path>> radar- radar
      */
     public void printRadar(TreeSet<ArrayList<Path>> radar){
-        Iterator iterator = radar.iterator();
+        Iterator<ArrayList<Path>> iterator = radar.iterator();
         while(iterator.hasNext()){
             ArrayList<Path> tmp = (ArrayList<Path>)iterator.next();
             System.out.println(this.getCell().getX() + " " + this.getCell().getY() + "   " + tmp.get(0) + " deadEnd: " + tmp.get(0).getDeadEnd() );
