@@ -20,7 +20,7 @@ public class Path
     }
     
     /**
-     * @desc add ne cell to the path
+     * @desc add next cell to the path
      * @params cell - Cell
      */
     public void add(Cell cell){

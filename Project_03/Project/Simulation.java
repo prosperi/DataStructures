@@ -19,6 +19,7 @@ public class Simulation
     public TouristMap tMap;
     public int maxSteps;
     public int steps;
+   
     
     public static void main(String[] args) {
         String filePath = args[0];
@@ -220,6 +221,9 @@ public class Simulation
         }
     }
     
+    /**
+     * @desc build up a graph from provided text file
+     */
     public void drawGraph(){
         tMap = new TouristMap(world);
         try {
@@ -245,6 +249,12 @@ public class Simulation
         }
     }
     
+    
+    /**
+     * @desc generate position for new Tile on the grid
+     * @params Random rnd - random generator
+     * @return ArrayList<Integer> position
+     */
     public ArrayList<Integer> generateTilePosition(Random rnd){
         ArrayList<Integer> position = new ArrayList<Integer>();
         int x, y;

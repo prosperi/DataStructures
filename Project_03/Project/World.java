@@ -80,6 +80,7 @@ public class World
                 Cell cell = row.get(j);
                 if(cell.getAnimal() != null) {
                     cell.getAnimal().moved = false;
+                    cell.getAnimal().setInfluenced(false);
                 }
             }
         }
@@ -108,6 +109,11 @@ public class World
                 //Mountains will be represented with *
                 if(cell.getMountain() != null){
                     message += cell.getMountain().getRepresentation();
+                }
+                // represent the tour node
+                if(cell.getTile() != null){
+                    
+                    message += "||" + cell.getTile().getSymbol();
                 }
                 System.out.print(message + "\t|");
             }

@@ -1,3 +1,14 @@
+/** 
+  * @desc this class represents the tour itself,
+  * identifies the places tourists are going to visit 
+  * in this tour and generates shortest tour for provided 
+  * starting place(node). Tour class also keeps information
+  * about the tourists moving on this tour and allows new 
+  * tourists to enter our World if there is some free space.
+  * @author Zura Mestiashvili mestiasz@lafayette.edu
+  * @version v1.0.0
+*/
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
@@ -32,36 +43,53 @@ public class Tour{
         initializeRoute();
     }
     
+    /**
+     * @desc Initialize the shortest tour by running createRoute() method
+     * and assigning result to the route container of this class
+    */
     public void initializeRoute(){
         ArrayList<TourTile> tbv = new ArrayList<TourTile>();
         tbv.addAll(map.getTiles().values());
-        TourTile cTile= this.startingTile;
+        TourTile cTile = this.startingTile;
         tbv.remove(this.startingTile);
         Route cRoute = new Route(cTile, 0);
         Route r = createRoute(tbv, cRoute, cTile, 0);
         
         route = r.getLs();
         System.out.println(r);
+        
+        for(int i = 0; i < route.size(); i++){
+            route.get(i).setSymbol(this.symbol);
+        }
     }
     
+    /**
+     * @desc create new Tourists if there is space on starting tile(node)
+    */
     public void initializeTourists(){
         int dif = capacity - startingTile.getTourists().size();
-        //System.out.println("HEY " + startingTile.getTourists().size());
         for(; dif > 0; dif--){
-            Tourist tourist = new Tourist(map, this, radius, effect);
+            Tourist tourist = new Tourist(map, this);
             this.startingTile.addTourist(tourist);
             tourists.add(tourist);
         }
         
     }
     
+    /**
+     * @desc generate the shortest tour using TSP algorithm
+     * @params ArrayList<TourTile> tbv - list of to be visited nodes
+     * @params Route cRoute - current route
+     * @params TourTile cTile - current tile we are cheking for
+     * @params int w - weight of current route
+    */
     public Route createRoute(ArrayList<TourTile> tbv, Route cRoute, TourTile cTile, int w){
         boolean extend = false;
         if(tbv.size() == 0){
             cRoute.generateLs();
             return cRoute;
         }
-        
+
         ArrayList<TourTile> tbv_tmp;
         Route route;
         for(TourEdge e : cTile.getAdjacent()){
@@ -72,6 +100,8 @@ public class Tour{
                 tbv_tmp = new ArrayList<TourTile>(tbv);
                 tbv_tmp.remove(e.getEnd());
                 routes.add(createRoute(tbv_tmp, route, e.getEnd(), w + e.getWeight()));
+                // if size of priority queue gets more than maximum size, then remove the first element
+                // which in our case is the longest tour for that moment
                 if(routes.size() > PQ_MAX_SIZE) routes.remove();
             }
         }
@@ -86,11 +116,15 @@ public class Tour{
         return routes.poll();
     }
     
+    /**
+     * @desc proceed the tour and allow tourists to move or go home.
+     * mark each tourists moved(boolean) variable ad false after the process is finished.
+    */
     public void proceed(){
         initializeTourists();
+        affect();
         ArrayList<Tourist> satisfiedTourists = new ArrayList<Tourist>();
         
-        // you are modifying the container idiot!!!!
         for(int i = 0; i < tourists.size(); i++){
             Tourist tourist = tourists.get(i);
             TourTile tile = tourist.getCurrentTile();
@@ -98,23 +132,27 @@ public class Tour{
                 int k = route.indexOf(tile);
                 tourist.move(route.get(k + 1));
             }else{
-                System.out.println("Hallelujah");
                 // let tourist go home
                 satisfiedTourists.add(tourist);
                 tile.getTourists().remove(tourist);
             }
         }
-        
+        // mark each tourists moved(boolean) variable false after the process is finished
         for(int i = 0; i < tourists.size(); i++){
             Tourist tourist  = tourists.get(i);
-            if(satisfiedTourists.contains(tourist)){
-                tourists.remove(tourist);
-                continue;
-            }
             tourist.setMoved(false);
+        }
+        
+        for(int i = 0; i < satisfiedTourists.size(); i++){
+            tourists.remove(satisfiedTourists.get(i));
         }
     }
     
+    
+    /**
+     * @desc if there is at least one tourist on the tile, make him/her
+     * affect the animals and decrease their energy
+    */
     public void affect(){
         for(int i = 0; i < route.size(); i++){
             if(route.get(i).getTourists().size() > 0){
@@ -123,28 +161,68 @@ public class Tour{
         }
     }
     
+    /**
+     * @desc get the tourist map
+     * @return TouristMap - map
+    */
     public TouristMap getMap(){
         return this.map;
     }
     
+    /**
+     * @desc get the starting tile(node)
+     * @return TouristTile - tile
+    */
     public TourTile getStartingTile(){
         return this.startingTile;
     }
     
+    /**
+     * @desc get the representation of tour
+     * @return char - symbol
+    */
     public char getSymbol(){
         return this.symbol;
     }
     
+    /**
+     * @desc get the capacity of the node in this tour
+     * @return int - capacity
+    */
     public int getCapacity(){
         return this.capacity;
     }
     
+    /**
+     * @desc get the radius of influence
+     * @return int - radius
+    */
     public int getRadius(){
         return this.radius;
     }
     
+    /**
+     * @desc get the value of effect on animals
+     * @return double - effect
+    */
     public double getEffect(){
         return this.effect;
+    }
+    
+    /**
+     * @desc get the value of the route
+     * @return LinkedList<TourTile> - route
+    */
+    public LinkedList<TourTile> getRoute(){
+        return this.route;
+    }
+    
+     /**
+     * @desc get the tourists list
+     * @return ArrayList<Tourist> - tourists
+    */
+    public ArrayList<Tourist> getTourists(){
+        return this.tourists;
     }
     
 }

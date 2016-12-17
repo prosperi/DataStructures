@@ -8,6 +8,7 @@ public abstract class Animal extends Species
 {
     Random generator;
     boolean moved;
+    boolean influenced;
     
     public Animal(String n, String sym, List<String> s, double dm, double ds, double be, double me, double le, double ie, double pm, double ps, int dr, int mr, double th) {    
         super(n, sym, s, dm, ds, be, me, le, ie, pm, ps, dr, mr, th);
@@ -15,6 +16,7 @@ public abstract class Animal extends Species
         // use moved not to move the same animal twice, when move == true we can change position, when it is false, this
         // means this animal already mvoed in this step
         moved = false;
+        influenced = false;
     }
     
     /**
@@ -445,5 +447,21 @@ public abstract class Animal extends Species
             ArrayList<Path> tmp = (ArrayList<Path>)iterator.next();
             System.out.println(this.getCell().getX() + " " + this.getCell().getY() + "   " + tmp.get(0) + " deadEnd: " + tmp.get(0).getDeadEnd() );
         }
+    }
+    
+    /**
+     * @desc change influenced variable value
+     * @params boolean
+    */
+    public void setInfluenced(boolean t){
+        this.influenced = t;
+    }
+    
+    /**
+     * @desc get Influenced variable value
+     * @return boolean
+    */
+    public boolean getInfluenced(){
+        return this.influenced;
     }
 }
